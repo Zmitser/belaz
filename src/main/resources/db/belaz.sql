@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.6.23, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
 --
 -- Host: localhost    Database: belaz
 -- ------------------------------------------------------
--- Server version	5.6.25-log
+-- Server version	5.7.12-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -14,6 +14,8 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+SET AUTOCOMMIT=0;
+SET FOREIGN_KEY_CHECKS=0;
 
 --
 -- Table structure for table `brakes`
@@ -92,6 +94,30 @@ LOCK TABLES `model` WRITE;
 /*!40000 ALTER TABLE `model` DISABLE KEYS */;
 INSERT INTO `model` VALUES (1,'7540A',1),(2,'7540B',1),(3,'7540C',1),(4,'7540E',1),(5,'7540K',1),(6,'7547',2),(7,'75473',2),(8,'75450',3),(9,'75453',3),(10,'7555В',4),(11,'7555D',4),(12,'7555E',4),(13,'7555F',4),(14,'75570',5),(15,'75571',5),(16,'75581',6),(17,'75583',6),(18,'7513',7),(19,'75131',7),(20,'75135',7),(21,'75137',7),(22,'75139',7),(23,'7513А',7),(24,'7513В',7),(25,'75170',8),(26,'75172',8),(27,'75173',8),(28,'75174',8),(29,'75180',9),(30,'75302',10),(31,'75306',10),(32,'75307',10),(33,'75309',10),(34,'75310',11),(35,'75311',11),(36,'75312',11),(37,'75315',11),(38,'75602',12),(39,'75603',12),(40,'75604',12),(41,'75710',13);
 /*!40000 ALTER TABLE `model` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `photo`
+--
+
+DROP TABLE IF EXISTS `photo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `photo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `path` varchar(150) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `photo`
+--
+
+LOCK TABLES `photo` WRITE;
+/*!40000 ALTER TABLE `photo` DISABLE KEYS */;
+INSERT INTO `photo` VALUES (1,'/resources/assets/images/7513/001.jpg'),(2,'/resources/assets/images/7513/6.jpg'),(3,'/resources/assets/images/7513/7513.jpg'),(4,'/resources/assets/images/7513/7513a.jpg'),(5,'/resources/assets/images/7513/9846f3e390f5.jpg'),(6,'/resources/assets/images/7513/75131.jpg'),(7,'/resources/assets/images/7513/75131_2.jpg'),(8,'/resources/assets/images/7513/75131_3.jpg'),(9,'/resources/assets/images/7513/75131_czjan_shan_.jpg'),(10,'/resources/assets/images/7513/75132.jpg'),(11,'/resources/assets/images/7513/751311.jpg'),(12,'/resources/assets/images/7513/73131130kamatsu300012.jpg'),(13,'/resources/assets/images/7513/7513178231.jpg'),(14,'/resources/assets/images/7513/belaz_75131.jpg'),(15,'/resources/assets/images/7513/img_0658.jpg'),(16,'/resources/assets/images/7513/p1000945.jpg'),(17,'/resources/assets/images/7513/p1000950.jpg'),(18,'/resources/assets/images/7513/p1010825.jpg'),(19,'/resources/assets/images/7540/7540.jpg'),(20,'/resources/assets/images/7540/7540_1.jpg'),(21,'/resources/assets/images/7540/7540_2.jpg'),(22,'/resources/assets/images/7540/7540_3.jpg'),(23,'/resources/assets/images/7540/7540_3.jpg'),(24,'/resources/assets/images/7540/7540_4.jpg'),(25,'/resources/assets/images/7540/7540_11.jpg'),(26,'/resources/assets/images/7540/7540_21.jpg'),(27,'/resources/assets/images/7540/7540_31.jpg'),(28,'/resources/assets/images/7540/7540_41.jpg'),(29,'/resources/assets/images/7540/7540_51.jpg'),(30,'/resources/assets/images/7545/7545.jpg'),(31,'/resources/assets/images/7545/7545_1.jpg'),(32,'/resources/assets/images/7545/7545_3.jpg'),(33,'/resources/assets/images/7545/7545_4.jpg'),(34,'/resources/assets/images/7545/7545_8.jpg'),(35,'/resources/assets/images/7545/7545_77.jpg'),(36,'/resources/assets/images/7545/belaz_75450_at_belarus_expo.jpg'),(37,'/resources/assets/images/7547/7541_2.jpg'),(38,'/resources/assets/images/7547/7547.jpg'),(39,'/resources/assets/images/7547/7547_1.jpg'),(40,'/resources/assets/images/7547/7547_2.jpg'),(41,'/resources/assets/images/7547/7547_3.jpg'),(42,'/resources/assets/images/7547/belaz7547.jpg'),(43,'/resources/assets/images/7547/belaz75473.jpg'),(44,'/resources/assets/images/7547/ekg5a_belaz7547_kuzb.jpg'),(45,'/resources/assets/images/7547/img_0192.jpg'),(46,'/resources/assets/images/7547/img_0193.jpg'),(47,'/resources/assets/images/7557/7557_1.jpg'),(48,'/resources/assets/images/7557/75570.jpg'),(49,'/resources/assets/images/7557/75570_1.jpg'),(50,'/resources/assets/images/7557/75570_3.jpg'),(51,'/resources/assets/images/7557/75570_4.jpg'),(52,'/resources/assets/images/7557/75570_6.jpg'),(53,'/resources/assets/images/7557/755701.jpg'),(54,'/resources/assets/images/7571/22.jpg'),(55,'/resources/assets/images/7571/32.jpg'),(56,'/resources/assets/images/7571/41.jpg'),(57,'/resources/assets/images/7571/foto_1.jpg'),(58,'/resources/assets/images/7571/foto_2.jpg'),(59,'/resources/assets/images/7571/foto_3.jpg'),(60,'/resources/assets/images/7571/foto_4.jpg'),(61,'/resources/assets/images/7571/foto_5.jpg'),(62,'/resources/assets/images/7571/foto_6.jpg'),(63,'/resources/assets/images/7571/foto_7.jpg'),(64,'/resources/assets/images/7571/foto_8.jpg'),(65,'/resources/assets/images/7571/untitled_1.jpg');
+/*!40000 ALTER TABLE `photo` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -193,7 +219,6 @@ CREATE TABLE `truck_mining` (
   `application` text NOT NULL,
   `payload_capacity` int(11) NOT NULL,
   PRIMARY KEY (`id`,`model_id`,`transmission_id`,`engine_id`,`suspension_id`,`brake_id`),
-  UNIQUE KEY `width_UNIQUE` (`width`),
   KEY `fk_truck_mining_model1_idx` (`model_id`),
   KEY `fk_truck_mining_transmission1_idx` (`transmission_id`),
   KEY `fk_truck_mining_engine1_idx` (`engine_id`),
@@ -212,8 +237,41 @@ CREATE TABLE `truck_mining` (
 
 LOCK TABLES `truck_mining` WRITE;
 /*!40000 ALTER TABLE `truck_mining` DISABLE KEYS */;
-INSERT INTO `truck_mining` VALUES (1,'309',228,'1491','8,7',7110,3860,3930,22600,52600,50,1,1,1,1,1,'Предназначены для транспортирования горной массы в разрыхленном состоянии по технологическим дорогам на открытых разработках полезных ископаемых с различными климатическими условиями. Могут использоваться на строительстве крупных промышленных и гидротехнических сооружений,при сооружении дорожно- магистральных комплексов, а также в технологических подразделениях предприятий перерабатывающей промышленности.',30),(2,'448',219,'2237','10,2',8390,4110,4390,33100,78100,50,7,1,6,1,1,'Предназначены для транспортирования горной массы в разрыхленном состоянии по технологическим дорогам на открытых разработках полезных ископаемых с различными климатическими условиями. Могут использоваться на строительстве крупных промышленных и гидротехнических сооружений,при сооружении дорожно- магистральных комплексов, а также в технологических подразделениях предприятий перерабатывающей промышленности.',45),(3,'448',223,'2779','9',8560,4240,4475,35000,80000,55,8,1,7,2,2,'Предназначены для транспортирования горной массы в разрыхленном состоянии пo технологическим дорогам на открытых разработках полезных ископаемых с различными климатическими условиями. Могут использоваться на строительстве крупных промышленных и гидротехнических сооружений, при сооружении дорожно-магистральных комплексов, а также в технологических подразделениях предприятий перерабатывающей промышленности. ',45),(4,'783',202,'4630 ','11',10340,5750,5340,73000,163000,60,14,3,9,2,2,'Предназначены для транспортирования горной массы в разрыхленном состоянии по технологическим дорогам на открытых разработках полезных ископаемых с различными климатическими условиями. Могут использоваться на строительстве крупных промышленных и гидротехнических сооружений, при сооружении дорожно- магистральных комплексов, а также в технологических подразделениях предприятий перерабатывающей промышленности. ',90),(5,'1194',209,'6836 ','13',11500,6400,5900,109500,245500,64,18,4,11,2,4,'Предназначены для транспортирования горной массы в разрыхленном состоянии по технологическим дорогам на открытых разработках полезных ископаемых с различными климатическими условиями. Могут использоваться на строительстве крупных промышленных и гидротехнических сооружений, при сооружении дорожно- магистральных комплексов, а также в технологических подразделениях предприятий перерабатывающей промышленности. ',136),(6,'2 x 1715',198,'2 х 9313 ','19,8',20600,10500,8270,360000,810000,64,41,4,15,3,4,'Предназначены для транспортирования горной массы в разрыхленном состоянии по технологическим дорогам на открытых разработках полезных ископаемых с различными климатическими условиями. Могут использоваться на строительстве крупных промышленных и гидротехнических сооружений, при сооружении дорожно- магистральных комплексов, а также в технологических подразделениях предприятий перерабатывающей промышленности. ',450);
+INSERT INTO `truck_mining` VALUES (1,'309',228,'1491','8,7',7110,3860,3930,22600,52600,50,1,1,1,1,1,'Предназначены для транспортирования горной массы в разрыхленном состоянии по технологическим дорогам на открытых разработках полезных ископаемых с различными климатическими условиями. Могут использоваться на строительстве крупных промышленных и гидротехнических сооружений,при сооружении дорожно- магистральных комплексов, а также в технологических подразделениях предприятий перерабатывающей промышленности.',30),
+  (2,'448',219,'2237','10,2',8390,4110,4390,33100,78100,50,7,1,6,1,1,'Предназначены для транспортирования горной массы в разрыхленном состоянии по технологическим дорогам на открытых разработках полезных ископаемых с различными климатическими условиями. Могут использоваться на строительстве крупных промышленных и гидротехнических сооружений,при сооружении дорожно- магистральных комплексов, а также в технологических подразделениях предприятий перерабатывающей промышленности.',45),
+  (3,'448',223,'2779','9',8560,4240,4475,35000,80000,55,8,1,7,2,2,'Предназначены для транспортирования горной массы в разрыхленном состоянии пo технологическим дорогам на открытых разработках полезных ископаемых с различными климатическими условиями. Могут использоваться на строительстве крупных промышленных и гидротехнических сооружений, при сооружении дорожно-магистральных комплексов, а также в технологических подразделениях предприятий перерабатывающей промышленности. ',45),
+  (4,'783',202,'4630 ','11',10340,5750,5340,73000,163000,60,14,3,9,2,2,'Предназначены для транспортирования горной массы в разрыхленном состоянии по технологическим дорогам на открытых разработках полезных ископаемых с различными климатическими условиями. Могут использоваться на строительстве крупных промышленных и гидротехнических сооружений, при сооружении дорожно- магистральных комплексов, а также в технологических подразделениях предприятий перерабатывающей промышленности. ',90),
+  (5,'1194',209,'6836 ','13',11500,6400,5900,109500,245500,64,18,4,11,2,4,'Предназначены для транспортирования горной массы в разрыхленном состоянии по технологическим дорогам на открытых разработках полезных ископаемых с различными климатическими условиями. Могут использоваться на строительстве крупных промышленных и гидротехнических сооружений, при сооружении дорожно- магистральных комплексов, а также в технологических подразделениях предприятий перерабатывающей промышленности. ',136),
+  (6,'2 x 1715',198,'2 х 9313 ','19,8',20600,10500,8270,360000,810000,64,41,4,15,3,4,'Предназначены для транспортирования горной массы в разрыхленном состоянии по технологическим дорогам на открытых разработках полезных ископаемых с различными климатическими условиями. Могут использоваться на строительстве крупных промышленных и гидротехнических сооружений, при сооружении дорожно- магистральных комплексов, а также в технологических подразделениях предприятий перерабатывающей промышленности. ',450);
 /*!40000 ALTER TABLE `truck_mining` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `truck_mining_has_photo`
+--
+
+DROP TABLE IF EXISTS `truck_mining_has_photo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `truck_mining_has_photo` (
+  `truck_mining_id` int(11) NOT NULL,
+  `photo_id` int(11) NOT NULL,
+  PRIMARY KEY (`truck_mining_id`,`photo_id`),
+  KEY `fk_truck_mining_has_photo_photo1_idx` (`photo_id`),
+  KEY `fk_truck_mining_has_photo_truck_mining1_idx` (`truck_mining_id`),
+  CONSTRAINT `fk_truck_mining_has_photo_photo1` FOREIGN KEY (`photo_id`) REFERENCES `photo` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_truck_mining_has_photo_truck_mining1` FOREIGN KEY (`truck_mining_id`) REFERENCES `truck_mining` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `truck_mining_has_photo`
+--
+
+LOCK TABLES `truck_mining_has_photo` WRITE;
+/*!40000 ALTER TABLE `truck_mining_has_photo` DISABLE KEYS */;
+INSERT INTO `truck_mining_has_photo` VALUES (5,1),(5,2),(5,3),(5,4),(5,5),(5,6),(5,7),(5,8),(5,9),(5,10),(5,11),(5,12),(5,13),(5,14),(5,15),(5,16),(5,17),(5,18),(1,19),(1,20),(1,21),(1,22),(1,23),(1,24),(1,25),(1,26),(1,27),(1,28),(1,29),(3,30),(3,31),(3,32),(3,33),(3,34),(3,35),(3,36),(2,37),(2,38),(2,39),(2,40),(2,41),(2,42),(2,43),(2,44),(2,45),(2,46),(4,47),(4,48),(4,49),(4,50),(4,51),(4,52),(4,53),(6,54),(6,55),(6,56),(6,57),(6,58),(6,59),(6,60),(6,61),(6,62),(6,63),(6,64),(6,65);
+/*!40000 ALTER TABLE `truck_mining_has_photo` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -225,4 +283,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-05-08 13:36:16
+-- Dump completed on 2016-05-13 20:23:09

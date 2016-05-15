@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class RootController {
 
+
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String getRoot() {
         return "index";
@@ -22,11 +24,6 @@ public class RootController {
     }
 
 
-    @RequestMapping(value = "/category", method = RequestMethod.GET)
-    public String getCategory() {
-        return "category-grid";
-    }
-
 
     @RequestMapping(value = "/checkout", method = RequestMethod.GET)
     public String getCheckout() {
@@ -39,10 +36,7 @@ public class RootController {
         return "compare";
     }
 
-    @RequestMapping(value = "/single-product", method = RequestMethod.GET)
-    public String getProduct() {
-        return "single-product";
-    }
+
 
     @RequestMapping(value = "/wishlist", method = RequestMethod.GET)
     public String getWishlist() {
@@ -52,4 +46,6 @@ public class RootController {
     public String getNotFound() {
         return "404";
     }
+
+
 }

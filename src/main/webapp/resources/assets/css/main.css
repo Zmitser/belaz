@@ -850,11 +850,11 @@ header .top-search-holder .search-area .search-button:after {
   color: #fff;
 }
 header .top-cart-row {
-  padding: 35px 0 0 21px;
+  padding: 35px 0 0 10px;
 }
 header .top-cart-row .wishlist-compare-holder {
   line-height: 24px;
-  margin: 0 18px 0 0;
+  margin: 0 9px 0 0;
   font-size: 13px;
   text-transform: capitalize;
   display: inline-block;
@@ -3313,7 +3313,7 @@ header .top-cart-row .top-cart-holder .total-price-basket {
 }
 .tabled-data li label {
   margin: 0;
-  min-width: 150px;
+  min-width: 300px;
   font-weight: 700;
   text-transform: capitalize;
   display: inline-block;
