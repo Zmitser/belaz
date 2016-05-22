@@ -109,37 +109,152 @@
                 <div class="widget">
                     <h1>Product Filters</h1>
                     <div class="body bordered">
+                        <form action="/category/filter" method="POST">
+                            <div class="category-filter">
+                                <h2>Manufacturer</h2>
+                                <hr>
+                                <ul>
+                                    <c:forEach items="${manufacturers}" var="manufacturer">
+                                        <li><input class="le-checkbox" type="checkbox" name="manufacturer"
+                                                   value="${manufacturer.id}"/> <label>${manufacturer.name}</label>
+                                            <span class="pull-right"></span></li>
+                                    </c:forEach>
+                                </ul>
+                            </div><!-- /.category-filter -->
 
-                        <div class="category-filter">
-                            <h2>Brands</h2>
-                            <hr>
-                            <ul>
-                                <li><input checked="checked" class="le-checkbox" type="checkbox"/>
-                                    <label>Samsung</label> <span class="pull-right">(2)</span></li>
-                                <li><input class="le-checkbox" type="checkbox"/> <label>Dell</label> <span
-                                        class="pull-right">(8)</span></li>
-                                <li><input class="le-checkbox" type="checkbox"/> <label>Toshiba</label> <span
-                                        class="pull-right">(1)</span></li>
-                                <li><input class="le-checkbox" type="checkbox"/> <label>Apple</label> <span
-                                        class="pull-right">(5)</span></li>
-                            </ul>
-                        </div><!-- /.category-filter -->
-
-                        <div class="price-filter">
-                            <h2>Price</h2>
-                            <hr>
-                            <div class="price-range-holder">
-
-                                <input type="text" class="price-slider" value="">
-
-                <span class="min-max">
-                    Price: $89 - $2899
-                </span>
-                <span class="filter-button">
-                    <a href="#">Filter</a>
-                </span>
+                            <div class="category-filter">
+                                <h2>Manufacturer Country</h2>
+                                <hr>
+                                <ul>
+                                    <c:forEach items="${manufacturerCountries}" var="manufacturerCountry">
+                                        <li><input class="le-checkbox" type="checkbox" name="manufacturerCountry"
+                                                   value="${manufacturerCountry.id}"/>
+                                            <label>${manufacturerCountry.name}</label> <span class="pull-right"></span>
+                                        </li>
+                                    </c:forEach>
+                                </ul>
+                                <!-- /.category-filter -->
                             </div>
-                        </div><!-- /.price-filter -->
+                            <div class="category-filter">
+                                <h2>Machine Location</h2>
+                                <hr>
+                                <ul>
+                                    <c:forEach items="${machineLocations}" var="machineLocation">
+                                        <li><input class="le-checkbox" type="checkbox" name="machineLocation"
+                                                   value="${machineLocation.id}"/>
+                                            <label>${machineLocation.name}</label> <span class="pull-right"></span></li>
+                                    </c:forEach>
+                                </ul>
+                            </div><!-- /.category-filter -->
+                            <div class="category-filter">
+                                <h2>Series</h2>
+                                <hr>
+                                <ul>
+                                    <c:forEach items="${series}" var="series">
+                                        <li><input class="le-checkbox" type="checkbox" name="series"
+                                                   value="${series.id}"/> <label>${series.name}</label> <span
+                                                class="pull-right"></span></li>
+                                    </c:forEach>
+                                </ul>
+                            </div><!-- /.category-filter -->
+
+                            <div class="category-filter">
+                                <h2>Engines</h2>
+                                <hr>
+                                <ul class="front-wheels">
+                                    <c:forEach items="${engines}" var="engine">
+                                        <li><input class="le-checkbox" type="checkbox" name="engine"
+                                                   value="${engine.id}"/> <label>${engine.name}</label> <span
+                                                class="pull-right"></span></li>
+                                    </c:forEach>
+                                </ul>
+                            </div><!-- /.category-filter -->
+
+                            <div class="category-filter">
+                                <h2>Suspensions</h2>
+                                <hr>
+                                <ul class="front-wheels">
+                                    <c:forEach items="${suspensions}" var="suspension">
+                                        <li><input class="le-checkbox" type="checkbox" name="suspension"
+                                                   value="${suspension.id}"/> <label>${suspension.name}</label>
+                                            <span class="pull-right"></span></li>
+                                    </c:forEach>
+                                </ul>
+                            </div><!-- /.category-filter -->
+
+                            <div class="category-filter">
+                                <h2>Transmissions</h2>
+                                <hr>
+                                <ul class="front-wheels">
+                                    <c:forEach items="${transmissions}" var="transmission">
+                                        <li><input class="le-checkbox" type="checkbox" name="transmission"
+                                                   value="${transmission.id}"/> <label>${transmission.name}</label>
+                                            <span class="pull-right"></span></li>
+                                    </c:forEach>
+                                </ul>
+                            </div><!-- /.category-filter -->
+
+                            <div class="category-filter">
+                                <h2>Brakes Type</h2>
+                                <hr>
+                                <ul class="front-wheels">
+                                    <c:forEach items="${brakeTypes}" var="brakeType">
+                                        <li><input class="le-checkbox" type="checkbox" name="brakeType"
+                                                   value="${brakeType.id}"/> <label>${brakeType.name}</label>
+                                            <span class="pull-right"></span></li>
+                                    </c:forEach>
+                                </ul>
+                            </div><!-- /.category-filter -->
+                            <div class="category-filter">
+                                <h2>Front Wheels</h2>
+                                <hr>
+                                <ul class="front-wheels">
+                                    <c:forEach items="${frontWheels}" var="frontWheel">
+                                        <li><input class="le-checkbox" type="checkbox" name="frontWheel"
+                                                   value="${frontWheel.id}"/> <label>${frontWheel.name}</label>
+                                            <span class="pull-right"></span></li>
+                                    </c:forEach>
+                                </ul>
+                            </div><!-- /.category-filter -->
+
+                            <div class="category-filter">
+                                <h2>Rear Wheels</h2>
+                                <hr>
+                                <ul class="front-wheels">
+                                    <c:forEach items="${rearWheels}" var="rearWheel">
+                                        <li><input class="le-checkbox" type="checkbox" name="rearWheel"
+                                                   value="${rearWheel.id}"/> <label>${rearWheel.name}</label>
+                                            <span class="pull-right"></span></li>
+                                    </c:forEach>
+                                </ul>
+                            </div><!-- /.category-filter -->
+
+                            <div class="category-filter">
+                                <h2>Parking Brakes</h2>
+                                <hr>
+                                <ul class="front-wheels">
+                                    <c:forEach items="${parkingBrakes}" var="parkingBrake">
+                                        <li><input class="le-checkbox" type="checkbox" name="parkingBrake"
+                                                   value="${parkingBrake.id}"/> <label>${parkingBrake.name}</label>
+                                            <span class="pull-right"></span></li>
+                                    </c:forEach>
+                                </ul>
+                            </div><!-- /.category-filter -->
+
+                            <div class="category-filter">
+                                <h2>Auxiliaries</h2>
+                                <hr>
+                                <%--<ul class="front-wheels">--%>
+                                <ul class="front-wheels">
+                                    <c:forEach items="${auxiliaries}" var="auxiliary">
+                                        <li><input class="le-checkbox" type="checkbox" name="auxiliary"
+                                                   value="${auxiliary.id}"/> <label>${auxiliary.name}</label> <span
+                                                class="pull-right"></span></li>
+                                    </c:forEach>
+                                </ul>
+                            </div><!-- /.category-filter -->
+                            <button class="filter-button" type="submit">Filter</button>
+                        </form>
 
                     </div><!-- /.body -->
                 </div><!-- /.widget -->
@@ -153,25 +268,9 @@
 
                 <section id="gaming">
                     <div class="grid-list-products">
-                        <h2 class="section-title">Gaming</h2>
+                        <h2 class="section-title">Dump Trucks</h2>
 
                         <div class="control-bar">
-                            <div id="popularity-sort" class="le-select">
-                                <select data-placeholder="sort by popularity">
-                                    <option value="1">1-100 players</option>
-                                    <option value="2">101-200 players</option>
-                                    <option value="3">200+ players</option>
-                                </select>
-                            </div>
-
-                            <div id="item-count" class="le-select">
-                                <select>
-                                    <option value="1">24 per page</option>
-                                    <option value="2">48 per page</option>
-                                    <option value="3">32 per page</option>
-                                </select>
-                            </div>
-
                             <div class="grid-list-buttons">
                                 <ul>
                                     <li class="grid-list-button-item active"><a data-toggle="tab" href="#grid-view"><i
@@ -194,19 +293,17 @@
                                                     <div class="image">
                                                         <a href="<c:url value="/single-product/${item.id}"/>">
                                                             <img width="246" height="186" alt="${item.model.name}"
-                                                                 src="<c:url value="${item.photo[0].path}"/>">
+                                                                 src="<c:url value="/resources/assets/images/${item.photo[0].name}"/>">
                                                         </a>
                                                     </div>
                                                     <div class="body">
-                                                        <div class="label-discount green">-50% sale</div>
                                                         <div class="title">
                                                             <a href="<c:url value="/single-product/${item.id}"/>">${item.model.name}</a>
                                                         </div>
                                                         <div class="brand">${item.model.series.name}</div>
                                                     </div>
                                                     <div class="prices">
-                                                        <div class="price-prev">$1399.00</div>
-                                                        <div class="price-current pull-right">$1199.00</div>
+                                                        <div class="price-current pull-right">$${item.price}</div>
                                                     </div>
                                                     <div class="hover-area">
                                                         <div class="add-cart-button">
@@ -226,24 +323,6 @@
 
                                     </div><!-- /.row -->
                                 </div><!-- /.product-grid-holder -->
-                                <div class="pagination-holder">
-                                    <div class="row">
-                                        <div class="col-xs-12 col-sm-6 text-left">
-                                            <ul class="pagination ">
-                                                <li class="current"><a href="#">1</a></li>
-                                                <li><a href="#">2</a></li>
-                                                <li><a href="#">3</a></li>
-                                                <li><a href="#">4</a></li>
-                                                <li><a href="#">next</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-6">
-                                            <div class="result-counter">
-                                                Showing <span>1-9</span> of <span>11</span> results
-                                            </div>
-                                        </div>
-                                    </div><!-- /.row -->
-                                </div><!-- /.pagination-holder -->
                             </div><!-- /.products-grid #grid-view -->
 
 
@@ -253,29 +332,23 @@
                                     <c:forEach items="${list}" var="item">
                                         <div class="product-item product-item-holder">
                                             <div class="ribbon red"><span>sale</span></div>
-                                            <div class="ribbon blue"><span>new!</span></div>
                                             <div class="row">
                                                 <div class="no-margin col-xs-12 col-sm-4 image-holder">
                                                     <div class="image">
                                                         <a href="<c:url value="/single-product/${item.id}"/>">
                                                             <img width="246" height="186" alt="${item.model.name}"
-                                                                 src="<c:url value="${item.photo[0].path}"/>">
+                                                                 src="<c:url value="/resources/assets/images/${item.photo[0].name}"/>">
                                                         </a>
                                                     </div>
                                                 </div><!-- /.image-holder -->
                                                 <div class="no-margin col-xs-12 col-sm-5 body-holder">
                                                     <div class="body">
-                                                        <div class="label-discount green">-50% sale</div>
                                                         <div class="title">
                                                             <a href="<c:url value="/single-product/${item.id}"/>">${item.model.name}</a>
                                                         </div>
                                                         <div class="brand">${item.model.series.name}</div>
                                                         <div class="excerpt">
-                                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                                Ut
-                                                                lobortis euismod erat sit amet porta. Etiam venenatis ac
-                                                                diam ac tristique. Morbi accumsan consectetur odio ut
-                                                                tincidunt.</p>
+                                                            <p>${item.application}</p>
                                                         </div>
                                                         <div class="addto-compare">
                                                             <a class="btn-add-to-compare" href="#">add to compare
@@ -285,10 +358,7 @@
                                                 </div><!-- /.body-holder -->
                                                 <div class="no-margin col-xs-12 col-sm-3 price-area">
                                                     <div class="right-clmn">
-                                                        <div class="price-current">$1199.00</div>
-                                                        <div class="price-prev">$1399.00</div>
-                                                        <div class="availability"><label>availability:</label><span
-                                                                class="available">  in stock</span></div>
+                                                        <div class="price-current">${item.price}</div>
                                                         <a class="le-button" href="#">add to cart</a>
                                                         <a class="btn-add-to-wishlist" href="#">add to wishlist</a>
                                                     </div>
@@ -297,29 +367,7 @@
                                         </div>
                                         <!-- /.product-item -->
                                     </c:forEach>
-
-
                                 </div><!-- /.products-list -->
-
-                                <div class="pagination-holder">
-                                    <div class="row">
-                                        <div class="col-xs-12 col-sm-6 text-left">
-                                            <ul class="pagination">
-                                                <li class="current"><a href="#">1</a></li>
-                                                <li><a href="#">2</a></li>
-                                                <li><a href="#">3</a></li>
-                                                <li><a href="#">4</a></li>
-                                                <li><a href="#">next</a></li>
-                                            </ul><!-- /.pagination -->
-                                        </div>
-                                        <div class="col-xs-12 col-sm-6">
-                                            <div class="result-counter">
-                                                Showing <span>1-9</span> of <span>11</span> results
-                                            </div><!-- /.result-counter -->
-                                        </div>
-                                    </div><!-- /.row -->
-                                </div><!-- /.pagination-holder -->
-
                             </div><!-- /.products-grid #list-view -->
 
                         </div><!-- /.tab-content -->

@@ -2573,7 +2573,6 @@ header .top-cart-row .top-cart-holder .total-price-basket {
 }
 .single-product-gallery .single-product-gallery-item a {
   display: block;
-  padding: 20px;
 }
 .single-product-gallery .gallery-thumbs {
   position: relative;
@@ -2679,6 +2678,7 @@ header .top-cart-row .top-cart-holder .total-price-basket {
   background-color: #f9f9f9;
   border-radius: 5px;
   padding: 13px;
+  overflow: hidden;
 }
 .grid-list-products .control-bar #popularity-sort {
   width: 190px;
@@ -2702,7 +2702,9 @@ header .top-cart-row .top-cart-holder .total-price-basket {
 .grid-list-products .grid-list-buttons ul li.active a {
   font-weight: 700 !important;
   font-weight: 800;
+
 }
+
 .grid-list-products .grid-list-buttons ul li a {
   font-size: 13px;
   color: #3d3d3d;
@@ -3112,18 +3114,14 @@ header .top-cart-row .top-cart-holder .total-price-basket {
 #single-product .body-holder #addto-cart {
   margin: 0px 0 0 18px;
 }
-#single-product .single-product-gallery-item {
-  padding-bottom: 40px;
-}
+
 #single-product .single-product-gallery-item img {
   width: 433px;
 }
 #single-product .product-item-holder {
   border: none;
 }
-#single-product .product-item-holder .owl-wrapper-outer {
-  border: 1px solid #e0e0e0;
-}
+
 #single-product .gallery-thumbs {
   margin: 10px 0 0 0;
 }

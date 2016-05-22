@@ -1,17 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%--<html>--%>
-<%--<head>--%>
-<%--<title>Upload File Request Page</title>--%>
-<%--</head>--%>
-<%--<body>--%>
-<%--<form method="POST" action="/fileUpload" enctype="multipart/form-data">--%>
-<%--File to upload: <input type="file" name="file"><br />--%>
-<%--Name: <input type="text" name="name"><br /> <br />--%>
-<%--<input type="submit" value="Upload"> Press here to upload the file!--%>
-<%--</form>--%>
-<%--</body>--%>
-<%--</html>--%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +14,7 @@
     <link rel="stylesheet" href="<c:url value="/resources/public/css/wysiwyg.css"/>" media="screen">
     <link rel="stylesheet" href="<c:url value="/resources/public/css/fancybox-1.3.1.css"/> " media="screen">
     <link rel="stylesheet" href="<c:url value="/resources/public/css/visualize.css"/>" media="screen">
-    <script type="text/javascript" src="<c:url value="/resources/public/js/jquery-1.4.2.min.js"/>"></script>
+    <script src="<c:url value="/webjars/jquery/2.2.1/jquery.min.js"/>"></script>
     <script type="text/javascript" src="<c:url value="/resources/public/js/jquery.dimensions.min.js"/>"></script>
     <!-- // Tabs // -->
     <script type="text/javascript" src="<c:url value="/resources/public/js/ui.core.js"/>"></script>
@@ -55,6 +43,7 @@
 
 
     <script src="<c:url value="/resources/public/js/init.js"/>"></script>
+
 </head>
 <body>
 <div id="main">
@@ -88,22 +77,52 @@
         <!-- /box -->
         <div class="box">
             <div class="headlines">
-                <h2><span>Form</span></h2>
+                <h2><span>Save information</span></h2>
                 <a href="#help" class="help"></a>
             </div>
             <div class="box-content">
                 <form class="formBox" method="post" action="/admin/export" enctype="multipart/form-data">
                     <fieldset>
                         <div class="clearfix file">
-                            <div class="lab"><label for="file">Upload file</label></div>
-                            <div class="con">
-                                <input type="file" name="file" class="upload-file" id="file"/>
+                            <div class="lab"><label for="dropzone-excel">Upload file</label></div>
+                            <div class="file-field input-field" id="dropzone-excel">
+                                <div class="clearfix file">
+                                    <div class="con">
+                                        <input type="file" name="file" class="upload-file" id="excel"/>
+                                    </div>
+                                    <p class="output-excel"></p>
+                                </div>
                             </div>
                         </div>
-                        <div class="btn-submit"><!-- Submit form -->
-                            <input type="submit" value="Submit form" class="button"/>
-                        </div>
                     </fieldset>
+                </form>
+            </div><!-- /box-content -->
+        </div>
+
+
+        <div class="box">
+            <div class="headlines">
+                <h2><span>Save Images</span></h2>
+                <a href="#help" class="help"></a>
+            </div>
+            <div class="box-content">
+                <form class="formBox form-cols" method="post" action="/admin/upload-photo"
+                      enctype="multipart/form-data">
+                        <div class="form-cols"><!-- two form cols -->
+                            <div class="col1">
+                                <div class="clearfix file">
+                                    <div class="lab"><label for="dropzone-photo">Upload file</label></div>
+                                    <div class="file-field input-field" id="dropzone-photo">
+                                        <div class="clearfix file">
+                                            <div class="con">
+                                                <input type="file" name="file" class="upload-file" id="photo"/>
+                                            </div>
+                                            <p class="output-photo"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                 </form>
             </div><!-- /box-content -->
         </div>
@@ -149,40 +168,26 @@
         <p>© 2010 Great Admin | <a href="#main">Top</a></p>
     </div>
     <!-- /#footer -->
-
-    <!-- MODAL WINDOW -->
-    <div id="modal" class="modal-window">
-
-        <h2>Example modal window</h2>
-
-        <!-- Warning form message -->
-        <div class="form-message warning">
-            <p>On the page the following error occurred.</p>
-        </div>
-
-        <p>Suspendisse et ante vitae turpis vestibulum fermentum nec nec elit. Suspendisse ullamcorper lacus in arcu
-            mollis fringilla porta mi placerat. Ut at elit non diam tristique scelerisque. </p>
-
-    </div>
-
-    <!-- HELP WINDOW -->
-    <div id="help" class="modal-window">
-
-        <h2>Example help window</h2>
-
-        <p>Suspendisse et ante vitae turpis vestibulum fermentum nec nec elit. Suspendisse ullamcorper lacus in arcu
-            mollis fringilla porta mi placerat. Ut at elit non diam tristique scelerisque. </p>
-
-        <ul class="list list-square">
-            <li><strong>Lorem ipsum</strong> dolor sit amet</li>
-            <li><strong>consectetur adipiscing</strong> elit phasellus et risus</li>
-            <li><strong>Maecenas non</strong> nunc proin eleifend viverra sapien</li>
-        </ul>
-
-    </div>
-
-
 </div>
 <!-- /#main -->
+<script src="<c:url value="/resources/assets/js/dmuploader.min.js"/>"></script>
+<script>
+
+    $('#dropzone-photo').dmUploader({
+        url: "/admin/rest/upload-photo",
+        dataType: 'json',
+        allowedTypes: 'image/*',
+        onUploadSuccess: function (id, response) {
+            $(".output-photo").html("photo " + response + " uploaded!");
+        }
+    });
+    $('#dropzone-excel').dmUploader({
+        url: "/admin/rest/export",
+        dataType: 'json',
+        onUploadSuccess: function (id, response) {
+            $(".output-excel").html("excel " + response + " uploaded!");
+        }
+    });
+</script>
 </body>
 </html>

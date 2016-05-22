@@ -123,8 +123,8 @@
                     <div id="owl-single-product">
                         <c:forEach items="${item.photo}" var="photo" varStatus="loop">
                             <div class="single-product-gallery-item" id="slide${loop.index}">
-                                <a data-rel="prettyphoto" href="<c:url value="${photo.path}"/> ">
-                                    <img class="img-responsive" alt="" src="<c:url value="${photo.path}"/>"/>
+                                <a data-rel="prettyphoto" href="<c:url value="/resources/assets/images/${photo.name}"/>">
+                                    <img class="img-responsive" alt="" src="<c:url value="/resources/assets/images/${photo.name}"/>"/>
                                 </a>
                             </div>
                             <!-- /.single-product-gallery-item -->
@@ -138,7 +138,7 @@
                             <c:forEach items="${item.photo}" var="photo" varStatus="loop">
                                 <a class="horizontal-thumb active" data-target="#owl-single-product" data-slide="${loop.index}"
                                    href="#slide${loop.index}">
-                                    <img width="67" alt="" src="<c:url value="${photo.path}"/>"/>
+                                    <img width="67" alt="" src="<c:url value="/resources/assets/images/${photo.name}"/>"/>
                                 </a>
                             </c:forEach>
                         </div><!-- /#owl-single-product-thumbnails -->
@@ -159,11 +159,7 @@
             </div><!-- /.gallery-holder -->
             <div class="no-margin col-xs-12 col-sm-7 body-holder">
                 <div class="body">
-                    <div class="star-holder inline">
-                        <div class="star" data-score="4"></div>
-                    </div>
-                    <div class="availability"><label>Availability:</label><span class="available">  in stock</span>
-                    </div>
+
 
                     <div class="title"><a href="#">${item.model.name}</a></div>
                     <div class="brand">${item.model.series.name}</div>
@@ -180,14 +176,11 @@
                     </div>
 
                     <div class="excerpt">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare turpis non risus
-                            semper dapibus. Quisque eu vehicula turpis. Donec sodales lacinia eros, sit amet auctor
-                            tellus volutpat non.</p>
+                        <p>${item.application}</p>
                     </div>
 
                     <div class="prices">
-                        <div class="price-current">$1740.00</div>
-                        <div class="price-prev">$2199.00</div>
+                        <div class="price-current">$${item.price}</div>
                     </div>
 
                     <div class="qnt-holder">
@@ -214,7 +207,8 @@
                 <ul class="nav nav-tabs simple">
                     <li class="active"><a href="#description" data-toggle="tab">Description</a></li>
                     <li><a href="#additional-info" data-toggle="tab">Additional Information</a></li>
-                    <li><a href="#reviews" data-toggle="tab">Reviews (3)</a></li>
+                    <li><a href="#advantages" data-toggle="tab">Advatages</a></li>
+                    <li><a href="#complete-set" data-toggle="tab">Complete Set</a></li>
                 </ul><!-- /.nav-tabs -->
 
                 <div class="tab-content">
@@ -298,174 +292,42 @@
 
                             <li>
                                 <label>Тормоза</label>
-                                <div class="value">${item.brakes.type}</div>
+                                <div class="value">${item.brakeType.name}</div>
                             </li>
 
                             <li>
                                 <label>передних колес</label>
-                                <div class="value">${item.brakes.frontWheels}</div>
+                                <div class="value">${item.frontWheels.name}</div>
                             </li>
 
 
                             <li>
                                 <label>задних колес</label>
-                                <div class="value">${item.brakes.rearWheels}</div>
+                                <div class="value">${item.rearWheels.name}</div>
                             </li>
 
 
                             <li>
                                 <label>стояночный</label>
-                                <div class="value">${item.brakes.parkingBrake}</div>
+                                <div class="value">${item.parkingBrake.name}</div>
                             </li>
 
 
                             <li>
                                 <label>вспомогательный</label>
-                                <div class="value">${item.brakes.auxiliary}</div>
+                                <div class="value">${item.auxiliary.name}</div>
                             </li>
 
                         </ul><!-- /.tabled-data -->
                     </div><!-- /.tab-pane #additional-info -->
 
 
-                    <div class="tab-pane" id="reviews">
-                        <div class="comments">
-                            <div class="comment-item">
-                                <div class="row no-margin">
-                                    <div class="col-lg-1 col-xs-12 col-sm-2 no-margin">
-                                        <div class="avatar">
-                                            <img alt="avatar" src="assets/images/default-avatar.jpg">
-                                        </div><!-- /.avatar -->
-                                    </div><!-- /.col -->
+                    <div class="tab-pane" id="advantages">
+                      <p>${item.advantages}</p>
+                    </div><!-- /.tab-pane #reviews -->
 
-                                    <div class="col-xs-12 col-lg-11 col-sm-10 no-margin">
-                                        <div class="comment-body">
-                                            <div class="meta-info">
-                                                <div class="author inline">
-                                                    <a href="#" class="bold">John Smith</a>
-                                                </div>
-                                                <div class="star-holder inline">
-                                                    <div class="star" data-score="4"></div>
-                                                </div>
-                                                <div class="date inline pull-right">
-                                                    12.07.2013
-                                                </div>
-                                            </div><!-- /.meta-info -->
-                                            <p class="comment-text">
-                                                Integer id purus ultricies nunc tincidunt congue vitae nec felis.
-                                                Vivamus sit amet nisl convallis, faucibus risus in, suscipit sapien.
-                                                Vestibulum egestas interdum tellus id venenatis.
-                                            </p><!-- /.comment-text -->
-                                        </div><!-- /.comment-body -->
-
-                                    </div><!-- /.col -->
-
-                                </div><!-- /.row -->
-                            </div><!-- /.comment-item -->
-
-                            <div class="comment-item">
-                                <div class="row no-margin">
-                                    <div class="col-lg-1 col-xs-12 col-sm-2 no-margin">
-                                        <div class="avatar">
-                                            <img alt="avatar" src="assets/images/default-avatar.jpg">
-                                        </div><!-- /.avatar -->
-                                    </div><!-- /.col -->
-
-                                    <div class="col-xs-12 col-lg-11 col-sm-10 no-margin">
-                                        <div class="comment-body">
-                                            <div class="meta-info">
-                                                <div class="author inline">
-                                                    <a href="#" class="bold">Jane Smith</a>
-                                                </div>
-                                                <div class="star-holder inline">
-                                                    <div class="star" data-score="5"></div>
-                                                </div>
-                                                <div class="date inline pull-right">
-                                                    12.07.2013
-                                                </div>
-                                            </div><!-- /.meta-info -->
-                                            <p class="comment-text">
-                                                Integer id purus ultricies nunc tincidunt congue vitae nec felis.
-                                                Vivamus sit amet nisl convallis, faucibus risus in, suscipit sapien.
-                                                Vestibulum egestas interdum tellus id venenatis.
-                                            </p><!-- /.comment-text -->
-                                        </div><!-- /.comment-body -->
-
-                                    </div><!-- /.col -->
-
-                                </div><!-- /.row -->
-                            </div><!-- /.comment-item -->
-
-                            <div class="comment-item">
-                                <div class="row no-margin">
-                                    <div class="col-lg-1 col-xs-12 col-sm-2 no-margin">
-                                        <div class="avatar">
-                                            <img alt="avatar" src="assets/images/default-avatar.jpg">
-                                        </div><!-- /.avatar -->
-                                    </div><!-- /.col -->
-
-                                    <div class="col-xs-12 col-lg-11 col-sm-10 no-margin">
-                                        <div class="comment-body">
-                                            <div class="meta-info">
-                                                <div class="author inline">
-                                                    <a href="#" class="bold">John Doe</a>
-                                                </div>
-                                                <div class="star-holder inline">
-                                                    <div class="star" data-score="3"></div>
-                                                </div>
-                                                <div class="date inline pull-right">
-                                                    12.07.2013
-                                                </div>
-                                            </div><!-- /.meta-info -->
-                                            <p class="comment-text">
-                                                Integer id purus ultricies nunc tincidunt congue vitae nec felis.
-                                                Vivamus sit amet nisl convallis, faucibus risus in, suscipit sapien.
-                                                Vestibulum egestas interdum tellus id venenatis.
-                                            </p><!-- /.comment-text -->
-                                        </div><!-- /.comment-body -->
-
-                                    </div><!-- /.col -->
-
-                                </div><!-- /.row -->
-                            </div><!-- /.comment-item -->
-                        </div><!-- /.comments -->
-
-                        <div class="add-review row">
-                            <div class="col-sm-8 col-xs-12">
-                                <div class="new-review-form">
-                                    <h2>Add review</h2>
-                                    <form id="contact-form" class="contact-form" method="post">
-                                        <div class="row field-row">
-                                            <div class="col-xs-12 col-sm-6">
-                                                <label>name*</label>
-                                                <input class="le-input">
-                                            </div>
-                                            <div class="col-xs-12 col-sm-6">
-                                                <label>email*</label>
-                                                <input class="le-input">
-                                            </div>
-                                        </div><!-- /.field-row -->
-
-                                        <div class="field-row star-row">
-                                            <label>your rating</label>
-                                            <div class="star-holder">
-                                                <div class="star big" data-score="0"></div>
-                                            </div>
-                                        </div><!-- /.field-row -->
-
-                                        <div class="field-row">
-                                            <label>your review</label>
-                                            <textarea rows="8" class="le-input"></textarea>
-                                        </div><!-- /.field-row -->
-
-                                        <div class="buttons-holder">
-                                            <button type="submit" class="le-button huge">submit</button>
-                                        </div><!-- /.buttons-holder -->
-                                    </form><!-- /.contact-form -->
-                                </div><!-- /.new-review-form -->
-                            </div><!-- /.col -->
-                        </div><!-- /.add-review -->
-
+                    <div class="tab-pane" id="complete-set">
+                        <p>${item.completeSet}</p>
                     </div><!-- /.tab-pane #reviews -->
                 </div><!-- /.tab-content -->
 

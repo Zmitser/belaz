@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+        	http://www.springframework.org/schema/beans/spring-beans.xsd
+        	http://www.springframework.org/schema/security
+         	http://www.springframework.org/schema/security/spring-security.xsd">
+
+
+    <http pattern="/resources/**" security="none"/>
+    <http pattern="/webjars/**" security="none"/>
+
+    <http>
+        <intercept-url pattern="/**" access="permitAll"/>
+        <intercept-url pattern="/admin" access="permitAll"/>
+        <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
+        <form-login login-page="/admin" always-use-default-target="true"   default-target-url="/admin/export-excel"
+                    authentication-failure-url="/admin?error=true"
+                    login-processing-url="/spring_security_check"/>
+        <csrf disabled="true"/>
+    </http>
+
+
+    <authentication-manager>
+        <authentication-provider>
+            <user-service>
+                <user name="admin@gmail.com" password="admin" authorities="ROLE_ADMIN"/>
+            </user-service>
+        </authentication-provider>
+    </authentication-manager>
+</beans:beans>
