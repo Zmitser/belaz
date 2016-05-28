@@ -74,6 +74,82 @@
             </ul>
         </div>
         <!-- /breadcrumbs -->
+        <!-- table -->
+        <!-- box -->
+        <div class="box">
+            <div class="headlines">
+                <h2><span>Table list</span></h2>
+                <a href="#" class="show-filter">show filter</a>
+            </div>
+            <!-- filter -->
+            <div class="filter">
+                <input type="text" value="column one" title="column one" class="input" />
+                <input type="text" value="column two" title="column two" class="input" />
+                <input type="text" value="column three" title="column three" class="input" />
+                <input type="submit" value="Use filter" class="submit" />
+            </div>
+            <!-- /filter -->
+
+            <!-- table -->
+            <table class="tab tab-drag">
+                <tr class="top nodrop nodrag">
+                    <th>Model</th>
+                    <th>Manufacturer</th>
+                    <th>Manufacturer Country</th>
+                    <th>Machine Condition</th>
+                    <th>Machine Location</th>
+                    <th>Payload Capacity</th>
+                    <th>Engine</th>
+                    <th class="action">Action</th>
+                </tr>
+                <c:forEach items="${trucks}" var="truck">
+                    <tr>
+                        <td><a href="#">${truck.model.name}</a></td>
+                        <td>${truck.manufacturer.name}</td>
+                        <td>${truck.country.name}</td>
+                        <td>${truck.condition}</td>
+                        <td>${truck.location.name}</td>
+                        <td>${truck.payloadCapacity}</td>
+                        <td>${truck.engine.name}</td>
+                        <td class="action">
+                            <a href="/delete/${truck.id}" class="ico ico-delete">Delete</a>
+                            <a href="/edit/${truck.id}" class="ico ico-edit">Edit</a>
+                            <a href="/pdf/${truck.id}" class="ico ico-pdf">Pdf</a>
+                        </td>
+                    </tr>
+                </c:forEach>
+
+            </table>
+            <!-- /table -->
+
+            <!-- box-action -->
+            <div class="tab-action">
+                <select class="select">
+                    <option>Choose an action</option>
+                </select>
+                <input type="submit" value="Apply action" class="submit" />
+            </div>
+            <!-- /box-action -->
+
+            <!-- /pagination -->
+            <div class="pagination">
+                <ul>
+                    <li class="graphic first"><a href=""></a></li>
+                    <li class="graphic prev"><a href=""></a></li>
+                    <li><a href="">1</a></li>
+                    <li class="active"><a href="">2</a></li>
+                    <li><a href="">3</a></li>
+                    <li><a href="">4</a></li>
+                    <li><a href="">5</a></li>
+                    <li class="graphic next"><a href=""></a></li>
+                    <li class="graphic last"><a href=""></a></li>
+                </ul>
+                <p>Pages 1 of 5</p>
+            </div>
+            <!-- /pagination -->
+        </div>
+        <!-- /box -->
+        <!-- /table -->
         <!-- /box -->
         <div class="box">
             <div class="headlines">
@@ -98,8 +174,6 @@
                 </form>
             </div><!-- /box-content -->
         </div>
-
-
         <div class="box">
             <div class="headlines">
                 <h2><span>Save Images</span></h2>
@@ -108,21 +182,21 @@
             <div class="box-content">
                 <form class="formBox form-cols" method="post" action="/admin/upload-photo"
                       enctype="multipart/form-data">
-                        <div class="form-cols"><!-- two form cols -->
-                            <div class="col1">
-                                <div class="clearfix file">
-                                    <div class="lab"><label for="dropzone-photo">Upload file</label></div>
-                                    <div class="file-field input-field" id="dropzone-photo">
-                                        <div class="clearfix file">
-                                            <div class="con">
-                                                <input type="file" name="file" class="upload-file" id="photo"/>
-                                            </div>
-                                            <p class="output-photo"></p>
+                    <div class="form-cols"><!-- two form cols -->
+                        <div class="col1">
+                            <div class="clearfix file">
+                                <div class="lab"><label for="dropzone-photo">Upload file</label></div>
+                                <div class="file-field input-field" id="dropzone-photo">
+                                    <div class="clearfix file">
+                                        <div class="con">
+                                            <input type="file" name="file" class="upload-file" id="photo"/>
                                         </div>
+                                        <p class="output-photo"></p>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
                 </form>
             </div><!-- /box-content -->
         </div>

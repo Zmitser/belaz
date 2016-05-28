@@ -84,142 +84,44 @@
         <div class="container">
             <!-- ========================================= CONTENT ========================================= -->
             <div class="col-xs-12 col-md-9 items-holder no-margin">
-
-                <div class="row no-margin cart-item">
-                    <div class="col-xs-12 col-sm-2 no-margin">
-                        <a href="#" class="thumb-holder">
-                            <img class="lazy" alt="" src="http://placehold.it/73x73"/>
-                        </a>
-                    </div>
-
-                    <div class="col-xs-12 col-sm-5 ">
-                        <div class="title">
-                            <a href="#">white lumia 9001</a>
+                <c:set value="0" var="s"/>
+                <c:forEach var="it" items="${sessionScope.cart}">
+                    <c:set value="${s + it.quantity * it.truckMining.price}" var="s"/>
+                    <div class="row no-margin cart-item">
+                        <div class="col-xs-12 col-sm-2 no-margin">
+                            <a href="#" class="thumb-holder">
+                                <img class="lazy" alt="" src="http://placehold.it/73x73"/>
+                            </a>
                         </div>
-                        <div class="brand">sony</div>
-                    </div>
 
-                    <div class="col-xs-12 col-sm-3 no-margin">
-                        <div class="quantity">
-                            <div class="le-quantity">
-                                <form>
-                                    <a class="minus" href="#reduce"></a>
-                                    <input name="quantity" readonly="readonly" type="text" value="1"/>
-                                    <a class="plus" href="#add"></a>
-                                </form>
+                        <div class="col-xs-12 col-sm-5 ">
+                            <div class="title">
+                                <a href="<c:url value="/single-product/${it.truckMining.id}"/>">${it.truckMining.model.name}</a>
+                            </div>
+                            <div class="brand">${it.truckMining.manufacturer.name}</div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-3 no-margin">
+                            <div class="quantity">
+                                <div class="le-quantity">
+                                    <form>
+                                        <a class="minus" href="#reduce"></a>
+                                        <input name="quantity" readonly="readonly" type="text" value="${it.quantity}"/>
+                                        <a class="plus" href="#add"></a>
+                                    </form>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-xs-12 col-sm-2 no-margin">
-                        <div class="price">
-                            $2000.00
-                        </div>
-                        <a class="close-btn" href="#"></a>
-                    </div>
-                </div><!-- /.cart-item -->
-
-                <div class="row no-margin cart-item">
-                    <div class="col-xs-12 col-sm-2 no-margin">
-                        <a href="#" class="thumb-holder">
-                            <img class="lazy" alt="" src="http://placehold.it/73x73"/>
-                        </a>
-                    </div>
-
-                    <div class="col-xs-12 col-sm-5">
-                        <div class="title">
-                            <a href="#">white lumia 9001 </a>
-                        </div>
-                        <div class="brand">sony</div>
-                    </div>
-
-                    <div class="col-xs-12 col-sm-3 no-margin">
-                        <div class="quantity">
-                            <div class="le-quantity">
-                                <form>
-                                    <a class="minus" href="#reduce"></a>
-                                    <input name="quantity" readonly="readonly" type="text" value="1"/>
-                                    <a class="plus" href="#add"></a>
-                                </form>
+                        <div class="col-xs-12 col-sm-2 no-margin">
+                            <div class="price">
+                                    ${it.truckMining.price} x ${it.quantity} = ${it.quantity * it.truckMining.price}
                             </div>
+                            <a class="close-btn" href="#"></a>
                         </div>
                     </div>
-
-                    <div class="col-xs-12 col-sm-2 no-margin">
-                        <div class="price">
-                            $2000.00
-                        </div>
-                        <a class="close-btn" href="#"></a>
-                    </div>
-                </div><!-- /.cart-item -->
-
-                <div class="row no-margin cart-item">
-                    <div class="col-xs-12 col-sm-2 no-margin">
-                        <a href="#" class="thumb-holder">
-                            <img class="lazy" alt="" src="http://placehold.it/73x73"/>
-                        </a>
-                    </div>
-
-                    <div class="col-xs-12 col-sm-5">
-                        <div class="title">
-                            <a href="#">white lumia 9001 </a>
-                        </div>
-                        <div class="brand">sony</div>
-                    </div>
-
-                    <div class="col-xs-12 col-sm-3 no-margin">
-                        <div class="quantity">
-                            <div class="le-quantity">
-                                <form>
-                                    <a class="minus" href="#reduce"></a>
-                                    <input name="quantity" readonly="readonly" type="text" value="1"/>
-                                    <a class="plus" href="#add"></a>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xs-12 col-sm-2 no-margin">
-                        <div class="price">
-                            $2000.00
-                        </div>
-                        <a class="close-btn" href="#"></a>
-                    </div>
-                </div><!-- /.cart-item -->
-
-                <div class="row no-margin cart-item">
-                    <div class="col-xs-12 col-sm-2 no-margin">
-                        <a href="#" class="thumb-holder">
-                            <img class="lazy" alt="" src="http://placehold.it/73x73"/>
-                        </a>
-                    </div>
-
-                    <div class="col-xs-12 col-sm-5">
-                        <div class="title">
-                            <a href="#">white lumia 9001 </a>
-                        </div>
-                        <div class="brand">sony</div>
-                    </div>
-
-                    <div class="col-xs-12 col-sm-3 no-margin">
-                        <div class="quantity">
-                            <div class="le-quantity">
-                                <form>
-                                    <a class="minus" href="#reduce"></a>
-                                    <input name="quantity" readonly="readonly" type="text" value="1"/>
-                                    <a class="plus" href="#add"></a>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xs-12 col-sm-2 no-margin">
-                        <div class="price">
-                            $2000.00
-                        </div>
-                        <a class="close-btn" href="#"></a>
-                    </div>
-                </div><!-- /.cart-item -->
+                    <!-- /.cart-item -->
+                </c:forEach>
             </div>
             <!-- ========================================= CONTENT : END ========================================= -->
 
@@ -232,7 +134,7 @@
                         <ul class="tabled-data no-border inverse-bold">
                             <li>
                                 <label>cart subtotal</label>
-                                <div class="value pull-right">$8434.00</div>
+                                <div class="value pull-right">$${s}</div>
                             </li>
                             <li>
                                 <label>shipping</label>
@@ -242,7 +144,7 @@
                         <ul id="total-price" class="tabled-data inverse-bold no-border">
                             <li>
                                 <label>order total</label>
-                                <div class="value pull-right">$8434.00</div>
+                                <div class="value pull-right">$${s}</div>
                             </li>
                         </ul>
                         <div class="buttons-holder">

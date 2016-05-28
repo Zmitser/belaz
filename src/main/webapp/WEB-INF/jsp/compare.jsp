@@ -10,6 +10,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <c:import url="fragments/head.jsp"/>
+<c:set value="${sessionScope.compare}" var="compareList"/>
 <body>
 
 <div class="wrapper">
@@ -103,141 +104,293 @@
                     <thead>
                     <tr>
                         <td>&nbsp;</td>
-                        <td class="text-center">
-                            <div class="image-wrap">
-                                <a data-product_id="39" href="#" class="remove-link"><i class="fa fa-times-circle"></i></a>
-                                <img width="220" height="154" alt="Iconia W700" class="attachment-yith-woocompare-image"
-                                     src="assets/images/products/product-01.jpg">
-                            </div>
-                            <p><strong>Iconia W700</strong></p>
-                        </td>
-                        <td class="text-center">
-                            <div class="image-wrap">
-                                <a data-product_id="34" href="#" class="remove-link"><i class="fa fa-times-circle"></i></a>
-                                <img width="220" height="154" alt="POV Action Cam"
-                                     class="attachment-yith-woocompare-image"
-                                     src="assets/images/products/product-02.jpg">
-                            </div>
-                            <p><strong>AS100V Action Cam</strong></p>
-                        </td>
-                        <td class="text-center">
-                            <div class="image-wrap">
-                                <a data-product_id="30" href="#" class="remove-link"><i class="fa fa-times-circle"></i></a>
-                                <img width="220" height="154" alt="PlayStation 4"
-                                     class="attachment-yith-woocompare-image"
-                                     src="assets/images/products/product-03.jpg">
-                            </div>
-                            <p><strong>PlayStation 4</strong></p>
-                        </td>
-                        <td class="text-center">
-                            <div class="image-wrap">
-                                <a data-product_id="20" href="#" class="remove-link"><i class="fa fa-times-circle"></i></a>
-                                <img width="220" height="154" alt="Cyber-shot Digital Camera WX300"
-                                     class="attachment-yith-woocompare-image"
-                                     src="assets/images/products/product-04.jpg">
-                            </div>
-                            <p><strong>Cyber-shot Digital Camera WX300</strong></p>
-                        </td>
-                    </tr>
-                    <tr class="tr-add-to-cart">
-                        <td>&nbsp;</td>
-                        <td class="text-center">
-                            <div class="add-cart-button">
-                                <a class="le-button add_to_cart_button  product_type_simple" href="index.php?page=cart">Add
-                                    to cart</a>
-                            </div>
-                        </td>
-                        <td class="text-center">
-                            <div class="add-cart-button">
-                                <a class="le-button add_to_cart_button  product_type_simple" href="index.php?page=cart">Add
-                                    to cart</a>
-                            </div>
-                        </td>
-                        <td class="text-center">
-                            <div class="add-cart-button">
-                                <a class="le-button add_to_cart_button  product_type_simple" href="index.php?page=cart">Add
-                                    to cart</a>
-                            </div>
-                        </td>
-                        <td class="text-center">
-                            <div class="add-cart-button">
-                                <a class="le-button add_to_cart_button  product_type_variable"
-                                   href="index.php?page=cart">Add to cart</a>
-                            </div>
-                        </td>
+                        <c:forEach items="${compareList}" var="item" varStatus="loop">
+                            <td class="text-center">
+                                <div class="image-wrap">
+                                    <a data-product_id="39" href="<c:url value="/compare/compare-list/remove/${loop.index}"/>" class="remove-link"><i class="fa fa-times-circle"></i></a>
+                                    <img width="220" height="154" alt="Iconia W700" class="attachment-yith-woocompare-image"
+                                         src="<c:url value="/resources/assets/images/${item.photo[0].name}"/>">
+                                </div>
+                                <p><strong>${item.model.name}</strong></p>
+                            </td>
+                        </c:forEach>
                     </tr>
                     </thead>
-                    <tbody>
 
+
+                    <tbody>
                     <tr class="comparison-item price">
                         <th>Price</th>
-                        <td class="comparison-item-cell odd product_39">
-                            <span class="amount">$629.99</span>
-                        </td>
-                        <td class="comparison-item-cell even product_34">
-                            <del><span class="amount">$299.99</span></del>
-                            <ins><span class="amount">$269.99</span></ins>
-                        </td>
-                        <td class="comparison-item-cell odd product_30">
-                            <span class="amount">$399.99</span>
-                        </td>
-                        <td class="comparison-item-cell even product_20">
-                            <del><span class="amount">$329.99</span></del>
-                            <ins><span class="amount">$249.99</span>&ndash;<span class="amount">$329.99</span></ins>
-                        </td>
+                        <c:forEach items="${compareList}" var="item">
+                            <td class="comparison-item-cell even product_34">
+                                <span class="amount">$${item.price}</span>
+                            </td>
+                        </c:forEach>
                     </tr>
 
-                    <tr class="comparison-item description">
-                        <th>Description</th>
-                        <td class="comparison-item-cell odd product_39">
-                            <p>Nulla sed sapien a ligula auctor maximus. Aliquam eget condimentum nunc. Maecenas
-                                efficitur pretium nunc in semper. Nullam ac luctus nisl. </p>
-                        </td>
-                        <td class="comparison-item-cell even product_34">
-                            <p>Nulla sed sapien a ligula auctor maximus. Aliquam eget condimentum nunc. Maecenas
-                                efficitur pretium nunc in semper. Nullam ac luctus nisl. </p>
-                        </td>
-                        <td class="comparison-item-cell odd product_30">
-                            <p>Nulla sed sapien a ligula auctor maximus. Aliquam eget condimentum nunc. Maecenas
-                                efficitur pretium nunc in semper. Nullam ac luctus nisl. </p>
-                        </td>
-                        <td class="comparison-item-cell even product_20">
-                            <p>Nulla sed sapien a ligula auctor maximus. Aliquam eget condimentum nunc. Maecenas
-                                efficitur pretium nunc in semper. Nullam ac luctus nisl. </p>
-                        </td>
+                    <tr class="comparison-item price">
+                        <th>Manufacturer country</th>
+                        <c:forEach items="${compareList}" var="item">
+                            <td class="comparison-item-cell even product_34">
+                                <span class="amount">${item.country.name}</span>
+                            </td>
+                        </c:forEach>
                     </tr>
 
-                    <tr class="comparison-item stock">
-                        <th>Availability</th>
-
-                        <td class="comparison-item-cell odd product_39">
-                            <span class="label label-success"><span class="">In stock</span></span>
-                        </td>
-                        <td class="comparison-item-cell even product_34">
-                            <span class="label label-success"><span class="">In stock</span></span>
-                        </td>
-                        <td class="comparison-item-cell odd product_30">
-                            <span class="label label-success"><span class="">In stock</span></span>
-                        </td>
-                        <td class="comparison-item-cell even product_20">
-                            <span class="label label-success"><span class="">In stock</span></span>
-                        </td>
+                    <tr class="comparison-item price">
+                        <th>Manufacturer country</th>
+                        <c:forEach items="${compareList}" var="item">
+                            <td class="comparison-item-cell even product_34">
+                                <span class="amount">${item.country.name}</span>
+                            </td>
+                        </c:forEach>
                     </tr>
 
-                    <tr class="price repeated">
-                        <th>Price</th>
-                        <td class="odd product_39"><span class="amount">$629.99</span></td>
-                        <td class="even product_34">
-                            <del><span class="amount">$299.99</span></del>
-                            <ins><span class="amount">$269.99</span></ins>
-                        </td>
-                        <td class="odd product_30"><span class="amount">$399.99</span></td>
-                        <td class="even product_20">
-                            <del><span class="amount">$329.99</span></del>
-                            <ins><span class="amount">$249.99</span>&ndash;<span class="amount">$329.99</span></ins>
-                        </td>
+                    <tr class="comparison-item price">
+                        <th>Year</th>
+                        <c:forEach items="${compareList}" var="item">
+                            <td class="comparison-item-cell even product_34">
+                                <span class="amount">${item.year}</span>
+                            </td>
+                        </c:forEach>
                     </tr>
 
+
+
+                    <tr class="comparison-item price">
+                        <th>Machine Condition</th>
+                        <c:forEach items="${compareList}" var="item">
+                            <td class="comparison-item-cell even product_34">
+                                <span class="amount">${item.condition}</span>
+                            </td>
+                        </c:forEach>
+                    </tr>
+
+
+                    <tr class="comparison-item price">
+                        <th>Machine location</th>
+                        <c:forEach items="${compareList}" var="item">
+                            <td class="comparison-item-cell even product_34">
+                                <span class="amount">${item.location.name}</span>
+                            </td>
+                        </c:forEach>
+                    </tr>
+
+
+                    <tr class="comparison-item price">
+                        <th>Series</th>
+                        <c:forEach items="${compareList}" var="item">
+                            <td class="comparison-item-cell even product_34">
+                                <span class="amount">${item.model.series.name}</span>
+                            </td>
+                        </c:forEach>
+                    </tr>
+
+
+                    <tr class="comparison-item price">
+                        <th>Payload Capacity</th>
+                        <c:forEach items="${compareList}" var="item">
+                            <td class="comparison-item-cell even product_34">
+                                <span class="amount">${item.payloadCapacity}</span>
+                            </td>
+                        </c:forEach>
+                    </tr>
+
+                    <tr class="comparison-item price">
+                        <th>Engine</th>
+                        <c:forEach items="${compareList}" var="item">
+                            <td class="comparison-item-cell even product_34">
+                                <span class="amount">${item.engine.name}</span>
+                            </td>
+                        </c:forEach>
+                    </tr>
+
+                    <tr class="comparison-item price">
+                        <th>Power</th>
+                        <c:forEach items="${compareList}" var="item">
+                            <td class="comparison-item-cell even product_34">
+                                <span class="amount">${item.power}</span>
+                            </td>
+                        </c:forEach>
+                    </tr>
+
+
+                    <tr class="comparison-item price">
+                        <th>Fuel Rate</th>
+                        <c:forEach items="${compareList}" var="item">
+                            <td class="comparison-item-cell even product_34">
+                                <span class="amount">${item.fuelRate}</span>
+                            </td>
+                        </c:forEach>
+                    </tr>
+
+
+                    <tr class="comparison-item price">
+                        <th>Transmission</th>
+                        <c:forEach items="${compareList}" var="item">
+                            <td class="comparison-item-cell even product_34">
+                                <span class="amount">${item.transmission.name}</span>
+                            </td>
+                        </c:forEach>
+                    </tr>
+                    <tr class="comparison-item price">
+                        <th>Suspension</th>
+                        <c:forEach items="${compareList}" var="item">
+                            <td class="comparison-item-cell even product_34">
+                                <span class="amount">${item.suspension.name}</span>
+                            </td>
+                        </c:forEach>
+                    </tr>
+                    <tr class="comparison-item price">
+                        <th>Torque</th>
+                        <c:forEach items="${compareList}" var="item">
+                            <td class="comparison-item-cell even product_34">
+                                <span class="amount">${item.torque}</span>
+                            </td>
+                        </c:forEach>
+                    </tr>
+
+
+                    <tr class="comparison-item price">
+                        <th>Brake Type</th>
+                        <c:forEach items="${compareList}" var="item">
+                            <td class="comparison-item-cell even product_34">
+                                <span class="amount">${item.brakeType.name}</span>
+                            </td>
+                        </c:forEach>
+                    </tr>
+
+
+                    <tr class="comparison-item price">
+                        <th>Front Wheels</th>
+                        <c:forEach items="${compareList}" var="item">
+                            <td class="comparison-item-cell even product_34">
+                                <span class="amount">${item.frontWheels.name}</span>
+                            </td>
+                        </c:forEach>
+                    </tr>
+
+
+                    <tr class="comparison-item price">
+                        <th>Rear Wheels</th>
+                        <c:forEach items="${compareList}" var="item">
+                            <td class="comparison-item-cell even product_34">
+                                <span class="amount">${item.rearWheels.name}</span>
+                            </td>
+                        </c:forEach>
+                    </tr>
+
+
+                    <tr class="comparison-item price">
+                        <th>Parking Brake</th>
+                        <c:forEach items="${compareList}" var="item">
+                            <td class="comparison-item-cell even product_34">
+                                <span class="amount">${item.parkingBrake.name}</span>
+                            </td>
+                        </c:forEach>
+                    </tr>
+
+                    <tr class="comparison-item price">
+                        <th>Auxiliary</th>
+                        <c:forEach items="${compareList}" var="item">
+                            <td class="comparison-item-cell even product_34">
+                                <span class="amount">${item.auxiliary.name}</span>
+                            </td>
+                        </c:forEach>
+                    </tr>
+
+                    <tr class="comparison-item price">
+                        <th>Turning Radius</th>
+                        <c:forEach items="${compareList}" var="item">
+                            <td class="comparison-item-cell even product_34">
+                                <span class="amount">${item.turningRadius}</span>
+                            </td>
+                        </c:forEach>
+                    </tr>
+
+                    <tr class="comparison-item price">
+                        <th>Length</th>
+                        <c:forEach items="${compareList}" var="item">
+                            <td class="comparison-item-cell even product_34">
+                                <span class="amount">${item.length}</span>
+                            </td>
+                        </c:forEach>
+                    </tr>
+
+                    <tr class="comparison-item price">
+                        <th>Width</th>
+                        <c:forEach items="${compareList}" var="item">
+                            <td class="comparison-item-cell even product_34">
+                                <span class="amount">${item.width}</span>
+                            </td>
+                        </c:forEach>
+                    </tr>
+
+
+                    <tr class="comparison-item price">
+                        <th>Height</th>
+                        <c:forEach items="${compareList}" var="item">
+                            <td class="comparison-item-cell even product_34">
+                                <span class="amount">${item.height}</span>
+                            </td>
+                        </c:forEach>
+                    </tr>
+
+
+                    <tr class="comparison-item price">
+                        <th>Operational Weight</th>
+                        <c:forEach items="${compareList}" var="item">
+                            <td class="comparison-item-cell even product_34">
+                                <span class="amount">${item.operationalWeight}</span>
+                            </td>
+                        </c:forEach>
+                    </tr>
+
+                    <tr class="comparison-item price">
+                        <th>Gross Weight </th>
+                        <c:forEach items="${compareList}" var="item">
+                            <td class="comparison-item-cell even product_34">
+                                <span class="amount">${item.grossWeight}</span>
+                            </td>
+                        </c:forEach>
+                    </tr>
+
+                    <tr class="comparison-item price">
+                        <th>Max Speed</th>
+                        <c:forEach items="${compareList}" var="item">
+                            <td class="comparison-item-cell even product_34">
+                                <span class="amount">${item.maxSpeed}</span>
+                            </td>
+                        </c:forEach>
+                    </tr>
+
+
+                    <tr class="comparison-item price">
+                        <th>Application</th>
+                        <c:forEach items="${compareList}" var="item">
+                            <td class="comparison-item-cell even product_34">
+                                <span class="amount">${item.application}</span>
+                            </td>
+                        </c:forEach>
+                    </tr>
+
+                    <tr class="comparison-item price">
+                        <th>Advantages</th>
+                        <c:forEach items="${compareList}" var="item">
+                            <td class="comparison-item-cell even product_34">
+                                <span class="amount">${item.advantages}</span>
+                            </td>
+                        </c:forEach>
+                    </tr>
+
+                    <tr class="comparison-item price">
+                        <th>Complete set</th>
+                        <c:forEach items="${compareList}" var="item">
+                            <td class="comparison-item-cell even product_34">
+                                <span class="amount">${item.completeSet}</span>
+                            </td>
+                        </c:forEach>
+                    </tr>
                     </tbody>
                 </table>
             </div><!-- /.table-responsive -->

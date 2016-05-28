@@ -224,7 +224,7 @@ ul.mainmenu li ul.submenu li a:hover  { color: #404040; }
 .tab th { color: #052b4d; border-bottom: 2px solid #e3e3e3; background: #fff; }
 .tab th.action { border-right: 0;}
 .tab th.checkbox, .tab td.checkbox { padding: 8px 2px;width: 20px; }
-.tab td.action, .tab th.action { width: 35px; text-align: right; }
+.tab td.action, .tab th.action { text-align: right; }
 .tab td.action a.ico { float: right; }
 
 .tab tr.odd   { background: #f8f8f8; }
@@ -240,6 +240,7 @@ a.ico         { display: block; float: left; width: 10px; height: 10px; margin: 
 a:hover.ico   { background-position: 0 0; }
 .ico-edit     { background: url('../images/ico/edit.gif') no-repeat; }
 .ico-delete   { background: url('../images/ico/delete.gif') no-repeat; }
+.ico-pdf      { background: url('../images/ico/pdf-book.png') no-repeat; }
 
 /* -- Btn-default -- */
 .btn-default          { display: block; width: 99px; text-align: center; height: 26px; line-height: 26px; color: #fff; font-weight: bold; text-decoration: none !important; }

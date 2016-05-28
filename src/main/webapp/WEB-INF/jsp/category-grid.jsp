@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -32,6 +33,7 @@
                 <c:import url="fragments/search-area.jsp"/>
                 <!-- ============================================================= SEARCH AREA : END ============================================================= -->
             </div><!-- /.top-search-holder -->
+
             <!-- ============================================================= SHOPPING CART DROPDOWN ============================================================= -->
             <c:import url="fragments/shopping-cart-dropdown.jsp"/>
             <!-- ============================================================= SHOPPING CART DROPDOWN : END ============================================================= -->
@@ -109,7 +111,7 @@
                 <div class="widget">
                     <h1>Product Filters</h1>
                     <div class="body bordered">
-                        <form action="/category/filter" method="POST">
+                        <form:form role="form" id="filter"  method="POST">
                             <div class="category-filter">
                                 <h2>Manufacturer</h2>
                                 <hr>
@@ -254,7 +256,7 @@
                                 </ul>
                             </div><!-- /.category-filter -->
                             <button class="filter-button" type="submit">Filter</button>
-                        </form>
+                        </form:form>
 
                     </div><!-- /.body -->
                 </div><!-- /.widget -->
@@ -285,7 +287,7 @@
                             <div id="grid-view" class="products-grid fade tab-pane in active">
 
                                 <div class="product-grid-holder">
-                                    <div class="row no-margin">
+                                    <div class="row no-margin grid-no-margin">
                                         <c:forEach items="${list}" var="item">
                                             <div class="col-xs-12 col-sm-4 no-margin product-item-holder hover">
                                                 <div class="product-item">
@@ -307,13 +309,13 @@
                                                     </div>
                                                     <div class="hover-area">
                                                         <div class="add-cart-button">
-                                                            <a href="single-product.html" class="le-button">add to
+                                                            <a href="<c:url value="/shopping-cart/order-now/${item.id}"/>" class="le-button">add to
                                                                 cart</a>
                                                         </div>
                                                         <div class="wish-compare">
                                                             <a class="btn-add-to-wishlist" href="#">Добавить в
                                                                 избранные</a>
-                                                            <a class="btn-add-to-compare" href="#">Сравнить</a>
+                                                            <a class="btn-add-to-compare" href="<c:url value="/compare/compare-this/${item.id}"/>">Сравнить</a>
                                                         </div>
                                                     </div>
                                                 </div><!-- /.product-item -->
@@ -327,7 +329,7 @@
 
 
                             <div id="list-view" class="products-grid fade tab-pane ">
-                                <div class="products-list">
+                                <div class="products-list list-no-margin">
 
                                     <c:forEach items="${list}" var="item">
                                         <div class="product-item product-item-holder">
@@ -351,7 +353,7 @@
                                                             <p>${item.application}</p>
                                                         </div>
                                                         <div class="addto-compare">
-                                                            <a class="btn-add-to-compare" href="#">add to compare
+                                                            <a class="btn-add-to-compare" href="<c:url value="/compare/compare-this/${item.id}"/>">add to compare
                                                                 list</a>
                                                         </div>
                                                     </div>
@@ -359,7 +361,8 @@
                                                 <div class="no-margin col-xs-12 col-sm-3 price-area">
                                                     <div class="right-clmn">
                                                         <div class="price-current">${item.price}</div>
-                                                        <a class="le-button" href="#">add to cart</a>
+                                                        <a href="<c:url value="/shopping-cart/order-now/${item.id}"/>" class="le-button">add to
+                                                            cart</a>
                                                         <a class="btn-add-to-wishlist" href="#">add to wishlist</a>
                                                     </div>
                                                 </div><!-- /.price-area -->

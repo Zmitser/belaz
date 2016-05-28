@@ -18,11 +18,6 @@ public class RootController {
         return "authentication";
     }
 
-    @RequestMapping(value = "/cart", method = RequestMethod.GET)
-    public String getCart() {
-        return "cart";
-    }
-
 
 
     @RequestMapping(value = "/checkout", method = RequestMethod.GET)
@@ -31,17 +26,11 @@ public class RootController {
     }
 
 
-    @RequestMapping(value = "/compare", method = RequestMethod.GET)
-    public String getCompare() {
-        return "compare";
-    }
-
-
-
     @RequestMapping(value = "/wishlist", method = RequestMethod.GET)
     public String getWishlist() {
         return "wishlist";
     }
+
     @RequestMapping(value = "/error", method = RequestMethod.GET)
     public String getNotFound() {
         return "404";
