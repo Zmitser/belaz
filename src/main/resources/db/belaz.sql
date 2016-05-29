@@ -221,7 +221,7 @@ CREATE TABLE `model` (
   `series_id` int(11) NOT NULL,
   PRIMARY KEY (`id`,`series_id`),
   KEY `fk_model_series1_idx` (`series_id`),
-  CONSTRAINT `fk_model_series1` FOREIGN KEY (`series_id`) REFERENCES `series` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_model_series1` FOREIGN KEY (`series_id`) REFERENCES `serie` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -308,13 +308,13 @@ INSERT INTO `rear_wheels` VALUES (1,'shoe brakes'),(2,'multiple-disk oil cooled 
 UNLOCK TABLES;
 
 --
--- Table structure for table `series`
+-- Table structure for table `serie`
 --
 
-DROP TABLE IF EXISTS `series`;
+DROP TABLE IF EXISTS `serie`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `series` (
+CREATE TABLE `serie` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
@@ -322,13 +322,13 @@ CREATE TABLE `series` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `series`
+-- Dumping data for table `serie`
 --
 
-LOCK TABLES `series` WRITE;
-/*!40000 ALTER TABLE `series` DISABLE KEYS */;
-INSERT INTO `series` VALUES (1,'BELAZ-7540'),(2,'BELAZ-7547'),(3,'BELAZ-7545'),(4,'BELAZ-7555'),(5,'BELAZ-7557'),(6,'BELAZ-7558'),(7,'BELAZ-7513'),(8,'BELAZ-7517'),(9,'BELAZ-7518'),(10,'BELAZ-7530'),(11,'BELAZ-7531'),(12,'BELAZ-7560'),(13,'BELAZ-7571');
-/*!40000 ALTER TABLE `series` ENABLE KEYS */;
+LOCK TABLES `serie` WRITE;
+/*!40000 ALTER TABLE `serie` DISABLE KEYS */;
+INSERT INTO `serie` VALUES (1,'BELAZ-7540'),(2,'BELAZ-7547'),(3,'BELAZ-7545'),(4,'BELAZ-7555'),(5,'BELAZ-7557'),(6,'BELAZ-7558'),(7,'BELAZ-7513'),(8,'BELAZ-7517'),(9,'BELAZ-7518'),(10,'BELAZ-7530'),(11,'BELAZ-7531'),(12,'BELAZ-7560'),(13,'BELAZ-7571');
+/*!40000 ALTER TABLE `serie` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --

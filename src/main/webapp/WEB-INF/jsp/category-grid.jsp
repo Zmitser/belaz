@@ -111,14 +111,14 @@
                 <div class="widget">
                     <h1>Product Filters</h1>
                     <div class="body bordered">
-                        <form:form role="form" id="filter"  method="POST">
+                        <form:form role="form" commandName="filter" id="filter" action="/category/filter" method="get">
                             <div class="category-filter">
                                 <h2>Manufacturer</h2>
                                 <hr>
                                 <ul>
                                     <c:forEach items="${manufacturers}" var="manufacturer">
-                                        <li><input class="le-checkbox" type="checkbox" name="manufacturer"
-                                                   value="${manufacturer.id}"/> <label>${manufacturer.name}</label>
+                                        <li><form:checkbox class="le-checkbox"  name="manufacturer"
+                                                   value="${manufacturer.id}" path="manufacturer"/> <label>${manufacturer.name}</label>
                                             <span class="pull-right"></span></li>
                                     </c:forEach>
                                 </ul>
@@ -129,8 +129,8 @@
                                 <hr>
                                 <ul>
                                     <c:forEach items="${manufacturerCountries}" var="manufacturerCountry">
-                                        <li><input class="le-checkbox" type="checkbox" name="manufacturerCountry"
-                                                   value="${manufacturerCountry.id}"/>
+                                        <li><form:checkbox class="le-checkbox"  name="manufacturerCountry"
+                                                   value="${manufacturerCountry.id}" path="manufacturerCountry"/>
                                             <label>${manufacturerCountry.name}</label> <span class="pull-right"></span>
                                         </li>
                                     </c:forEach>
@@ -142,8 +142,8 @@
                                 <hr>
                                 <ul>
                                     <c:forEach items="${machineLocations}" var="machineLocation">
-                                        <li><input class="le-checkbox" type="checkbox" name="machineLocation"
-                                                   value="${machineLocation.id}"/>
+                                        <li><form:checkbox class="le-checkbox"  name="machineLocation"
+                                                   value="${machineLocation.id}" path="machineLocation"/>
                                             <label>${machineLocation.name}</label> <span class="pull-right"></span></li>
                                     </c:forEach>
                                 </ul>
@@ -152,9 +152,9 @@
                                 <h2>Series</h2>
                                 <hr>
                                 <ul>
-                                    <c:forEach items="${series}" var="series">
-                                        <li><input class="le-checkbox" type="checkbox" name="series"
-                                                   value="${series.id}"/> <label>${series.name}</label> <span
+                                    <c:forEach items="${serie}" var="serie">
+                                        <li><form:checkbox class="le-checkbox"  name="serie"
+                                                   value="${serie.id}" path="serie"/> <label>${serie.name}</label> <span
                                                 class="pull-right"></span></li>
                                     </c:forEach>
                                 </ul>
@@ -165,8 +165,8 @@
                                 <hr>
                                 <ul class="front-wheels">
                                     <c:forEach items="${engines}" var="engine">
-                                        <li><input class="le-checkbox" type="checkbox" name="engine"
-                                                   value="${engine.id}"/> <label>${engine.name}</label> <span
+                                        <li><form:checkbox class="le-checkbox"  name="engine"
+                                                   value="${engine.id}" path="engine"/> <label>${engine.name}</label> <span
                                                 class="pull-right"></span></li>
                                     </c:forEach>
                                 </ul>
@@ -177,8 +177,8 @@
                                 <hr>
                                 <ul class="front-wheels">
                                     <c:forEach items="${suspensions}" var="suspension">
-                                        <li><input class="le-checkbox" type="checkbox" name="suspension"
-                                                   value="${suspension.id}"/> <label>${suspension.name}</label>
+                                        <li><form:checkbox class="le-checkbox"  name="suspension"
+                                                   value="${suspension.id}" path="suspension"/> <label>${suspension.name}</label>
                                             <span class="pull-right"></span></li>
                                     </c:forEach>
                                 </ul>
@@ -189,8 +189,8 @@
                                 <hr>
                                 <ul class="front-wheels">
                                     <c:forEach items="${transmissions}" var="transmission">
-                                        <li><input class="le-checkbox" type="checkbox" name="transmission"
-                                                   value="${transmission.id}"/> <label>${transmission.name}</label>
+                                        <li><form:checkbox class="le-checkbox"  name="transmission"
+                                                   value="${transmission.id}" path="transmission"/> <label>${transmission.name}</label>
                                             <span class="pull-right"></span></li>
                                     </c:forEach>
                                 </ul>
@@ -201,7 +201,7 @@
                                 <hr>
                                 <ul class="front-wheels">
                                     <c:forEach items="${brakeTypes}" var="brakeType">
-                                        <li><input class="le-checkbox" type="checkbox" name="brakeType"
+                                        <li><form:checkbox path="brakeType" class="le-checkbox"  name="brakeType"
                                                    value="${brakeType.id}"/> <label>${brakeType.name}</label>
                                             <span class="pull-right"></span></li>
                                     </c:forEach>
@@ -212,8 +212,8 @@
                                 <hr>
                                 <ul class="front-wheels">
                                     <c:forEach items="${frontWheels}" var="frontWheel">
-                                        <li><input class="le-checkbox" type="checkbox" name="frontWheel"
-                                                   value="${frontWheel.id}"/> <label>${frontWheel.name}</label>
+                                        <li><form:checkbox class="le-checkbox"  name="frontWheel"
+                                                   value="${frontWheel.id}" path="frontWheel"/> <label>${frontWheel.name}</label>
                                             <span class="pull-right"></span></li>
                                     </c:forEach>
                                 </ul>
@@ -223,9 +223,9 @@
                                 <h2>Rear Wheels</h2>
                                 <hr>
                                 <ul class="front-wheels">
-                                    <c:forEach items="${rearWheels}" var="rearWheel">
-                                        <li><input class="le-checkbox" type="checkbox" name="rearWheel"
-                                                   value="${rearWheel.id}"/> <label>${rearWheel.name}</label>
+                                    <c:forEach items="${rearWheel}" var="rearWheel">
+                                        <li><form:checkbox class="le-checkbox"  name="rearWheel"
+                                                   value="${rearWheel.id}" path="rearWheel"/> <label>${rearWheel.name}</label>
                                             <span class="pull-right"></span></li>
                                     </c:forEach>
                                 </ul>
@@ -236,8 +236,8 @@
                                 <hr>
                                 <ul class="front-wheels">
                                     <c:forEach items="${parkingBrakes}" var="parkingBrake">
-                                        <li><input class="le-checkbox" type="checkbox" name="parkingBrake"
-                                                   value="${parkingBrake.id}"/> <label>${parkingBrake.name}</label>
+                                        <li><form:checkbox class="le-checkbox"  name="parkingBrake"
+                                                   value="${parkingBrake.id}" path="parkingBrake"/> <label>${parkingBrake.name}</label>
                                             <span class="pull-right"></span></li>
                                     </c:forEach>
                                 </ul>
@@ -249,8 +249,8 @@
                                 <%--<ul class="front-wheels">--%>
                                 <ul class="front-wheels">
                                     <c:forEach items="${auxiliaries}" var="auxiliary">
-                                        <li><input class="le-checkbox" type="checkbox" name="auxiliary"
-                                                   value="${auxiliary.id}"/> <label>${auxiliary.name}</label> <span
+                                        <li><form:checkbox class="le-checkbox"  name="auxiliary"
+                                                   value="${auxiliary.id}" path="auxiliary"/> <label>${auxiliary.name}</label> <span
                                                 class="pull-right"></span></li>
                                     </c:forEach>
                                 </ul>

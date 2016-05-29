@@ -85,7 +85,7 @@
             <!-- ========================================= CONTENT ========================================= -->
             <div class="col-xs-12 col-md-9 items-holder no-margin">
                 <c:set value="0" var="s"/>
-                <c:forEach var="it" items="${sessionScope.cart}">
+                <c:forEach var="it" items="${sessionScope.cart}" varStatus="timer">
                     <c:set value="${s + it.quantity * it.truckMining.price}" var="s"/>
                     <div class="row no-margin cart-item">
                         <div class="col-xs-12 col-sm-2 no-margin">
@@ -105,9 +105,9 @@
                             <div class="quantity">
                                 <div class="le-quantity">
                                     <form>
-                                        <a class="minus" href="#reduce"></a>
+                                        <a class="minus" href="/shopping-cart/reduce/${timer.index}"></a>
                                         <input name="quantity" readonly="readonly" type="text" value="${it.quantity}"/>
-                                        <a class="plus" href="#add"></a>
+                                        <a class="plus" href="/shopping-cart/add/${timer.index}"></a>
                                     </form>
                                 </div>
                             </div>
@@ -117,7 +117,7 @@
                             <div class="price">
                                     ${it.truckMining.price} x ${it.quantity} = ${it.quantity * it.truckMining.price}
                             </div>
-                            <a class="close-btn" href="#"></a>
+                            <a class="close-btn" href="/shopping-cart/remove/${timer.index}"></a>
                         </div>
                     </div>
                     <!-- /.cart-item -->

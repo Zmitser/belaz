@@ -1,9 +1,10 @@
 $(document).ready(function () {
-    $("#filter").submit(function () {
+
+    function update() {
         var filteredGrid = '';
         var filteredList = '';
         $.ajax({
-            type: "POST",
+            type: "GET",
             url: '/user/ajax/truck-mining/filter',
             data: $('#filter').serialize(),
             success: function (data) {
@@ -52,7 +53,14 @@ $(document).ready(function () {
                 $('.list-no-margin').html(filteredList);
             }
         });
+    }
+
+    $("#filter").submit(function () {
+        update();
         return false;
 
     })
+
+
+    
 });

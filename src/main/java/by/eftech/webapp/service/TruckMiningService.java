@@ -16,16 +16,16 @@ public interface TruckMiningService {
 
     void update(TruckMining truckMining);
 
-    public Iterable<TruckMining> findTruckMiningFilteredList(Integer[] manufacturer,
-                                                             Integer[] manufacturerCountry,
-                                                             Integer[] machineLocation,
-                                                             Integer[] series,
-                                                             Integer[] engineId,
-                                                             Integer[] suspensionId,
-                                                             Integer[] transmissionId,
-                                                             Integer[] brakeTypeId,
-                                                             Integer[] frontWheelId,
-                                                             Integer[] rearWheelId,
-                                                             Integer[] parkingBrakeId,
-                                                             Integer[] auxiliaryId);
+    public Iterable<TruckMining> findTruckMiningFilteredList(List<Integer> manufacturer,
+                                                             List<Integer> manufacturerCountry,
+                                                             List<Integer> machineLocation,
+                                                             List<Integer> series,
+                                                             List<Integer> engineId,
+                                                             List<Integer> suspensionId,
+                                                             List<Integer> transmissionId,
+                                                             List<Integer> brakeTypeId,
+                                                             List<Integer> frontWheelId,
+                                                             List<Integer> rearWheelId,
+                                                             List<Integer> parkingBrakeId,
+                                                             List<Integer> auxiliaryId);
 }

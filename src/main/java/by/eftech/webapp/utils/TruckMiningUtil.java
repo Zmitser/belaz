@@ -1,5 +1,6 @@
 package by.eftech.webapp.utils;
 
+
 import by.eftech.webapp.model.*;
 import by.eftech.webapp.utils.exceptions.ImageUploadException;
 import org.apache.commons.io.FileUtils;
@@ -9,6 +10,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,8 +20,9 @@ import java.util.List;
 public class TruckMiningUtil {
 
 
-    public static void saveImage(byte[] data, String filename) throws ImageUploadException, IOException {
-        String absolutePath = "D:/Projects/belaz/src/main/webapp/resources/assets/images/" + filename;
+    public static void saveImage(byte[] data, String filename, HttpServletRequest request) throws ImageUploadException, IOException {
+        String savePath = request.getServletContext().getRealPath("");
+        String absolutePath = savePath + "/resources/assets/images/" + filename;
         File file = new File(absolutePath);
         FileUtils.writeByteArrayToFile(file, data);
 

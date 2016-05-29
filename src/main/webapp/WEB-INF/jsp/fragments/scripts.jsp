@@ -79,5 +79,5 @@
 <!-- For demo purposes – can be removed on production : End -->
 
 <script src="http://w.sharethis.com/button/buttons.js"></script>
-<script src="<c:url value="/resources/assets/js/filter.js"/>"></script>
+<%--<script src="<c:url value="/resources/assets/js/filter.js"/>"></script>--%>
 
