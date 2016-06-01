@@ -22,7 +22,7 @@ public class TruckMiningPdfBuilder extends AbstractITextPdfView {
         TruckMining truckMining = (TruckMining) model.get("truckMining");
         String about = "OJSC \"BELAZ\" - Management Company of Holding \"BELAZ-HOLDING\"\n" +
                 "Address: 40 let Octyabrya str. 4, 222161, Zhodino, Minsk region, Republic of Belarus";
-        Image logo  = Image.getInstance("D:\\Projects\\belaz\\src\\main\\webapp\\resources\\assets\\images\\Belaz_logo.png");
+        Image logo  = Image.getInstance("D:\\Projects\\belaz-repeat\\belaz\\src\\main\\webapp\\resources\\assets\\images\\Belaz_logo.png");
         logo.setAlignment(Image.TEXTWRAP);
         logo.scaleAbsolute(230f, 60f);
         Paragraph aboutParagraph = new Paragraph(about);
@@ -54,7 +54,7 @@ public class TruckMiningPdfBuilder extends AbstractITextPdfView {
         sectionText.setSpacingAfter(10);
         sectionText.setSpacingBefore(10);
         section.add(sectionText);
-        Image image1 = Image.getInstance("D:/Projects/belaz/src/main/webapp/resources/assets/images/" + truckMining.getPhoto().get(0).getName());
+        Image image1 = Image.getInstance("D:/Projects/belaz-repeat/belaz/src/main/webapp/resources/assets/images/" + truckMining.getPhoto().get(0).getName());
         image1.scaleAbsolute(250f, 175f);
         image1.setAlignment(Element.ALIGN_CENTER);
         section.add(image1);
@@ -62,7 +62,7 @@ public class TruckMiningPdfBuilder extends AbstractITextPdfView {
                 FontFactory.getFont(FontFactory.HELVETICA, 10, Font.ITALIC));
         figcapture1.setAlignment(Element.ALIGN_CENTER);
         section.add(figcapture1);
-        Image image2 = Image.getInstance("D:/Projects/belaz/src/main/webapp/resources/assets/images/" + truckMining.getPhoto().get(1).getName());
+        Image image2 = Image.getInstance("D:/Projects/belaz-repeat/belaz/src/main/webapp/resources/assets/images/" + truckMining.getPhoto().get(1).getName());
         image2.scaleAbsolute(250f, 175f);
         image2.setAlignment(Element.ALIGN_CENTER);
         section.add(image2);
@@ -70,7 +70,7 @@ public class TruckMiningPdfBuilder extends AbstractITextPdfView {
                 FontFactory.getFont(FontFactory.HELVETICA, 10, Font.ITALIC));
         figcapture2.setAlignment(Element.ALIGN_CENTER);
         section.add(figcapture2);
-        Image image3 = Image.getInstance("D:/Projects/belaz/src/main/webapp/resources/assets/images/" + truckMining.getPhoto().get(2).getName());
+        Image image3 = Image.getInstance("D:/Projects/belaz-repeat/belaz/src/main/webapp/resources/assets/images/" + truckMining.getPhoto().get(2).getName());
         image3.scaleAbsolute(250f, 175f);
         image3.setAlignment(Element.ALIGN_CENTER);
         section.add(image3);

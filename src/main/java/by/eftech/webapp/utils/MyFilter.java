@@ -4,7 +4,9 @@ import javax.servlet.*;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class MyFilter implements Filter {
+
+
+public class MyFilter implements Filter{
     public void destroy() {
     }
 

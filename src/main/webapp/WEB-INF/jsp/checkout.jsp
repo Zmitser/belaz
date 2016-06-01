@@ -45,7 +45,7 @@
             </div><!-- /.top-search-holder -->
 
             <!-- ============================================================= SHOPPING CART DROPDOWN ============================================================= -->
-                    <c:import url="fragments/shopping-cart-dropdown.jsp"/>
+            <c:import url="fragments/shopping-cart-dropdown.jsp"/>
             <!-- ============================================================= SHOPPING CART DROPDOWN : END ============================================================= -->
 
 
@@ -93,52 +93,52 @@
     <section id="checkout-page">
         <div class="container">
             <div class="col-xs-12 no-margin">
+                <form method="post" action="/order/continue-order">
+                    <div class="billing-address">
+                        <h2 class="border h1">billing address</h2>
 
-                <div class="billing-address">
-                    <h2 class="border h1">billing address</h2>
-                    <form>
                         <div class="row field-row">
                             <div class="col-xs-12 col-sm-6">
                                 <label>full name*</label>
-                                <input class="le-input">
+                                <input class="le-input" name="fullname">
                             </div>
                             <div class="col-xs-12 col-sm-6">
                                 <label>last name*</label>
-                                <input class="le-input">
+                                <input class="le-input" name="lastname">
                             </div>
                         </div><!-- /.field-row -->
 
                         <div class="row field-row">
                             <div class="col-xs-12">
                                 <label>company name</label>
-                                <input class="le-input">
+                                <input class="le-input" name="companyName">
                             </div>
                         </div><!-- /.field-row -->
 
                         <div class="row field-row">
                             <div class="col-xs-12 col-sm-6">
                                 <label>address*</label>
-                                <input class="le-input" data-placeholder="street address">
+                                <input class="le-input" data-placeholder="street address" name="streetAddress">
                             </div>
                             <div class="col-xs-12 col-sm-6">
-                                <label>&nbsp;</label>
-                                <input class="le-input" data-placeholder="town">
+                                <label>Town</label>
+                                <input class="le-input" data-placeholder="town" name="town">
                             </div>
                         </div><!-- /.field-row -->
 
                         <div class="row field-row">
                             <div class="col-xs-12 col-sm-4">
-                                <label>postcode / Zip*</label>
-                                <input class="le-input">
+                                <label>Country</label>
+                                <input class="le-input" name="country">
                             </div>
                             <div class="col-xs-12 col-sm-4">
                                 <label>email address*</label>
-                                <input class="le-input">
+                                <input class="le-input" name="emailAddress">
                             </div>
 
                             <div class="col-xs-12 col-sm-4">
-                                <label>phone number*</label>
-                                <input class="le-input">
+                                <label>phone Number</label>
+                                <input class="le-input" name="phoneNumber">
                             </div>
                         </div><!-- /.field-row -->
 
@@ -150,351 +150,77 @@
                             </div>
                         </div><!-- /.field-row -->
 
-                    </form>
-                </div><!-- /.billing-address -->
+
+                    </div><!-- /.billing-address -->
 
 
-                <section id="shipping-address">
-                    <h2 class="border h1">shipping address</h2>
-                    <form>
-                        <div class="row field-row">
-                            <div class="col-xs-12">
-                                <input class="le-checkbox big" type="checkbox"/>
-                                <a class="simple-link bold" href="#">ship to different address?</a>
+                    <section id="your-order">
+                        <h2 class="border h1">your order</h2>
+                        <c:set var="s" value="0"/>
+                        <c:forEach var="item" items="${sessionScope.cart}">
+                            <c:set var="s" value="${s + item.quantity * item.truckMining.price}"/>
+                            <div class="row no-margin order-item">
+                                <div class="col-xs-12 col-sm-1 no-margin">
+                                    <a href="#" class="qty">${item.quantity} x</a>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-9 ">
+                                    <div class="title"><a href="#">${item.truckMining.model.name} </a></div>
+                                    <div class="brand">${item.truckMining.model.series.name}</div>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-2 no-margin">
+                                    <div class="price">${item.quantity * item.truckMining.price}</div>
+                                </div>
                             </div>
-                        </div><!-- /.field-row -->
-                    </form>
-                </section><!-- /#shipping-address -->
+                            <!-- /.order-item -->
+                        </c:forEach>
+                    </section><!-- /#your-order -->
 
-
-                <section id="your-order">
-                    <h2 class="border h1">your order</h2>
-                    <form>
-                        <div class="row no-margin order-item">
-                            <div class="col-xs-12 col-sm-1 no-margin">
-                                <a href="#" class="qty">1 x</a>
-                            </div>
-
-                            <div class="col-xs-12 col-sm-9 ">
-                                <div class="title"><a href="#">white lumia 9001 </a></div>
-                                <div class="brand">sony</div>
-                            </div>
-
-                            <div class="col-xs-12 col-sm-2 no-margin">
-                                <div class="price">$2000.00</div>
-                            </div>
-                        </div><!-- /.order-item -->
-
-                        <div class="row no-margin order-item">
-                            <div class="col-xs-12 col-sm-1 no-margin">
-                                <a href="#" class="qty">1 x</a>
-                            </div>
-
-                            <div class="col-xs-12 col-sm-9 ">
-                                <div class="title"><a href="#">white lumia 9001 </a></div>
-                                <div class="brand">sony</div>
-                            </div>
-
-                            <div class="col-xs-12 col-sm-2 no-margin">
-                                <div class="price">$2000.00</div>
-                            </div>
-                        </div><!-- /.order-item -->
-
-                        <div class="row no-margin order-item">
-                            <div class="col-xs-12 col-sm-1 no-margin">
-                                <a href="#" class="qty">1 x</a>
-                            </div>
-
-                            <div class="col-xs-12 col-sm-9 ">
-                                <div class="title"><a href="#">white lumia 9001 </a></div>
-                                <div class="brand">sony</div>
-                            </div>
-
-                            <div class="col-xs-12 col-sm-2 no-margin">
-                                <div class="price">$2000.00</div>
-                            </div>
-                        </div><!-- /.order-item -->
-                    </form>
-                </section><!-- /#your-order -->
-
-                <div id="total-area" class="row no-margin">
-                    <div class="col-xs-12 col-lg-4 col-lg-offset-8 no-margin-right">
-                        <div id="subtotal-holder">
-                            <ul class="tabled-data inverse-bold no-border">
-                                <li>
-                                    <label>cart subtotal</label>
-                                    <div class="value ">$8434.00</div>
-                                </li>
-                                <li>
-                                    <label>shipping</label>
-                                    <div class="value">
-                                        <div class="radio-group">
-                                            <input class="le-radio" type="radio" name="group1" value="free">
-                                            <div class="radio-label bold">free shipping</div>
-                                            <br>
-                                            <input class="le-radio" type="radio" name="group1" value="local" checked>
-                                            <div class="radio-label">local delivery<br><span class="bold">$15</span>
+                    <div id="total-area" class="row no-margin">
+                        <div class="col-xs-12 col-lg-4 col-lg-offset-8 no-margin-right">
+                            <div id="subtotal-holder">
+                                <ul class="tabled-data inverse-bold no-border">
+                                    <li>
+                                        <label>cart subtotal</label>
+                                        <div class="value ">$${s}</div>
+                                    </li>
+                                    <li>
+                                        <label>shipping</label>
+                                        <div class="value">
+                                            <div class="radio-group">
+                                                <input class="le-radio" type="radio" name="group1" value="free">
+                                                <div class="radio-label bold">free shipping</div>
+                                                <br>
+                                                <input class="le-radio" type="radio" name="group1" value="local"
+                                                       checked>
+                                                <div class="radio-label">local delivery<br><span class="bold">$15</span>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </li>
-                            </ul><!-- /.tabled-data -->
+                                    </li>
+                                </ul><!-- /.tabled-data -->
 
-                            <ul id="total-field" class="tabled-data inverse-bold ">
-                                <li>
-                                    <label>order total</label>
-                                    <div class="value">$8434.00</div>
-                                </li>
-                            </ul><!-- /.tabled-data -->
+                                <ul id="total-field" class="tabled-data inverse-bold ">
+                                    <li>
+                                        <label>order total</label>
+                                        <div class="value">$${s}</div>
+                                    </li>
+                                </ul><!-- /.tabled-data -->
 
-                        </div><!-- /#subtotal-holder -->
-                    </div><!-- /.col -->
-                </div><!-- /#total-area -->
-
-                <div id="payment-method-options">
-                    <form>
-                        <div class="payment-method-option">
-                            <input class="le-radio" type="radio" name="group2" value="Direct">
-                            <div class="radio-label bold ">Direct Bank Transfer<br>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce rutrum tempus elit,
-                                    vestibulum vestibulum erat ornare id.</p>
-                            </div>
-                        </div><!-- /.payment-method-option -->
-
-                        <div class="payment-method-option">
-                            <input class="le-radio" type="radio" name="group2" value="cheque">
-                            <div class="radio-label bold ">cheque payment</div>
-                        </div><!-- /.payment-method-option -->
-
-                        <div class="payment-method-option">
-                            <input class="le-radio" type="radio" name="group2" value="paypal">
-                            <div class="radio-label bold ">paypal system</div>
-                        </div><!-- /.payment-method-option -->
-                    </form>
-                </div><!-- /#payment-method-options -->
-
-                <div class="place-order-button">
-                    <button class="le-button big">place order</button>
-                </div><!-- /.place-order-button -->
-
+                            </div><!-- /#subtotal-holder -->
+                        </div><!-- /.col -->
+                    </div><!-- /#total-area -->
+                    <div class="place-order-button">
+                        <button class="le-button big" type="submit">Send</button>
+                    </div><!-- /.place-order-button -->
+                </form>
             </div><!-- /.col -->
         </div><!-- /.container -->
     </section><!-- /#checkout-page -->
     <!-- ========================================= CONTENT : END ========================================= -->
     <!-- ============================================================= FOOTER ============================================================= -->
     <footer id="footer" class="color-bg">
-
-        <div class="container">
-            <div class="row no-margin widgets-row">
-                <div class="col-xs-12  col-sm-4 no-margin-left">
-                    <!-- ============================================================= FEATURED PRODUCTS ============================================================= -->
-                    <div class="widget">
-                        <h2>Featured products</h2>
-                        <div class="body">
-                            <ul>
-                                <li>
-                                    <div class="row">
-                                        <div class="col-xs-12 col-sm-9 no-margin">
-                                            <a href="single-product.html">Netbook Acer Travel B113-E-10072</a>
-                                            <div class="price">
-                                                <div class="price-prev">$2000</div>
-                                                <div class="price-current">$1873</div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xs-12 col-sm-3 no-margin">
-                                            <a href="#" class="thumb-holder">
-                                                <img alt="" src="assets/images/blank.gif"
-                                                     data-echo="assets/images/products/product-small-01.jpg"/>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="row">
-                                        <div class="col-xs-12 col-sm-9 no-margin">
-                                            <a href="single-product.html">PowerShot Elph 115 16MP Digital Camera</a>
-                                            <div class="price">
-                                                <div class="price-prev">$2000</div>
-                                                <div class="price-current">$1873</div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-3 no-margin">
-                                            <a href="#" class="thumb-holder">
-                                                <img alt="" src="assets/images/blank.gif"
-                                                     data-echo="assets/images/products/product-small-02.jpg"/>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="row">
-                                        <div class="col-xs-12 col-sm-9 no-margin">
-                                            <a href="single-product.html">PowerShot Elph 115 16MP Digital Camera</a>
-                                            <div class="price">
-                                                <div class="price-prev">$2000</div>
-                                                <div class="price-current">$1873</div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xs-12 col-sm-3 no-margin">
-                                            <a href="#" class="thumb-holder">
-                                                <img alt="" src="assets/images/blank.gif"
-                                                     data-echo="assets/images/products/product-small-03.jpg"/>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div><!-- /.body -->
-                    </div> <!-- /.widget -->
-                    <!-- ============================================================= FEATURED PRODUCTS : END ============================================================= -->
-                </div><!-- /.col -->
-
-                <div class="col-xs-12 col-sm-4 ">
-                    <!-- ============================================================= ON SALE PRODUCTS ============================================================= -->
-                    <div class="widget">
-                        <h2>On-Sale Products</h2>
-                        <div class="body">
-                            <ul>
-                                <li>
-                                    <div class="row">
-                                        <div class="col-xs-12 col-sm-9 no-margin">
-                                            <a href="single-product.html">HP Scanner 2910P</a>
-                                            <div class="price">
-                                                <div class="price-prev">$2000</div>
-                                                <div class="price-current">$1873</div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xs-12 col-sm-3 no-margin">
-                                            <a href="#" class="thumb-holder">
-                                                <img alt="" src="assets/images/blank.gif"
-                                                     data-echo="assets/images/products/product-small-04.jpg"/>
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                </li>
-                                <li>
-                                    <div class="row">
-                                        <div class="col-xs-12 col-sm-9 no-margin">
-                                            <a href="single-product.html">Galaxy Tab 3 GT-P5210 16GB, Wi-Fi, 10.1in -
-                                                White</a>
-                                            <div class="price">
-                                                <div class="price-prev">$2000</div>
-                                                <div class="price-current">$1873</div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xs-12 col-sm-3 no-margin">
-                                            <a href="#" class="thumb-holder">
-                                                <img alt="" src="assets/images/blank.gif"
-                                                     data-echo="assets/images/products/product-small-05.jpg"/>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="row">
-                                        <div class="col-xs-12 col-sm-9 no-margin">
-                                            <a href="single-product.html">PowerShot Elph 115 16MP Digital Camera</a>
-                                            <div class="price">
-                                                <div class="price-prev">$2000</div>
-                                                <div class="price-current">$1873</div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xs-12 col-sm-3 no-margin">
-                                            <a href="#" class="thumb-holder">
-                                                <img alt="" src="assets/images/blank.gif"
-                                                     data-echo="assets/images/products/product-small-06.jpg"/>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div><!-- /.body -->
-                    </div> <!-- /.widget -->
-                    <!-- ============================================================= ON SALE PRODUCTS : END ============================================================= -->
-                </div><!-- /.col -->
-
-                <div class="col-xs-12 col-sm-4 ">
-                    <!-- ============================================================= TOP RATED PRODUCTS ============================================================= -->
-                    <div class="widget">
-                        <h2>Top Rated Products</h2>
-                        <div class="body">
-                            <ul>
-                                <li>
-                                    <div class="row">
-                                        <div class="col-xs-12 col-sm-9 no-margin">
-                                            <a href="single-product.html">Galaxy Tab GT-P5210, 10" 16GB Wi-Fi</a>
-                                            <div class="price">
-                                                <div class="price-prev">$2000</div>
-                                                <div class="price-current">$1873</div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xs-12 col-sm-3 no-margin">
-                                            <a href="#" class="thumb-holder">
-                                                <img alt="" src="assets/images/blank.gif"
-                                                     data-echo="assets/images/products/product-small-07.jpg"/>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="row">
-                                        <div class="col-xs-12 col-sm-9 no-margin">
-                                            <a href="single-product.html">PowerShot Elph 115 16MP Digital Camera</a>
-                                            <div class="price">
-                                                <div class="price-prev">$2000</div>
-                                                <div class="price-current">$1873</div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xs-12 col-sm-3 no-margin">
-                                            <a href="#" class="thumb-holder">
-                                                <img alt="" src="assets/images/blank.gif"
-                                                     data-echo="assets/images/products/product-small-08.jpg"/>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="row">
-                                        <div class="col-xs-12 col-sm-9 no-margin">
-                                            <a href="single-product.html">Surface RT 64GB, Wi-Fi, 10.6in - Dark
-                                                Titanium</a>
-                                            <div class="price">
-                                                <div class="price-prev">$2000</div>
-                                                <div class="price-current">$1873</div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xs-12 col-sm-3 no-margin">
-                                            <a href="#" class="thumb-holder">
-                                                <img alt="" src="assets/images/blank.gif"
-                                                     data-echo="assets/images/products/product-small-09.jpg"/>
-                                            </a>
-                                        </div>
-
-                                    </div>
-                                </li>
-                            </ul>
-                        </div><!-- /.body -->
-                    </div><!-- /.widget -->
-                    <!-- ============================================================= TOP RATED PRODUCTS : END ============================================================= -->
-                </div><!-- /.col -->
-
-            </div><!-- /.widgets-row-->
-        </div><!-- /.container -->
-
         <div class="sub-form-row">
             <div class="container">
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2 no-padding">

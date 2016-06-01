@@ -200,6 +200,32 @@
                 </form>
             </div><!-- /box-content -->
         </div>
+
+        <!-- /box -->
+        <div class="box">
+            <div class="headlines">
+                <h2><span>Change Email</span></h2>
+                <a href="#help" class="help"></a>
+            </div>
+            <div class="box-content">
+                <form class="formBox" method="post" action="/email/change">
+                    <fieldset>
+                        <div class="form-cols"><!-- two form cols -->
+                            <div class="col1">
+                                <div class="clearfix">
+                                    <div class="lab"><label for="input-one">Email <span>*</span></label></div>
+                                    <div class="con"><input type="email" class="input" value="" name="email" id="input-one" /></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn-submit"><!-- Submit form -->
+                            <input type="submit" value="Submit form" class="button" />
+                        </div>
+                    </fieldset>
+                </form>
+            </div><!-- /box-content -->
+        </div>
+        <!-- /box -->
     </div>
     <!-- /#content -->
     <!-- #sidebar -->

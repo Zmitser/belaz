@@ -264,7 +264,7 @@ a:hover.ico   { background-position: 0 0; }
 .filter .submit,
 .tab-action .submit { margin-top: 2px; padding: 3px 7px; color: #000; cursor: pointer; background: url(../images/bg-input-submit.gif) repeat-x 0 0; border: 1px solid #BBBBBB; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; }
 
-/* -- Filter -- */
+/* -- FilterProduct -- */
 .filter { display: none; padding: 0 20px 15px; margin: 0 0 10px; text-align: left; border-bottom: 1px solid #e3e3e3;  }
 .filter .input { padding: 4px 5px; margin: 0 10px 3px 0; border: 1px #dadada solid; background: url(../images/bg-input.gif) repeat-x; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; }
 

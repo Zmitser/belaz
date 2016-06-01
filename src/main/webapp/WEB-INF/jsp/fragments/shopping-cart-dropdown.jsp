@@ -13,7 +13,7 @@
         <div class="basket">
             <ul class="dropdown-menu">
                 <c:set value="0" var="s"/>
-                <c:forEach var="it" items="${sessionScope.cart}">
+                <c:forEach var="it" items="${sessionScope.cart}" varStatus="timer">
                     <c:set value="${s + it.quantity * it.truckMining.price}" var="s"/>
                     <li>
                         <div class="basket-item">
@@ -30,7 +30,7 @@
                                         $${it.quantity * it.truckMining.price}</div>
                                 </div>
                             </div>
-                            <a class="close-btn" href="#"></a>
+                            <a class="close-btn" href="/shopping-cart/remove/${timer.index}"></a>
                         </div>
                     </li>
                 </c:forEach>

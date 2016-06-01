@@ -1,13 +1,21 @@
-package by.eftech.webapp.utils;
+package by.eftech.webapp.model;
 
+import javax.persistence.*;
+import java.util.List;
 
-import by.eftech.webapp.model.TruckMining;
+@Entity
+@Table(name = "item")
+public class Item extends BaseEntity {
 
-public class Item {
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "truck_mining_id")
+    private TruckMining truckMining;
 
-    private TruckMining truckMining = new TruckMining();
-
+    @Column(name = "quantity")
     private Integer quantity;
+
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "items")
+    private List<Order> orders;
 
     public Item() {
     }
@@ -41,5 +49,17 @@ public class Item {
         this.quantity = quantity;
     }
 
+    public Item(Integer id, TruckMining truckMining, Integer quantity) {
+        super(id);
+        this.truckMining = truckMining;
+        this.quantity = quantity;
+    }
 
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
 }

@@ -149,7 +149,7 @@
                         </ul>
                         <div class="buttons-holder">
                             <a class="le-button big"
-                               href="http://localhost/~ibrahim/themeforest/HTML/mediacenter/upload/PHP/checkout">checkout</a>
+                               href="/order/checkout">checkout</a>
                             <a class="simple-link block"
                                href="http://localhost/~ibrahim/themeforest/HTML/mediacenter/upload/PHP/home">continue
                                 shopping</a>

@@ -2,7 +2,7 @@ package by.eftech.webapp.web;
 
 import by.eftech.webapp.model.TruckMining;
 import by.eftech.webapp.service.*;
-import by.eftech.webapp.utils.Filter;
+import by.eftech.webapp.utils.FilterProduct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -56,7 +56,7 @@ public class TruckMiningController {
         model.addAttribute("rearWheels", rearWheelsService.getAll());
         model.addAttribute("suspensions", suspensionService.getAll());
         model.addAttribute("transmissions", transmissionService.getAll());
-        model.addAttribute("filter", new Filter());
+        model.addAttribute("filter", new FilterProduct());
         return "category-grid";
     }
     @RequestMapping(value = "/category/filter", method = RequestMethod.GET)
@@ -73,7 +73,7 @@ public class TruckMiningController {
             @RequestParam(value = "rearWheel", required = false) List<Integer> rearWheels,
             @RequestParam(value = "parkingBrake", required = false) List<Integer> parkingBrake,
             @RequestParam(value = "auxiliary", required = false) List<Integer> auxiliary,
-            @ModelAttribute Filter filter,
+            @ModelAttribute FilterProduct filter,
             Model model) {
 
         model.addAttribute("list", truckMiningService.findTruckMiningFilteredList(

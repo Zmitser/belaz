@@ -2,7 +2,7 @@ package by.eftech.webapp.web;
 
 import by.eftech.webapp.model.TruckMining;
 import by.eftech.webapp.service.TruckMiningService;
-import by.eftech.webapp.utils.Filter;
+import by.eftech.webapp.utils.FilterProduct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,7 +24,7 @@ public class CompareController {
     private TruckMiningService service;
 
     @RequestMapping(value = "/compare-this/{id}", method = RequestMethod.GET)
-    public String putProductForCompare(@ModelAttribute Filter filter, @PathVariable("id")int id, HttpSession session, Model model) {
+    public String putProductForCompare(@ModelAttribute FilterProduct filter, @PathVariable("id")int id, HttpSession session, Model model) {
         if (session.getAttribute("compare") == null) {
             List<TruckMining> compare = new ArrayList<>();
             compare.add(service.get(id));

@@ -20,10 +20,7 @@ public class RootController {
 
 
 
-    @RequestMapping(value = "/checkout", method = RequestMethod.GET)
-    public String getCheckout() {
-        return "checkout";
-    }
+
 
 
     @RequestMapping(value = "/wishlist", method = RequestMethod.GET)

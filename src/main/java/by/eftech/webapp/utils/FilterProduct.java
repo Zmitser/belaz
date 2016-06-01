@@ -3,7 +3,7 @@ package by.eftech.webapp.utils;
 
 import java.util.List;
 
-public class Filter {
+public class FilterProduct {
 
     private List<Integer> manufacturer;
     private List<Integer> manufacturerCountry;
