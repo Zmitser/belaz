@@ -1,9 +1,17 @@
 package by.eftech.webapp.repository;
 
-import by.eftech.webapp.model.RearWheels;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.transaction.annotation.Transactional;
 
-@Transactional(readOnly = true)
-public interface RearWheelsRepository extends JpaRepository<RearWheels, Integer> {
+import by.eftech.webapp.model.RearWheels;
+
+import java.util.List;
+
+public interface RearWheelsRepository {
+
+    RearWheels save(RearWheels manufacturerCountry);
+
+    boolean delete(int id);
+
+    RearWheels get(int id);
+
+    List<RearWheels> getAll();
 }

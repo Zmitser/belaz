@@ -62,14 +62,14 @@ public class TruckMiningUtil {
         Manufacturer manufacturer = new Manufacturer(getStringCellValueFromExcel(sheet.getRow(1).getCell(1)));
         ManufacturerCountry manufacturerCountry = new ManufacturerCountry(getStringCellValueFromExcel(sheet.getRow(2).getCell(1)));
         String year = getStringCellValueFromExcel(sheet.getRow(3).getCell(1));
-        MachineCondition machineCondition = MachineCondition.valueOf(sheet.getRow(4).getCell(1).getStringCellValue().toUpperCase());
+        MachineCondition machineCondition = new MachineCondition(sheet.getRow(4).getCell(1).getStringCellValue().toUpperCase());
         MachineLocation machineLocation = new MachineLocation(getStringCellValueFromExcel(sheet.getRow(5).getCell(1)));
         Series series = new Series(getStringCellValueFromExcel(sheet.getRow(6).getCell(1)));
         Model model = new Model(getStringCellValueFromExcel(sheet.getRow(7).getCell(1)), series);
         int payloadCapacity = getIntCellValueFromExcel(sheet.getRow(8).getCell(1));
         Engine engine = new Engine(getStringCellValueFromExcel(sheet.getRow(9).getCell(1)));
         String power = getStringCellValueFromExcel(sheet.getRow(10).getCell(1));
-        int fuelRate = getIntCellValueFromExcel(sheet.getRow(11).getCell(1));
+        String fuelRate = getStringCellValueFromExcel(sheet.getRow(11).getCell(1));
         Transmission transmission = new Transmission(getStringCellValueFromExcel(sheet.getRow(12).getCell(1)));
         String torque = getStringCellValueFromExcel(sheet.getRow(13).getCell(1));
         Suspension suspension = new Suspension(getStringCellValueFromExcel(sheet.getRow(14).getCell(1)));
@@ -119,24 +119,11 @@ public class TruckMiningUtil {
         videos.add(video2);
         videos.add(video3);
         return new TruckMining(productId,
-                manufacturer,
-                manufacturerCountry,
                 year,
-                machineCondition,
-                machineLocation,
-                model,
                 payloadCapacity,
-                engine,
                 power,
                 fuelRate,
-                transmission,
                 torque,
-                suspension,
-                brakeType,
-                frontWheels,
-                rearWheels,
-                parkingBrake,
-                auxiliary,
                 turningRadius,
                 length,
                 width,
@@ -149,8 +136,22 @@ public class TruckMiningUtil {
                 advantages,
                 completeSet,
                 sold,
+                auxiliary,
+                brakeType,
+                engine,
+                frontWheels,
+                machineCondition,
+                machineLocation,
+                manufacturer,
+                manufacturerCountry,
+                model,
+                parkingBrake,
                 photos,
-                videos);
+                rearWheels,
+                suspension,
+                transmission,
+                videos
+                );
 
     }
 

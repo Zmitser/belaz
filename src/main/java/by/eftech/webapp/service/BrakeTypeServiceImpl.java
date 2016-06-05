@@ -26,7 +26,7 @@ public class BrakeTypeServiceImpl implements BrakeTypeService {
 
     @Override
     public BrakeType get(int id) {
-        return repository.findOne(id);
+        return repository.get(id);
     }
 
     @Override
@@ -36,6 +36,6 @@ public class BrakeTypeServiceImpl implements BrakeTypeService {
 
     @Override
     public List<BrakeType> getAll() {
-        return repository.findAll();
+        return repository.getAll();
     }
 }

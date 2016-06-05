@@ -10,6 +10,7 @@ import java.util.List;
 
 @Service
 public class EngineServiceImpl implements EngineService {
+
     @Autowired
     private EngineRepository repository;
 
@@ -26,7 +27,7 @@ public class EngineServiceImpl implements EngineService {
     @Override
     public Engine get(int id) {
 
-        return repository.findOne(id);
+        return repository.get(id);
     }
 
     @Override
@@ -36,6 +37,6 @@ public class EngineServiceImpl implements EngineService {
 
     @Override
     public List<Engine> getAll() {
-        return repository.findAll();
+        return repository.getAll();
     }
 }

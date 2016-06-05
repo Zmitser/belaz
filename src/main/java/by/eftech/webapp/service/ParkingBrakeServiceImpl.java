@@ -25,7 +25,7 @@ public class ParkingBrakeServiceImpl implements ParkingBrakeService {
 
     @Override
     public ParkingBrake get(int id) {
-        return repository.findOne(id);
+        return repository.get(id);
     }
 
     @Override
@@ -35,6 +35,6 @@ public class ParkingBrakeServiceImpl implements ParkingBrakeService {
 
     @Override
     public List<ParkingBrake> getAll() {
-        return repository.findAll();
+        return repository.getAll();
     }
 }

@@ -25,7 +25,7 @@ public class SeriesServiceImpl implements SeriesService {
 
     @Override
     public Series get(int id) {
-        return repository.findOne(id);
+        return repository.get(id);
     }
 
     @Override
@@ -35,6 +35,6 @@ public class SeriesServiceImpl implements SeriesService {
 
     @Override
     public List<Series> getAll() {
-        return repository.findAll();
+        return repository.getAll();
     }
 }

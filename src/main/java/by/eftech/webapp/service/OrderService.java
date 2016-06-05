@@ -1,19 +1,19 @@
 package by.eftech.webapp.service;
 
 
-import by.eftech.webapp.model.Order;
+import by.eftech.webapp.model.SellerOrder;
 
 import java.util.List;
 
 public interface OrderService {
 
-    Order save(Order item);
+    SellerOrder save(SellerOrder item);
 
     void delete(int id);
 
-    Order get(int id);
+    SellerOrder get(int id);
 
-    void update(Order order);
+    void update(SellerOrder order);
 
-    List<Order> getAll();
+    List<SellerOrder> getAll();
 }

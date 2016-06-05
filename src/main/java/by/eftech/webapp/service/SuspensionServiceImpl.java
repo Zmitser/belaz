@@ -25,7 +25,7 @@ public class SuspensionServiceImpl implements SuspensionService {
 
     @Override
     public Suspension get(int id) {
-        return repository.findOne(id);
+        return repository.get(id);
     }
 
     @Override
@@ -35,6 +35,6 @@ public class SuspensionServiceImpl implements SuspensionService {
 
     @Override
     public List<Suspension> getAll() {
-        return repository.findAll();
+        return repository.getAll();
     }
 }

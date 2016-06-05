@@ -1,8 +1,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
-<c:import url="fragments/head.jsp"/>
+<head>
+    <title><spring:message code="app.dump_trucks"/>: <spring:message code="app.compare"/></title>
+    <c:import url="fragments/head.jsp"/>
+</head>
 <c:set value="${sessionScope.compare}" var="compareList"/>
 <body>
 
@@ -102,7 +106,7 @@
                                 <div class="image-wrap">
                                     <a data-product_id="39" href="<c:url value="/compare/compare-list/remove/${loop.index}"/>" class="remove-link"><i class="fa fa-times-circle"></i></a>
                                     <img width="220" height="154" alt="Iconia W700" class="attachment-yith-woocompare-image"
-                                         src="<c:url value="/resources/assets/images/${item.photo[0].name}"/>">
+                                         src="<c:url value="/resources/assets/images/${item.photos[0].name}"/>">
                                 </div>
                                 <p><strong>${item.model.name}</strong></p>
                             </td>
@@ -125,19 +129,11 @@
                         <th>Manufacturer country</th>
                         <c:forEach items="${compareList}" var="item">
                             <td class="comparison-item-cell even product_34">
-                                <span class="amount">${item.country.name}</span>
+                                <span class="amount">${item.manufacturerCountry.name}</span>
                             </td>
                         </c:forEach>
                     </tr>
 
-                    <tr class="comparison-item price">
-                        <th>Manufacturer country</th>
-                        <c:forEach items="${compareList}" var="item">
-                            <td class="comparison-item-cell even product_34">
-                                <span class="amount">${item.country.name}</span>
-                            </td>
-                        </c:forEach>
-                    </tr>
 
                     <tr class="comparison-item price">
                         <th>Year</th>
@@ -154,7 +150,7 @@
                         <th>Machine Condition</th>
                         <c:forEach items="${compareList}" var="item">
                             <td class="comparison-item-cell even product_34">
-                                <span class="amount">${item.condition}</span>
+                                <span class="amount">${item.machineCondition.name}</span>
                             </td>
                         </c:forEach>
                     </tr>
@@ -164,7 +160,7 @@
                         <th>Machine location</th>
                         <c:forEach items="${compareList}" var="item">
                             <td class="comparison-item-cell even product_34">
-                                <span class="amount">${item.location.name}</span>
+                                <span class="amount">${item.machineLocation.name}</span>
                             </td>
                         </c:forEach>
                     </tr>

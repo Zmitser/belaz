@@ -25,7 +25,7 @@ public class PhotoServiceImpl implements PhotoService {
 
     @Override
     public Photo get(int id) {
-        return repository.findOne(id);
+        return repository.get(id);
     }
 
     @Override
@@ -35,6 +35,6 @@ public class PhotoServiceImpl implements PhotoService {
 
     @Override
     public List<Photo> getAll() {
-        return repository.findAll();
+        return repository.getAll();
     }
 }

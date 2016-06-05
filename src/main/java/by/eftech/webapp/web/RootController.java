@@ -20,14 +20,6 @@ public class RootController {
 
 
 
-
-
-
-    @RequestMapping(value = "/wishlist", method = RequestMethod.GET)
-    public String getWishlist() {
-        return "wishlist";
-    }
-
     @RequestMapping(value = "/error", method = RequestMethod.GET)
     public String getNotFound() {
         return "404";

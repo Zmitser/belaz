@@ -9,7 +9,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
-<c:import url="fragments/head.jsp"/>
+<head>
+    <title>Authetication</title>
+    <c:import url="fragments/head.jsp"/>
+</head>
 <body>
 
 <div class="wrapper">

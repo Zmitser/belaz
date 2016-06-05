@@ -1,7 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<head>
-    <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -9,8 +7,6 @@
     <meta name="author" content="">
     <meta name="keywords" content="MediaCenter, Template, eCommerce">
     <meta name="robots" content="all">
-    <title>MediaCenter - Responsive eCommerce Template</title>
-
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="<c:url value="/resources/assets/css/bootstrap.min.css"/>">
 
@@ -44,4 +40,3 @@
     <script src="/resources/assets/js/html5shiv.js"></script>
     <script src="/resources/assets/js/respond.min.js"></script>
     <![endif]-->
-</head>

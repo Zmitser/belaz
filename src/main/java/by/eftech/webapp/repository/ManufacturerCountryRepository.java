@@ -1,9 +1,16 @@
 package by.eftech.webapp.repository;
 
-import by.eftech.webapp.model.ManufacturerCountry;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.transaction.annotation.Transactional;
 
-@Transactional(readOnly = true)
-public interface ManufacturerCountryRepository extends JpaRepository<ManufacturerCountry, Integer> {
+import by.eftech.webapp.model.ManufacturerCountry;
+
+import java.util.List;
+
+public interface ManufacturerCountryRepository {
+    ManufacturerCountry save(ManufacturerCountry manufacturerCountry);
+
+    boolean delete(int id);
+
+    ManufacturerCountry get(int id);
+
+    List<ManufacturerCountry> getAll();
 }

@@ -2,10 +2,30 @@ package by.eftech.webapp.repository;
 
 
 import by.eftech.webapp.model.TruckMining;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.querydsl.QueryDslPredicateExecutor;
+
+import java.util.List;
+
+public interface TruckMiningRepository {
 
 
-public interface TruckMiningRepository extends JpaRepository<TruckMining, Integer>, QueryDslPredicateExecutor<TruckMining> {
+    TruckMining save(TruckMining truckMining);
 
+    boolean delete(int id);
+
+    TruckMining get(int id);
+
+    List<TruckMining> getAll();
+
+    Iterable<TruckMining> getFilteredList(List<Integer> manufacturer,
+                                          List<Integer> manufacturerCountry,
+                                          List<Integer> machineLocation,
+                                          List<Integer> series,
+                                          List<Integer> engine,
+                                          List<Integer> suspension,
+                                          List<Integer> transmission,
+                                          List<Integer> brakeType,
+                                          List<Integer> frontWheel,
+                                          List<Integer> rearWheel,
+                                          List<Integer> parkingBrake,
+                                          List<Integer> auxiliary);
 }

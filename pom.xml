@@ -45,7 +45,7 @@
     </properties>
 
     <build>
-        <finalName>timetable</finalName>
+        <finalName>belaz</finalName>
         <defaultGoal>package</defaultGoal>
         <plugins>
             <plugin>
@@ -66,6 +66,7 @@
                     <contextFile>src/main/resources/tomcat/context.xml</contextFile>
                     <systemProperties>
                         <file.encoding>UTF-8</file.encoding>
+                        <spring.profiles.active>jpa</spring.profiles.active>
                     </systemProperties>
                     <protocol>org.apache.coyote.http11.Http11NioProtocol</protocol>
                 </configuration>

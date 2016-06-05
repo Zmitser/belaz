@@ -27,7 +27,7 @@ public class ManufacturerCountryServiceImpl implements ManufacturerCountryServic
 
     @Override
     public ManufacturerCountry get(int id) {
-        return repository.findOne(id);
+        return repository.get(id);
     }
 
     @Override
@@ -37,6 +37,6 @@ public class ManufacturerCountryServiceImpl implements ManufacturerCountryServic
 
     @Override
     public List<ManufacturerCountry> getAll() {
-        return repository.findAll();
+        return repository.getAll();
     }
 }

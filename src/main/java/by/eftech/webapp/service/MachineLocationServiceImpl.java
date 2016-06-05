@@ -26,7 +26,7 @@ public class MachineLocationServiceImpl implements MachineLocationService {
 
     @Override
     public MachineLocation get(int id) {
-        return repository.findOne(id);
+        return repository.get(id);
     }
 
     @Override
@@ -36,6 +36,6 @@ public class MachineLocationServiceImpl implements MachineLocationService {
 
     @Override
     public List<MachineLocation> getAll() {
-        return repository.findAll();
+        return repository.getAll();
     }
 }

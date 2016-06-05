@@ -26,7 +26,7 @@ public class AuxiliaryServiceImpl implements AuxiliaryService {
 
     @Override
     public Auxiliary get(int id) {
-        return repository.findOne(id);
+        return repository.get(id);
     }
 
     @Override
@@ -36,6 +36,6 @@ public class AuxiliaryServiceImpl implements AuxiliaryService {
 
     @Override
     public List<Auxiliary> getAll() {
-        return repository.findAll();
+        return repository.getAll();
     }
 }

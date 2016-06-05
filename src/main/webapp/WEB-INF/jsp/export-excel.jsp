@@ -106,9 +106,9 @@
                     <tr>
                         <td><a href="#">${truck.model.name}</a></td>
                         <td>${truck.manufacturer.name}</td>
-                        <td>${truck.country.name}</td>
-                        <td>${truck.condition}</td>
-                        <td>${truck.location.name}</td>
+                        <td>${truck.manufacturerCountry.name}</td>
+                        <td>${truck.machineCondition.name}</td>
+                        <td>${truck.machineLocation.name}</td>
                         <td>${truck.payloadCapacity}</td>
                         <td>${truck.engine.name}</td>
                         <td class="action">

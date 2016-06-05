@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: Dimka
@@ -6,14 +7,19 @@
   Time: 20:21
   To change this template use File | Settings | File Templates.
 --%>
+<c:set var="item" value="${item}" scope="session"/>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
-<c:import url="fragments/head.jsp"/>
+<head>
+    <title>${item.model.name}</title>
+    <c:import url="fragments/head.jsp"/>
+</head>
+
 <body>
 
 <div class="wrapper">
-    <c:set var="item" value="${item}" scope="session"/>
+
 
     <!-- ============================================================= TOP NAVIGATION ============================================================= -->
     <c:import url="fragments/top-navigation.jsp"/>
@@ -60,51 +66,50 @@
                                     shop by department
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Computer Cases &amp; Accessories</a></li>
-                                    <li><a href="#">CPUs, Processors</a></li>
-                                    <li><a href="#">Fans, Heatsinks &amp; Cooling</a></li>
-                                    <li><a href="#">Graphics, Video Cards</a></li>
-                                    <li><a href="#">Interface, Add-On Cards</a></li>
-                                    <li><a href="#">Laptop Replacement Parts</a></li>
-                                    <li><a href="#">Memory (RAM)</a></li>
-                                    <li><a href="#">Motherboards</a></li>
-                                    <li><a href="#">Motherboard &amp; CPU Combos</a></li>
-                                    <li><a href="#">Motherboard Components</a></li>
-                                </ul>
-                            </li><!-- /.breadcrumb-item -->
-
-                            <li class="dropdown breadcrumb-item">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">laptops &amp; computers </a>
-                                <ul class="dropdown-menu">
                                     <li>
-                                        <a href="#">PDA</a>
-                                        <a href="#">accesories</a>
-                                        <a href="#">tablets</a>
-                                        <a href="#">games</a>
-                                        <a href="#">consoles</a>
+                                        <a href="/category"><spring:message code="app.dump_trucks"/></a>
+                                    </li>
+                                    <li>
+                                        <a href="http://themeforest.net/item/media-center-electronic-ecommerce-html-template/8178892?ref=shaikrilwan"><spring:message
+                                                code="app.trucks_with_enchanced_capacity"/> </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://themeforest.net/item/media-center-electronic-ecommerce-html-template/8178892?ref=shaikrilwan"><spring:message
+                                                code="app.construction_and_road_building"/></a>
+                                    </li>
+                                    <li>
+                                        <a href="http://themeforest.net/item/media-center-electronic-ecommerce-html-template/8178892?ref=shaikrilwan"><spring:message
+                                                code="app.vehicles_for_mine_servicing_works"/></a>
+                                    </li>
+                                    <li>
+                                        <a href="http://themeforest.net/item/media-center-electronic-ecommerce-html-template/8178892?ref=shaikrilwan"><spring:message
+                                                code="app.underground_vehicles"/></a>
+                                    </li>
+                                    <li>
+                                        <a href="http://themeforest.net/item/media-center-electronic-ecommerce-html-template/8178892?ref=shaikrilwan"><spring:message
+                                                code="app.vehicles_for_metallurgical_works"/></a>
+                                    </li>
+                                    <li>
+                                        <a href="http://themeforest.net/item/media-center-electronic-ecommerce-html-template/8178892?ref=shaikrilwan"><spring:message
+                                                code="app.special_purpose_vehicles"/></a>
+                                    </li>
+                                    <li>
+                                        <a href="http://themeforest.net/item/media-center-electronic-ecommerce-html-template/8178892?ref=shaikrilwan"><spring:message
+                                                code="app.railway_freight_cars"/></a>
+                                    </li>
+                                    <li>
+                                        <a href="http://themeforest.net/item/media-center-electronic-ecommerce-html-template/8178892?ref=shaikrilwan"><spring:message
+                                                code="app.garage_equipment_catalog"/></a>
                                     </li>
                                 </ul>
-                            </li><!-- /.breadcrumb-item -->
-
-                            <li class="dropdown breadcrumb-item">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">desktop PC </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="#">PDA</a>
-                                        <a href="#">accesories</a>
-                                        <a href="#">tablets</a>
-                                        <a href="#">games</a>
-                                        <a href="#">consoles</a>
-                                    </li>
-                                </ul>
-                            </li><!-- /.breadcrumb-item -->
+                            </li>
 
                             <li class="breadcrumb-item">
-                                <a href="#">gaming</a>
+                                <a href="/category"><spring:message code="app.dump_trucks"/></a>
                             </li><!-- /.breadcrumb-item -->
 
                             <li class="breadcrumb-item current">
-                                <a href="#">VAIO Fit Laptop - Windows</a>
+                                <a href="#">${item.model.name}</a>
                             </li><!-- /.breadcrumb-item -->
                         </ul><!-- /.breadcrumb-nav-holder -->
                     </div>
@@ -121,7 +126,7 @@
                 <div class="product-item-holder size-big single-product-gallery small-gallery">
 
                     <div id="owl-single-product">
-                        <c:forEach items="${item.photo}" var="photo" varStatus="loop">
+                        <c:forEach items="${item.photos}" var="photo" varStatus="loop">
                             <div class="single-product-gallery-item" id="slide${loop.index}">
                                 <a data-rel="prettyphoto" href="<c:url value="/resources/assets/images/${photo.name}"/>">
                                     <img class="img-responsive" alt="" src="<c:url value="/resources/assets/images/${photo.name}"/>"/>
@@ -135,7 +140,7 @@
                     <div class="single-product-gallery-thumbs gallery-thumbs">
 
                         <div id="owl-single-product-thumbnails">
-                            <c:forEach items="${item.photo}" var="photo" varStatus="loop">
+                            <c:forEach items="${item.photos}" var="photo" varStatus="loop">
                                 <a class="horizontal-thumb active" data-target="#owl-single-product" data-slide="${loop.index}"
                                    href="#slide${loop.index}">
                                     <img width="67" alt="" src="<c:url value="/resources/assets/images/${photo.name}"/>"/>
@@ -171,8 +176,7 @@
                     </div>
 
                     <div class="buttons-holder">
-                        <a class="btn-add-to-wishlist" href="#">Добавить в избранные</a>
-                        <a class="btn-add-to-compare" href="#">Добавить для сравнения</a>
+                        <a class="btn-add-to-compare" href="#"><spring:message code="app.add_compare"/></a>
                     </div>
 
                     <div class="excerpt">
@@ -184,14 +188,7 @@
                     </div>
 
                     <div class="qnt-holder">
-                        <div class="le-quantity">
-                            <form>
-                                <a class="minus" href="#reduce"></a>
-                                <input name="quantity" readonly="readonly" type="text" value="1"/>
-                                <a class="plus" href="#add"></a>
-                            </form>
-                        </div>
-                        <a id="addto-cart" href="cart.html" class="le-button huge">add to cart</a>
+                        <a id="addto-cart" href="<c:url value="/shopping-cart/order-now/${item.id}"/>" class="le-button huge"><spring:message code="app.add_cart"/></a>
                     </div><!-- /.qnt-holder -->
                 </div><!-- /.body -->
 
@@ -335,251 +332,7 @@
         </div><!-- /.container -->
     </section><!-- /#single-product-tab -->
     <!-- ========================================= SINGLE PRODUCT TAB : END ========================================= -->
-    <!-- ========================================= RECENTLY VIEWED ========================================= -->
-    <section id="recently-reviewd" class="wow fadeInUp">
-        <div class="container">
-            <div class="carousel-holder hover">
 
-                <div class="title-nav">
-                    <h2 class="h1">Recently Viewed</h2>
-                    <div class="nav-holder">
-                        <a href="#prev" data-target="#owl-recently-viewed"
-                           class="slider-prev btn-prev fa fa-angle-left"></a>
-                        <a href="#next" data-target="#owl-recently-viewed"
-                           class="slider-next btn-next fa fa-angle-right"></a>
-                    </div>
-                </div><!-- /.title-nav -->
-
-                <div id="owl-recently-viewed" class="owl-carousel product-grid-holder">
-                    <div class="no-margin carousel-item product-item-holder size-small hover">
-                        <div class="product-item">
-                            <div class="ribbon red"><span>sale</span></div>
-                            <div class="image">
-                                <img alt="" src="assets/images/blank.gif"
-                                     data-echo="assets/images/products/product-11.jpg"/>
-                            </div>
-                            <div class="body">
-                                <div class="title">
-                                    <a href="single-product.html">LC-70UD1U 70" class aquos 4K ultra HD</a>
-                                </div>
-                                <div class="brand">Sharp</div>
-                            </div>
-                            <div class="prices">
-                                <div class="price-current text-right">$1199.00</div>
-                            </div>
-                            <div class="hover-area">
-                                <div class="add-cart-button">
-                                    <a href="single-product.html" class="le-button">Add to Cart</a>
-                                </div>
-                                <div class="wish-compare">
-                                    <a class="btn-add-to-wishlist" href="#">Add to Wishlist</a>
-                                    <a class="btn-add-to-compare" href="#">Compare</a>
-                                </div>
-                            </div>
-                        </div><!-- /.product-item -->
-                    </div><!-- /.product-item-holder -->
-
-                    <div class="no-margin carousel-item product-item-holder size-small hover">
-                        <div class="product-item">
-                            <div class="ribbon blue"><span>new!</span></div>
-                            <div class="image">
-                                <img alt="" src="assets/images/blank.gif"
-                                     data-echo="assets/images/products/product-12.jpg"/>
-                            </div>
-                            <div class="body">
-                                <div class="title">
-                                    <a href="single-product.html">cinemizer OLED 3D virtual reality TV Video</a>
-                                </div>
-                                <div class="brand">zeiss</div>
-                            </div>
-                            <div class="prices">
-                                <div class="price-current text-right">$1199.00</div>
-                            </div>
-                            <div class="hover-area">
-                                <div class="add-cart-button">
-                                    <a href="single-product.html" class="le-button">Add to cart</a>
-                                </div>
-                                <div class="wish-compare">
-                                    <a class="btn-add-to-wishlist" href="#">Add to Wishlist</a>
-                                    <a class="btn-add-to-compare" href="#">Compare</a>
-                                </div>
-                            </div>
-                        </div><!-- /.product-item -->
-                    </div><!-- /.product-item-holder -->
-
-                    <div class=" no-margin carousel-item product-item-holder size-small hover">
-                        <div class="product-item">
-
-                            <div class="image">
-                                <img alt="" src="assets/images/blank.gif"
-                                     data-echo="assets/images/products/product-13.jpg"/>
-                            </div>
-                            <div class="body">
-                                <div class="title">
-                                    <a href="single-product.html">s2340T23" full HD multi-Touch Monitor</a>
-                                </div>
-                                <div class="brand">dell</div>
-                            </div>
-                            <div class="prices">
-                                <div class="price-current text-right">$1199.00</div>
-                            </div>
-                            <div class="hover-area">
-                                <div class="add-cart-button">
-                                    <a href="single-product.html" class="le-button">Add to cart</a>
-                                </div>
-                                <div class="wish-compare">
-                                    <a class="btn-add-to-wishlist" href="#">Add to Wishlist</a>
-                                    <a class="btn-add-to-compare" href="#">Compare</a>
-                                </div>
-                            </div>
-                        </div><!-- /.product-item -->
-                    </div><!-- /.product-item-holder -->
-
-                    <div class=" no-margin carousel-item product-item-holder size-small hover">
-                        <div class="product-item">
-                            <div class="ribbon blue"><span>new!</span></div>
-                            <div class="image">
-                                <img alt="" src="assets/images/blank.gif"
-                                     data-echo="assets/images/products/product-14.jpg"/>
-                            </div>
-                            <div class="body">
-                                <div class="title">
-                                    <a href="single-product.html">kardon BDS 7772/120 integrated 3D</a>
-                                </div>
-                                <div class="brand">harman</div>
-                            </div>
-                            <div class="prices">
-                                <div class="price-current text-right">$1199.00</div>
-                            </div>
-                            <div class="hover-area">
-                                <div class="add-cart-button">
-                                    <a href="single-product.html" class="le-button">Add to cart</a>
-                                </div>
-                                <div class="wish-compare">
-                                    <a class="btn-add-to-wishlist" href="#">Add to Wishlist</a>
-                                    <a class="btn-add-to-compare" href="#">Compare</a>
-                                </div>
-                            </div>
-                        </div><!-- /.product-item -->
-                    </div><!-- /.product-item-holder -->
-
-                    <div class=" no-margin carousel-item product-item-holder size-small hover">
-                        <div class="product-item">
-                            <div class="ribbon green"><span>bestseller</span></div>
-                            <div class="image">
-                                <img alt="" src="assets/images/blank.gif"
-                                     data-echo="assets/images/products/product-15.jpg"/>
-                            </div>
-                            <div class="body">
-                                <div class="title">
-                                    <a href="single-product.html">netbook acer travel B113-E-10072</a>
-                                </div>
-                                <div class="brand">acer</div>
-                            </div>
-                            <div class="prices">
-                                <div class="price-current text-right">$1199.00</div>
-                            </div>
-                            <div class="hover-area">
-                                <div class="add-cart-button">
-                                    <a href="single-product.html" class="le-button">Add to cart</a>
-                                </div>
-                                <div class="wish-compare">
-                                    <a class="btn-add-to-wishlist" href="#">Add to Wishlist</a>
-                                    <a class="btn-add-to-compare" href="#">Compare</a>
-                                </div>
-                            </div>
-                        </div><!-- /.product-item -->
-                    </div><!-- /.product-item-holder -->
-
-                    <div class=" no-margin carousel-item product-item-holder size-small hover">
-                        <div class="product-item">
-
-                            <div class="image">
-                                <img alt="" src="assets/images/blank.gif"
-                                     data-echo="assets/images/products/product-16.jpg"/>
-                            </div>
-                            <div class="body">
-                                <div class="title">
-                                    <a href="single-product.html">iPod touch 5th generation,64GB, blue</a>
-                                </div>
-                                <div class="brand">apple</div>
-                            </div>
-                            <div class="prices">
-                                <div class="price-current text-right">$1199.00</div>
-                            </div>
-                            <div class="hover-area">
-                                <div class="add-cart-button">
-                                    <a href="single-product.html" class="le-button">Add to cart</a>
-                                </div>
-                                <div class="wish-compare">
-                                    <a class="btn-add-to-wishlist" href="#">Add to Wishlist</a>
-                                    <a class="btn-add-to-compare" href="#">Compare</a>
-                                </div>
-                            </div>
-                        </div><!-- /.product-item -->
-                    </div><!-- /.product-item-holder -->
-
-                    <div class=" no-margin carousel-item product-item-holder size-small hover">
-                        <div class="product-item">
-
-                            <div class="image">
-                                <img alt="" src="assets/images/blank.gif"
-                                     data-echo="assets/images/products/product-13.jpg"/>
-                            </div>
-                            <div class="body">
-                                <div class="title">
-                                    <a href="single-product.html">s2340T23" full HD multi-Touch Monitor</a>
-                                </div>
-                                <div class="brand">dell</div>
-                            </div>
-                            <div class="prices">
-                                <div class="price-current text-right">$1199.00</div>
-                            </div>
-                            <div class="hover-area">
-                                <div class="add-cart-button">
-                                    <a href="single-product.html" class="le-button">Add to cart</a>
-                                </div>
-                                <div class="wish-compare">
-                                    <a class="btn-add-to-wishlist" href="#">Add to Wishlist</a>
-                                    <a class="btn-add-to-compare" href="#">Compare</a>
-                                </div>
-                            </div>
-                        </div><!-- /.product-item -->
-                    </div><!-- /.product-item-holder -->
-
-                    <div class=" no-margin carousel-item product-item-holder size-small hover">
-                        <div class="product-item">
-                            <div class="ribbon blue"><span>new!</span></div>
-                            <div class="image">
-                                <img alt="" src="assets/images/blank.gif"
-                                     data-echo="assets/images/products/product-14.jpg"/>
-                            </div>
-                            <div class="body">
-                                <div class="title">
-                                    <a href="single-product.html">kardon BDS 7772/120 integrated 3D</a>
-                                </div>
-                                <div class="brand">harman</div>
-                            </div>
-                            <div class="prices">
-                                <div class="price-current text-right">$1199.00</div>
-                            </div>
-                            <div class="hover-area">
-                                <div class="add-cart-button">
-                                    <a href="single-product.html" class="le-button">Add to cart</a>
-                                </div>
-                                <div class="wish-compare">
-                                    <a class="btn-add-to-wishlist" href="#">Add to Wishlist</a>
-                                    <a class="btn-add-to-compare" href="#">Compare</a>
-                                </div>
-                            </div>
-                        </div><!-- /.product-item -->
-                    </div><!-- /.product-item-holder -->
-                </div><!-- /#recently-carousel -->
-
-            </div><!-- /.carousel-holder -->
-        </div><!-- /.container -->
-    </section><!-- /#recently-reviewd -->
-    <!-- ========================================= RECENTLY VIEWED : END ========================================= -->
     <!-- ============================================================= FOOTER ============================================================= -->
     <c:import url="fragments/footer.jsp"/>
     <!-- ============================================================= FOOTER : END ============================================================= -->

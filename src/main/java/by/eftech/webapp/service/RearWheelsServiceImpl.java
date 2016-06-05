@@ -25,7 +25,7 @@ public class RearWheelsServiceImpl implements RearWheelsService {
 
     @Override
     public RearWheels get(int id) {
-        return repository.findOne(id);
+        return repository.get(id);
     }
 
     @Override
@@ -35,6 +35,6 @@ public class RearWheelsServiceImpl implements RearWheelsService {
 
     @Override
     public List<RearWheels> getAll() {
-        return repository.findAll();
+        return repository.getAll();
     }
 }

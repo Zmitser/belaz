@@ -26,7 +26,7 @@ public class ModelServiceImpl implements ModelService {
 
     @Override
     public Model get(int id) {
-        return repository.findOne(id);
+        return repository.get(id);
     }
 
     @Override
@@ -36,6 +36,6 @@ public class ModelServiceImpl implements ModelService {
 
     @Override
     public List<Model> getAll() {
-        return repository.findAll();
+        return repository.getAll();
     }
 }

@@ -2,9 +2,16 @@ package by.eftech.webapp.repository;
 
 
 import by.eftech.webapp.model.Photo;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.transaction.annotation.Transactional;
 
-@Transactional(readOnly = true)
-public interface PhotoRepository extends JpaRepository<Photo, Integer> {
+import java.util.List;
+
+public interface PhotoRepository {
+
+    Photo save(Photo photo);
+
+    boolean delete(int id);
+
+    Photo get(int id);
+
+    List<Photo> getAll();
 }

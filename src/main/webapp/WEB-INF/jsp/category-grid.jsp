@@ -1,10 +1,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
-<c:import url="fragments/head.jsp"/>
+<head>
+    <title><spring:message code="app.dump_trucks"/></title>
+    <c:import url="fragments/head.jsp"/>
+</head>
 <body>
 <div class="wrapper">
     <!-- ============================================================= TOP NAVIGATION ============================================================= -->
@@ -50,50 +54,50 @@
                                     shop by department
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Computer Cases &amp; Accessories</a></li>
-                                    <li><a href="#">CPUs, Processors</a></li>
-                                    <li><a href="#">Fans, Heatsinks &amp; Cooling</a></li>
-                                    <li><a href="#">Graphics, Video Cards</a></li>
-                                    <li><a href="#">Interface, Add-On Cards</a></li>
-                                    <li><a href="#">Laptop Replacement Parts</a></li>
-                                    <li><a href="#">Memory (RAM)</a></li>
-                                    <li><a href="#">Motherboards</a></li>
-                                    <li><a href="#">Motherboard &amp; CPU Combos</a></li>
-                                    <li><a href="#">Motherboard Components</a></li>
+                                    <li>
+                                        <a href="/category"><spring:message code="app.dump_trucks"/></a>
+                                    </li>
+                                    <li>
+                                        <a href="http://themeforest.net/item/media-center-electronic-ecommerce-html-template/8178892?ref=shaikrilwan"><spring:message
+                                                code="app.trucks_with_enchanced_capacity"/> </a>
+                                    </li>
+                                    <li>
+                                        <a href="http://themeforest.net/item/media-center-electronic-ecommerce-html-template/8178892?ref=shaikrilwan"><spring:message
+                                                code="app.construction_and_road_building"/></a>
+                                    </li>
+                                    <li>
+                                        <a href="http://themeforest.net/item/media-center-electronic-ecommerce-html-template/8178892?ref=shaikrilwan"><spring:message
+                                                code="app.vehicles_for_mine_servicing_works"/></a>
+                                    </li>
+                                    <li>
+                                        <a href="http://themeforest.net/item/media-center-electronic-ecommerce-html-template/8178892?ref=shaikrilwan"><spring:message
+                                                code="app.underground_vehicles"/></a>
+                                    </li>
+                                    <li>
+                                        <a href="http://themeforest.net/item/media-center-electronic-ecommerce-html-template/8178892?ref=shaikrilwan"><spring:message
+                                                code="app.vehicles_for_metallurgical_works"/></a>
+                                    </li>
+                                    <li>
+                                        <a href="http://themeforest.net/item/media-center-electronic-ecommerce-html-template/8178892?ref=shaikrilwan"><spring:message
+                                                code="app.special_purpose_vehicles"/></a>
+                                    </li>
+                                    <li>
+                                        <a href="http://themeforest.net/item/media-center-electronic-ecommerce-html-template/8178892?ref=shaikrilwan"><spring:message
+                                                code="app.railway_freight_cars"/></a>
+                                    </li>
+                                    <li>
+                                        <a href="http://themeforest.net/item/media-center-electronic-ecommerce-html-template/8178892?ref=shaikrilwan"><spring:message
+                                                code="app.garage_equipment_catalog"/></a>
+                                    </li>
                                 </ul>
                             </li>
-                            <li class="dropdown breadcrumb-item">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">laptops &amp; computers </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="#">PDA</a>
-                                        <a href="#">accesories</a>
-                                        <a href="#">tablets</a>
-                                        <a href="#">games</a>
-                                        <a href="#">consoles</a>
-                                    </li>
-                                </ul>
-                            </li><!-- /.breadcrumb-item -->
-
-                            <li class="dropdown breadcrumb-item">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Desktop PC </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="#">PDA</a>
-                                        <a href="#">accesories</a>
-                                        <a href="#">tablets</a>
-                                        <a href="#">games</a>
-                                        <a href="#">consoles</a>
-                                    </li>
-                                </ul>
-                            </li><!-- /.breadcrumb-item -->
 
                             <li class="breadcrumb-item">
-                                <a href="#">Gaming</a>
+                                <a href="/">Home</a>
                             </li><!-- /.breadcrumb-item -->
 
                             <li class="breadcrumb-item current">
-                                <a href="#">VAIO Fit Laptop - Windows</a>
+                                <a href="/category"><spring:message code="app.dump_trucks"/></a>
                             </li><!-- /.breadcrumb-item -->
                         </ul><!-- /.breadcrumb-nav-holder -->
                     </div>
@@ -113,7 +117,7 @@
                     <div class="body bordered">
                         <form:form role="form" commandName="filter" id="filter" action="/category/filter" method="get">
                             <div class="category-filter">
-                                <h2>Manufacturer</h2>
+                                <h2><spring:message code="app.manufacturer"/></h2>
                                 <hr>
                                 <ul>
                                     <c:forEach items="${manufacturers}" var="manufacturer">
@@ -125,7 +129,7 @@
                             </div><!-- /.category-filter -->
 
                             <div class="category-filter">
-                                <h2>Manufacturer Country</h2>
+                                <h2><spring:message code="app.manufacturer_country"/></h2>
                                 <hr>
                                 <ul>
                                     <c:forEach items="${manufacturerCountries}" var="manufacturerCountry">
@@ -138,7 +142,7 @@
                                 <!-- /.category-filter -->
                             </div>
                             <div class="category-filter">
-                                <h2>Machine Location</h2>
+                                <h2><spring:message code="app.machine_location"/></h2>
                                 <hr>
                                 <ul>
                                     <c:forEach items="${machineLocations}" var="machineLocation">
@@ -149,7 +153,7 @@
                                 </ul>
                             </div><!-- /.category-filter -->
                             <div class="category-filter">
-                                <h2>Series</h2>
+                                <h2><spring:message code="app.series"/></h2>
                                 <hr>
                                 <ul>
                                     <c:forEach items="${serie}" var="serie">
@@ -161,7 +165,7 @@
                             </div><!-- /.category-filter -->
 
                             <div class="category-filter">
-                                <h2>Engines</h2>
+                                <h2><spring:message code="app.engine"/></h2>
                                 <hr>
                                 <ul class="front-wheels">
                                     <c:forEach items="${engines}" var="engine">
@@ -173,7 +177,7 @@
                             </div><!-- /.category-filter -->
 
                             <div class="category-filter">
-                                <h2>Suspensions</h2>
+                                <h2><spring:message code="app.suspension"/></h2>
                                 <hr>
                                 <ul class="front-wheels">
                                     <c:forEach items="${suspensions}" var="suspension">
@@ -185,7 +189,7 @@
                             </div><!-- /.category-filter -->
 
                             <div class="category-filter">
-                                <h2>Transmissions</h2>
+                                <h2><spring:message code="app.transmission"/></h2>
                                 <hr>
                                 <ul class="front-wheels">
                                     <c:forEach items="${transmissions}" var="transmission">
@@ -197,7 +201,7 @@
                             </div><!-- /.category-filter -->
 
                             <div class="category-filter">
-                                <h2>Brakes Type</h2>
+                                <h2><spring:message code="app.brakes_type"/></h2>
                                 <hr>
                                 <ul class="front-wheels">
                                     <c:forEach items="${brakeTypes}" var="brakeType">
@@ -208,7 +212,7 @@
                                 </ul>
                             </div><!-- /.category-filter -->
                             <div class="category-filter">
-                                <h2>Front Wheels</h2>
+                                <h2><spring:message code="app.front_wheels"/></h2>
                                 <hr>
                                 <ul class="front-wheels">
                                     <c:forEach items="${frontWheels}" var="frontWheel">
@@ -220,10 +224,10 @@
                             </div><!-- /.category-filter -->
 
                             <div class="category-filter">
-                                <h2>Rear Wheels</h2>
+                                <h2><spring:message code="app.rear_wheels"/></h2>
                                 <hr>
                                 <ul class="front-wheels">
-                                    <c:forEach items="${rearWheel}" var="rearWheel">
+                                    <c:forEach items="${rearWheels}" var="rearWheel">
                                         <li><form:checkbox class="le-checkbox"  name="rearWheel"
                                                    value="${rearWheel.id}" path="rearWheel"/> <label>${rearWheel.name}</label>
                                             <span class="pull-right"></span></li>
@@ -232,7 +236,7 @@
                             </div><!-- /.category-filter -->
 
                             <div class="category-filter">
-                                <h2>Parking Brakes</h2>
+                                <h2><spring:message code="app.parking_brake"/></h2>
                                 <hr>
                                 <ul class="front-wheels">
                                     <c:forEach items="${parkingBrakes}" var="parkingBrake">
@@ -244,7 +248,7 @@
                             </div><!-- /.category-filter -->
 
                             <div class="category-filter">
-                                <h2>Auxiliaries</h2>
+                                <h2><spring:message code="app.auxiliaries"/></h2>
                                 <hr>
                                 <%--<ul class="front-wheels">--%>
                                 <ul class="front-wheels">
@@ -270,7 +274,7 @@
 
                 <section id="gaming">
                     <div class="grid-list-products">
-                        <h2 class="section-title">Dump Trucks</h2>
+                        <h2 class="section-title"><spring:message code="app.dump_trucks"/></h2>
 
                         <div class="control-bar">
                             <div class="grid-list-buttons">
@@ -295,7 +299,7 @@
                                                     <div class="image">
                                                         <a href="<c:url value="/single-product/${item.id}"/>">
                                                             <img width="246" height="186" alt="${item.model.name}"
-                                                                 src="<c:url value="/resources/assets/images/${item.photo[0].name}"/>">
+                                                                 src="<c:url value="/resources/assets/images/${item.photos[0].name}"/>">
                                                         </a>
                                                     </div>
                                                     <div class="body">
@@ -313,9 +317,7 @@
                                                                 cart</a>
                                                         </div>
                                                         <div class="wish-compare">
-                                                            <a class="btn-add-to-wishlist" href="#">Добавить в
-                                                                избранные</a>
-                                                            <a class="btn-add-to-compare" href="<c:url value="/compare/compare-this/${item.id}"/>">Сравнить</a>
+                                                            <a class="btn-add-to-compare" href="<c:url value="/compare/compare-this/${item.id}"/>"><spring:message code="app.compare"/></a>
                                                         </div>
                                                     </div>
                                                 </div><!-- /.product-item -->
@@ -339,7 +341,7 @@
                                                     <div class="image">
                                                         <a href="<c:url value="/single-product/${item.id}"/>">
                                                             <img width="246" height="186" alt="${item.model.name}"
-                                                                 src="<c:url value="/resources/assets/images/${item.photo[0].name}"/>">
+                                                                 src="<c:url value="/resources/assets/images/${item.photos[0].name}"/>">
                                                         </a>
                                                     </div>
                                                 </div><!-- /.image-holder -->
@@ -353,17 +355,14 @@
                                                             <p>${item.application}</p>
                                                         </div>
                                                         <div class="addto-compare">
-                                                            <a class="btn-add-to-compare" href="<c:url value="/compare/compare-this/${item.id}"/>">add to compare
-                                                                list</a>
+                                                            <a class="btn-add-to-compare" href="<c:url value="/compare/compare-this/${item.id}"/>"><spring:message code="app.add_compare"/></a>
                                                         </div>
                                                     </div>
                                                 </div><!-- /.body-holder -->
                                                 <div class="no-margin col-xs-12 col-sm-3 price-area">
                                                     <div class="right-clmn">
-                                                        <div class="price-current">${item.price}</div>
-                                                        <a href="<c:url value="/shopping-cart/order-now/${item.id}"/>" class="le-button">add to
-                                                            cart</a>
-                                                        <a class="btn-add-to-wishlist" href="#">add to wishlist</a>
+                                                        <div class="price-current">$${item.price}</div>
+                                                        <a href="<c:url value="/shopping-cart/order-now/${item.id}"/>" class="le-button"><spring:message code="app.add_cart"/></a>
                                                     </div>
                                                 </div><!-- /.price-area -->
                                             </div><!-- /.row -->

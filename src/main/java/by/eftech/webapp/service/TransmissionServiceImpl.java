@@ -25,7 +25,7 @@ public class TransmissionServiceImpl implements TransmissionService {
 
     @Override
     public Transmission get(int id) {
-        return repository.findOne(id);
+        return repository.get(id);
     }
 
     @Override
@@ -35,6 +35,6 @@ repository.save(transmission);
 
     @Override
     public List<Transmission> getAll() {
-        return repository.findAll();
+        return repository.getAll();
     }
 }

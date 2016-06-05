@@ -1,11 +1,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <c:set value="${sessionScope.compare}" var="compareList"/>
 <div class="col-xs-12 col-sm-12 col-md-3 top-cart-row no-margin">
 <div class="top-cart-row-container">
     <div class="wishlist-compare-holder">
         <div class="compare">
-            <a href="/compare/compare-list"><i class="fa fa-exchange"></i> Сравнить <span
+            <a href="/compare/compare-list"><i class="fa fa-exchange"></i><spring:message code="app.compare"/><span
                     class="value">(${compareList.size()})</span> </a>
         </div>
     </div>

@@ -2,10 +2,17 @@ package by.eftech.webapp.repository;
 
 
 import by.eftech.webapp.model.Auxiliary;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 
-@Transactional(readOnly = true)
-public interface AuxiliaryRepository extends JpaRepository<Auxiliary, Integer> {
+public interface AuxiliaryRepository {
+
+    Auxiliary save(Auxiliary auxiliary);
+
+    boolean delete(int id);
+
+    Auxiliary get(int id);
+
+    List<Auxiliary> getAll();
+
 }

@@ -2,9 +2,16 @@ package by.eftech.webapp.repository;
 
 
 import by.eftech.webapp.model.Suspension;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.transaction.annotation.Transactional;
 
-@Transactional(readOnly = true)
-public interface SuspensionRepository extends JpaRepository<Suspension, Integer>{
+import java.util.List;
+
+public interface SuspensionRepository {
+
+    Suspension save(Suspension suspension);
+
+    boolean delete(int id);
+
+    Suspension get(int id);
+
+    List<Suspension> getAll();
 }

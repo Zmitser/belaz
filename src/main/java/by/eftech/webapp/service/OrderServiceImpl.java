@@ -1,7 +1,8 @@
 package by.eftech.webapp.service;
 
-import by.eftech.webapp.model.Order;
-import by.eftech.webapp.repository.OrderRepository;
+import by.eftech.webapp.model.SellerOrder;
+import by.eftech.webapp.repository.SellerOrderRepository;
+import by.eftech.webapp.repository.datajpa.ProxyOrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,11 +13,11 @@ public class OrderServiceImpl implements OrderService {
 
 
     @Autowired
-    private OrderRepository repository;
+    private SellerOrderRepository repository;
 
 
     @Override
-    public Order save(Order order) {
+    public SellerOrder save(SellerOrder order) {
         return repository.save(order);
     }
 
@@ -26,17 +27,17 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Order get(int id) {
-        return repository.findOne(id);
+    public SellerOrder get(int id) {
+        return repository.get(id);
     }
 
     @Override
-    public void update(Order order) {
+    public void update(SellerOrder order) {
         repository.save(order);
     }
 
     @Override
-    public List<Order> getAll() {
-        return repository.findAll();
+    public List<SellerOrder> getAll() {
+        return repository.getAll();
     }
 }

@@ -26,7 +26,7 @@ public class VideoServiceImpl implements VideoService {
 
     @Override
     public Video get(int id) {
-        return repository.findOne(id);
+        return repository.get(id);
     }
 
     @Override
@@ -36,6 +36,6 @@ public class VideoServiceImpl implements VideoService {
 
     @Override
     public List<Video> getAll() {
-        return repository.findAll();
+        return repository.getAll();
     }
 }

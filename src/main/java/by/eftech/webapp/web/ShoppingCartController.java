@@ -25,13 +25,13 @@ public class ShoppingCartController {
     public String orderNow(@PathVariable(value = "id") int id, HttpSession session, Model model) {
         if (session.getAttribute("cart") == null) {
             List<Item> cart = new ArrayList<>();
-            cart.add(new Item(service.get(id), 1));
+            cart.add(new Item(1, service.get(id)));
             session.setAttribute("cart", cart);
         } else {
             List<Item> cart = (List<Item>) session.getAttribute("cart");
             int index = ifExisting(id, session);
             if (index == -1) {
-                cart.add(new Item(service.get(id), 1));
+                cart.add(new Item(1, service.get(id)));
             } else {
                 int quantity = cart.get(index).getQuantity();
                 cart.get(index).setQuantity(quantity + 1);

@@ -24,7 +24,7 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public Item get(int id) {
-        return repository.findOne(id);
+        return repository.get(id);
     }
 
     @Override
@@ -34,6 +34,6 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public List<Item> getAll() {
-        return repository.findAll();
+        return repository.getAll();
     }
 }
