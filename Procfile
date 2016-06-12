@@ -1,0 +1,1 @@
+web:    java $JAVA_OPTS -Dspring.profiles.active="jpa,heroku" -jar target/dependency/webapp-runner.jar --port $PORT

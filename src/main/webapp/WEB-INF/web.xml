@@ -6,9 +6,25 @@
     <display-name>Belaz</display-name>
 
 
+
+    <error-page>
+        <error-code>400</error-code>
+        <location>/400</location>
+    </error-page>
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/404</location>
+    </error-page>
+
+    <error-page>
+        <error-code>500</error-code>
+        <location>/500</location>
+    </error-page>
+
     <context-param>
         <param-name>spring.profiles.default</param-name>
-        <param-value>jpa</param-value>
+        <param-value>mysql,jpa</param-value>
     </context-param>
 
 

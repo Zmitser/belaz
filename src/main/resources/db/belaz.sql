@@ -16,15 +16,14 @@ SET FOREIGN_KEY_CHECKS=0;
 -- -----------------------------------------------------
 -- Schema belaz
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `belaz` DEFAULT CHARACTER SET utf8 ;
-USE `belaz` ;
+
 
 -- -----------------------------------------------------
 -- Table `belaz`.`series`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `belaz`.`series` ;
+DROP TABLE IF EXISTS `series` ;
 
-CREATE TABLE IF NOT EXISTS `belaz`.`series` (
+CREATE TABLE IF NOT EXISTS `series` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`))
@@ -42,9 +41,9 @@ UNLOCK TABLES;
 -- -----------------------------------------------------
 -- Table `belaz`.`model`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `belaz`.`model` ;
+DROP TABLE IF EXISTS `model` ;
 
-CREATE TABLE IF NOT EXISTS `belaz`.`model` (
+CREATE TABLE IF NOT EXISTS `model` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
   `series_id` INT NOT NULL,
@@ -52,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `belaz`.`model` (
   INDEX `fk_model_series1_idx` (`series_id` ASC),
   CONSTRAINT `fk_model_series1`
     FOREIGN KEY (`series_id`)
-    REFERENCES `belaz`.`series` (`id`)
+    REFERENCES .`series` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -69,9 +68,9 @@ UNLOCK TABLES;
 -- -----------------------------------------------------
 -- Table `belaz`.`transmission`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `belaz`.`transmission` ;
+DROP TABLE IF EXISTS `transmission` ;
 
-CREATE TABLE IF NOT EXISTS `belaz`.`transmission` (
+CREATE TABLE IF NOT EXISTS `transmission` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
@@ -89,9 +88,9 @@ UNLOCK TABLES;
 -- -----------------------------------------------------
 -- Table `belaz`.`engine`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `belaz`.`engine` ;
+DROP TABLE IF EXISTS `engine` ;
 
-CREATE TABLE IF NOT EXISTS `belaz`.`engine` (
+CREATE TABLE IF NOT EXISTS `engine` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`))
@@ -111,9 +110,9 @@ UNLOCK TABLES;
 -- -----------------------------------------------------
 -- Table `belaz`.`suspension`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `belaz`.`suspension` ;
+DROP TABLE IF EXISTS `suspension` ;
 
-CREATE TABLE IF NOT EXISTS `belaz`.`suspension` (
+CREATE TABLE IF NOT EXISTS `suspension` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` TEXT NOT NULL,
   PRIMARY KEY (`id`))
@@ -131,9 +130,9 @@ UNLOCK TABLES;
 -- -----------------------------------------------------
 -- Table `belaz`.`manufacturer`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `belaz`.`manufacturer` ;
+DROP TABLE IF EXISTS `manufacturer` ;
 
-CREATE TABLE IF NOT EXISTS `belaz`.`manufacturer` (
+CREATE TABLE IF NOT EXISTS `manufacturer` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`))
@@ -151,9 +150,9 @@ UNLOCK TABLES;
 -- -----------------------------------------------------
 -- Table `belaz`.`manufacturer_country`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `belaz`.`manufacturer_country` ;
+DROP TABLE IF EXISTS `manufacturer_country` ;
 
-CREATE TABLE IF NOT EXISTS `belaz`.`manufacturer_country` (
+CREATE TABLE IF NOT EXISTS `manufacturer_country` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
@@ -171,9 +170,9 @@ UNLOCK TABLES;
 -- -----------------------------------------------------
 -- Table `belaz`.`front_wheels`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `belaz`.`front_wheels` ;
+DROP TABLE IF EXISTS `front_wheels` ;
 
-CREATE TABLE IF NOT EXISTS `belaz`.`front_wheels` (
+CREATE TABLE IF NOT EXISTS `front_wheels` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`))
@@ -193,9 +192,9 @@ UNLOCK TABLES;
 -- -----------------------------------------------------
 -- Table `belaz`.`rear_wheels`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `belaz`.`rear_wheels` ;
+DROP TABLE IF EXISTS `rear_wheels` ;
 
-CREATE TABLE IF NOT EXISTS `belaz`.`rear_wheels` (
+CREATE TABLE IF NOT EXISTS `rear_wheels` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NULL,
   PRIMARY KEY (`id`))
@@ -213,9 +212,9 @@ UNLOCK TABLES;
 -- -----------------------------------------------------
 -- Table `belaz`.`machine_location`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `belaz`.`machine_location` ;
+DROP TABLE IF EXISTS `machine_location` ;
 
-CREATE TABLE IF NOT EXISTS `belaz`.`machine_location` (
+CREATE TABLE IF NOT EXISTS `machine_location` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`))
@@ -234,9 +233,9 @@ UNLOCK TABLES;
 -- -----------------------------------------------------
 -- Table `belaz`.`parking_brake`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `belaz`.`parking_brake` ;
+DROP TABLE IF EXISTS `parking_brake` ;
 
-CREATE TABLE IF NOT EXISTS `belaz`.`parking_brake` (
+CREATE TABLE IF NOT EXISTS `parking_brake` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`))
@@ -254,9 +253,9 @@ UNLOCK TABLES;
 -- -----------------------------------------------------
 -- Table `belaz`.`brake_type`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `belaz`.`brake_type` ;
+DROP TABLE IF EXISTS `brake_type` ;
 
-CREATE TABLE IF NOT EXISTS `belaz`.`brake_type` (
+CREATE TABLE IF NOT EXISTS `brake_type` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`))
@@ -276,9 +275,9 @@ UNLOCK TABLES;
 -- -----------------------------------------------------
 -- Table `belaz`.`auxiliary`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `belaz`.`auxiliary` ;
+DROP TABLE IF EXISTS `auxiliary` ;
 
-CREATE TABLE IF NOT EXISTS `belaz`.`auxiliary` (
+CREATE TABLE IF NOT EXISTS `auxiliary` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`))
@@ -298,9 +297,9 @@ UNLOCK TABLES;
 -- -----------------------------------------------------
 -- Table `belaz`.`machine_condition`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `belaz`.`machine_condition` ;
+DROP TABLE IF EXISTS `machine_condition` ;
 
-CREATE TABLE IF NOT EXISTS `belaz`.`machine_condition` (
+CREATE TABLE IF NOT EXISTS `machine_condition` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`))
@@ -318,9 +317,9 @@ UNLOCK TABLES;
 -- -----------------------------------------------------
 -- Table `belaz`.`truck_mining`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `belaz`.`truck_mining` ;
+DROP TABLE IF EXISTS `truck_mining` ;
 
-CREATE TABLE IF NOT EXISTS `belaz`.`truck_mining` (
+CREATE TABLE IF NOT EXISTS `truck_mining` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `product_id` VARCHAR(45) NOT NULL,
   `manufacturer_id` INT NOT NULL,
@@ -370,67 +369,67 @@ CREATE TABLE IF NOT EXISTS `belaz`.`truck_mining` (
   INDEX `fk_truck_mining_machine_condition1_idx` (`machine_condition_id` ASC),
   CONSTRAINT `fk_truck_mining_model1`
     FOREIGN KEY (`model_id`)
-    REFERENCES `belaz`.`model` (`id`)
+    REFERENCES `model` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_truck_mining_transmission1`
     FOREIGN KEY (`transmission_id`)
-    REFERENCES `belaz`.`transmission` (`id`)
+    REFERENCES `transmission` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_truck_mining_engine1`
     FOREIGN KEY (`engine_id`)
-    REFERENCES `belaz`.`engine` (`id`)
+    REFERENCES `engine` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_truck_mining_suspension1`
     FOREIGN KEY (`suspension_id`)
-    REFERENCES `belaz`.`suspension` (`id`)
+    REFERENCES `suspension` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_truck_mining_manufacturer1`
     FOREIGN KEY (`manufacturer_id`)
-    REFERENCES `belaz`.`manufacturer` (`id`)
+    REFERENCES `manufacturer` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_truck_mining_manufacturer_country1`
     FOREIGN KEY (`manufacturer_country_id`)
-    REFERENCES `belaz`.`manufacturer_country` (`id`)
+    REFERENCES `manufacturer_country` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_truck_mining_front_wheels1`
     FOREIGN KEY (`front_wheels_id`)
-    REFERENCES `belaz`.`front_wheels` (`id`)
+    REFERENCES `front_wheels` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_truck_mining_rear_wheels1`
     FOREIGN KEY (`rear_wheels_id`)
-    REFERENCES `belaz`.`rear_wheels` (`id`)
+    REFERENCES `rear_wheels` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_truck_mining_machine_location1`
     FOREIGN KEY (`machine_location_id`)
-    REFERENCES `belaz`.`machine_location` (`id`)
+    REFERENCES `machine_location` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_truck_mining_parking_brake1`
     FOREIGN KEY (`parking_brake_id`)
-    REFERENCES `belaz`.`parking_brake` (`id`)
+    REFERENCES `parking_brake` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_truck_mining_brake_type1`
     FOREIGN KEY (`brake_type_id`)
-    REFERENCES `belaz`.`brake_type` (`id`)
+    REFERENCES `brake_type` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_truck_mining_auxiliary1`
     FOREIGN KEY (`auxiliary_id`)
-    REFERENCES `belaz`.`auxiliary` (`id`)
+    REFERENCES `auxiliary` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_truck_mining_machine_condition1`
     FOREIGN KEY (`machine_condition_id`)
-    REFERENCES `belaz`.`machine_condition` (`id`)
+    REFERENCES `machine_condition` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -449,9 +448,9 @@ UNLOCK TABLES;
 -- -----------------------------------------------------
 -- Table `belaz`.`photo`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `belaz`.`photo` ;
+DROP TABLE IF EXISTS `photo` ;
 
-CREATE TABLE IF NOT EXISTS `belaz`.`photo` (
+CREATE TABLE IF NOT EXISTS `photo` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
@@ -469,9 +468,9 @@ UNLOCK TABLES;
 -- -----------------------------------------------------
 -- Table `belaz`.`truck_mining_has_photo`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `belaz`.`truck_mining_has_photo` ;
+DROP TABLE IF EXISTS `truck_mining_has_photo` ;
 
-CREATE TABLE IF NOT EXISTS `belaz`.`truck_mining_has_photo` (
+CREATE TABLE IF NOT EXISTS `truck_mining_has_photo` (
   `truck_mining_id` INT NOT NULL,
   `photo_id` INT NOT NULL,
   PRIMARY KEY (`truck_mining_id`, `photo_id`),
@@ -479,12 +478,12 @@ CREATE TABLE IF NOT EXISTS `belaz`.`truck_mining_has_photo` (
   INDEX `fk_truck_mining_has_photo_truck_mining1_idx` (`truck_mining_id` ASC),
   CONSTRAINT `fk_truck_mining_has_photo_truck_mining1`
     FOREIGN KEY (`truck_mining_id`)
-    REFERENCES `belaz`.`truck_mining` (`id`)
+    REFERENCES `truck_mining` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_truck_mining_has_photo_photo1`
     FOREIGN KEY (`photo_id`)
-    REFERENCES `belaz`.`photo` (`id`)
+    REFERENCES `photo` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -501,9 +500,9 @@ UNLOCK TABLES;
 -- -----------------------------------------------------
 -- Table `belaz`.`video`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `belaz`.`video` ;
+DROP TABLE IF EXISTS `video` ;
 
-CREATE TABLE IF NOT EXISTS `belaz`.`video` (
+CREATE TABLE IF NOT EXISTS `video` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NULL,
   PRIMARY KEY (`id`))
@@ -520,9 +519,9 @@ UNLOCK TABLES;
 -- -----------------------------------------------------
 -- Table `belaz`.`truck_mining_has_video`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `belaz`.`truck_mining_has_video` ;
+DROP TABLE IF EXISTS `truck_mining_has_video` ;
 
-CREATE TABLE IF NOT EXISTS `belaz`.`truck_mining_has_video` (
+CREATE TABLE IF NOT EXISTS `truck_mining_has_video` (
   `truck_mining_id` INT NOT NULL,
   `video_id` INT NOT NULL,
   PRIMARY KEY (`truck_mining_id`, `video_id`),
@@ -530,12 +529,12 @@ CREATE TABLE IF NOT EXISTS `belaz`.`truck_mining_has_video` (
   INDEX `fk_truck_mining_has_video_truck_mining1_idx` (`truck_mining_id` ASC),
   CONSTRAINT `fk_truck_mining_has_video_truck_mining1`
     FOREIGN KEY (`truck_mining_id`)
-    REFERENCES `belaz`.`truck_mining` (`id`)
+    REFERENCES `truck_mining` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_truck_mining_has_video_video1`
     FOREIGN KEY (`video_id`)
-    REFERENCES `belaz`.`video` (`id`)
+    REFERENCES `video` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -551,9 +550,9 @@ UNLOCK TABLES;
 -- -----------------------------------------------------
 -- Table `belaz`.`order`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `belaz`.seller_order ;
+DROP TABLE IF EXISTS seller_order ;
 
-CREATE TABLE IF NOT EXISTS `belaz`.seller_order (
+CREATE TABLE IF NOT EXISTS seller_order (
   `id` INT NOT NULL AUTO_INCREMENT,
   `date` TIMESTAMP NOT NULL,
   `fullname` VARCHAR(45) NOT NULL,
@@ -571,9 +570,9 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `belaz`.`item`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `belaz`.`item` ;
+DROP TABLE IF EXISTS `item` ;
 
-CREATE TABLE IF NOT EXISTS `belaz`.`item` (
+CREATE TABLE IF NOT EXISTS `item` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `quantity` INT NOT NULL,
   `truck_mining_id` INT NOT NULL,
@@ -584,9 +583,9 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `belaz`.`order_has_item`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `belaz`.`order_has_item` ;
+DROP TABLE IF EXISTS `order_has_item` ;
 
-CREATE TABLE IF NOT EXISTS `belaz`.`order_has_item` (
+CREATE TABLE IF NOT EXISTS `order_has_item` (
   `order_id` INT NOT NULL,
   `item_id` INT NOT NULL,
   PRIMARY KEY (`order_id`, `item_id`),
@@ -594,12 +593,12 @@ CREATE TABLE IF NOT EXISTS `belaz`.`order_has_item` (
   INDEX `fk_order_has_item_order1_idx` (`order_id` ASC),
   CONSTRAINT `fk_order_has_item_order1`
     FOREIGN KEY (`order_id`)
-    REFERENCES `belaz`.seller_order (`id`)
+    REFERENCES seller_order (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `fk_order_has_item_item1`
     FOREIGN KEY (`item_id`)
-    REFERENCES `belaz`.`item` (`id`)
+    REFERENCES `item` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE )
 ENGINE = InnoDB;
