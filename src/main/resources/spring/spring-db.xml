@@ -20,16 +20,16 @@
     <tx:annotation-driven/>
 
 
-    <context:property-placeholder location="classpath:db/mysql.properties" system-properties-mode="OVERRIDE"/>
-    <beans profile="mysql">
-        <bean id="dataSource"
-              class="org.apache.tomcat.jdbc.pool.DataSource"
-              p:driverClassName="com.mysql.jdbc.Driver"
-              p:url="${database.url}"
-              p:username="${database.username}"
-              p:password="${database.password}"/>
-    </beans>
-    <beans profile="heroku">
+    <!--<context:property-placeholder location="classpath:db/mysql.properties" system-properties-mode="OVERRIDE"/>-->
+    <!--<beans profile="mysql">-->
+        <!--<bean id="dataSource"-->
+              <!--class="org.apache.tomcat.jdbc.pool.DataSource"-->
+              <!--p:driverClassName="com.mysql.jdbc.Driver"-->
+              <!--p:url="${database.url}"-->
+              <!--p:username="${database.username}"-->
+              <!--p:password="${database.password}"/>-->
+    <!--</beans>-->
+
         <context:property-placeholder location="classpath:/db/heroku.properties" system-properties-mode="OVERRIDE"/>
 
 
@@ -52,13 +52,10 @@
               p:removeAbandoned="true"
               p:testOnConnect="true"
               p:testWhileIdle="true"/>
-    </beans>
 
 
 
 
-
-    <beans profile="datajpa,jpa">
         <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
               p:dataSource-ref="dataSource"
               p:packagesToScan="by.eftech.**.model">
@@ -85,17 +82,14 @@
         <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"
               p:entityManagerFactory-ref="entityManagerFactory"/>
 
-    </beans>
+
+    <!--<beans profile="datajpa">-->
+        <!--<context:component-scan base-package="by.eftech.**.repository.datajpa"/>-->
+        <!--<jpa:repositories base-package="by.eftech.**.repository.datajpa"/>-->
+    <!--</beans>-->
 
 
-    <beans profile="datajpa">
-        <context:component-scan base-package="by.eftech.**.repository.datajpa"/>
-        <jpa:repositories base-package="by.eftech.**.repository.datajpa"/>
-    </beans>
 
-
-    <beans profile="jpa">
         <context:component-scan base-package="by.eftech.**.repository.jpa"/>
-    </beans>
 
 </beans>
