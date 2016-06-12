@@ -22,74 +22,72 @@
 
     <!--<context:property-placeholder location="classpath:db/mysql.properties" system-properties-mode="OVERRIDE"/>-->
     <!--<beans profile="mysql">-->
-        <!--<bean id="dataSource"-->
-              <!--class="org.apache.tomcat.jdbc.pool.DataSource"-->
-              <!--p:driverClassName="com.mysql.jdbc.Driver"-->
-              <!--p:url="${database.url}"-->
-              <!--p:username="${database.username}"-->
-              <!--p:password="${database.password}"/>-->
+    <!--<bean id="dataSource"-->
+    <!--class="org.apache.tomcat.jdbc.pool.DataSource"-->
+    <!--p:driverClassName="com.mysql.jdbc.Driver"-->
+    <!--p:url="${database.url}"-->
+    <!--p:username="${database.username}"-->
+    <!--p:password="${database.password}"/>-->
     <!--</beans>-->
 
-        <context:property-placeholder location="classpath:/db/heroku.properties" system-properties-mode="OVERRIDE"/>
+    <context:property-placeholder location="classpath:/db/heroku.properties" system-properties-mode="OVERRIDE"/>
 
 
-        <bean class="java.net.URI" id="dbUrl">
-            <constructor-arg value="${CLEARDB_DATABASE_URL}"/>
-        </bean>
-        <bean id="dataSource"
-              class="org.apache.tomcat.jdbc.pool.DataSource"
-              p:url="#{ 'jdbc:mysql://' + @dbUrl.getHost() + @dbUrl.getPath() }"
-              p:username="#{ @dbUrl.getUserInfo().split(':')[0] }"
-              p:password="#{ @dbUrl.getUserInfo().split(':')[1] }"
-              p:driverClassName="com.mysql.jdbc.Driver"
-              p:validationQuery="SELECT 1 FROM engine"
-              p:maxActive="10"
-              p:minIdle="2"
-              p:maxWait="20000"
-              p:initialSize="2"
-              p:maxIdle="5"
-              p:testOnBorrow="true"
-              p:removeAbandoned="true"
-              p:testOnConnect="true"
-              p:testWhileIdle="true"/>
+    <bean class="java.net.URI" id="dbUrl">
+        <constructor-arg value="${CLEARDB_DATABASE_URL}"/>
+    </bean>
+    <bean id="dataSource"
+          class="org.apache.tomcat.jdbc.pool.DataSource"
+          p:url="#{ 'jdbc:mysql://' + @dbUrl.getHost() + @dbUrl.getPath() }"
+          p:username="#{ @dbUrl.getUserInfo().split(':')[0] }"
+          p:password="#{ @dbUrl.getUserInfo().split(':')[1] }"
+          p:driverClassName="com.mysql.jdbc.Driver"
+          p:validationQuery="SELECT 1 FROM engine"
+          p:maxActive="10"
+          p:minIdle="2"
+          p:maxWait="20000"
+          p:initialSize="2"
+          p:maxIdle="5"
+          p:testOnBorrow="true"
+          p:removeAbandoned="true"
+          p:testOnConnect="true"
+          p:testWhileIdle="true"/>
 
 
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+          p:dataSource-ref="dataSource"
+          p:packagesToScan="by.eftech.**.model">
+        <!--p:persistenceUnitName="persistenceUnit">-->
 
+        <property name="jpaPropertyMap">
+            <map>
+                <entry key="#{T(org.hibernate.cfg.AvailableSettings).FORMAT_SQL}" value="${hibernate.format_sql}"/>
+                <entry key="#{T(org.hibernate.cfg.AvailableSettings).USE_SQL_COMMENTS}"
+                       value="${hibernate.use_sql_comments}"/>
+                <entry key="#{T(org.hibernate.cfg.AvailableSettings).DIALECT}"
+                       value="org.hibernate.dialect.MySQLInnoDBDialect"/>
+                <!--<entry key="#{T(org.hibernate.cfg.AvailableSettings).HBM2DDL_AUTO}" value="${hibernate.hbm2ddl.auto}"/>-->
+            </map>
+        </property>
 
-        <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
-              p:dataSource-ref="dataSource"
-              p:packagesToScan="by.eftech.**.model">
-            <!--p:persistenceUnitName="persistenceUnit">-->
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"
+                  p:showSql="${jpa.showSql}">
+            </bean>
+        </property>
+    </bean>
 
-            <property name="jpaPropertyMap">
-                <map>
-                    <entry key="#{T(org.hibernate.cfg.AvailableSettings).FORMAT_SQL}" value="${hibernate.format_sql}"/>
-                    <entry key="#{T(org.hibernate.cfg.AvailableSettings).USE_SQL_COMMENTS}"
-                           value="${hibernate.use_sql_comments}"/>
-                    <entry key="#{T(org.hibernate.cfg.AvailableSettings).DIALECT}" value="org.hibernate.dialect.MySQLInnoDBDialect"/>
-                    <!--<entry key="#{T(org.hibernate.cfg.AvailableSettings).HBM2DDL_AUTO}" value="${hibernate.hbm2ddl.auto}"/>-->
-                </map>
-            </property>
-
-            <property name="jpaVendorAdapter">
-                <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"
-                      p:showSql="${jpa.showSql}">
-                </bean>
-            </property>
-        </bean>
-
-        <!-- Transaction manager for a single JPA EntityManagerFactory (alternative to JTA) -->
-        <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"
-              p:entityManagerFactory-ref="entityManagerFactory"/>
+    <!-- Transaction manager for a single JPA EntityManagerFactory (alternative to JTA) -->
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"
+          p:entityManagerFactory-ref="entityManagerFactory"/>
 
 
     <!--<beans profile="datajpa">-->
-        <!--<context:component-scan base-package="by.eftech.**.repository.datajpa"/>-->
-        <!--<jpa:repositories base-package="by.eftech.**.repository.datajpa"/>-->
+    <!--<context:component-scan base-package="by.eftech.**.repository.datajpa"/>-->
+    <!--<jpa:repositories base-package="by.eftech.**.repository.datajpa"/>-->
     <!--</beans>-->
+    <context:annotation-config/>
 
-
-
-        <context:component-scan base-package="by.eftech.**.repository.jpa"/>
-
+    <context:component-scan base-package="by.eftech.**.repository.jpa"/>
+    <context:component-scan base-package="by.eftech.**.service"/>
 </beans>
