@@ -38,9 +38,9 @@
     </bean>
     <bean id="dataSource"
           class="org.apache.tomcat.jdbc.pool.DataSource"
-          p:url="#{'jdbc:mysql://' + @dbUrl.getHost() + ':' + @dbUrl.getPort() + @dbUrl.getPath()}"
-          p:username="#{@dbUrl.getUserInfo().split(':')[0]}"
-          p:password="#{@dbUrl.getUserInfo().split(':')[1]}"
+          p:url="#{ 'jdbc:mysql://' + @dbUrl.getHost() + @dbUrl.getPath() }"
+          p:username="#{ @dbUrl.getUserInfo().split(':')[0] }"
+          p:password="#{ @dbUrl.getUserInfo().split(':')[1] }"
           p:driverClassName="com.mysql.jdbc.Driver"
           p:validationQuery="SELECT 1 FROM engine"
           p:maxActive="10"
@@ -54,7 +54,7 @@
           p:testWhileIdle="true"/>
 
 
-    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+        <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
           p:dataSource-ref="dataSource"
           p:packagesToScan="by.eftech.**.model">
         <!--p:persistenceUnitName="persistenceUnit">-->
