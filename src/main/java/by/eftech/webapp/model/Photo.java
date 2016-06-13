@@ -20,7 +20,7 @@ public class Photo {
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }
@@ -59,8 +59,7 @@ public class Photo {
         return result;
     }
 
-    @ManyToMany
-    @JoinTable(name = "truck_mining_has_photo", catalog = "", schema = "belaz", joinColumns = @JoinColumn(name = "photo_id", referencedColumnName = "id", nullable = false), inverseJoinColumns = @JoinColumn(name = "truck_mining_id", referencedColumnName = "id", nullable = false))
+    @ManyToMany(mappedBy = "photos", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     public List<TruckMining> getTruckMinings() {
         return truckMinings;
     }

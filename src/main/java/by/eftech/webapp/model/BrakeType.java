@@ -8,7 +8,7 @@ import java.util.List;
         @NamedQuery(name = BrakeType.ALL_SORTED, query = "SELECT b FROM BrakeType b ORDER BY b.name"),
 })
 @Entity
-@Table(name = "brake_type", schema = "belaz", catalog = "")
+@Table(name = "brake_type")
 public class BrakeType {
 
     public static final String DELETE = "BrakeType.delete";

@@ -51,9 +51,9 @@ CREATE TABLE IF NOT EXISTS `model` (
   INDEX `fk_model_series1_idx` (`series_id` ASC),
   CONSTRAINT `fk_model_series1`
     FOREIGN KEY (`series_id`)
-    REFERENCES .`series` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    REFERENCES `series` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE )
 ENGINE = InnoDB;
 --
 -- Dumping data for table `model`
@@ -370,68 +370,68 @@ CREATE TABLE IF NOT EXISTS `truck_mining` (
   CONSTRAINT `fk_truck_mining_model1`
     FOREIGN KEY (`model_id`)
     REFERENCES `model` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE ,
   CONSTRAINT `fk_truck_mining_transmission1`
     FOREIGN KEY (`transmission_id`)
     REFERENCES `transmission` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_truck_mining_engine1`
     FOREIGN KEY (`engine_id`)
     REFERENCES `engine` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_truck_mining_suspension1`
     FOREIGN KEY (`suspension_id`)
     REFERENCES `suspension` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_truck_mining_manufacturer1`
     FOREIGN KEY (`manufacturer_id`)
     REFERENCES `manufacturer` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_truck_mining_manufacturer_country1`
     FOREIGN KEY (`manufacturer_country_id`)
     REFERENCES `manufacturer_country` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_truck_mining_front_wheels1`
     FOREIGN KEY (`front_wheels_id`)
     REFERENCES `front_wheels` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_truck_mining_rear_wheels1`
     FOREIGN KEY (`rear_wheels_id`)
     REFERENCES `rear_wheels` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_truck_mining_machine_location1`
     FOREIGN KEY (`machine_location_id`)
     REFERENCES `machine_location` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_truck_mining_parking_brake1`
     FOREIGN KEY (`parking_brake_id`)
     REFERENCES `parking_brake` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_truck_mining_brake_type1`
     FOREIGN KEY (`brake_type_id`)
     REFERENCES `brake_type` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_truck_mining_auxiliary1`
     FOREIGN KEY (`auxiliary_id`)
     REFERENCES `auxiliary` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_truck_mining_machine_condition1`
     FOREIGN KEY (`machine_condition_id`)
     REFERENCES `machine_condition` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 --
 -- Dumping data for table `truck_mining`
@@ -479,13 +479,13 @@ CREATE TABLE IF NOT EXISTS `truck_mining_has_photo` (
   CONSTRAINT `fk_truck_mining_has_photo_truck_mining1`
     FOREIGN KEY (`truck_mining_id`)
     REFERENCES `truck_mining` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE ,
   CONSTRAINT `fk_truck_mining_has_photo_photo1`
     FOREIGN KEY (`photo_id`)
     REFERENCES `photo` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 --
 -- Dumping data for table `truck_mining_has_photo`
@@ -530,13 +530,13 @@ CREATE TABLE IF NOT EXISTS `truck_mining_has_video` (
   CONSTRAINT `fk_truck_mining_has_video_truck_mining1`
     FOREIGN KEY (`truck_mining_id`)
     REFERENCES `truck_mining` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_truck_mining_has_video_video1`
     FOREIGN KEY (`video_id`)
     REFERENCES `video` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 --
 -- Dumping data for table `truck_mining_has_video`
