@@ -3,24 +3,19 @@ package by.eftech.webapp.model;
 import javax.persistence.*;
 import java.util.List;
 
-
+/**
+ * Created by Lenovo on 15.06.2016.
+ */
 @Entity
-@NamedQueries({
-        @NamedQuery(name = Photo.DELETE, query = "DELETE from Photo p WHERE p.id=:id"),
-        @NamedQuery(name = Photo.ALL_SORTED, query = "SELECT p FROM Photo p ORDER BY p.name"),
-})
 public class Photo {
     private Integer id;
     private String name;
+    private List<DumpTrucksCrossCountryCapacity> dumpTrucksCrossCountryCapacity;
+    private List<MiningMachinery> miningMachineries;
     private List<TruckMining> truckMinings;
-
-    public static final String DELETE = "Photo.delete";
-    public static final String ALL_SORTED = "Photo.getAllSorted";
-
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }
@@ -60,6 +55,26 @@ public class Photo {
     }
 
     @ManyToMany
+    @JoinTable(name = "dump_trucks_cross_country_capacity_has_photo", catalog = "", schema = "belaz", joinColumns = @JoinColumn(name = "photo_id", referencedColumnName = "id", nullable = false), inverseJoinColumns = @JoinColumn(name = "dump_trucks_cross_country_capacity_id", referencedColumnName = "id", nullable = false))
+    public List<DumpTrucksCrossCountryCapacity> getDumpTrucksCrossCountryCapacity() {
+        return dumpTrucksCrossCountryCapacity;
+    }
+
+    public void setDumpTrucksCrossCountryCapacity(List<DumpTrucksCrossCountryCapacity> dumpTrucksCrossCountryCapacity) {
+        this.dumpTrucksCrossCountryCapacity = dumpTrucksCrossCountryCapacity;
+    }
+
+    @ManyToMany
+    @JoinTable(name = "mining machinery_has_photo", catalog = "", schema = "belaz", joinColumns = @JoinColumn(name = "photo_id", referencedColumnName = "id", nullable = false), inverseJoinColumns = @JoinColumn(name = "mining machinery_id", referencedColumnName = "id", nullable = false))
+    public List<MiningMachinery> getMiningMachineries() {
+        return miningMachineries;
+    }
+
+    public void setMiningMachineries(List<MiningMachinery> miningMachineries) {
+        this.miningMachineries = miningMachineries;
+    }
+
+    @ManyToMany
     @JoinTable(name = "truck_mining_has_photo", catalog = "", schema = "belaz", joinColumns = @JoinColumn(name = "photo_id", referencedColumnName = "id", nullable = false), inverseJoinColumns = @JoinColumn(name = "truck_mining_id", referencedColumnName = "id", nullable = false))
     public List<TruckMining> getTruckMinings() {
         return truckMinings;
@@ -67,21 +82,5 @@ public class Photo {
 
     public void setTruckMinings(List<TruckMining> truckMinings) {
         this.truckMinings = truckMinings;
-    }
-
-    public boolean newOject() {
-        return (this.id == null);
-    }
-
-    public Photo(Integer id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    public Photo(String name) {
-        this.name = name;
-    }
-
-    public Photo() {
     }
 }

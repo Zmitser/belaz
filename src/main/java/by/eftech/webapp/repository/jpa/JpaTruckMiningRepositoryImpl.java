@@ -1,7 +1,6 @@
 package by.eftech.webapp.repository.jpa;
 
 
-import by.eftech.webapp.model.TruckMining;
 import by.eftech.webapp.repository.TruckMiningRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

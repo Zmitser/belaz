@@ -1,6 +1,5 @@
 package by.eftech.webapp.repository.jpa;
 
-import by.eftech.webapp.model.MachineLocation;
 import by.eftech.webapp.repository.MachineLocationRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

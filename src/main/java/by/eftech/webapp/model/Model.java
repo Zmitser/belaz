@@ -3,24 +3,20 @@ package by.eftech.webapp.model;
 import javax.persistence.*;
 import java.util.List;
 
-
+/**
+ * Created by Lenovo on 15.06.2016.
+ */
 @Entity
-@NamedQueries({
-        @NamedQuery(name = Model.DELETE, query = "DELETE from Model m WHERE m.id=:id"),
-        @NamedQuery(name = Model.ALL_SORTED, query = "SELECT m FROM Model m ORDER BY m.name"),
-})
 public class Model {
     private Integer id;
     private String name;
-    private List<TruckMining> truckMinings;
     private Series series;
-
-    public static final String DELETE = "Model.delete";
-    public static final String ALL_SORTED = "Model.getAllSorted";
+    private List<DumpTrucksCrossCountryCapacity> dumpTrucksCrossCountryCapacity;
+    private List<MiningMachinery> miningMachineries;
+    private List<TruckMining> truckMinings;
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }
@@ -59,16 +55,7 @@ public class Model {
         return result;
     }
 
-    @OneToMany(mappedBy = "model")
-    public List<TruckMining> getTruckMinings() {
-        return truckMinings;
-    }
-
-    public void setTruckMinings(List<TruckMining> truckMinings) {
-        this.truckMinings = truckMinings;
-    }
-
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "series_id", referencedColumnName = "id", nullable = false)
     public Series getSeries() {
         return series;
@@ -78,21 +65,30 @@ public class Model {
         this.series = series;
     }
 
-    public boolean newOject() {
-        return (this.id == null);
+    @OneToMany(mappedBy = "model")
+    public List<DumpTrucksCrossCountryCapacity> getDumpTrucksCrossCountryCapacity() {
+        return dumpTrucksCrossCountryCapacity;
     }
 
-    public Model(String name, Integer id, Series series) {
-        this.name = name;
-        this.id = id;
-        this.series = series;
+    public void setDumpTrucksCrossCountryCapacity(List<DumpTrucksCrossCountryCapacity> dumpTrucksCrossCountryCapacity) {
+        this.dumpTrucksCrossCountryCapacity = dumpTrucksCrossCountryCapacity;
     }
 
-    public Model(String name, Series series) {
-        this.name = name;
-        this.series = series;
+    @OneToMany(mappedBy = "model")
+    public List<MiningMachinery> getMiningMachineries() {
+        return miningMachineries;
     }
 
-    public Model() {
+    public void setMiningMachineries(List<MiningMachinery> miningMachineries) {
+        this.miningMachineries = miningMachineries;
+    }
+
+    @OneToMany(mappedBy = "model")
+    public List<TruckMining> getTruckMinings() {
+        return truckMinings;
+    }
+
+    public void setTruckMinings(List<TruckMining> truckMinings) {
+        this.truckMinings = truckMinings;
     }
 }

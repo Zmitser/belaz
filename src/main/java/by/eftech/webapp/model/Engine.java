@@ -3,24 +3,19 @@ package by.eftech.webapp.model;
 import javax.persistence.*;
 import java.util.List;
 
-
+/**
+ * Created by Lenovo on 15.06.2016.
+ */
 @Entity
-@NamedQueries({
-        @NamedQuery(name = Engine.DELETE, query = "DELETE from Engine e WHERE e.id=:id"),
-        @NamedQuery(name = Engine.ALL_SORTED, query = "SELECT e FROM Engine e ORDER BY e.name"),
-})
 public class Engine {
     private Integer id;
     private String name;
+    private List<DumpTrucksCrossCountryCapacity> dumpTrucksCrossCountryCapacity;
+    private List<MiningMachinery> miningMachineries;
     private List<TruckMining> truckMinings;
-
-
-    public static final String DELETE = "Engine.delete";
-    public static final String ALL_SORTED = "Engine.getAllSorted";
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }
@@ -60,26 +55,29 @@ public class Engine {
     }
 
     @OneToMany(mappedBy = "engine")
+    public List<DumpTrucksCrossCountryCapacity> getDumpTrucksCrossCountryCapacity() {
+        return dumpTrucksCrossCountryCapacity;
+    }
+
+    public void setDumpTrucksCrossCountryCapacity(List<DumpTrucksCrossCountryCapacity> dumpTrucksCrossCountryCapacity) {
+        this.dumpTrucksCrossCountryCapacity = dumpTrucksCrossCountryCapacity;
+    }
+
+    @OneToMany(mappedBy = "engine")
+    public List<MiningMachinery> getMiningMachineries() {
+        return miningMachineries;
+    }
+
+    public void setMiningMachineries(List<MiningMachinery> miningMachineries) {
+        this.miningMachineries = miningMachineries;
+    }
+
+    @OneToMany(mappedBy = "engine")
     public List<TruckMining> getTruckMinings() {
         return truckMinings;
     }
 
     public void setTruckMinings(List<TruckMining> truckMinings) {
         this.truckMinings = truckMinings;
-    }
-    public boolean newOject() {
-        return (this.id == null);
-    }
-
-    public Engine(Integer id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    public Engine(String name) {
-        this.name = name;
-    }
-
-    public Engine() {
     }
 }

@@ -1,6 +1,5 @@
 package by.eftech.webapp.repository.jpa;
 
-import by.eftech.webapp.model.Series;
 import by.eftech.webapp.repository.SeriesRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

@@ -3,24 +3,20 @@ package by.eftech.webapp.model;
 import javax.persistence.*;
 import java.util.List;
 
-
+/**
+ * Created by Lenovo on 15.06.2016.
+ */
 @Entity
 @Table(name = "machine_location", schema = "belaz", catalog = "")
-@NamedQueries({
-        @NamedQuery(name = MachineLocation.DELETE, query = "DELETE from MachineLocation l WHERE l.id=:id"),
-        @NamedQuery(name = MachineLocation.ALL_SORTED, query = "SELECT l FROM MachineLocation l ORDER BY l.name"),
-})
 public class MachineLocation {
     private Integer id;
     private String name;
-    private List<TruckMining> truckMinings;
-
-    public static final String DELETE = "MachineLocation.delete";
-    public static final String ALL_SORTED = "MachineLocation.getAllSorted";
+    private DumpTrucksCrossCountryCapacity dumpTrucksCrossCountryCapacity;
+    private List<MiningMachinery> miningMachineries;
+    private TruckMining truckMinings;
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }
@@ -59,28 +55,32 @@ public class MachineLocation {
         return result;
     }
 
+    @OneToOne
+    @JoinColumn(name = "id", referencedColumnName = "machine_location_id", nullable = false)
+    public DumpTrucksCrossCountryCapacity getDumpTrucksCrossCountryCapacity() {
+        return dumpTrucksCrossCountryCapacity;
+    }
+
+    public void setDumpTrucksCrossCountryCapacity(DumpTrucksCrossCountryCapacity dumpTrucksCrossCountryCapacity) {
+        this.dumpTrucksCrossCountryCapacity = dumpTrucksCrossCountryCapacity;
+    }
+
     @OneToMany(mappedBy = "machineLocation")
-    public List<TruckMining> getTruckMinings() {
+    public List<MiningMachinery> getMiningMachineries() {
+        return miningMachineries;
+    }
+
+    public void setMiningMachineries(List<MiningMachinery> miningMachineries) {
+        this.miningMachineries = miningMachineries;
+    }
+
+    @OneToOne
+    @JoinColumn(name = "id", referencedColumnName = "machine_location_id", nullable = false)
+    public TruckMining getTruckMinings() {
         return truckMinings;
     }
 
-    public void setTruckMinings(List<TruckMining> truckMinings) {
+    public void setTruckMinings(TruckMining truckMinings) {
         this.truckMinings = truckMinings;
-    }
-
-    public boolean newOject() {
-        return (this.id == null);
-    }
-
-    public MachineLocation(String name) {
-        this.name = name;
-    }
-
-    public MachineLocation() {
-    }
-
-    public MachineLocation(Integer id, String name) {
-        this.id = id;
-        this.name = name;
     }
 }

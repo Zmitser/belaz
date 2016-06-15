@@ -1,7 +1,5 @@
 package by.eftech.webapp.web;
 
-import by.eftech.webapp.model.Item;
-import by.eftech.webapp.model.SellerOrder;
 import by.eftech.webapp.service.OrderService;
 import by.eftech.webapp.utils.EmailSender;
 import org.springframework.beans.factory.annotation.Autowired;

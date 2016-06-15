@@ -1,6 +1,5 @@
 package by.eftech.webapp.service;
 
-import by.eftech.webapp.model.SellerOrder;
 import by.eftech.webapp.repository.SellerOrderRepository;
 import by.eftech.webapp.repository.datajpa.ProxyOrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;

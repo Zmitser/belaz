@@ -1,6 +1,5 @@
 package by.eftech.webapp.utils.pdf;
 
-import by.eftech.webapp.model.TruckMining;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfPCell;

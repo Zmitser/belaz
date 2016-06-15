@@ -3,25 +3,18 @@ package by.eftech.webapp.model;
 import javax.persistence.*;
 import java.util.List;
 
-
+/**
+ * Created by Lenovo on 15.06.2016.
+ */
 @Entity
-@NamedQueries({
-        @NamedQuery(name = Item.DELETE, query = "DELETE from Item i WHERE i.id=:id"),
-        @NamedQuery(name = Item.ALL_SORTED, query = "SELECT i FROM Item i ORDER BY i.quantity"),
-})
 public class Item {
     private Integer id;
     private Integer quantity;
-    private TruckMining truckMining;
-    private List<SellerOrder> orders;
-
-
-    public static final String DELETE = "JpaItemRepositoryImpl.delete";
-    public static final String ALL_SORTED = "JpaItemRepositoryImpl.getAllSorted";
+    private MiningMachinery miningMachinery;
+    private List<Order> orders;
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }
@@ -60,41 +53,23 @@ public class Item {
         return result;
     }
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "truck_mining_id", referencedColumnName = "id", nullable = false)
-    public TruckMining getTruckMining() {
-        return truckMining;
+    @OneToOne
+    @JoinColumn(name = "mining machinery_id", referencedColumnName = "id", nullable = false)
+    public MiningMachinery getMiningMachinery() {
+        return miningMachinery;
     }
 
-    public void setTruckMining(TruckMining truckMining) {
-        this.truckMining = truckMining;
+    public void setMiningMachinery(MiningMachinery miningMachinery) {
+        this.miningMachinery = miningMachinery;
     }
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany
     @JoinTable(name = "order_has_item", catalog = "", schema = "belaz", joinColumns = @JoinColumn(name = "item_id", referencedColumnName = "id", nullable = false), inverseJoinColumns = @JoinColumn(name = "order_id", referencedColumnName = "id", nullable = false))
-    public List<SellerOrder> getOrders() {
+    public List<Order> getOrders() {
         return orders;
     }
 
-    public void setOrders(List<SellerOrder> orders) {
+    public void setOrders(List<Order> orders) {
         this.orders = orders;
-    }
-
-    public boolean newOject() {
-        return (this.id == null);
-    }
-
-    public Item(Integer id, Integer quantity, TruckMining truckMining) {
-        this.id = id;
-        this.quantity = quantity;
-        this.truckMining = truckMining;
-    }
-
-    public Item(Integer quantity, TruckMining truckMining) {
-        this.quantity = quantity;
-        this.truckMining = truckMining;
-    }
-
-    public Item() {
     }
 }

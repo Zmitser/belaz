@@ -1,7 +1,6 @@
 package by.eftech.webapp.repository.jpa;
 
 
-import by.eftech.webapp.model.ManufacturerCountry;
 import by.eftech.webapp.repository.ManufacturerCountryRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

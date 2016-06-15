@@ -1,8 +1,6 @@
 package by.eftech.webapp.repository.jpa;
 
 
-import by.eftech.webapp.model.Photo;
-import by.eftech.webapp.model.RearWheels;
 import by.eftech.webapp.repository.RearWheelsRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

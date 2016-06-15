@@ -1,7 +1,6 @@
 package by.eftech.webapp.web;
 
 import by.eftech.webapp.service.TruckMiningService;
-import by.eftech.webapp.model.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;

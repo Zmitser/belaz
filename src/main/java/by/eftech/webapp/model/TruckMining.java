@@ -3,15 +3,13 @@ package by.eftech.webapp.model;
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ * Created by Lenovo on 15.06.2016.
+ */
 @Entity
 @Table(name = "truck_mining", schema = "belaz", catalog = "")
-@NamedQueries({
-        @NamedQuery(name = TruckMining.DELETE, query = "DELETE from TruckMining t WHERE t.id=:id"),
-        @NamedQuery(name = TruckMining.ALL_SORTED, query = "SELECT t FROM TruckMining t ORDER BY t.model.name"),
-})
 public class TruckMining {
     private Integer id;
-    private String productId;
     private String year;
     private Integer payloadCapacity;
     private String power;
@@ -28,48 +26,31 @@ public class TruckMining {
     private String application;
     private String advantages;
     private String completeSet;
-    private Boolean sold;
+    private Byte sold;
     private Auxiliary auxiliary;
     private BrakeType brakeType;
-    private Engine engine;
     private FrontWheels frontWheels;
+    private RearWheels rearWheels;
+    private ParkingBrake parkingBrake;
+    private Engine engine;
+    private Transmission transmission;
+    private Suspension suspension;
     private MachineCondition machineCondition;
     private MachineLocation machineLocation;
     private Manufacturer manufacturer;
     private ManufacturerCountry manufacturerCountry;
     private Model model;
-    private by.eftech.webapp.model.Item Item;
-    private ParkingBrake parkingBrake;
-    private List<Photo> photos;
-    private RearWheels rearWheels;
-    private Suspension suspension;
-    private Transmission transmission;
     private List<Video> videos;
-
-
-    public static final String DELETE = "TruckMining.delete";
-    public static final String ALL_SORTED = "TruckMining.getAllSorted";
-
+    private List<Photo> photos;
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    @Basic
-    @Column(name = "product_id")
-    public String getProductId() {
-        return productId;
-    }
-
-    public void setProductId(String productId) {
-        this.productId = productId;
     }
 
     @Basic
@@ -212,9 +193,6 @@ public class TruckMining {
         this.application = application;
     }
 
-
-
-
     @Basic
     @Column(name = "advantages")
     public String getAdvantages() {
@@ -237,11 +215,11 @@ public class TruckMining {
 
     @Basic
     @Column(name = "sold")
-    public Boolean getSold() {
+    public Byte getSold() {
         return sold;
     }
 
-    public void setSold(Boolean sold) {
+    public void setSold(Byte sold) {
         this.sold = sold;
     }
 
@@ -300,7 +278,7 @@ public class TruckMining {
         return result;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "auxiliary_id", referencedColumnName = "id", nullable = false)
     public Auxiliary getAuxiliary() {
         return auxiliary;
@@ -310,7 +288,7 @@ public class TruckMining {
         this.auxiliary = auxiliary;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "brake_type_id", referencedColumnName = "id", nullable = false)
     public BrakeType getBrakeType() {
         return brakeType;
@@ -320,17 +298,7 @@ public class TruckMining {
         this.brakeType = brakeType;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "engine_id", referencedColumnName = "id", nullable = false)
-    public Engine getEngine() {
-        return engine;
-    }
-
-    public void setEngine(Engine engine) {
-        this.engine = engine;
-    }
-
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "front_wheels_id", referencedColumnName = "id", nullable = false)
     public FrontWheels getFrontWheels() {
         return frontWheels;
@@ -340,85 +308,7 @@ public class TruckMining {
         this.frontWheels = frontWheels;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "machine_condition_id", referencedColumnName = "id", nullable = false)
-    public MachineCondition getMachineCondition() {
-        return machineCondition;
-    }
-
-    public void setMachineCondition(MachineCondition machineCondition) {
-        this.machineCondition = machineCondition;
-    }
-
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "machine_location_id", referencedColumnName = "id", nullable = false)
-    public MachineLocation getMachineLocation() {
-        return machineLocation;
-    }
-
-    public void setMachineLocation(MachineLocation machineLocation) {
-        this.machineLocation = machineLocation;
-    }
-
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "manufacturer_id", referencedColumnName = "id", nullable = false)
-    public Manufacturer getManufacturer() {
-        return manufacturer;
-    }
-
-    public void setManufacturer(Manufacturer manufacturer) {
-        this.manufacturer = manufacturer;
-    }
-
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "manufacturer_country_id", referencedColumnName = "id", nullable = false)
-    public ManufacturerCountry getManufacturerCountry() {
-        return manufacturerCountry;
-    }
-
-    public void setManufacturerCountry(ManufacturerCountry manufacturerCountry) {
-        this.manufacturerCountry = manufacturerCountry;
-    }
-
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "model_id", referencedColumnName = "id", nullable = false)
-    public Model getModel() {
-        return model;
-    }
-
-    public void setModel(Model model) {
-        this.model = model;
-    }
-
-    @OneToOne(mappedBy = "truckMining", fetch = FetchType.LAZY)
-    public by.eftech.webapp.model.Item getItem() {
-        return Item;
-    }
-
-    public void setItem(by.eftech.webapp.model.Item item) {
-        Item = item;
-    }
-
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "parking_brake_id", referencedColumnName = "id", nullable = false)
-    public ParkingBrake getParkingBrake() {
-        return parkingBrake;
-    }
-
-    public void setParkingBrake(ParkingBrake parkingBrake) {
-        this.parkingBrake = parkingBrake;
-    }
-
-    @ManyToMany(mappedBy = "truckMinings", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    public List<Photo> getPhotos() {
-        return photos;
-    }
-
-    public void setPhotos(List<Photo> photos) {
-        this.photos = photos;
-    }
-
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "rear_wheels_id", referencedColumnName = "id", nullable = false)
     public RearWheels getRearWheels() {
         return rearWheels;
@@ -428,17 +318,27 @@ public class TruckMining {
         this.rearWheels = rearWheels;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "suspension_id", referencedColumnName = "id", nullable = false)
-    public Suspension getSuspension() {
-        return suspension;
+    @ManyToOne
+    @JoinColumn(name = "parking_brake_id", referencedColumnName = "id", nullable = false)
+    public ParkingBrake getParkingBrake() {
+        return parkingBrake;
     }
 
-    public void setSuspension(Suspension suspension) {
-        this.suspension = suspension;
+    public void setParkingBrake(ParkingBrake parkingBrake) {
+        this.parkingBrake = parkingBrake;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne
+    @JoinColumn(name = "engine_id", referencedColumnName = "id", nullable = false)
+    public Engine getEngine() {
+        return engine;
+    }
+
+    public void setEngine(Engine engine) {
+        this.engine = engine;
+    }
+
+    @ManyToOne
     @JoinColumn(name = "transmission_id", referencedColumnName = "id", nullable = false)
     public Transmission getTransmission() {
         return transmission;
@@ -448,7 +348,66 @@ public class TruckMining {
         this.transmission = transmission;
     }
 
-    @ManyToMany(mappedBy = "truckMinings", cascade = CascadeType.ALL)
+    @ManyToOne
+    @JoinColumn(name = "suspension_id", referencedColumnName = "id", nullable = false)
+    public Suspension getSuspension() {
+        return suspension;
+    }
+
+    public void setSuspension(Suspension suspension) {
+        this.suspension = suspension;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "machine_condition_id", referencedColumnName = "id", nullable = false)
+    public MachineCondition getMachineCondition() {
+        return machineCondition;
+    }
+
+    public void setMachineCondition(MachineCondition machineCondition) {
+        this.machineCondition = machineCondition;
+    }
+
+    @OneToOne(mappedBy = "truckMinings")
+    public MachineLocation getMachineLocation() {
+        return machineLocation;
+    }
+
+    public void setMachineLocation(MachineLocation machineLocation) {
+        this.machineLocation = machineLocation;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "manufacturer_id", referencedColumnName = "id", nullable = false)
+    public Manufacturer getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(Manufacturer manufacturer) {
+        this.manufacturer = manufacturer;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "manufacturer_country_id", referencedColumnName = "id", nullable = false)
+    public ManufacturerCountry getManufacturerCountry() {
+        return manufacturerCountry;
+    }
+
+    public void setManufacturerCountry(ManufacturerCountry manufacturerCountry) {
+        this.manufacturerCountry = manufacturerCountry;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "model_id", referencedColumnName = "id", nullable = false)
+    public Model getModel() {
+        return model;
+    }
+
+    public void setModel(Model model) {
+        this.model = model;
+    }
+
+    @ManyToMany(mappedBy = "truckMinings")
     public List<Video> getVideos() {
         return videos;
     }
@@ -457,149 +416,12 @@ public class TruckMining {
         this.videos = videos;
     }
 
-    public boolean newOject() {
-        return (this.id == null);
+    @ManyToMany(mappedBy = "truckMinings")
+    public List<Photo> getPhotos() {
+        return photos;
     }
 
-
-    public TruckMining(Integer id,
-                       String productId,
-                       String year,
-                       Integer payloadCapacity,
-                       String power,
-                       String fuelRate,
-                       String torque,
-                       String turningRadius,
-                       Integer length,
-                       Integer width,
-                       Integer height,
-                       Integer operationalWeight,
-                       Integer grossWeight,
-                       Integer maxSpeed,
-                       Integer price,
-                       String application,
-                       String advantages,
-                       String completeSet,
-                       Boolean sold,
-                       Auxiliary auxiliary,
-                       BrakeType brakeType,
-                       Engine engine,
-                       FrontWheels frontWheels,
-                       MachineCondition machineCondition,
-                       MachineLocation machineLocation,
-                       Manufacturer manufacturer,
-                       ManufacturerCountry manufacturerCountry,
-                       Model model, Item item,
-                       ParkingBrake parkingBrake, List<Photo> photos,
-                       RearWheels rearWheels,
-                       Suspension suspension,
-                       Transmission transmission,
-                       List<Video> videos) {
-        this.id = id;
-        this.productId = productId;
-        this.year = year;
-        this.payloadCapacity = payloadCapacity;
-        this.power = power;
-        this.fuelRate = fuelRate;
-        this.torque = torque;
-        this.turningRadius = turningRadius;
-        this.length = length;
-        this.width = width;
-        this.height = height;
-        this.operationalWeight = operationalWeight;
-        this.grossWeight = grossWeight;
-        this.maxSpeed = maxSpeed;
-        this.price = price;
-        this.application = application;
-        this.advantages = advantages;
-        this.completeSet = completeSet;
-        this.sold = sold;
-        this.auxiliary = auxiliary;
-        this.brakeType = brakeType;
-        this.engine = engine;
-        this.frontWheels = frontWheels;
-        this.machineCondition = machineCondition;
-        this.machineLocation = machineLocation;
-        this.manufacturer = manufacturer;
-        this.manufacturerCountry = manufacturerCountry;
-        this.model = model;
-        Item = item;
-        this.parkingBrake = parkingBrake;
+    public void setPhotos(List<Photo> photos) {
         this.photos = photos;
-        this.rearWheels = rearWheels;
-        this.suspension = suspension;
-        this.transmission = transmission;
-        this.videos = videos;
-    }
-
-    public TruckMining() {
-    }
-
-    public TruckMining(String productId,
-                       String year,
-                       Integer payloadCapacity,
-                       String power,
-                       String fuelRate,
-                       String torque,
-                       String turningRadius,
-                       Integer length,
-                       Integer width,
-                       Integer height,
-                       Integer operationalWeight,
-                       Integer grossWeight,
-                       Integer maxSpeed,
-                       Integer price,
-                       String application,
-                       String advantages,
-                       String completeSet,
-                       Boolean sold,
-                       Auxiliary auxiliary,
-                       BrakeType brakeType,
-                       Engine engine,
-                       FrontWheels frontWheels,
-                       MachineCondition machineCondition,
-                       MachineLocation machineLocation,
-                       Manufacturer manufacturer,
-                       ManufacturerCountry manufacturerCountry,
-                       Model model,
-                       ParkingBrake parkingBrake,
-                       List<Photo> photos,
-                       RearWheels rearWheels,
-                       Suspension suspension,
-                       Transmission transmission,
-                       List<Video> videos) {
-        this.productId = productId;
-        this.year = year;
-        this.payloadCapacity = payloadCapacity;
-        this.power = power;
-        this.fuelRate = fuelRate;
-        this.torque = torque;
-        this.turningRadius = turningRadius;
-        this.length = length;
-        this.width = width;
-        this.height = height;
-        this.operationalWeight = operationalWeight;
-        this.grossWeight = grossWeight;
-        this.maxSpeed = maxSpeed;
-        this.price = price;
-        this.application = application;
-        this.advantages = advantages;
-        this.completeSet = completeSet;
-        this.sold = sold;
-        this.auxiliary = auxiliary;
-        this.brakeType = brakeType;
-        this.engine = engine;
-        this.frontWheels = frontWheels;
-        this.machineCondition = machineCondition;
-        this.machineLocation = machineLocation;
-        this.manufacturer = manufacturer;
-        this.manufacturerCountry = manufacturerCountry;
-        this.model = model;
-        this.parkingBrake = parkingBrake;
-        this.photos = photos;
-        this.rearWheels = rearWheels;
-        this.suspension = suspension;
-        this.transmission = transmission;
-        this.videos = videos;
     }
 }

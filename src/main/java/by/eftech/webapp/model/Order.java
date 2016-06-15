@@ -4,14 +4,11 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
 
-
+/**
+ * Created by Lenovo on 15.06.2016.
+ */
 @Entity
-@Table(name = "seller_order", schema = "belaz", catalog = "")
-@NamedQueries({
-        @NamedQuery(name = SellerOrder.DELETE, query = "DELETE from SellerOrder s WHERE s.id=:id"),
-        @NamedQuery(name = SellerOrder.ALL_SORTED, query = "SELECT s FROM SellerOrder s ORDER BY s.fullname"),
-})
-public class SellerOrder {
+public class Order {
     private Integer id;
     private Timestamp date;
     private String fullname;
@@ -24,14 +21,8 @@ public class SellerOrder {
     private String phoneNumber;
     private List<Item> items;
 
-
-    public static final String DELETE = "SellerOrder.delete";
-    public static final String ALL_SORTED = "SellerOrder.getAllSorted";
-
-
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }
@@ -135,19 +126,19 @@ public class SellerOrder {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        SellerOrder that = (SellerOrder) o;
+        Order order = (Order) o;
 
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (date != null ? !date.equals(that.date) : that.date != null) return false;
-        if (fullname != null ? !fullname.equals(that.fullname) : that.fullname != null) return false;
-        if (lastname != null ? !lastname.equals(that.lastname) : that.lastname != null) return false;
-        if (companyName != null ? !companyName.equals(that.companyName) : that.companyName != null) return false;
-        if (streetAddress != null ? !streetAddress.equals(that.streetAddress) : that.streetAddress != null)
+        if (id != null ? !id.equals(order.id) : order.id != null) return false;
+        if (date != null ? !date.equals(order.date) : order.date != null) return false;
+        if (fullname != null ? !fullname.equals(order.fullname) : order.fullname != null) return false;
+        if (lastname != null ? !lastname.equals(order.lastname) : order.lastname != null) return false;
+        if (companyName != null ? !companyName.equals(order.companyName) : order.companyName != null) return false;
+        if (streetAddress != null ? !streetAddress.equals(order.streetAddress) : order.streetAddress != null)
             return false;
-        if (town != null ? !town.equals(that.town) : that.town != null) return false;
-        if (country != null ? !country.equals(that.country) : that.country != null) return false;
-        if (emailAddress != null ? !emailAddress.equals(that.emailAddress) : that.emailAddress != null) return false;
-        if (phoneNumber != null ? !phoneNumber.equals(that.phoneNumber) : that.phoneNumber != null) return false;
+        if (town != null ? !town.equals(order.town) : order.town != null) return false;
+        if (country != null ? !country.equals(order.country) : order.country != null) return false;
+        if (emailAddress != null ? !emailAddress.equals(order.emailAddress) : order.emailAddress != null) return false;
+        if (phoneNumber != null ? !phoneNumber.equals(order.phoneNumber) : order.phoneNumber != null) return false;
 
         return true;
     }
@@ -174,41 +165,5 @@ public class SellerOrder {
 
     public void setItems(List<Item> items) {
         this.items = items;
-    }
-
-    public boolean newOject() {
-        return (this.id == null);
-    }
-
-
-
-    public SellerOrder(Integer id, Timestamp date, String fullname, String lastname, String companyName, String streetAddress, String town, String country, String emailAddress, String phoneNumber, List<Item> items) {
-        this.id = id;
-        this.date = date;
-        this.fullname = fullname;
-        this.lastname = lastname;
-        this.companyName = companyName;
-        this.streetAddress = streetAddress;
-        this.town = town;
-        this.country = country;
-        this.emailAddress = emailAddress;
-        this.phoneNumber = phoneNumber;
-        this.items = items;
-    }
-
-    public SellerOrder(Timestamp date, String fullname, String lastname, String companyName, String streetAddress, String town, String country, String emailAddress, String phoneNumber, List<Item> items) {
-        this.date = date;
-        this.fullname = fullname;
-        this.lastname = lastname;
-        this.companyName = companyName;
-        this.streetAddress = streetAddress;
-        this.town = town;
-        this.country = country;
-        this.emailAddress = emailAddress;
-        this.phoneNumber = phoneNumber;
-        this.items = items;
-    }
-
-    public SellerOrder() {
     }
 }

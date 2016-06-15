@@ -1,6 +1,5 @@
 package by.eftech.webapp.web;
 
-import by.eftech.webapp.model.TruckMining;
 import by.eftech.webapp.service.TruckMiningService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

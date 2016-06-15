@@ -1,6 +1,5 @@
 package by.eftech.webapp.web;
 
-import by.eftech.webapp.model.TruckMining;
 import by.eftech.webapp.service.TruckMiningService;
 import by.eftech.webapp.utils.FilterProduct;
 import org.springframework.beans.factory.annotation.Autowired;
