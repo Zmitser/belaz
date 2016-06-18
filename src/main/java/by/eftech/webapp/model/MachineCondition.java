@@ -13,7 +13,8 @@ import java.util.List;
 public class MachineCondition {
     private Integer id;
     private String name;
-    private List<MiningMachinery> miningMachineries;
+    private List<TruckMining> truckMinings;
+    private List<DumpTrucksCrossCountryCapacity> dumpTrucksCrossCountryCapacities;
 
 
     public static final String DELETE = "MachineCondition.delete";
@@ -60,14 +61,23 @@ public class MachineCondition {
 
 
     @OneToMany(mappedBy = "machineCondition")
-    public List<MiningMachinery> getMiningMachineries() {
-        return miningMachineries;
+    public List<TruckMining> getTruckMinings() {
+        return truckMinings;
     }
 
-    public void setMiningMachineries(List<MiningMachinery> miningMachineries) {
-        this.miningMachineries = miningMachineries;
+    public void setTruckMinings(List<TruckMining> truckMinings) {
+        this.truckMinings = truckMinings;
     }
 
+
+    @OneToMany(mappedBy = "machineCondition")
+    public List<DumpTrucksCrossCountryCapacity> getDumpTrucksCrossCountryCapacities() {
+        return dumpTrucksCrossCountryCapacities;
+    }
+
+    public void setDumpTrucksCrossCountryCapacities(List<DumpTrucksCrossCountryCapacity> dumpTrucksCrossCountryCapacities) {
+        this.dumpTrucksCrossCountryCapacities = dumpTrucksCrossCountryCapacities;
+    }
 
     public boolean newOject() {
         return (this.id == null);

@@ -11,23 +11,32 @@ import java.util.List;
         @NamedQuery(name = DumpTrucksCrossCountryCapacity.ALL_SORTED, query = "SELECT t FROM DumpTrucksCrossCountryCapacity t ORDER BY t.model.name"),
 })
 @AssociationOverrides({
-        @AssociationOverride(name = "model",  joinColumns = {@JoinColumn(name = "model_id", referencedColumnName = "id", nullable = false)}),
-        @AssociationOverride(name = "machineCondition",  joinColumns = {@JoinColumn(name = "machine_condition_id", referencedColumnName = "id", nullable = false)}),
-        @AssociationOverride(name = "manufacturerCountry",  joinColumns = {@JoinColumn(name = "manufacturer_country_id", referencedColumnName = "id", nullable = false)}),
-        @AssociationOverride(name = "manufacturer",  joinColumns = {@JoinColumn(name = "manufacturer_id", referencedColumnName = "id", nullable = false)}),
-        @AssociationOverride(name = "engine",  joinColumns = {@JoinColumn(name = "engine_id", referencedColumnName = "id", nullable = false)}),
-        @AssociationOverride(name = "transmission",  joinColumns = {@JoinColumn(name = "transmission_id", referencedColumnName = "id", nullable = false)}),
-        @AssociationOverride(name = "suspension",  joinColumns = {@JoinColumn(name = "suspension_id", referencedColumnName = "id", nullable = false)}),
+        @AssociationOverride(name = "model", joinColumns = {@JoinColumn(name = "model_id", referencedColumnName = "id", nullable = false)}),
+        @AssociationOverride(name = "manufacturer", joinColumns = {@JoinColumn(name = "manufacturer_id", referencedColumnName = "id", nullable = false)}),
+        @AssociationOverride(name = "engine", joinColumns = {@JoinColumn(name = "engine_id", referencedColumnName = "id", nullable = false)}),
+        @AssociationOverride(name = "transmission", joinColumns = {@JoinColumn(name = "transmission_id", referencedColumnName = "id", nullable = false)}),
+        @AssociationOverride(name = "suspension", joinColumns = {@JoinColumn(name = "suspension_id", referencedColumnName = "id", nullable = false)}),
 })
-public class DumpTrucksCrossCountryCapacity extends MiningMachinery{
+public class DumpTrucksCrossCountryCapacity extends MiningMachinery {
     private Integer truck;
     private Integer loadingHeight;
     private String frame;
     private String fordingDepth;
     private String climableSlopes;
-    private WheelArrangement wheelArrangement;;
+    private WheelArrangement wheelArrangement;
+    private String productId;
     private List<Video> videos;
     private List<Photo> photos;
+    private Integer payloadCapacity;
+    private String turningRadius;
+    private Integer operationalWeight;
+    private Integer grossWeight;
+    private Integer maxSpeed;
+    private String completeSet;
+    private MachineCondition machineCondition;
+    private MachineLocation machineLocation;
+    private ManufacturerCountry manufacturerCountry;
+
 
     public static final String DELETE = "DumpTrucksCrossCountryCapacity.delete";
     public static final String ALL_SORTED = "DumpTrucksCrossCountryCapacity.getAllSorted";
@@ -109,5 +118,106 @@ public class DumpTrucksCrossCountryCapacity extends MiningMachinery{
 
     public void setPhotos(List<Photo> photos) {
         this.photos = photos;
+    }
+
+
+    @Basic
+    @Column(name = "product_id")
+    public String getProductId() {
+        return productId;
+    }
+
+    public void setProductId(String productId) {
+        this.productId = productId;
+    }
+
+    @Basic
+    @Column(name = "payload_capacity")
+    public Integer getPayloadCapacity() {
+        return payloadCapacity;
+    }
+
+    public void setPayloadCapacity(Integer payloadCapacity) {
+        this.payloadCapacity = payloadCapacity;
+    }
+
+    @Basic
+    @Column(name = "turning_radius")
+    public String getTurningRadius() {
+        return turningRadius;
+    }
+
+    public void setTurningRadius(String turningRadius) {
+        this.turningRadius = turningRadius;
+    }
+
+    @Basic
+    @Column(name = "operational_weight")
+    public Integer getOperationalWeight() {
+        return operationalWeight;
+    }
+
+    public void setOperationalWeight(Integer operationalWeight) {
+        this.operationalWeight = operationalWeight;
+    }
+
+    @Basic
+    @Column(name = "gross_weight")
+    public Integer getGrossWeight() {
+        return grossWeight;
+    }
+
+    public void setGrossWeight(Integer grossWeight) {
+        this.grossWeight = grossWeight;
+    }
+
+    @Basic
+    @Column(name = "max_speed")
+    public Integer getMaxSpeed() {
+        return maxSpeed;
+    }
+
+    public void setMaxSpeed(Integer maxSpeed) {
+        this.maxSpeed = maxSpeed;
+    }
+
+    @Basic
+    @Column(name = "complete_set")
+    public String getCompleteSet() {
+        return completeSet;
+    }
+
+    public void setCompleteSet(String completeSet) {
+        this.completeSet = completeSet;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "manufacturer_country_id", referencedColumnName = "id", nullable = false)
+    public ManufacturerCountry getManufacturerCountry() {
+        return manufacturerCountry;
+    }
+
+    public void setManufacturerCountry(ManufacturerCountry manufacturerCountry) {
+        this.manufacturerCountry = manufacturerCountry;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "machine_condition_id", referencedColumnName = "id", nullable = false)
+    public MachineCondition getMachineCondition() {
+        return machineCondition;
+    }
+
+    public void setMachineCondition(MachineCondition machineCondition) {
+        this.machineCondition = machineCondition;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "machine_location_id", referencedColumnName = "id", nullable = false)
+    public MachineLocation getMachineLocation() {
+        return machineLocation;
+    }
+
+    public void setMachineLocation(MachineLocation machineLocation) {
+        this.machineLocation = machineLocation;
     }
 }

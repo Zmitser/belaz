@@ -1,7 +1,6 @@
 package by.eftech.webapp.model;
 
 import javax.persistence.*;
-import java.util.List;
 
 
 @Entity
@@ -14,7 +13,6 @@ public class MachineLocation {
     private Integer id;
     private String name;
     private DumpTrucksCrossCountryCapacity dumpTrucksCrossCountryCapacity;
-    private List<MiningMachinery> miningMachineries;
     private TruckMining truckMinings;
 
     public static final String DELETE = "MachineLocation.delete";
@@ -68,15 +66,6 @@ public class MachineLocation {
 
     public void setDumpTrucksCrossCountryCapacity(DumpTrucksCrossCountryCapacity dumpTrucksCrossCountryCapacity) {
         this.dumpTrucksCrossCountryCapacity = dumpTrucksCrossCountryCapacity;
-    }
-
-    @OneToMany(mappedBy = "machineLocation")
-    public List<MiningMachinery> getMiningMachineries() {
-        return miningMachineries;
-    }
-
-    public void setMiningMachineries(List<MiningMachinery> miningMachineries) {
-        this.miningMachineries = miningMachineries;
     }
 
     @OneToOne

@@ -11,17 +11,16 @@ import java.util.List;
         @NamedQuery(name = TruckMining.ALL_SORTED, query = "SELECT t FROM TruckMining t ORDER BY t.model.name"),
 })
 @AssociationOverrides({
-        @AssociationOverride(name = "model",  joinColumns = {@JoinColumn(name = "model_id", referencedColumnName = "id", nullable = false)}),
-        @AssociationOverride(name = "machineCondition",  joinColumns = {@JoinColumn(name = "machine_condition_id", referencedColumnName = "id", nullable = false)}),
-        @AssociationOverride(name = "manufacturerCountry",  joinColumns = {@JoinColumn(name = "manufacturer_country_id", referencedColumnName = "id", nullable = false)}),
-        @AssociationOverride(name = "manufacturer",  joinColumns = {@JoinColumn(name = "manufacturer_id", referencedColumnName = "id", nullable = false)}),
-        @AssociationOverride(name = "engine",  joinColumns = {@JoinColumn(name = "engine_id", referencedColumnName = "id", nullable = false)}),
-        @AssociationOverride(name = "transmission",  joinColumns = {@JoinColumn(name = "transmission_id", referencedColumnName = "id", nullable = false)}),
-        @AssociationOverride(name = "suspension",  joinColumns = {@JoinColumn(name = "suspension_id", referencedColumnName = "id", nullable = false)}),
+        @AssociationOverride(name = "model", joinColumns = {@JoinColumn(name = "model_id", referencedColumnName = "id", nullable = false)}),
+        @AssociationOverride(name = "manufacturer", joinColumns = {@JoinColumn(name = "manufacturer_id", referencedColumnName = "id", nullable = false)}),
+        @AssociationOverride(name = "engine", joinColumns = {@JoinColumn(name = "engine_id", referencedColumnName = "id", nullable = false)}),
+        @AssociationOverride(name = "transmission", joinColumns = {@JoinColumn(name = "transmission_id", referencedColumnName = "id", nullable = false)}),
+        @AssociationOverride(name = "suspension", joinColumns = {@JoinColumn(name = "suspension_id", referencedColumnName = "id", nullable = false)}),
 })
-public class TruckMining extends MiningMachinery{
+public class TruckMining extends MiningMachinery {
     private String fuelRate;
-    private String torque;;
+    private String torque;
+    ;
     private Auxiliary auxiliary;
     private BrakeType brakeType;
     private FrontWheels frontWheels;
@@ -29,8 +28,16 @@ public class TruckMining extends MiningMachinery{
     private ParkingBrake parkingBrake;
     private List<Video> videos;
     private List<Photo> photos;
-
-
+    private String productId;
+    private Integer payloadCapacity;
+    private String turningRadius;
+    private Integer operationalWeight;
+    private Integer grossWeight;
+    private Integer maxSpeed;
+    private String completeSet;
+    private MachineCondition machineCondition;
+    private MachineLocation machineLocation;
+    private ManufacturerCountry manufacturerCountry;
 
 
     public static final String DELETE = "TruckMining.delete";
@@ -127,7 +134,6 @@ public class TruckMining extends MiningMachinery{
     }
 
 
-
     public TruckMining(Integer id,
                        String productId,
                        String year,
@@ -161,7 +167,7 @@ public class TruckMining extends MiningMachinery{
                        Suspension suspension,
                        Transmission transmission,
                        List<Video> videos) {
-        super(id, productId, year, payloadCapacity, power, turningRadius, length, width, height, operationalWeight, grossWeight, maxSpeed, price, application, advantages, completeSet, sold, engine, transmission, suspension, machineCondition, machineLocation, manufacturer, manufacturerCountry, model);
+        super(id, year, power, length, width, height, price, application, advantages, sold, engine, transmission, suspension, manufacturer, model);
         this.fuelRate = fuelRate;
         this.torque = torque;
         this.auxiliary = auxiliary;
@@ -171,6 +177,18 @@ public class TruckMining extends MiningMachinery{
         this.photos = photos;
         this.rearWheels = rearWheels;
         this.videos = videos;
+        this.productId = productId;
+        this.payloadCapacity = payloadCapacity;
+        this.turningRadius = turningRadius;
+        this.operationalWeight = operationalWeight;
+        this.grossWeight = grossWeight;
+        this.maxSpeed = maxSpeed;
+        this.completeSet = completeSet;
+
+
+        this.machineCondition = machineCondition;
+        this.machineLocation = machineLocation;
+        this.manufacturerCountry = manufacturerCountry;
     }
 
     public TruckMining() {
@@ -209,7 +227,7 @@ public class TruckMining extends MiningMachinery{
                        Suspension suspension,
                        Transmission transmission,
                        List<Video> videos) {
-        super(productId, year, payloadCapacity, power, turningRadius, length, width, height, operationalWeight, grossWeight, maxSpeed, price, application, advantages, completeSet, sold, engine, transmission, suspension, machineCondition, machineLocation, manufacturer, manufacturerCountry, model);
+        super(year, power, length, width, height, price, application, advantages, sold, engine, transmission, suspension, manufacturer, model);
         this.fuelRate = fuelRate;
         this.torque = torque;
         this.auxiliary = auxiliary;
@@ -219,7 +237,118 @@ public class TruckMining extends MiningMachinery{
         this.photos = photos;
         this.rearWheels = rearWheels;
         this.videos = videos;
+        this.productId = productId;
+        this.payloadCapacity = payloadCapacity;
+        this.turningRadius = turningRadius;
+        this.operationalWeight = operationalWeight;
+        this.grossWeight = grossWeight;
+        this.maxSpeed = maxSpeed;
+        this.completeSet = completeSet;
+
+
+        this.machineCondition = machineCondition;
+        this.machineLocation = machineLocation;
+        this.manufacturerCountry = manufacturerCountry;
+    }
+
+    @Basic
+    @Column(name = "product_id")
+    public String getProductId() {
+        return productId;
+    }
+
+    public void setProductId(String productId) {
+        this.productId = productId;
+    }
+
+    @Basic
+    @Column(name = "payload_capacity")
+    public Integer getPayloadCapacity() {
+        return payloadCapacity;
+    }
+
+    public void setPayloadCapacity(Integer payloadCapacity) {
+        this.payloadCapacity = payloadCapacity;
+    }
+
+    @Basic
+    @Column(name = "turning_radius")
+    public String getTurningRadius() {
+        return turningRadius;
+    }
+
+    public void setTurningRadius(String turningRadius) {
+        this.turningRadius = turningRadius;
+    }
+
+    @Basic
+    @Column(name = "operational_weight")
+    public Integer getOperationalWeight() {
+        return operationalWeight;
+    }
+
+    public void setOperationalWeight(Integer operationalWeight) {
+        this.operationalWeight = operationalWeight;
+    }
+
+    @Basic
+    @Column(name = "gross_weight")
+    public Integer getGrossWeight() {
+        return grossWeight;
+    }
+
+    public void setGrossWeight(Integer grossWeight) {
+        this.grossWeight = grossWeight;
+    }
+
+    @Basic
+    @Column(name = "max_speed")
+    public Integer getMaxSpeed() {
+        return maxSpeed;
+    }
+
+    public void setMaxSpeed(Integer maxSpeed) {
+        this.maxSpeed = maxSpeed;
+    }
+
+    @Basic
+    @Column(name = "complete_set")
+    public String getCompleteSet() {
+        return completeSet;
+    }
+
+    public void setCompleteSet(String completeSet) {
+        this.completeSet = completeSet;
     }
 
 
+    @ManyToOne
+    @JoinColumn(name = "manufacturer_country_id", referencedColumnName = "id", nullable = false)
+    public ManufacturerCountry getManufacturerCountry() {
+        return manufacturerCountry;
+    }
+
+    public void setManufacturerCountry(ManufacturerCountry manufacturerCountry) {
+        this.manufacturerCountry = manufacturerCountry;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "machine_condition_id", referencedColumnName = "id", nullable = false)
+    public MachineCondition getMachineCondition() {
+        return machineCondition;
+    }
+
+    public void setMachineCondition(MachineCondition machineCondition) {
+        this.machineCondition = machineCondition;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "machine_location_id", referencedColumnName = "id", nullable = false)
+    public MachineLocation getMachineLocation() {
+        return machineLocation;
+    }
+
+    public void setMachineLocation(MachineLocation machineLocation) {
+        this.machineLocation = machineLocation;
+    }
 }

@@ -746,48 +746,13 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `belaz`.`mining machinery`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `belaz`.`mining machinery` ;
-CREATE TABLE IF NOT EXISTS `belaz`.`mining machinery` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `product_id` VARCHAR(45) NOT NULL,
-  `year` VARCHAR(70) NOT NULL,
-  `payload_capacity` INT NOT NULL,
-  `power` VARCHAR(80) NOT NULL,
-  `turning_radius` VARCHAR(45) NOT NULL,
-  `length` INT NOT NULL,
-  `width` INT NOT NULL,
-  `height` INT NOT NULL,
-  `operational_weight` INT NOT NULL,
-  `gross_weight` INT NOT NULL,
-  `max_speed` INT NOT NULL,
-  `price` INT NOT NULL,
-  `application` TEXT NOT NULL,
-  `advantages` TEXT NOT NULL,
-  `complete_set` TEXT NOT NULL,
-  `sold` TINYINT(1) NOT NULL,
-  `engine_id` INT NOT NULL,
-  `model_id` INT NOT NULL,
-  `manufacturer_country_id` INT NOT NULL,
-  `suspension_id` INT NOT NULL,
-  `transmission_id` INT NOT NULL,
-  `machine_location_id` INT NOT NULL,
-  `machine_condition_id` INT NOT NULL,
-  `manufacturer_id` INT NOT NULL,
-  PRIMARY KEY (`id`, `engine_id`, `model_id`, `manufacturer_country_id`, `suspension_id`, `transmission_id`, `machine_location_id`, `machine_condition_id`, `manufacturer_id`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `belaz`.`item`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `belaz`.`item` ;
 CREATE TABLE IF NOT EXISTS `belaz`.`item` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `quantity` INT NOT NULL,
-  `mining machinery_id` INT NOT NULL,
-  PRIMARY KEY (`id`, `mining machinery_id`))
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 
