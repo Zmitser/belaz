@@ -1,5 +1,6 @@
 package by.eftech.webapp.web;
 
+import by.eftech.webapp.model.Item;
 import by.eftech.webapp.service.TruckMiningService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -81,7 +82,7 @@ public class ShoppingCartController {
     private int ifExisting(int id, HttpSession session) {
         List<Item> cart = (List<Item>) session.getAttribute("cart");
         for (int i = 0; i < cart.size(); i++) {
-            if (cart.get(i).getTruckMining().getId() == id) {
+            if (cart.get(i).getMiningMachinery().getId() == id) {
                 return i;
             }
 

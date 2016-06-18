@@ -1,6 +1,8 @@
 package by.eftech.webapp.repository.jpa;
 
 
+import by.eftech.webapp.model.FrontWheels;
+import by.eftech.webapp.model.MachineCondition;
 import by.eftech.webapp.repository.MachineConditionRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

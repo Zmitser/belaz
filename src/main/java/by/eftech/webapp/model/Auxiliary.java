@@ -3,14 +3,19 @@ package by.eftech.webapp.model;
 import javax.persistence.*;
 import java.util.List;
 
-/**
- * Created by Lenovo on 15.06.2016.
- */
+
 @Entity
+@NamedQueries({
+        @NamedQuery(name = Auxiliary.DELETE, query = "DELETE from Auxiliary a WHERE a.id=:id"),
+        @NamedQuery(name = Auxiliary.ALL_SORTED, query = "SELECT a FROM Auxiliary a ORDER BY a.name"),
+})
 public class Auxiliary {
     private Integer id;
     private String name;
     private List<TruckMining> truckMinings;
+
+    public static final String DELETE = "Auxiliary.delete";
+    public static final String ALL_SORTED = "Auxiliary.getAllSorted";
 
     @Id
     @Column(name = "id")
@@ -60,4 +65,21 @@ public class Auxiliary {
     public void setTruckMinings(List<TruckMining> truckMinings) {
         this.truckMinings = truckMinings;
     }
+    public boolean newOject() {
+        return (id == null);
+    }
+    public Auxiliary(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+
+    public Auxiliary(String name) {
+        this.name = name;
+    }
+
+
+    public Auxiliary() {
+    }
+
 }

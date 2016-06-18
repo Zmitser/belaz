@@ -1,19 +1,24 @@
 package by.eftech.webapp.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-/**
- * Created by Lenovo on 15.06.2016.
- */
+
 @Entity
+@NamedQueries({
+        @NamedQuery(name = User.DELETE, query = "DELETE from User u WHERE u.id=:id"),
+        @NamedQuery(name = User.ALL_SORTED, query = "SELECT u FROM User u ORDER BY u.email"),
+})
 public class User {
     private Integer id;
     private String email;
     private String password;
     private String role;
+
+
+
+    public static final String DELETE = "User.delete";
+    public static final String ALL_SORTED = "User.getAllSorted";
+
 
     @Id
     @Column(name = "id")
@@ -77,5 +82,9 @@ public class User {
         result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + (role != null ? role.hashCode() : 0);
         return result;
+    }
+
+    public boolean newOject() {
+        return (this.id == null);
     }
 }

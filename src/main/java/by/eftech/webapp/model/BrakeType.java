@@ -3,15 +3,22 @@ package by.eftech.webapp.model;
 import javax.persistence.*;
 import java.util.List;
 
-/**
- * Created by Lenovo on 15.06.2016.
- */
+
 @Entity
-@Table(name = "brake_type", schema = "belaz", catalog = "")
+@Table(name = "brake_type", schema = "belaz")
+@NamedQueries({
+        @NamedQuery(name = BrakeType.DELETE, query = "DELETE from BrakeType b WHERE b.id=:id"),
+        @NamedQuery(name = BrakeType.ALL_SORTED, query = "SELECT b FROM BrakeType b ORDER BY b.name"),
+})
 public class BrakeType {
     private Integer id;
     private String name;
     private List<TruckMining> truckMinings;
+
+
+    public static final String DELETE = "BrakeType.delete";
+    public static final String ALL_SORTED = "BrakeType.getAllSorted";
+
 
     @Id
     @Column(name = "id")
@@ -61,4 +68,22 @@ public class BrakeType {
     public void setTruckMinings(List<TruckMining> truckMinings) {
         this.truckMinings = truckMinings;
     }
+
+
+    public boolean newOject() {
+        return (id == null);
+    }
+
+    public BrakeType(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public BrakeType(String name) {
+        this.name = name;
+    }
+
+    public BrakeType() {
+    }
+
 }

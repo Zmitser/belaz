@@ -1,6 +1,8 @@
 package by.eftech.webapp.repository.jpa;
 
 
+import by.eftech.webapp.model.Series;
+import by.eftech.webapp.model.Suspension;
 import by.eftech.webapp.repository.SuspensionRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

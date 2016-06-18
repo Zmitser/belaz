@@ -15,7 +15,7 @@
             <ul class="dropdown-menu">
                 <c:set value="0" var="s"/>
                 <c:forEach var="it" items="${sessionScope.cart}" varStatus="timer">
-                    <c:set value="${s + it.quantity * it.truckMining.price}" var="s"/>
+                    <c:set value="${s + it.quantity * it.miningMachinery.price}" var="s"/>
                     <li>
                         <div class="basket-item">
                             <div class="row">
@@ -26,9 +26,9 @@
                                     </div>
                                 </div>
                                 <div class="col-xs-8 col-sm-8 no-margin">
-                                    <div class="title">${it.truckMining.model.name}</div>
-                                    <div class="price">$${it.truckMining.price} x ${it.quantity} =
-                                        $${it.quantity * it.truckMining.price}</div>
+                                    <div class="title">${it.miningMachinery.model.name}</div>
+                                    <div class="price">$${it.miningMachinery.price} x ${it.quantity} =
+                                        $${it.quantity * it.miningMachinery.price}</div>
                                 </div>
                             </div>
                             <a class="close-btn" href="/shopping-cart/remove/${timer.index}"></a>

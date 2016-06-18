@@ -729,8 +729,8 @@ UNLOCK TABLES;
 -- -----------------------------------------------------
 -- Table `belaz`.`order`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `belaz`.`order` ;
-CREATE TABLE IF NOT EXISTS `belaz`.`order` (
+DROP TABLE IF EXISTS `belaz`.seller_order ;
+CREATE TABLE IF NOT EXISTS `belaz`.seller_order (
   `id` INT NOT NULL AUTO_INCREMENT,
   `date` TIMESTAMP NOT NULL,
   `fullname` VARCHAR(45) NOT NULL,
@@ -886,30 +886,6 @@ CREATE TABLE IF NOT EXISTS `belaz`.`dump_trucks_cross_country_capacity_has_video
   `video_id` INT NOT NULL,
   PRIMARY KEY (`dump_trucks_cross_country_capacity_id`, `video_id`))
 ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `belaz`.`mining machinery_has_photo`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `belaz`.`mining machinery_has_photo` ;
-CREATE TABLE IF NOT EXISTS `belaz`.`mining machinery_has_photo` (
-  `mining machinery_id` INT NOT NULL,
-  `photo_id` INT NOT NULL,
-  PRIMARY KEY (`mining machinery_id`, `photo_id`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `belaz`.`mining machinery_has_video`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `belaz`.`mining machinery_has_video` ;
-CREATE TABLE IF NOT EXISTS `belaz`.`mining machinery_has_video` (
-  `mining machinery_id` INT NOT NULL,
-  `video_id` INT NOT NULL,
-  PRIMARY KEY (`mining machinery_id`, `video_id`))
-ENGINE = InnoDB;
-
-
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

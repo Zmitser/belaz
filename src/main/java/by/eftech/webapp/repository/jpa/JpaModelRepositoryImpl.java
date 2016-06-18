@@ -1,6 +1,7 @@
 package by.eftech.webapp.repository.jpa;
 
 
+import by.eftech.webapp.model.Model;
 import by.eftech.webapp.repository.ModelRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

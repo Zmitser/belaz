@@ -3,15 +3,23 @@ package by.eftech.webapp.model;
 import javax.persistence.*;
 import java.util.List;
 
-/**
- * Created by Lenovo on 15.06.2016.
- */
+
 @Entity
 @Table(name = "rear_wheels", schema = "belaz", catalog = "")
+@NamedQueries({
+        @NamedQuery(name = RearWheels.DELETE, query = "DELETE from RearWheels r WHERE r.id=:id"),
+        @NamedQuery(name = RearWheels.ALL_SORTED, query = "SELECT r FROM RearWheels r ORDER BY r.name"),
+})
 public class RearWheels {
     private Integer id;
     private String name;
     private List<TruckMining> truckMinings;
+
+
+
+    public static final String DELETE = "RearWheeels.delete";
+    public static final String ALL_SORTED = "RearWheels.getAllSorted";
+
 
     @Id
     @Column(name = "id")
@@ -60,5 +68,21 @@ public class RearWheels {
 
     public void setTruckMinings(List<TruckMining> truckMinings) {
         this.truckMinings = truckMinings;
+    }
+
+    public boolean newOject() {
+        return (this.id == null);
+    }
+
+    public RearWheels(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public RearWheels(String name) {
+        this.name = name;
+    }
+
+    public RearWheels() {
     }
 }

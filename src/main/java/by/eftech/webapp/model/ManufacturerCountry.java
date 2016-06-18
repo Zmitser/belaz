@@ -3,17 +3,22 @@ package by.eftech.webapp.model;
 import javax.persistence.*;
 import java.util.List;
 
-/**
- * Created by Lenovo on 15.06.2016.
- */
+
 @Entity
-@Table(name = "manufacturer_country", schema = "belaz", catalog = "")
+@Table(name = "manufacturer_country", schema = "belaz")
+@NamedQueries({
+        @NamedQuery(name = ManufacturerCountry.DELETE, query = "DELETE from ManufacturerCountry m WHERE m.id=:id"),
+        @NamedQuery(name = ManufacturerCountry.ALL_SORTED, query = "SELECT m FROM ManufacturerCountry m ORDER BY m.name"),
+})
 public class ManufacturerCountry {
     private Integer id;
     private String name;
-    private List<DumpTrucksCrossCountryCapacity> dumpTrucksCrossCountryCapacity;
     private List<MiningMachinery> miningMachineries;
-    private List<TruckMining> truckMinings;
+
+
+
+    public static final String DELETE = "ManufacturerCountry.delete";
+    public static final String ALL_SORTED = "ManufacturerCountry.getAllSorted";
 
     @Id
     @Column(name = "id")
@@ -55,14 +60,7 @@ public class ManufacturerCountry {
         return result;
     }
 
-    @OneToMany(mappedBy = "manufacturerCountry")
-    public List<DumpTrucksCrossCountryCapacity> getDumpTrucksCrossCountryCapacity() {
-        return dumpTrucksCrossCountryCapacity;
-    }
 
-    public void setDumpTrucksCrossCountryCapacity(List<DumpTrucksCrossCountryCapacity> dumpTrucksCrossCountryCapacity) {
-        this.dumpTrucksCrossCountryCapacity = dumpTrucksCrossCountryCapacity;
-    }
 
     @OneToMany(mappedBy = "manufacturerCountry")
     public List<MiningMachinery> getMiningMachineries() {
@@ -73,12 +71,21 @@ public class ManufacturerCountry {
         this.miningMachineries = miningMachineries;
     }
 
-    @OneToMany(mappedBy = "manufacturerCountry")
-    public List<TruckMining> getTruckMinings() {
-        return truckMinings;
+
+
+    public boolean newOject() {
+        return (this.id == null);
     }
 
-    public void setTruckMinings(List<TruckMining> truckMinings) {
-        this.truckMinings = truckMinings;
+    public ManufacturerCountry(String name) {
+        this.name = name;
+    }
+
+    public ManufacturerCountry(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public ManufacturerCountry() {
     }
 }

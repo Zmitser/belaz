@@ -160,19 +160,19 @@
                         <h2 class="border h1">your order</h2>
                         <c:set var="s" value="0"/>
                         <c:forEach var="item" items="${sessionScope.cart}">
-                            <c:set var="s" value="${s + item.quantity * item.truckMining.price}"/>
+                            <c:set var="s" value="${s + item.quantity * item.miningMachinery.price}"/>
                             <div class="row no-margin order-item">
                                 <div class="col-xs-12 col-sm-1 no-margin">
                                     <a href="#" class="qty">${item.quantity} x</a>
                                 </div>
 
                                 <div class="col-xs-12 col-sm-9 ">
-                                    <div class="title"><a href="#">${item.truckMining.model.name} </a></div>
-                                    <div class="brand">${item.truckMining.model.series.name}</div>
+                                    <div class="title"><a href="#">${item.miningMachinery.model.name} </a></div>
+                                    <div class="brand">${item.miningMachinery.model.series.name}</div>
                                 </div>
 
                                 <div class="col-xs-12 col-sm-2 no-margin">
-                                    <div class="price">${item.quantity * item.truckMining.price}</div>
+                                    <div class="price">${item.quantity * item.miningMachinery.price}</div>
                                 </div>
                             </div>
                             <!-- /.order-item -->

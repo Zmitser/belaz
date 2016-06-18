@@ -3,15 +3,20 @@ package by.eftech.webapp.model;
 import javax.persistence.*;
 import java.util.List;
 
-/**
- * Created by Lenovo on 15.06.2016.
- */
+
 @Entity
+@NamedQueries({
+        @NamedQuery(name = Item.DELETE, query = "DELETE from Item i WHERE i.id=:id"),
+        @NamedQuery(name = Item.ALL_SORTED, query = "SELECT i FROM Item i ORDER BY i.quantity"),
+})
 public class Item {
     private Integer id;
     private Integer quantity;
     private MiningMachinery miningMachinery;
-    private List<Order> orders;
+    private List<SellerOrder> orders;
+
+    public static final String DELETE = "JpaItemRepositoryImpl.delete";
+    public static final String ALL_SORTED = "JpaItemRepositoryImpl.getAllSorted";
 
     @Id
     @Column(name = "id")
@@ -64,12 +69,31 @@ public class Item {
     }
 
     @ManyToMany
-    @JoinTable(name = "order_has_item", catalog = "", schema = "belaz", joinColumns = @JoinColumn(name = "item_id", referencedColumnName = "id", nullable = false), inverseJoinColumns = @JoinColumn(name = "order_id", referencedColumnName = "id", nullable = false))
-    public List<Order> getOrders() {
+    @JoinTable(name = "order_has_item", schema = "belaz", joinColumns = @JoinColumn(name = "item_id", referencedColumnName = "id", nullable = false), inverseJoinColumns = @JoinColumn(name = "order_id", referencedColumnName = "id", nullable = false))
+    public List<SellerOrder> getOrders() {
         return orders;
     }
 
-    public void setOrders(List<Order> orders) {
+    public void setOrders(List<SellerOrder> orders) {
         this.orders = orders;
+    }
+
+
+    public boolean newOject() {
+        return (this.id == null);
+    }
+
+    public Item(Integer id, Integer quantity, MiningMachinery truckMining) {
+        this.id = id;
+        this.quantity = quantity;
+        this.miningMachinery = truckMining;
+    }
+
+    public Item(Integer quantity, MiningMachinery truckMining) {
+        this.quantity = quantity;
+        this.miningMachinery = truckMining;
+    }
+
+    public Item() {
     }
 }

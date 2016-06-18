@@ -3,16 +3,20 @@ package by.eftech.webapp.model;
 import javax.persistence.*;
 import java.util.List;
 
-/**
- * Created by Lenovo on 15.06.2016.
- */
+
 @Entity
+@NamedQueries({
+        @NamedQuery(name = Manufacturer.DELETE, query = "DELETE from Manufacturer m WHERE m.id=:id"),
+        @NamedQuery(name = Manufacturer.ALL_SORTED, query = "SELECT m FROM Manufacturer m ORDER BY m.name"),
+})
 public class Manufacturer {
     private Integer id;
     private String name;
-    private List<DumpTrucksCrossCountryCapacity> dumpTrucksCrossCountryCapacity;
     private List<MiningMachinery> miningMachineries;
-    private List<TruckMining> truckMinings;
+
+
+    public static final String DELETE = "Manufacturer.delete";
+    public static final String ALL_SORTED = "Manufacturer.getAllSorted";
 
     @Id
     @Column(name = "id")
@@ -54,14 +58,7 @@ public class Manufacturer {
         return result;
     }
 
-    @OneToMany(mappedBy = "manufacturer")
-    public List<DumpTrucksCrossCountryCapacity> getDumpTrucksCrossCountryCapacity() {
-        return dumpTrucksCrossCountryCapacity;
-    }
 
-    public void setDumpTrucksCrossCountryCapacity(List<DumpTrucksCrossCountryCapacity> dumpTrucksCrossCountryCapacity) {
-        this.dumpTrucksCrossCountryCapacity = dumpTrucksCrossCountryCapacity;
-    }
 
     @OneToMany(mappedBy = "manufacturer")
     public List<MiningMachinery> getMiningMachineries() {
@@ -72,12 +69,21 @@ public class Manufacturer {
         this.miningMachineries = miningMachineries;
     }
 
-    @OneToMany(mappedBy = "manufacturer")
-    public List<TruckMining> getTruckMinings() {
-        return truckMinings;
+
+
+    public boolean newOject() {
+        return (this.id == null);
     }
 
-    public void setTruckMinings(List<TruckMining> truckMinings) {
-        this.truckMinings = truckMinings;
+    public Manufacturer(String name) {
+        this.name = name;
+    }
+
+    public Manufacturer() {
+    }
+
+    public Manufacturer(Integer id, String name) {
+        this.id = id;
+        this.name = name;
     }
 }

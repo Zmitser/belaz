@@ -3,18 +3,21 @@ package by.eftech.webapp.model;
 import javax.persistence.*;
 import java.util.List;
 
-/**
- * Created by Lenovo on 15.06.2016.
- */
+
 @Entity
-@Table(name = "machine_condition", schema = "belaz", catalog = "")
+@Table(name = "machine_condition", schema = "belaz")
+@NamedQueries({
+        @NamedQuery(name = MachineCondition.DELETE, query = "DELETE from MachineCondition c WHERE c.id=:id"),
+        @NamedQuery(name = MachineCondition.ALL_SORTED, query = "SELECT c FROM MachineCondition c ORDER BY c.name"),
+})
 public class MachineCondition {
     private Integer id;
     private String name;
-    private List<DumpTrucksCrossCountryCapacity> dumpTrucksCrossCountryCapacity;
     private List<MiningMachinery> miningMachineries;
-    private List<TruckMining> truckMinings;
 
+
+    public static final String DELETE = "MachineCondition.delete";
+    public static final String ALL_SORTED = "MachineCondition.getAllSorted";
     @Id
     @Column(name = "id")
     public Integer getId() {
@@ -55,14 +58,6 @@ public class MachineCondition {
         return result;
     }
 
-    @OneToMany(mappedBy = "machineCondition")
-    public List<DumpTrucksCrossCountryCapacity> getDumpTrucksCrossCountryCapacity() {
-        return dumpTrucksCrossCountryCapacity;
-    }
-
-    public void setDumpTrucksCrossCountryCapacity(List<DumpTrucksCrossCountryCapacity> dumpTrucksCrossCountryCapacity) {
-        this.dumpTrucksCrossCountryCapacity = dumpTrucksCrossCountryCapacity;
-    }
 
     @OneToMany(mappedBy = "machineCondition")
     public List<MiningMachinery> getMiningMachineries() {
@@ -73,12 +68,20 @@ public class MachineCondition {
         this.miningMachineries = miningMachineries;
     }
 
-    @OneToMany(mappedBy = "machineCondition")
-    public List<TruckMining> getTruckMinings() {
-        return truckMinings;
+
+    public boolean newOject() {
+        return (this.id == null);
     }
 
-    public void setTruckMinings(List<TruckMining> truckMinings) {
-        this.truckMinings = truckMinings;
+    public MachineCondition() {
+    }
+
+    public MachineCondition(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public MachineCondition(String name) {
+        this.name = name;
     }
 }

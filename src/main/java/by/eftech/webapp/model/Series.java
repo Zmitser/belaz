@@ -3,14 +3,20 @@ package by.eftech.webapp.model;
 import javax.persistence.*;
 import java.util.List;
 
-/**
- * Created by Lenovo on 15.06.2016.
- */
+
 @Entity
+@NamedQueries({
+        @NamedQuery(name = Series.DELETE, query = "DELETE from Series s WHERE s.id=:id"),
+        @NamedQuery(name = Series.ALL_SORTED, query = "SELECT s FROM Series s ORDER BY s.name"),
+})
 public class Series {
     private Integer id;
     private String name;
     private List<Model> models;
+
+
+    public static final String DELETE = "Series.delete";
+    public static final String ALL_SORTED = "Series.getAllSorted";
 
     @Id
     @Column(name = "id")
@@ -59,5 +65,19 @@ public class Series {
 
     public void setModels(List<Model> models) {
         this.models = models;
+    }
+    public boolean newOject() {
+        return (id == null);
+    }
+    public Series() {
+    }
+
+    public Series(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Series(String name) {
+        this.name = name;
     }
 }

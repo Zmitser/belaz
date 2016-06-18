@@ -1,6 +1,7 @@
 package by.eftech.webapp.repository.jpa;
 
 
+import by.eftech.webapp.model.Video;
 import by.eftech.webapp.repository.VideoRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

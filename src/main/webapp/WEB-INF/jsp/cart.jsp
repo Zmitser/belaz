@@ -88,7 +88,7 @@
             <div class="col-xs-12 col-md-9 items-holder no-margin">
                 <c:set value="0" var="s"/>
                 <c:forEach var="it" items="${sessionScope.cart}" varStatus="timer">
-                    <c:set value="${s + it.quantity * it.truckMining.price}" var="s"/>
+                    <c:set value="${s + it.quantity * it.miningMachinery.price}" var="s"/>
                     <div class="row no-margin cart-item">
                         <div class="col-xs-12 col-sm-2 no-margin">
                             <a href="#" class="thumb-holder">
@@ -98,9 +98,9 @@
 
                         <div class="col-xs-12 col-sm-5 ">
                             <div class="title">
-                                <a href="<c:url value="/single-product/${it.truckMining.id}"/>">${it.truckMining.model.name}</a>
+                                <a href="<c:url value="/single-product/${it.miningMachinery.id}"/>">${it.miningMachinery.model.name}</a>
                             </div>
-                            <div class="brand">${it.truckMining.manufacturer.name}</div>
+                            <div class="brand">${it.miningMachinery.manufacturer.name}</div>
                         </div>
 
                         <div class="col-xs-12 col-sm-3 no-margin">
@@ -117,7 +117,7 @@
 
                         <div class="col-xs-12 col-sm-2 no-margin">
                             <div class="price">
-                                    ${it.truckMining.price} x ${it.quantity} = ${it.quantity * it.truckMining.price}
+                                    ${it.miningMachinery.price} x ${it.quantity} = ${it.quantity * it.miningMachinery.price}
                             </div>
                             <a class="close-btn" href="/shopping-cart/remove/${timer.index}"></a>
                         </div>

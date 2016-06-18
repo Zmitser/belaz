@@ -3,15 +3,21 @@ package by.eftech.webapp.model;
 import javax.persistence.*;
 import java.util.List;
 
-/**
- * Created by Lenovo on 15.06.2016.
- */
+
 @Entity
-@Table(name = "wheel_arrangement", schema = "belaz", catalog = "")
+@Table(name = "wheel_arrangement", schema = "belaz")
+@NamedQueries({
+        @NamedQuery(name = WheelArrangement.DELETE, query = "DELETE from WheelArrangement v WHERE v.id=:id"),
+        @NamedQuery(name = WheelArrangement.ALL_SORTED, query = "SELECT v FROM WheelArrangement v ORDER BY v.name"),
+})
 public class WheelArrangement {
     private Integer id;
     private String name;
     private List<DumpTrucksCrossCountryCapacity> dumpTrucksCapacity;
+
+
+    public static final String DELETE = "WheelArrangement.delete";
+    public static final String ALL_SORTED = "WheelArrangement.getAllSorted";
 
     @Id
     @Column(name = "id")
@@ -61,4 +67,20 @@ public class WheelArrangement {
     public void setDumpTrucksCapacity(List<DumpTrucksCrossCountryCapacity> dumpTrucksCapacity) {
         this.dumpTrucksCapacity = dumpTrucksCapacity;
     }
+    public boolean newOject() {
+        return (this.id == null);
+    }
+
+    public WheelArrangement(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public WheelArrangement(String name) {
+        this.name = name;
+    }
+
+    public WheelArrangement() {
+    }
+
 }

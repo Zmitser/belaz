@@ -3,17 +3,22 @@ package by.eftech.webapp.model;
 import javax.persistence.*;
 import java.util.List;
 
-/**
- * Created by Lenovo on 15.06.2016.
- */
+
 @Entity
-@Table(name = "machine_location", schema = "belaz", catalog = "")
+@Table(name = "machine_location", schema = "belaz")
+@NamedQueries({
+        @NamedQuery(name = MachineLocation.DELETE, query = "DELETE from MachineLocation l WHERE l.id=:id"),
+        @NamedQuery(name = MachineLocation.ALL_SORTED, query = "SELECT l FROM MachineLocation l ORDER BY l.name"),
+})
 public class MachineLocation {
     private Integer id;
     private String name;
     private DumpTrucksCrossCountryCapacity dumpTrucksCrossCountryCapacity;
     private List<MiningMachinery> miningMachineries;
     private TruckMining truckMinings;
+
+    public static final String DELETE = "MachineLocation.delete";
+    public static final String ALL_SORTED = "MachineLocation.getAllSorted";
 
     @Id
     @Column(name = "id")
@@ -82,5 +87,21 @@ public class MachineLocation {
 
     public void setTruckMinings(TruckMining truckMinings) {
         this.truckMinings = truckMinings;
+    }
+
+    public boolean newOject() {
+        return (this.id == null);
+    }
+
+    public MachineLocation(String name) {
+        this.name = name;
+    }
+
+    public MachineLocation() {
+    }
+
+    public MachineLocation(Integer id, String name) {
+        this.id = id;
+        this.name = name;
     }
 }

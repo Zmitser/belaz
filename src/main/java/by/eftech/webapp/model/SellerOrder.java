@@ -4,11 +4,14 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
 
-/**
- * Created by Lenovo on 15.06.2016.
- */
+
 @Entity
-public class Order {
+@NamedQueries({
+        @NamedQuery(name = SellerOrder.DELETE, query = "DELETE from SellerOrder s WHERE s.id=:id"),
+        @NamedQuery(name = SellerOrder.ALL_SORTED, query = "SELECT s FROM SellerOrder s ORDER BY s.fullname"),
+})
+@Table(name = "seller_order")
+public class SellerOrder {
     private Integer id;
     private Timestamp date;
     private String fullname;
@@ -21,8 +24,14 @@ public class Order {
     private String phoneNumber;
     private List<Item> items;
 
+
+
+    public static final String DELETE = "SellerOrder.delete";
+    public static final String ALL_SORTED = "SellerOrder.getAllSorted";
+
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }
@@ -126,7 +135,7 @@ public class Order {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Order order = (Order) o;
+        SellerOrder order = (SellerOrder) o;
 
         if (id != null ? !id.equals(order.id) : order.id != null) return false;
         if (date != null ? !date.equals(order.date) : order.date != null) return false;
@@ -165,5 +174,39 @@ public class Order {
 
     public void setItems(List<Item> items) {
         this.items = items;
+    }
+
+
+    public boolean newOject() {
+        return (id == null);
+    }
+    public SellerOrder(Integer id, Timestamp date, String fullname, String lastname, String companyName, String streetAddress, String town, String country, String emailAddress, String phoneNumber, List<Item> items) {
+        this.id = id;
+        this.date = date;
+        this.fullname = fullname;
+        this.lastname = lastname;
+        this.companyName = companyName;
+        this.streetAddress = streetAddress;
+        this.town = town;
+        this.country = country;
+        this.emailAddress = emailAddress;
+        this.phoneNumber = phoneNumber;
+        this.items = items;
+    }
+
+    public SellerOrder(Timestamp date, String fullname, String lastname, String companyName, String streetAddress, String town, String country, String emailAddress, String phoneNumber, List<Item> items) {
+        this.date = date;
+        this.fullname = fullname;
+        this.lastname = lastname;
+        this.companyName = companyName;
+        this.streetAddress = streetAddress;
+        this.town = town;
+        this.country = country;
+        this.emailAddress = emailAddress;
+        this.phoneNumber = phoneNumber;
+        this.items = items;
+    }
+
+    public SellerOrder() {
     }
 }

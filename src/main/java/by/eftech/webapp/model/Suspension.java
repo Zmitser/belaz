@@ -3,16 +3,21 @@ package by.eftech.webapp.model;
 import javax.persistence.*;
 import java.util.List;
 
-/**
- * Created by Lenovo on 15.06.2016.
- */
+
 @Entity
+@NamedQueries({
+        @NamedQuery(name = Suspension.DELETE, query = "DELETE from Suspension s WHERE s.id=:id"),
+        @NamedQuery(name = Suspension.ALL_SORTED, query = "SELECT s FROM Suspension s ORDER BY s.name"),
+})
 public class Suspension {
     private Integer id;
     private String name;
-    private List<DumpTrucksCrossCountryCapacity> dumpTrucksCrossCountryCapacity;
     private List<MiningMachinery> miningMachineries;
-    private List<TruckMining> truckMinings;
+
+
+
+    public static final String DELETE = "Suspension.delete";
+    public static final String ALL_SORTED = "Suspension.getAllSorted";
 
     @Id
     @Column(name = "id")
@@ -54,14 +59,6 @@ public class Suspension {
         return result;
     }
 
-    @OneToMany(mappedBy = "suspension")
-    public List<DumpTrucksCrossCountryCapacity> getDumpTrucksCrossCountryCapacity() {
-        return dumpTrucksCrossCountryCapacity;
-    }
-
-    public void setDumpTrucksCrossCountryCapacity(List<DumpTrucksCrossCountryCapacity> dumpTrucksCrossCountryCapacity) {
-        this.dumpTrucksCrossCountryCapacity = dumpTrucksCrossCountryCapacity;
-    }
 
     @OneToMany(mappedBy = "suspension")
     public List<MiningMachinery> getMiningMachineries() {
@@ -72,12 +69,19 @@ public class Suspension {
         this.miningMachineries = miningMachineries;
     }
 
-    @OneToMany(mappedBy = "suspension")
-    public List<TruckMining> getTruckMinings() {
-        return truckMinings;
+
+    public boolean newOject() {
+        return (this.id == null);
+    }
+    public Suspension(Integer id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
-    public void setTruckMinings(List<TruckMining> truckMinings) {
-        this.truckMinings = truckMinings;
+    public Suspension(String name) {
+        this.name = name;
+    }
+
+    public Suspension() {
     }
 }

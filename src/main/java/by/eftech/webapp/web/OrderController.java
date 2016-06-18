@@ -1,5 +1,7 @@
 package by.eftech.webapp.web;
 
+import by.eftech.webapp.model.Item;
+import by.eftech.webapp.model.SellerOrder;
 import by.eftech.webapp.service.OrderService;
 import by.eftech.webapp.utils.EmailSender;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +47,7 @@ public class OrderController {
         builder.append("Orders: ");
         builder.append("\n");
         for (int i = 0; i < order.getItems().size(); i++) {
-            builder.append(i + 1).append(". ").append(order.getItems().get(i).getTruckMining().getModel().getName()).append("\n");
+            builder.append(i + 1).append(". ").append(order.getItems().get(i).getMiningMachinery().getModel().getName()).append("\n");
             items.remove(i);
             i--;
         }

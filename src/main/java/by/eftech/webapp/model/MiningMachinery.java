@@ -1,13 +1,15 @@
 package by.eftech.webapp.model;
 
 import javax.persistence.*;
-import java.util.List;
 
-/**
- * Created by Lenovo on 15.06.2016.
- */
+
 @Entity
-@Table(name = "mining machinery", schema = "belaz", catalog = "")
+@Table(name = "mining machinery", schema = "belaz")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@NamedQueries({
+        @NamedQuery(name = MiningMachinery.DELETE, query = "DELETE from MiningMachinery t WHERE t.id=:id"),
+        @NamedQuery(name = MiningMachinery.ALL_SORTED, query = "SELECT t FROM MiningMachinery t ORDER BY t.model.name"),
+})
 public class MiningMachinery {
     private Integer id;
     private String productId;
@@ -25,19 +27,19 @@ public class MiningMachinery {
     private String application;
     private String advantages;
     private String completeSet;
-    private Byte sold;
+    private Boolean sold;
     private Engine engine;
     private Transmission transmission;
     private Suspension suspension;
-    private Item item;
     private MachineCondition machineCondition;
     private MachineLocation machineLocation;
     private Manufacturer manufacturer;
     private ManufacturerCountry manufacturerCountry;
     private Model model;
-    private List<Video> videos;
-    private List<Photo> photos;
 
+
+    public static final String DELETE = "MiningMachinery.delete";
+    public static final String ALL_SORTED = "MiningMachinery.getAllSorted";
     @Id
     @Column(name = "id")
     public Integer getId() {
@@ -200,11 +202,11 @@ public class MiningMachinery {
 
     @Basic
     @Column(name = "sold")
-    public Byte getSold() {
+    public Boolean getSold() {
         return sold;
     }
 
-    public void setSold(Byte sold) {
+    public void setSold(Boolean sold) {
         this.sold = sold;
     }
 
@@ -291,14 +293,6 @@ public class MiningMachinery {
         this.suspension = suspension;
     }
 
-    @OneToOne(mappedBy = "miningMachinery")
-    public Item getItem() {
-        return item;
-    }
-
-    public void setItem(Item item) {
-        this.item = item;
-    }
 
     @ManyToOne
     @JoinColumn(name = "machine_condition_id", referencedColumnName = "id", nullable = false)
@@ -349,22 +343,64 @@ public class MiningMachinery {
     public void setModel(Model model) {
         this.model = model;
     }
-
-    @ManyToMany(mappedBy = "miningMachineries")
-    public List<Video> getVideos() {
-        return videos;
+    public boolean newOject() {
+        return (this.id == null);
+    }
+    public MiningMachinery() {
     }
 
-    public void setVideos(List<Video> videos) {
-        this.videos = videos;
+    public MiningMachinery(String productId, String year, Integer payloadCapacity, String power, String turningRadius, Integer length, Integer width, Integer height, Integer operationalWeight, Integer grossWeight, Integer maxSpeed, Integer price, String application, String advantages, String completeSet, Boolean sold, Engine engine, Transmission transmission, Suspension suspension, MachineCondition machineCondition, MachineLocation machineLocation, Manufacturer manufacturer, ManufacturerCountry manufacturerCountry, Model model) {
+        this.productId = productId;
+        this.year = year;
+        this.payloadCapacity = payloadCapacity;
+        this.power = power;
+        this.turningRadius = turningRadius;
+        this.length = length;
+        this.width = width;
+        this.height = height;
+        this.operationalWeight = operationalWeight;
+        this.grossWeight = grossWeight;
+        this.maxSpeed = maxSpeed;
+        this.price = price;
+        this.application = application;
+        this.advantages = advantages;
+        this.completeSet = completeSet;
+        this.sold = sold;
+        this.engine = engine;
+        this.transmission = transmission;
+        this.suspension = suspension;
+        this.machineCondition = machineCondition;
+        this.machineLocation = machineLocation;
+        this.manufacturer = manufacturer;
+        this.manufacturerCountry = manufacturerCountry;
+        this.model = model;
     }
 
-    @ManyToMany(mappedBy = "miningMachineries")
-    public List<Photo> getPhotos() {
-        return photos;
-    }
-
-    public void setPhotos(List<Photo> photos) {
-        this.photos = photos;
+    public MiningMachinery(Integer id, String productId, String year, Integer payloadCapacity, String power, String turningRadius, Integer length, Integer width, Integer height, Integer operationalWeight, Integer grossWeight, Integer maxSpeed, Integer price, String application, String advantages, String completeSet, Boolean sold, Engine engine, Transmission transmission, Suspension suspension, MachineCondition machineCondition, MachineLocation machineLocation, Manufacturer manufacturer, ManufacturerCountry manufacturerCountry, Model model) {
+        this.id = id;
+        this.productId = productId;
+        this.year = year;
+        this.payloadCapacity = payloadCapacity;
+        this.power = power;
+        this.turningRadius = turningRadius;
+        this.length = length;
+        this.width = width;
+        this.height = height;
+        this.operationalWeight = operationalWeight;
+        this.grossWeight = grossWeight;
+        this.maxSpeed = maxSpeed;
+        this.price = price;
+        this.application = application;
+        this.advantages = advantages;
+        this.completeSet = completeSet;
+        this.sold = sold;
+        this.engine = engine;
+        this.transmission = transmission;
+        this.suspension = suspension;
+        this.machineCondition = machineCondition;
+        this.machineLocation = machineLocation;
+        this.manufacturer = manufacturer;
+        this.manufacturerCountry = manufacturerCountry;
+        this.model = model;
     }
 }

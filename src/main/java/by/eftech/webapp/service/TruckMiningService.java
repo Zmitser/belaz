@@ -1,6 +1,8 @@
 package by.eftech.webapp.service;
 
 
+import by.eftech.webapp.model.TruckMining;
+
 import java.util.List;
 
 public interface TruckMiningService {

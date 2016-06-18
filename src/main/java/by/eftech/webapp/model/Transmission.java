@@ -3,16 +3,19 @@ package by.eftech.webapp.model;
 import javax.persistence.*;
 import java.util.List;
 
-/**
- * Created by Lenovo on 15.06.2016.
- */
+
 @Entity
+@NamedQueries({
+        @NamedQuery(name = Transmission.DELETE, query = "DELETE from Transmission t WHERE t.id=:id"),
+        @NamedQuery(name = Transmission.ALL_SORTED, query = "SELECT t FROM Transmission t ORDER BY t.name"),
+})
 public class Transmission {
     private Integer id;
     private String name;
-    private List<DumpTrucksCrossCountryCapacity> dumpTrucksCrossCountryCapacity;
     private List<MiningMachinery> miningMachineries;
-    private List<TruckMining> truckMinings;
+
+    public static final String DELETE = "Transmission.delete";
+    public static final String ALL_SORTED = "Transmission.getAllSorted";
 
     @Id
     @Column(name = "id")
@@ -54,14 +57,7 @@ public class Transmission {
         return result;
     }
 
-    @OneToMany(mappedBy = "transmission")
-    public List<DumpTrucksCrossCountryCapacity> getDumpTrucksCrossCountryCapacity() {
-        return dumpTrucksCrossCountryCapacity;
-    }
 
-    public void setDumpTrucksCrossCountryCapacity(List<DumpTrucksCrossCountryCapacity> dumpTrucksCrossCountryCapacity) {
-        this.dumpTrucksCrossCountryCapacity = dumpTrucksCrossCountryCapacity;
-    }
 
     @OneToMany(mappedBy = "transmission")
     public List<MiningMachinery> getMiningMachineries() {
@@ -72,12 +68,20 @@ public class Transmission {
         this.miningMachineries = miningMachineries;
     }
 
-    @OneToMany(mappedBy = "transmission")
-    public List<TruckMining> getTruckMinings() {
-        return truckMinings;
+    public boolean newOject() {
+        return (this.id == null);
     }
 
-    public void setTruckMinings(List<TruckMining> truckMinings) {
-        this.truckMinings = truckMinings;
+    public Transmission(Integer id, String name) {
+        this.id = id;
+        this.name = name;
     }
+
+    public Transmission() {
+    }
+
+    public Transmission(String name) {
+        this.name = name;
+    }
+
 }
