@@ -111,7 +111,7 @@ public class DumpTrucksCrossCountryCapacity extends MiningMachinery {
         this.videos = videos;
     }
 
-    @ManyToMany(mappedBy = "dumpTrucksCrossCountryCapacity")
+    @ManyToMany(mappedBy = "dumpTrucksCrossCountryCapacity", fetch = FetchType.EAGER)
     public List<Photo> getPhotos() {
         return photos;
     }
