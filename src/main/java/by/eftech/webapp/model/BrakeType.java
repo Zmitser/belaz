@@ -60,7 +60,7 @@ public class BrakeType {
         return result;
     }
 
-    @OneToMany(mappedBy = "engine")
+    @OneToMany(mappedBy = "brakeType")
     public List<TruckMining> getTruckMinings() {
         return truckMinings;
     }

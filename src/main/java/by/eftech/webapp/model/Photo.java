@@ -12,6 +12,7 @@ import java.util.List;
 public class Photo {
     private Integer id;
     private String name;
+    private List<DumpTrucksCrossCountryCapacity> dumpTrucksCrossCountryCapacity;
     private List<TruckMining> truckMinings;
 
     public static final String DELETE = "Photo.delete";
@@ -59,8 +60,22 @@ public class Photo {
         return result;
     }
 
+
+
+
     @ManyToMany
-    @JoinTable(name = "truck_mining_has_photo", catalog = "", schema = "belaz", joinColumns = @JoinColumn(name = "photo_id", referencedColumnName = "id", nullable = false), inverseJoinColumns = @JoinColumn(name = "truck_mining_id", referencedColumnName = "id", nullable = false))
+    @JoinTable(name = "dump_trucks_cross_country_capacity_has_photo", catalog = "", schema = "belaz", joinColumns = @JoinColumn(name = "photo_id", referencedColumnName = "id", nullable = false), inverseJoinColumns = @JoinColumn(name = "dump_trucks_cross_country_capacity_id", referencedColumnName = "id", nullable = false))
+    public List<DumpTrucksCrossCountryCapacity> getDumpTrucksCrossCountryCapacity() {
+        return dumpTrucksCrossCountryCapacity;
+    }
+
+    public void setDumpTrucksCrossCountryCapacity(List<DumpTrucksCrossCountryCapacity> dumpTrucksCrossCountryCapacity) {
+        this.dumpTrucksCrossCountryCapacity = dumpTrucksCrossCountryCapacity;
+    }
+
+
+    @ManyToMany
+    @JoinTable(name = "truck_mining_has_photo", schema = "belaz", joinColumns = @JoinColumn(name = "photo_id", referencedColumnName = "id", nullable = false), inverseJoinColumns = @JoinColumn(name = "truck_mining_id", referencedColumnName = "id", nullable = false))
     public List<TruckMining> getTruckMinings() {
         return truckMinings;
     }

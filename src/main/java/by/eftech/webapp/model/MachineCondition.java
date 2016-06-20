@@ -5,7 +5,7 @@ import java.util.List;
 
 
 @Entity
-@Table(name = "machine_condition", schema = "belaz", catalog = "")
+@Table(name = "machine_condition", schema = "belaz")
 @NamedQueries({
         @NamedQuery(name = MachineCondition.DELETE, query = "DELETE from MachineCondition c WHERE c.id=:id"),
         @NamedQuery(name = MachineCondition.ALL_SORTED, query = "SELECT c FROM MachineCondition c ORDER BY c.name"),
@@ -14,14 +14,13 @@ public class MachineCondition {
     private Integer id;
     private String name;
     private List<TruckMining> truckMinings;
+    private List<DumpTrucksCrossCountryCapacity> dumpTrucksCrossCountryCapacities;
 
 
     public static final String DELETE = "MachineCondition.delete";
     public static final String ALL_SORTED = "MachineCondition.getAllSorted";
-
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }
@@ -60,6 +59,7 @@ public class MachineCondition {
         return result;
     }
 
+
     @OneToMany(mappedBy = "machineCondition")
     public List<TruckMining> getTruckMinings() {
         return truckMinings;
@@ -67,6 +67,16 @@ public class MachineCondition {
 
     public void setTruckMinings(List<TruckMining> truckMinings) {
         this.truckMinings = truckMinings;
+    }
+
+
+    @OneToMany(mappedBy = "machineCondition")
+    public List<DumpTrucksCrossCountryCapacity> getDumpTrucksCrossCountryCapacities() {
+        return dumpTrucksCrossCountryCapacities;
+    }
+
+    public void setDumpTrucksCrossCountryCapacities(List<DumpTrucksCrossCountryCapacity> dumpTrucksCrossCountryCapacities) {
+        this.dumpTrucksCrossCountryCapacities = dumpTrucksCrossCountryCapacities;
     }
 
     public boolean newOject() {
@@ -85,3 +95,4 @@ public class MachineCondition {
         this.name = name;
     }
 }
+

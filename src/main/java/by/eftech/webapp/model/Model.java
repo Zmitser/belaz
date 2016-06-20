@@ -12,15 +12,15 @@ import java.util.List;
 public class Model {
     private Integer id;
     private String name;
-    private List<TruckMining> truckMinings;
     private Series series;
+    private List<MiningMachinery> miningMachineries;
+
 
     public static final String DELETE = "Model.delete";
     public static final String ALL_SORTED = "Model.getAllSorted";
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }
@@ -59,16 +59,7 @@ public class Model {
         return result;
     }
 
-    @OneToMany(mappedBy = "model")
-    public List<TruckMining> getTruckMinings() {
-        return truckMinings;
-    }
-
-    public void setTruckMinings(List<TruckMining> truckMinings) {
-        this.truckMinings = truckMinings;
-    }
-
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "series_id", referencedColumnName = "id", nullable = false)
     public Series getSeries() {
         return series;
@@ -77,6 +68,17 @@ public class Model {
     public void setSeries(Series series) {
         this.series = series;
     }
+
+
+    @OneToMany(mappedBy = "model")
+    public List<MiningMachinery> getMiningMachineries() {
+        return miningMachineries;
+    }
+
+    public void setMiningMachineries(List<MiningMachinery> miningMachineries) {
+        this.miningMachineries = miningMachineries;
+    }
+
 
     public boolean newOject() {
         return (this.id == null);
@@ -96,3 +98,4 @@ public class Model {
     public Model() {
     }
 }
+

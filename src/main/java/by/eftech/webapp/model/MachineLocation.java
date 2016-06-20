@@ -1,11 +1,10 @@
 package by.eftech.webapp.model;
 
 import javax.persistence.*;
-import java.util.List;
 
 
 @Entity
-@Table(name = "machine_location", schema = "belaz", catalog = "")
+@Table(name = "machine_location", schema = "belaz")
 @NamedQueries({
         @NamedQuery(name = MachineLocation.DELETE, query = "DELETE from MachineLocation l WHERE l.id=:id"),
         @NamedQuery(name = MachineLocation.ALL_SORTED, query = "SELECT l FROM MachineLocation l ORDER BY l.name"),
@@ -13,14 +12,14 @@ import java.util.List;
 public class MachineLocation {
     private Integer id;
     private String name;
-    private List<TruckMining> truckMinings;
+    private DumpTrucksCrossCountryCapacity dumpTrucksCrossCountryCapacity;
+    private TruckMining truckMinings;
 
     public static final String DELETE = "MachineLocation.delete";
     public static final String ALL_SORTED = "MachineLocation.getAllSorted";
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }
@@ -59,12 +58,23 @@ public class MachineLocation {
         return result;
     }
 
-    @OneToMany(mappedBy = "machineLocation")
-    public List<TruckMining> getTruckMinings() {
+    @OneToOne
+    @JoinColumn(name = "id", referencedColumnName = "machine_location_id", nullable = false)
+    public DumpTrucksCrossCountryCapacity getDumpTrucksCrossCountryCapacity() {
+        return dumpTrucksCrossCountryCapacity;
+    }
+
+    public void setDumpTrucksCrossCountryCapacity(DumpTrucksCrossCountryCapacity dumpTrucksCrossCountryCapacity) {
+        this.dumpTrucksCrossCountryCapacity = dumpTrucksCrossCountryCapacity;
+    }
+
+    @OneToOne
+    @JoinColumn(name = "id", referencedColumnName = "machine_location_id", nullable = false)
+    public TruckMining getTruckMinings() {
         return truckMinings;
     }
 
-    public void setTruckMinings(List<TruckMining> truckMinings) {
+    public void setTruckMinings(TruckMining truckMinings) {
         this.truckMinings = truckMinings;
     }
 
@@ -84,3 +94,4 @@ public class MachineLocation {
         this.name = name;
     }
 }
+
