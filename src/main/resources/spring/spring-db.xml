@@ -20,41 +20,17 @@
     <tx:annotation-driven/>
 
 
-    <!--<context:property-placeholder location="classpath:db/mysql.properties" system-properties-mode="OVERRIDE"/>-->
-    <!--<beans profile="mysql">-->
-    <!--<bean id="dataSource"-->
-    <!--class="org.apache.tomcat.jdbc.pool.DataSource"-->
-    <!--p:driverClassName="com.mysql.jdbc.Driver"-->
-    <!--p:url="${database.url}"-->
-    <!--p:username="${database.username}"-->
-    <!--p:password="${database.password}"/>-->
-    <!--</beans>-->
+    <context:property-placeholder location="classpath:db/mysql.properties" system-properties-mode="OVERRIDE"/>
 
-    <context:property-placeholder location="classpath:/db/heroku.properties" system-properties-mode="OVERRIDE"/>
-
-
-    <bean class="java.net.URI" id="dbUrl">
-        <constructor-arg value="${CLEARDB_DATABASE_URL}"/>
-    </bean>
     <bean id="dataSource"
           class="org.apache.tomcat.jdbc.pool.DataSource"
-          p:url="#{ 'jdbc:mysql://' + @dbUrl.getHost() + @dbUrl.getPath() }"
-          p:username="#{ @dbUrl.getUserInfo().split(':')[0] }"
-          p:password="#{ @dbUrl.getUserInfo().split(':')[1] }"
           p:driverClassName="com.mysql.jdbc.Driver"
-          p:validationQuery="SELECT 1 FROM engine"
-          p:maxActive="10"
-          p:minIdle="2"
-          p:maxWait="20000"
-          p:initialSize="2"
-          p:maxIdle="5"
-          p:testOnBorrow="true"
-          p:removeAbandoned="true"
-          p:testOnConnect="true"
-          p:testWhileIdle="true"/>
+          p:url="${database.url}"
+          p:username="${database.username}"
+          p:password="${database.password}"/>
 
 
-        <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
           p:dataSource-ref="dataSource"
           p:packagesToScan="by.eftech.**.model">
         <!--p:persistenceUnitName="persistenceUnit">-->
@@ -82,10 +58,6 @@
           p:entityManagerFactory-ref="entityManagerFactory"/>
 
 
-    <!--<beans profile="datajpa">-->
-    <!--<context:component-scan base-package="by.eftech.**.repository.datajpa"/>-->
-    <!--<jpa:repositories base-package="by.eftech.**.repository.datajpa"/>-->
-    <!--</beans>-->
     <context:annotation-config/>
 
     <context:component-scan base-package="by.eftech.**.repository.jpa"/>

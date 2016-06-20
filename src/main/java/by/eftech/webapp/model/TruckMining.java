@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "truck_mining")
+@Table(name = "truck_mining", schema = "belaz", catalog = "")
 @NamedQueries({
         @NamedQuery(name = TruckMining.DELETE, query = "DELETE from TruckMining t WHERE t.id=:id"),
         @NamedQuery(name = TruckMining.ALL_SORTED, query = "SELECT t FROM TruckMining t ORDER BY t.model.name"),
@@ -213,6 +213,8 @@ public class TruckMining {
     }
 
 
+
+
     @Basic
     @Column(name = "advantages")
     public String getAdvantages() {
@@ -407,11 +409,7 @@ public class TruckMining {
         this.parkingBrake = parkingBrake;
     }
 
-
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "truck_mining_has_photo",
-            joinColumns = @JoinColumn(name = "truck_mining_id", referencedColumnName = "id", nullable = false),
-            inverseJoinColumns = @JoinColumn(name = "photo_id", referencedColumnName = "id", nullable = false))
+    @ManyToMany(mappedBy = "truckMinings", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     public List<Photo> getPhotos() {
         return photos;
     }

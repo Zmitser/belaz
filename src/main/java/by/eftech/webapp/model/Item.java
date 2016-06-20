@@ -12,16 +12,14 @@ import java.util.List;
 public class Item {
     private Integer id;
     private Integer quantity;
-    private TruckMining truckMining;
+    private MiningMachinery miningMachinery;
     private List<SellerOrder> orders;
-
 
     public static final String DELETE = "JpaItemRepositoryImpl.delete";
     public static final String ALL_SORTED = "JpaItemRepositoryImpl.getAllSorted";
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }
@@ -60,18 +58,18 @@ public class Item {
         return result;
     }
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "truck_mining_id", referencedColumnName = "id", nullable = false)
-    public TruckMining getTruckMining() {
-        return truckMining;
+    @OneToOne
+    @JoinColumn(name = "mining machinery_id", referencedColumnName = "id", nullable = false)
+    public MiningMachinery getMiningMachinery() {
+        return miningMachinery;
     }
 
-    public void setTruckMining(TruckMining truckMining) {
-        this.truckMining = truckMining;
+    public void setMiningMachinery(MiningMachinery miningMachinery) {
+        this.miningMachinery = miningMachinery;
     }
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "order_has_item", catalog = "", schema = "belaz", joinColumns = @JoinColumn(name = "item_id", referencedColumnName = "id", nullable = false), inverseJoinColumns = @JoinColumn(name = "order_id", referencedColumnName = "id", nullable = false))
+    @ManyToMany
+    @JoinTable(name = "order_has_item", schema = "belaz", joinColumns = @JoinColumn(name = "item_id", referencedColumnName = "id", nullable = false), inverseJoinColumns = @JoinColumn(name = "order_id", referencedColumnName = "id", nullable = false))
     public List<SellerOrder> getOrders() {
         return orders;
     }
@@ -80,19 +78,20 @@ public class Item {
         this.orders = orders;
     }
 
+
     public boolean newOject() {
         return (this.id == null);
     }
 
-    public Item(Integer id, Integer quantity, TruckMining truckMining) {
+    public Item(Integer id, Integer quantity, MiningMachinery truckMining) {
         this.id = id;
         this.quantity = quantity;
-        this.truckMining = truckMining;
+        this.miningMachinery = truckMining;
     }
 
-    public Item(Integer quantity, TruckMining truckMining) {
+    public Item(Integer quantity, MiningMachinery truckMining) {
         this.quantity = quantity;
-        this.truckMining = truckMining;
+        this.miningMachinery = truckMining;
     }
 
     public Item() {

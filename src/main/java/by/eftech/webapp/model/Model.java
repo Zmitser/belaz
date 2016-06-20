@@ -68,7 +68,7 @@ public class Model {
         this.truckMinings = truckMinings;
     }
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "series_id", referencedColumnName = "id", nullable = false)
     public Series getSeries() {
         return series;

@@ -12,15 +12,14 @@ import java.util.List;
 public class Video {
     private Integer id;
     private String name;
+    private List<DumpTrucksCrossCountryCapacity> dumpTrucksCrossCountryCapacity;
     private List<TruckMining> truckMinings;
 
     public static final String DELETE = "Video.delete";
     public static final String ALL_SORTED = "Video.getAllSorted";
 
-
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }
@@ -60,7 +59,18 @@ public class Video {
     }
 
     @ManyToMany
-    @JoinTable(name = "truck_mining_has_video", catalog = "", schema = "belaz", joinColumns = @JoinColumn(name = "video_id", referencedColumnName = "id", nullable = false), inverseJoinColumns = @JoinColumn(name = "truck_mining_id", referencedColumnName = "id", nullable = false))
+    @JoinTable(name = "dump_trucks_cross_country_capacity_has_video", schema = "belaz", joinColumns = @JoinColumn(name = "video_id", referencedColumnName = "id", nullable = false), inverseJoinColumns = @JoinColumn(name = "dump_trucks_cross_country_capacity_id", referencedColumnName = "id", nullable = false))
+    public List<DumpTrucksCrossCountryCapacity> getDumpTrucksCrossCountryCapacity() {
+        return dumpTrucksCrossCountryCapacity;
+    }
+
+    public void setDumpTrucksCrossCountryCapacity(List<DumpTrucksCrossCountryCapacity> dumpTrucksCrossCountryCapacity) {
+        this.dumpTrucksCrossCountryCapacity = dumpTrucksCrossCountryCapacity;
+    }
+
+
+    @ManyToMany
+    @JoinTable(name = "truck_mining_has_video", schema = "belaz", joinColumns = @JoinColumn(name = "video_id", referencedColumnName = "id", nullable = false), inverseJoinColumns = @JoinColumn(name = "truck_mining_id", referencedColumnName = "id", nullable = false))
     public List<TruckMining> getTruckMinings() {
         return truckMinings;
     }
@@ -68,7 +78,6 @@ public class Video {
     public void setTruckMinings(List<TruckMining> truckMinings) {
         this.truckMinings = truckMinings;
     }
-
     public boolean newOject() {
         return (this.id == null);
     }
@@ -84,4 +93,5 @@ public class Video {
 
     public Video() {
     }
+
 }

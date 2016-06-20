@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface SellerOrderRepository {
 
+
     SellerOrder save(SellerOrder manufacturerCountry);
 
     boolean delete(int id);

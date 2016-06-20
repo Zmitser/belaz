@@ -1,5 +1,6 @@
 package by.eftech.webapp.web;
 
+import by.eftech.webapp.model.MiningMachinery;
 import by.eftech.webapp.model.TruckMining;
 import by.eftech.webapp.service.TruckMiningService;
 import by.eftech.webapp.utils.FilterProduct;
@@ -26,7 +27,7 @@ public class CompareController {
     @RequestMapping(value = "/compare-this/{id}", method = RequestMethod.GET)
     public String putProductForCompare(@ModelAttribute FilterProduct filter, @PathVariable("id")int id, HttpSession session, Model model) {
         if (session.getAttribute("compare") == null) {
-            List<TruckMining> compare = new ArrayList<>();
+            List<MiningMachinery> compare = new ArrayList<>();
             compare.add(service.get(id));
             session.setAttribute("compare", compare);
         } else {

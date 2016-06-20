@@ -12,7 +12,7 @@ import java.util.List;
 public class Engine {
     private Integer id;
     private String name;
-    private List<TruckMining> truckMinings;
+    private List<MiningMachinery> miningMachineries;;
 
 
     public static final String DELETE = "Engine.delete";
@@ -20,7 +20,6 @@ public class Engine {
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }
@@ -59,14 +58,18 @@ public class Engine {
         return result;
     }
 
+
+
     @OneToMany(mappedBy = "engine")
-    public List<TruckMining> getTruckMinings() {
-        return truckMinings;
+    public List<MiningMachinery> getMiningMachineries() {
+        return miningMachineries;
     }
 
-    public void setTruckMinings(List<TruckMining> truckMinings) {
-        this.truckMinings = truckMinings;
+    public void setMiningMachineries(List<MiningMachinery> miningMachineries) {
+        this.miningMachineries = miningMachineries;
     }
+
+
     public boolean newOject() {
         return (this.id == null);
     }

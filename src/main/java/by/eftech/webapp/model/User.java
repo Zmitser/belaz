@@ -15,13 +15,13 @@ public class User {
     private String role;
 
 
+
     public static final String DELETE = "User.delete";
     public static final String ALL_SORTED = "User.getAllSorted";
 
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }

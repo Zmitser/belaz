@@ -3,6 +3,7 @@ package by.eftech.webapp.model;
 import javax.persistence.*;
 import java.util.List;
 
+
 @Entity
 @NamedQueries({
         @NamedQuery(name = Suspension.DELETE, query = "DELETE from Suspension s WHERE s.id=:id"),
@@ -11,17 +12,15 @@ import java.util.List;
 public class Suspension {
     private Integer id;
     private String name;
-    private List<TruckMining> truckMinings;
+    private List<MiningMachinery> miningMachineries;
 
 
 
     public static final String DELETE = "Suspension.delete";
     public static final String ALL_SORTED = "Suspension.getAllSorted";
 
-
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }
@@ -53,7 +52,6 @@ public class Suspension {
         return true;
     }
 
-
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
@@ -61,19 +59,20 @@ public class Suspension {
         return result;
     }
 
+
     @OneToMany(mappedBy = "suspension")
-    public List<TruckMining> getTruckMinings() {
-        return truckMinings;
+    public List<MiningMachinery> getMiningMachineries() {
+        return miningMachineries;
     }
 
-    public void setTruckMinings(List<TruckMining> truckMinings) {
-        this.truckMinings = truckMinings;
+    public void setMiningMachineries(List<MiningMachinery> miningMachineries) {
+        this.miningMachineries = miningMachineries;
     }
+
 
     public boolean newOject() {
         return (this.id == null);
     }
-
     public Suspension(Integer id, String name) {
         this.id = id;
         this.name = name;

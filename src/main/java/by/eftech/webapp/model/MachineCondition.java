@@ -5,7 +5,7 @@ import java.util.List;
 
 
 @Entity
-@Table(name = "machine_condition")
+@Table(name = "machine_condition", schema = "belaz", catalog = "")
 @NamedQueries({
         @NamedQuery(name = MachineCondition.DELETE, query = "DELETE from MachineCondition c WHERE c.id=:id"),
         @NamedQuery(name = MachineCondition.ALL_SORTED, query = "SELECT c FROM MachineCondition c ORDER BY c.name"),

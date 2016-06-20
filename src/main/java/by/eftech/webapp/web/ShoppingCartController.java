@@ -1,7 +1,7 @@
 package by.eftech.webapp.web;
 
-import by.eftech.webapp.service.TruckMiningService;
 import by.eftech.webapp.model.Item;
+import by.eftech.webapp.service.MiningMachineryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -19,7 +19,7 @@ import java.util.List;
 public class ShoppingCartController {
 
     @Autowired
-    private TruckMiningService service;
+    private MiningMachineryService service;
 
     @RequestMapping(value = "/order-now/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public String orderNow(@PathVariable(value = "id") int id, HttpSession session, Model model) {
@@ -39,7 +39,7 @@ public class ShoppingCartController {
 
             session.setAttribute("cart", cart);
         }
-        return "redirect:/category/filter";
+        return "redirect:/truck-mining/category/filter";
     }
 
     @RequestMapping(value = "/reduce/{id}", method = RequestMethod.GET)
@@ -82,7 +82,7 @@ public class ShoppingCartController {
     private int ifExisting(int id, HttpSession session) {
         List<Item> cart = (List<Item>) session.getAttribute("cart");
         for (int i = 0; i < cart.size(); i++) {
-            if (cart.get(i).getTruckMining().getId() == id) {
+            if (cart.get(i).getMiningMachinery().getId() == id) {
                 return i;
             }
 

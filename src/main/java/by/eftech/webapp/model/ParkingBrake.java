@@ -18,10 +18,8 @@ public class ParkingBrake {
     public static final String DELETE = "ParkingBrake.delete";
     public static final String ALL_SORTED = "ParkingBrake.getAllSorted";
 
-
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }

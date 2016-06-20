@@ -16,13 +16,13 @@ public class RearWheels {
     private List<TruckMining> truckMinings;
 
 
+
     public static final String DELETE = "RearWheeels.delete";
     public static final String ALL_SORTED = "RearWheels.getAllSorted";
 
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }
