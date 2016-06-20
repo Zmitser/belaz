@@ -5,7 +5,7 @@ import java.util.List;
 
 
 @Entity
-@Table(name = "wheel_arrangement", schema = "belaz")
+@Table(name = "wheel_arrangement")
 @NamedQueries({
         @NamedQuery(name = WheelArrangement.DELETE, query = "DELETE from WheelArrangement v WHERE v.id=:id"),
         @NamedQuery(name = WheelArrangement.ALL_SORTED, query = "SELECT v FROM WheelArrangement v ORDER BY v.name"),
