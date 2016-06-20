@@ -95,66 +95,32 @@
     <section id="checkout-page">
         <div class="container">
             <div class="col-xs-12 no-margin">
-                <form method="post" action="/order/continue-order">
+
+                <form:form modelAttribute="order" method="post" action="/order/continue-order">
                     <div class="billing-address">
                         <h2 class="border h1">billing address</h2>
 
                         <div class="row field-row">
-                            <div class="col-xs-12 col-sm-6">
-                                <label>full name*</label>
-                                <input class="le-input" name="fullname">
-                            </div>
-                            <div class="col-xs-12 col-sm-6">
-                                <label>last name*</label>
-                                <input class="le-input" name="lastname">
-                            </div>
+                            <belaz:inputField label="Full name*" name="fullname" xs="12" sm="6"/>
+                            <belaz:inputField name="lastname" label="Last name" xs="12" sm="6"/>
                         </div><!-- /.field-row -->
 
                         <div class="row field-row">
-                            <div class="col-xs-12">
-                                <label>company name</label>
-                                <input class="le-input" name="companyName">
-                            </div>
+                            <belaz:inputField name="companyName" label="Company name" sm="12"/>
+                        </div>
+
+                        <div class="row field-row">
+                            <belaz:inputField name="streetAddress" label="Address*" xs="12" sm="6"/>
+                            <belaz:inputField name="town" label="Town" xs="12" sm="6"/>
                         </div><!-- /.field-row -->
 
                         <div class="row field-row">
-                            <div class="col-xs-12 col-sm-6">
-                                <label>address*</label>
-                                <input class="le-input" data-placeholder="street address" name="streetAddress">
-                            </div>
-                            <div class="col-xs-12 col-sm-6">
-                                <label>Town</label>
-                                <input class="le-input" data-placeholder="town" name="town">
-                            </div>
+                            <belaz:inputField name="country" label="Country" xs="12" sm="4"/>
+                            <belaz:inputField name="email address*" label="email Address" inputType="email" xs="12" sm="4"/>
+                            <belaz:inputField name="phoneNumber" label="phone Number" xs="12" sm="4"/>
                         </div><!-- /.field-row -->
-
-                        <div class="row field-row">
-                            <div class="col-xs-12 col-sm-4">
-                                <label>Country</label>
-                                <input class="le-input" name="country">
-                            </div>
-                            <div class="col-xs-12 col-sm-4">
-                                <label>email address*</label>
-                                <input class="le-input" name="emailAddress">
-                            </div>
-
-                            <div class="col-xs-12 col-sm-4">
-                                <label>phone Number</label>
-                                <input class="le-input" name="phoneNumber">
-                            </div>
-                        </div><!-- /.field-row -->
-
-                        <div class="row field-row">
-                            <div id="create-account" class="col-xs-12">
-                                <input class="le-checkbox big" type="checkbox"/>
-                                <a class="simple-link bold" href="#">Create Account?</a> - you will receive email with
-                                temporary generated password after login you need to change it.
-                            </div>
-                        </div><!-- /.field-row -->
-
-
-                    </div><!-- /.billing-address -->
-
+                    </div>
+                    <!-- /.billing-address -->
 
                     <section id="your-order">
                         <h2 class="border h1">your order</h2>
@@ -177,7 +143,8 @@
                             </div>
                             <!-- /.order-item -->
                         </c:forEach>
-                    </section><!-- /#your-order -->
+                    </section>
+                    <!-- /#your-order -->
 
                     <div id="total-area" class="row no-margin">
                         <div class="col-xs-12 col-lg-4 col-lg-offset-8 no-margin-right">
@@ -212,11 +179,13 @@
 
                             </div><!-- /#subtotal-holder -->
                         </div><!-- /.col -->
-                    </div><!-- /#total-area -->
+                    </div>
+                    <!-- /#total-area -->
                     <div class="place-order-button">
                         <button class="le-button big" type="submit">Send</button>
-                    </div><!-- /.place-order-button -->
-                </form>
+                    </div>
+                    <!-- /.place-order-button -->
+                </form:form>
             </div><!-- /.col -->
         </div><!-- /.container -->
     </section><!-- /#checkout-page -->
