@@ -5,7 +5,7 @@ import java.util.List;
 
 
 @Entity
-@Table(name = "truck_mining", schema = "belaz")
+@Table(name = "truck_mining")
 @NamedQueries({
         @NamedQuery(name = TruckMining.DELETE, query = "DELETE from TruckMining t WHERE t.id=:id"),
         @NamedQuery(name = TruckMining.ALL_SORTED, query = "SELECT t FROM TruckMining t ORDER BY t.model.name"),

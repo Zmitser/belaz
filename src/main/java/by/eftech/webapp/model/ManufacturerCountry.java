@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "manufacturer_country", schema = "belaz", catalog = "")
+@Table(name = "manufacturer_country")
 @NamedQueries({
         @NamedQuery(name = ManufacturerCountry.DELETE, query = "DELETE from ManufacturerCountry m WHERE m.id=:id"),
         @NamedQuery(name = ManufacturerCountry.ALL_SORTED, query = "SELECT m FROM ManufacturerCountry m ORDER BY m.name"),
