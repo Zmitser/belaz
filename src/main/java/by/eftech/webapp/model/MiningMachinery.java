@@ -5,6 +5,10 @@ import javax.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@NamedQueries({
+        @NamedQuery(name = MiningMachinery.DELETE, query = "DELETE from MiningMachinery m WHERE m.id=:id"),
+        @NamedQuery(name = MiningMachinery.ALL_SORTED, query = "SELECT m FROM MiningMachinery m ORDER BY m.model.name"),
+})
 public abstract class MiningMachinery {
     private Integer id;
     private String year;

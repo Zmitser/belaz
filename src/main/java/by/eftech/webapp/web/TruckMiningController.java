@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @Controller
+@RequestMapping(value = "/truck-mining")
 public class TruckMiningController {
 
     @Autowired
@@ -57,7 +58,7 @@ public class TruckMiningController {
         model.addAttribute("suspensions", suspensionService.getAll());
         model.addAttribute("transmissions", transmissionService.getAll());
         model.addAttribute("filter", new FilterProduct());
-        return "category-grid";
+        return "category-grid-truck-mining";
     }
     @RequestMapping(value = "/category/filter", method = RequestMethod.GET)
     public String getFilteredCategory(
@@ -102,13 +103,13 @@ public class TruckMiningController {
         model.addAttribute("rearWheels", rearWheelsService.getAll());
         model.addAttribute("suspensions", suspensionService.getAll());
         model.addAttribute("filter", filter);
-        return "category-grid";
+        return "category-grid-truck-mining";
     }
 
     @RequestMapping(value = "/single-product/{id}", method = RequestMethod.GET)
     public ModelAndView getProduct(@PathVariable("id") int id) {
         ModelAndView modelAndView = new ModelAndView();
-        return new ModelAndView("single-product", "item", truckMiningService.get(id));
+        return new ModelAndView("single-product-truck-mining", "item", truckMiningService.get(id));
     }
 
 

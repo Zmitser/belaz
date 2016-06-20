@@ -52,7 +52,7 @@ public class OrderController {
             i--;
         }
         sender.sendEmail(order.getEmailAddress(), builder.toString());
-        return "redirect:/category";
+        return "redirect:/";
     }
 
 
