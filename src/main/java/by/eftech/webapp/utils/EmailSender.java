@@ -13,14 +13,16 @@ public class EmailSender {
     private static  String password = "mytimetable123"; // correct password for gmail id
     private static  String toEmail = "timetable11recipient@gmail.com"; // can be any email id
     private static Properties props;
-
-
+    private static final String SMTP_HOST_NAME = "smtp.sendgrid.net";
+    private static final String SMTP_AUTH_USER = System.getenv("SENDGRID_USERNAME");
+    private static final String SMTP_AUTH_PWD  = System.getenv("SENDGRID_PASSWORD");
     private static final EmailSender MAIL_SENDER = new EmailSender();
 
 
     private EmailSender() {
         props = new Properties();
-        props.put("mail.smtp.host", "smtp.gmail.com"); //SMTP Host
+        props.put("mail.transport.protocol", "smtp");
+        props.put("mail.smtp.host", SMTP_HOST_NAME); //SMTP Host
         props.put("mail.smtp.port", "587"); //TLS Port
         props.put("mail.smtp.auth", "true"); //enable authentication
         props.put("mail.smtp.starttls.enable", "true"); //enable STARTTLS
@@ -36,7 +38,11 @@ public class EmailSender {
         try {
             Authenticator auth = new Authenticator() {
                 protected PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication(fromEmail, password);
+
+                    String username = SMTP_AUTH_USER;
+                    String password = SMTP_AUTH_PWD;
+                    return new PasswordAuthentication(username, password);
+
                 }
             };
             Session session = Session.getInstance(props, auth);
