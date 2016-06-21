@@ -1,16 +1,19 @@
 package by.eftech.webapp.model;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
 
 
 @Entity
+@Table(name = "seller_order")
 @NamedQueries({
         @NamedQuery(name = SellerOrder.DELETE, query = "DELETE from SellerOrder s WHERE s.id=:id"),
         @NamedQuery(name = SellerOrder.ALL_SORTED, query = "SELECT s FROM SellerOrder s ORDER BY s.fullname"),
 })
-@Table(name = "seller_order")
 public class SellerOrder {
     private Integer id;
     private Timestamp date;
@@ -25,13 +28,13 @@ public class SellerOrder {
     private List<Item> items;
 
 
-
     public static final String DELETE = "SellerOrder.delete";
     public static final String ALL_SORTED = "SellerOrder.getAllSorted";
 
+
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }
@@ -52,6 +55,7 @@ public class SellerOrder {
 
     @Basic
     @Column(name = "fullname")
+    @NotEmpty(message = "full name must not be empty!")
     public String getFullname() {
         return fullname;
     }
@@ -62,6 +66,7 @@ public class SellerOrder {
 
     @Basic
     @Column(name = "lastname")
+    @NotEmpty(message = "last name must not be empty!")
     public String getLastname() {
         return lastname;
     }
@@ -72,6 +77,7 @@ public class SellerOrder {
 
     @Basic
     @Column(name = "company_name")
+    @NotEmpty(message = "company name must not be empty!")
     public String getCompanyName() {
         return companyName;
     }
@@ -82,6 +88,7 @@ public class SellerOrder {
 
     @Basic
     @Column(name = "street_address")
+    @NotEmpty(message = "street address must to be empty!")
     public String getStreetAddress() {
         return streetAddress;
     }
@@ -92,6 +99,7 @@ public class SellerOrder {
 
     @Basic
     @Column(name = "town")
+    @NotEmpty(message = "town must not be empty!")
     public String getTown() {
         return town;
     }
@@ -102,6 +110,7 @@ public class SellerOrder {
 
     @Basic
     @Column(name = "country")
+    @NotEmpty(message = "country must not empty!")
     public String getCountry() {
         return country;
     }
@@ -112,6 +121,8 @@ public class SellerOrder {
 
     @Basic
     @Column(name = "email_address")
+    @NotEmpty(message = "email address must not be empty!")
+    @Email(message = "email is not valid!")
     public String getEmailAddress() {
         return emailAddress;
     }
@@ -122,6 +133,7 @@ public class SellerOrder {
 
     @Basic
     @Column(name = "phone_number")
+    @NotEmpty(message = "phone number must not be empty!")
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -135,19 +147,19 @@ public class SellerOrder {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        SellerOrder order = (SellerOrder) o;
+        SellerOrder that = (SellerOrder) o;
 
-        if (id != null ? !id.equals(order.id) : order.id != null) return false;
-        if (date != null ? !date.equals(order.date) : order.date != null) return false;
-        if (fullname != null ? !fullname.equals(order.fullname) : order.fullname != null) return false;
-        if (lastname != null ? !lastname.equals(order.lastname) : order.lastname != null) return false;
-        if (companyName != null ? !companyName.equals(order.companyName) : order.companyName != null) return false;
-        if (streetAddress != null ? !streetAddress.equals(order.streetAddress) : order.streetAddress != null)
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (date != null ? !date.equals(that.date) : that.date != null) return false;
+        if (fullname != null ? !fullname.equals(that.fullname) : that.fullname != null) return false;
+        if (lastname != null ? !lastname.equals(that.lastname) : that.lastname != null) return false;
+        if (companyName != null ? !companyName.equals(that.companyName) : that.companyName != null) return false;
+        if (streetAddress != null ? !streetAddress.equals(that.streetAddress) : that.streetAddress != null)
             return false;
-        if (town != null ? !town.equals(order.town) : order.town != null) return false;
-        if (country != null ? !country.equals(order.country) : order.country != null) return false;
-        if (emailAddress != null ? !emailAddress.equals(order.emailAddress) : order.emailAddress != null) return false;
-        if (phoneNumber != null ? !phoneNumber.equals(order.phoneNumber) : order.phoneNumber != null) return false;
+        if (town != null ? !town.equals(that.town) : that.town != null) return false;
+        if (country != null ? !country.equals(that.country) : that.country != null) return false;
+        if (emailAddress != null ? !emailAddress.equals(that.emailAddress) : that.emailAddress != null) return false;
+        if (phoneNumber != null ? !phoneNumber.equals(that.phoneNumber) : that.phoneNumber != null) return false;
 
         return true;
     }
@@ -176,10 +188,12 @@ public class SellerOrder {
         this.items = items;
     }
 
-
     public boolean newOject() {
-        return (id == null);
+        return (this.id == null);
     }
+
+
+
     public SellerOrder(Integer id, Timestamp date, String fullname, String lastname, String companyName, String streetAddress, String town, String country, String emailAddress, String phoneNumber, List<Item> items) {
         this.id = id;
         this.date = date;
@@ -210,3 +224,5 @@ public class SellerOrder {
     public SellerOrder() {
     }
 }
+
+
