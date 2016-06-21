@@ -118,7 +118,7 @@
 
                         <div class="row field-row">
                             <belaz:inputField name="country" label="Country" xs="12" sm="4"/>
-                            <belaz:inputField name="email address*" label="email Address" inputType="email" xs="12" sm="4"/>
+                            <belaz:inputField name="emailAddress" label="email Address*" inputType="email" xs="12" sm="4"/>
                             <belaz:inputField name="phoneNumber" label="phone Number" xs="12" sm="4"/>
                         </div><!-- /.field-row -->
                     </div>

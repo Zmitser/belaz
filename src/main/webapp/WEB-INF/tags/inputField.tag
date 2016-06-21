@@ -16,7 +16,7 @@
                 <c:when test="${inputType == 'email'}"><form:input path="${name}" cssClass="le-input" type="email"/></c:when>
                 <c:otherwise><form:input path="${name}" cssClass="le-input"/></c:otherwise>
             </c:choose>
-            &nbsp;<span class="${cssGroup}">${status.errorMessage}</span>
+            <form:errors path="${name}" cssClass="${cssGroup}"/>
     </div>
 </spring:bind>
 
