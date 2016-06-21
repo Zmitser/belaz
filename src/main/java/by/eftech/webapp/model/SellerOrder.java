@@ -1,5 +1,8 @@
 package by.eftech.webapp.model;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
@@ -52,6 +55,7 @@ public class SellerOrder {
 
     @Basic
     @Column(name = "fullname")
+    @NotEmpty(message = "full name must not be empty!")
     public String getFullname() {
         return fullname;
     }
@@ -62,6 +66,7 @@ public class SellerOrder {
 
     @Basic
     @Column(name = "lastname")
+    @NotEmpty(message = "last name must not be empty!")
     public String getLastname() {
         return lastname;
     }
@@ -72,6 +77,7 @@ public class SellerOrder {
 
     @Basic
     @Column(name = "company_name")
+    @NotEmpty(message = "company name must not be empty!")
     public String getCompanyName() {
         return companyName;
     }
@@ -82,6 +88,7 @@ public class SellerOrder {
 
     @Basic
     @Column(name = "street_address")
+    @NotEmpty(message = "street address must to be empty!")
     public String getStreetAddress() {
         return streetAddress;
     }
@@ -92,6 +99,7 @@ public class SellerOrder {
 
     @Basic
     @Column(name = "town")
+    @NotEmpty(message = "town must not be empty!")
     public String getTown() {
         return town;
     }
@@ -102,6 +110,7 @@ public class SellerOrder {
 
     @Basic
     @Column(name = "country")
+    @NotEmpty(message = "country must not empty!")
     public String getCountry() {
         return country;
     }
@@ -112,6 +121,8 @@ public class SellerOrder {
 
     @Basic
     @Column(name = "email_address")
+    @NotEmpty(message = "email address must not be empty!")
+    @Email(message = "email is not valid!")
     public String getEmailAddress() {
         return emailAddress;
     }
@@ -122,6 +133,7 @@ public class SellerOrder {
 
     @Basic
     @Column(name = "phone_number")
+    @NotEmpty(message = "phone number must not be empty!")
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -212,3 +224,4 @@ public class SellerOrder {
     public SellerOrder() {
     }
 }
+
