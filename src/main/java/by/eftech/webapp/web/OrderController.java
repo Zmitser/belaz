@@ -58,9 +58,10 @@ public class OrderController {
                 i--;
             }
             sender.sendEmail(order.getEmailAddress(), builder.toString());
+            return "index";
         }
 
-        return "redirect:/";
+
     }
 
 
