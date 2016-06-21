@@ -36,7 +36,7 @@ public class OrderController {
     @RequestMapping(value = "/continue-order", method = RequestMethod.POST)
     public String continueOrder(@ModelAttribute("order") @Valid SellerOrder order, BindingResult result, HttpSession session, SessionStatus status, ModelMap model) throws IOException {
         if (result.hasErrors()) {
-            return "checkout";
+            return "/checkout";
         }else {
             status.setComplete();
             List<Item> items = (List<Item>) session.getAttribute("cart");
@@ -60,7 +60,7 @@ public class OrderController {
             sender.sendEmail(order.getEmailAddress(), builder.toString());
         }
 
-        return "redirect:/category";
+        return "redirect:/";
     }
 
 
