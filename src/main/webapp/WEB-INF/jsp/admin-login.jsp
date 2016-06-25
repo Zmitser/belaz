@@ -18,7 +18,7 @@
 
             <div id="logo"><span>Great Admin</span></div>
 
-            <form method="post" action="/spring_security_check" id="form-login" class="formBox">
+            <form method="post" action="/login" id="form-login" class="formBox">
                 <fieldset>
                     <div class="form-col">
                         <label for="username" class="lab">Username <span class="warning"></span></label>

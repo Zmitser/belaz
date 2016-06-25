@@ -727,6 +727,8 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES  (1, 'admin@admin.ru', '$2a$10$2Uq9QjwEskZUFaOY1h0q5u3OubNCuLBowKMqH1L3iXRL9R5qSjUxC', 'ROLE_ADMIN'),
+  (2, 'user@user.by', '$2a$10$60Zjv6nRNxcAkW/s1.OaVuu4mOClXDw8TTkDirL7acGa0841PvHiG', 'ROLE_USER');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 

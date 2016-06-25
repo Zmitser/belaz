@@ -15,18 +15,20 @@
         <intercept-url pattern="/**" access="permitAll"/>
         <intercept-url pattern="/admin" access="permitAll"/>
         <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
-        <form-login login-page="/admin" always-use-default-target="true"   default-target-url="/admin/export-excel"
+        <form-login login-page="/admin"
                     authentication-failure-url="/admin?error=true"
-                    login-processing-url="/spring_security_check"/>
+                    authentication-success-handler-ref="myAuthenticationSuccessHandler"/>
         <csrf disabled="true"/>
+        <access-denied-handler error-page="/403"/>
     </http>
 
+    <beans:bean id="myAuthenticationSuccessHandler"
+                class="by.eftech.webapp.utils.MySimpleUrlAuthenticationSuccessHandler" />
 
+    <beans:bean class="by.eftech.webapp.utils.PasswordUtil" id="passwordEncoder" factory-method="getPasswordEncoder"/>
     <authentication-manager>
-        <authentication-provider>
-            <user-service>
-                <user name="admin@gmail.com" password="admin" authorities="ROLE_ADMIN"/>
-            </user-service>
+        <authentication-provider user-service-ref="userService">
+            <password-encoder ref="passwordEncoder"/>
         </authentication-provider>
     </authentication-manager>
 </beans:beans>

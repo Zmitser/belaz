@@ -7,18 +7,19 @@ import javax.persistence.*;
 @NamedQueries({
         @NamedQuery(name = User.DELETE, query = "DELETE from User u WHERE u.id=:id"),
         @NamedQuery(name = User.ALL_SORTED, query = "SELECT u FROM User u ORDER BY u.email"),
+        @NamedQuery(name = User.BY_EMAIL, query = "SELECT u FROM User u WHERE u.email=?1"),
 })
 public class User {
     private Integer id;
     private String email;
     private String password;
-    private String role;
+    private Role role;
 
 
 
     public static final String DELETE = "User.delete";
     public static final String ALL_SORTED = "User.getAllSorted";
-
+    public static final String BY_EMAIL = "User.getByEmail";
 
     @Id
     @Column(name = "id")
@@ -52,11 +53,12 @@ public class User {
 
     @Basic
     @Column(name = "role")
-    public String getRole() {
+    @Enumerated(EnumType.STRING)
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(Role role) {
         this.role = role;
     }
 
