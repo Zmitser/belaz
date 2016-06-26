@@ -27,6 +27,7 @@ public class ShoppingCartController {
                            HttpSession session,
                            Model model,
                            Principal principal) {
+
         if (session.getAttribute("cart") == null) {
             List<Item> cart = new ArrayList<>();
             cart.add(new Item(1, service.get(id)));

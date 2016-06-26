@@ -95,24 +95,16 @@
             <!-- table -->
             <table class="tab tab-drag">
                 <tr class="top nodrop nodrag">
-                    <th>Model</th>
-                    <th>Manufacturer</th>
-                    <th>Manufacturer Country</th>
-                    <th>Machine Condition</th>
-                    <th>Machine Location</th>
-                    <th>Payload Capacity</th>
-                    <th>Engine</th>
+                    <th>ID</th>
+                    <th>Email</th>
+                    <th>ROLE</th>
                     <th class="action">Action</th>
                 </tr>
                 <c:forEach items="${trucks}" var="truck">
                     <tr>
-                        <td><a href="#">${truck.model.name}</a></td>
-                        <td>${truck.manufacturer.name}</td>
-                        <td>${truck.manufacturerCountry.name}</td>
-                        <td>${truck.machineCondition.name}</td>
-                        <td>${truck.machineLocation.name}</td>
-                        <td>${truck.payloadCapacity}</td>
-                        <td>${truck.engine.name}</td>
+                        <td><a href="#">${truck.id}</a></td>
+                        <td>${truck.email}</td>
+                        <td>${truck.role}</td>
                         <td class="action">
                             <a href="/delete/${truck.id}" class="ico ico-delete">Delete</a>
                             <a href="/edit/${truck.id}" class="ico ico-edit">Edit</a>
@@ -120,7 +112,6 @@
                         </td>
                     </tr>
                 </c:forEach>
-
             </table>
             <!-- /table -->
 
@@ -207,39 +198,7 @@
     </div>
     <!-- /#content -->
     <!-- #sidebar -->
-    <div id="sidebar">
-        <!-- mainmenu -->
-        <ul id="floatMenu" class="mainmenu">
-            <li class="first"><a href="#">Dashboard</a></li>
-            <li><a href="#">Pages</a>
-                <ul class="submenu">
-                    <li><a href="#">New Pages</a></li>
-                    <li><a href="#">List Pages</a></li>
-                </ul>
-            </li>
-            <li><a href="#">News</a></li>
-            <li><a href="#">Articles</a>
-                <ul class="submenu">
-                    <li><a href="">New Article</a></li>
-                    <li><a href="#">List Article</a></li>
-                </ul>
-            </li>
-            <li><a href="#">Color skin</a>
-                <ul class="submenu">
-                    <li><a href="../blue/">Blue</a></li>
-                    <li><a href="../green/">Green</a></li>
-                    <li><a href="../red/">Red</a></li>
-                    <li><a href="../gray/">Gray</a></li>
-                </ul>
-            </li>
-            <li><a href="">Settings</a></li>
-            <li class="last"><a href="http://themeforest.net/item/great-admin-theme/114528?ref=ClearHead" class="link">ThemeForest</a>
-            </li>
-        </ul>
-        <!-- /.mainmenu -->
-
-    </div>
-    <!-- /#sidebar -->
+    <c:import url="fragments/admin-sidebar.jsp"/>
     <!-- #footer -->
     <div id="footer">
         <p>© 2010 Great Admin | <a href="#main">Top</a></p>
@@ -247,24 +206,5 @@
     <!-- /#footer -->
 </div>
 <!-- /#main -->
-<script src="<c:url value="/resources/assets/js/dmuploader.min.js"/>"></script>
-<script>
-
-    $('#dropzone-photo').dmUploader({
-        url: "/admin/rest/upload-photo",
-        dataType: 'json',
-        allowedTypes: 'image/*',
-        onUploadSuccess: function (id, response) {
-            $(".output-photo").html("photo " + response + " uploaded!");
-        }
-    });
-    $('#dropzone-excel').dmUploader({
-        url: "/admin/rest/export",
-        dataType: 'json',
-        onUploadSuccess: function (id, response) {
-            $(".output-excel").html("excel " + response + " uploaded!");
-        }
-    });
-</script>
 </body>
 </html>

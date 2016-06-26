@@ -13,18 +13,8 @@ public class RootController {
     public String getRoot(Principal principal) {
         return "index";
     }
-
-
-    @RequestMapping(value = "sitemap.xml", method = RequestMethod.GET)
-    public String getXmlSitemap(Principal principal) {
-        return "redirect:/static/sitemap.xml";
-
+    @RequestMapping(value = "/admin", method = RequestMethod.GET)
+    public String getLoginAdmin(Principal principal) {
+        return "admin-login";
     }
-
-    @RequestMapping(value = "robots.txt", method = RequestMethod.GET)
-    public String getRobotsTxt(Principal principal) {
-        return "redirect:/static/robots.txt";
-
-    }
-
 }

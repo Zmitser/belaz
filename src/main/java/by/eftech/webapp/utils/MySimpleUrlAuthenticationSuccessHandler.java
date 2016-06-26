@@ -58,7 +58,7 @@ public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSu
         if (isUser) {
             return "/";
         } else if (isAdmin) {
-            return "/admin/export-excel";
+            return "/admin/admin-truck-minings";
         } else {
             throw new IllegalStateException();
         }
