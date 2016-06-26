@@ -14,4 +14,11 @@ public class RootController {
         return "index";
     }
 
+
+    @RequestMapping(value = "sitemap.xml", method = RequestMethod.GET)
+    public String getXmlSitemap(Principal principal) {
+        return "redirect:/static/sitemap.xml";
+
+    }
+
 }

@@ -27,4 +27,6 @@ public class SiteMapController {
         model.addAttribute("dumpTrucks", dumpTrucksCrossCountryCapacityService.getAll());
         return "sitemap";
     }
+
+
 }
