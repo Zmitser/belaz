@@ -86,7 +86,7 @@
                                         terms and conditions apply
                                     </div>
                                     <div class="button-holder fadeInDown-3">
-                                        <a href="single-product.html" class="big le-button ">shop now</a>
+                                        <a href="#" class="big le-button ">shop now</a>
                                     </div>
                                 </div><!-- /.caption -->
                             </div><!-- /.container-fluid -->
@@ -106,7 +106,7 @@
                                         terms and conditions apply
                                     </div>
                                     <div class="button-holder fadeInDown-3">
-                                        <a href="single-product.html" class="big le-button ">shop now</a>
+                                        <a href="#" class="big le-button ">shop now</a>
                                     </div>
                                 </div><!-- /.caption -->
                             </div><!-- /.container-fluid -->
@@ -145,7 +145,7 @@
                                     <div class="body">
                                         <div class="label-discount green">-50% sale</div>
                                         <div class="title">
-                                            <a href="single-product.html">VAIO Fit Laptop - Windows 8 SVF14322CXW</a>
+                                            <a href="#">VAIO Fit Laptop - Windows 8 SVF14322CXW</a>
                                         </div>
                                         <div class="brand">sony</div>
                                     </div>
@@ -156,7 +156,7 @@
 
                                     <div class="hover-area">
                                         <div class="add-cart-button">
-                                            <a href="single-product.html" class="le-button">Добавить в корзину</a>
+                                            <a href="#" class="le-button">Добавить в корзину</a>
                                         </div>
                                         <div class="wish-compare">
                                             <a class="btn-add-to-wishlist" href="#">add to wishlist</a>
@@ -175,7 +175,7 @@
                                     <div class="body">
                                         <div class="label-discount clear"></div>
                                         <div class="title">
-                                            <a href="single-product.html">White lumia 9001</a>
+                                            <a href="#">White lumia 9001</a>
                                         </div>
                                         <div class="brand">nokia</div>
                                     </div>
@@ -185,7 +185,7 @@
                                     </div>
                                     <div class="hover-area">
                                         <div class="add-cart-button">
-                                            <a href="single-product.html" class="le-button">add to cart</a>
+                                            <a href="#" class="le-button">add to cart</a>
                                         </div>
                                         <div class="wish-compare">
                                             <a class="btn-add-to-wishlist" href="#">add to wishlist</a>
@@ -204,7 +204,7 @@
                                     <div class="body">
                                         <div class="label-discount clear"></div>
                                         <div class="title">
-                                            <a href="single-product.html">POV Action Cam</a>
+                                            <a href="#">POV Action Cam</a>
                                         </div>
                                         <div class="brand">sony</div>
                                     </div>
@@ -214,7 +214,7 @@
                                     </div>
                                     <div class="hover-area">
                                         <div class="add-cart-button">
-                                            <a href="single-product.html" class="le-button">add to cart</a>
+                                            <a href="#" class="le-button">add to cart</a>
                                         </div>
                                         <div class="wish-compare">
                                             <a class="btn-add-to-wishlist" href="#">add to wishlist</a>
@@ -234,7 +234,7 @@
                                     <div class="body">
                                         <div class="label-discount clear"></div>
                                         <div class="title">
-                                            <a href="single-product.html">Netbook Acer TravelMate
+                                            <a href="#">Netbook Acer TravelMate
                                                 B113-E-10072</a>
                                         </div>
                                         <div class="brand">acer</div>
@@ -245,7 +245,7 @@
                                     </div>
                                     <div class="hover-area">
                                         <div class="add-cart-button">
-                                            <a href="single-product.html" class="le-button">add to cart</a>
+                                            <a href="#" class="le-button">add to cart</a>
                                         </div>
                                         <div class="wish-compare">
                                             <a class="btn-add-to-wishlist" href="#">add to wishlist</a>
@@ -254,11 +254,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="loadmore-holder text-center">
-                            <a class="btn-loadmore" href="#">
-                                <i class="fa fa-plus"></i>
-                                load more products</a>
                         </div>
 
                     </div>
@@ -275,7 +270,7 @@
                                     <div class="body">
                                         <div class="label-discount clear"></div>
                                         <div class="title">
-                                            <a href="single-product.html">White lumia 9001</a>
+                                            <a href="#">White lumia 9001</a>
                                         </div>
                                         <div class="brand">nokia</div>
                                     </div>
@@ -285,7 +280,7 @@
                                     </div>
                                     <div class="hover-area">
                                         <div class="add-cart-button">
-                                            <a href="single-product.html" class="le-button">add to cart</a>
+                                            <a href="#" class="le-button">add to cart</a>
                                         </div>
                                         <div class="wish-compare">
                                             <a class="btn-add-to-wishlist" href="#">add to wishlist</a>
@@ -305,7 +300,7 @@
                                     <div class="body">
                                         <div class="label-discount green">-50% sale</div>
                                         <div class="title">
-                                            <a href="single-product.html">VAIO Fit Laptop - Windows 8 SVF14322CXW</a>
+                                            <a href="#">VAIO Fit Laptop - Windows 8 SVF14322CXW</a>
                                         </div>
                                         <div class="brand">sony</div>
                                     </div>
@@ -316,7 +311,7 @@
 
                                     <div class="hover-area">
                                         <div class="add-cart-button">
-                                            <a href="single-product.html" class="le-button">add to cart</a>
+                                            <a href="#" class="le-button">add to cart</a>
                                         </div>
                                         <div class="wish-compare">
                                             <a class="btn-add-to-wishlist" href="#">add to wishlist</a>
@@ -337,7 +332,7 @@
                                     <div class="body">
                                         <div class="label-discount clear"></div>
                                         <div class="title">
-                                            <a href="single-product.html">Netbook Acer TravelMate
+                                            <a href="#">Netbook Acer TravelMate
                                                 B113-E-10072</a>
                                         </div>
                                         <div class="brand">acer</div>
@@ -348,7 +343,7 @@
                                     </div>
                                     <div class="hover-area">
                                         <div class="add-cart-button">
-                                            <a href="single-product.html" class="le-button">add to cart</a>
+                                            <a href="#" class="le-button">add to cart</a>
                                         </div>
                                         <div class="wish-compare">
                                             <a class="btn-add-to-wishlist" href="#">add to wishlist</a>
@@ -368,7 +363,7 @@
                                     <div class="body">
                                         <div class="label-discount clear"></div>
                                         <div class="title">
-                                            <a href="single-product.html">POV Action Cam</a>
+                                            <a href="#">POV Action Cam</a>
                                         </div>
                                         <div class="brand">sony</div>
                                     </div>
@@ -378,7 +373,7 @@
                                     </div>
                                     <div class="hover-area">
                                         <div class="add-cart-button">
-                                            <a href="single-product.html" class="le-button">add to cart</a>
+                                            <a href="#" class="le-button">add to cart</a>
                                         </div>
                                         <div class="wish-compare">
                                             <a class="btn-add-to-wishlist" href="#">add to wishlist</a>
@@ -387,14 +382,7 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
-                        <div class="loadmore-holder text-center">
-                            <a class="btn-loadmore" href="#">
-                                <i class="fa fa-plus"></i>
-                                load more products</a>
-                        </div>
-
                     </div>
 
                     <div class="tab-pane" id="top-sales">
@@ -411,7 +399,7 @@
                                     <div class="body">
                                         <div class="label-discount clear"></div>
                                         <div class="title">
-                                            <a href="single-product.html">Netbook Acer TravelMate
+                                            <a href="#">Netbook Acer TravelMate
                                                 B113-E-10072</a>
                                         </div>
                                         <div class="brand">acer</div>
@@ -422,7 +410,7 @@
                                     </div>
                                     <div class="hover-area">
                                         <div class="add-cart-button">
-                                            <a href="single-product.html" class="le-button">add to cart</a>
+                                            <a href="#" class="le-button">add to cart</a>
                                         </div>
                                         <div class="wish-compare">
                                             <a class="btn-add-to-wishlist" href="#">add to wishlist</a>
@@ -443,7 +431,7 @@
                                     <div class="body">
                                         <div class="label-discount clear"></div>
                                         <div class="title">
-                                            <a href="single-product.html">POV Action Cam</a>
+                                            <a href="#">POV Action Cam</a>
                                         </div>
                                         <div class="brand">sony</div>
                                     </div>
@@ -453,7 +441,7 @@
                                     </div>
                                     <div class="hover-area">
                                         <div class="add-cart-button">
-                                            <a href="single-product.html" class="le-button">add to cart</a>
+                                            <a href="#" class="le-button">add to cart</a>
                                         </div>
                                         <div class="wish-compare">
                                             <a class="btn-add-to-wishlist" href="#">add to wishlist</a>
@@ -473,7 +461,7 @@
                                     <div class="body">
                                         <div class="label-discount clear"></div>
                                         <div class="title">
-                                            <a href="single-product.html">White lumia 9001</a>
+                                            <a href="#">White lumia 9001</a>
                                         </div>
                                         <div class="brand">nokia</div>
                                     </div>
@@ -483,7 +471,7 @@
                                     </div>
                                     <div class="hover-area">
                                         <div class="add-cart-button">
-                                            <a href="single-product.html" class="le-button">add to cart</a>
+                                            <a href="#" class="le-button">add to cart</a>
                                         </div>
                                         <div class="wish-compare">
                                             <a class="btn-add-to-wishlist" href="#">add to wishlist</a>
@@ -503,7 +491,7 @@
                                     <div class="body">
                                         <div class="label-discount green">-50% sale</div>
                                         <div class="title">
-                                            <a href="single-product.html">VAIO Fit Laptop - Windows 8 SVF14322CXW</a>
+                                            <a href="#">VAIO Fit Laptop - Windows 8 SVF14322CXW</a>
                                         </div>
                                         <div class="brand">sony</div>
                                     </div>
@@ -514,7 +502,7 @@
 
                                     <div class="hover-area">
                                         <div class="add-cart-button">
-                                            <a href="single-product.html" class="le-button">add to cart</a>
+                                            <a href="#" class="le-button">add to cart</a>
                                         </div>
                                         <div class="wish-compare">
                                             <a class="btn-add-to-wishlist" href="#">add to wishlist</a>
@@ -524,11 +512,6 @@
                                 </div>
                             </div>
 
-                        </div>
-                        <div class="loadmore-holder text-center">
-                            <a class="btn-loadmore" href="#">
-                                <i class="fa fa-plus"></i>
-                                load more products</a>
                         </div>
                     </div>
                 </div>

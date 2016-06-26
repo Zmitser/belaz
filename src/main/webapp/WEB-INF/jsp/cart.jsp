@@ -84,108 +84,110 @@
             <div class="col-xs-12 col-md-9 items-holder no-margin">
                 <c:set value="0" var="s"/>
                 <c:choose>
-                    <c:when test="${sessionScope.cart.size() > 0}">
-                        <c:forEach var="it" items="${sessionScope.cart}" varStatus="timer">
-                            <c:set value="${s + it.quantity * it.miningMachinery.price}" var="s"/>
-                            <div class="row no-margin cart-item">
-                                <div class="col-xs-12 col-sm-2 no-margin">
-                                    <a href="#" class="thumb-holder">
-                                        <img class="lazy" alt="" src="http://placehold.it/73x73"/>
-                                    </a>
-                                </div>
+                <c:when test="${sessionScope.cart.size() > 0}">
+                <c:forEach var="it" items="${sessionScope.cart}" varStatus="timer">
+                    <c:set value="${s + it.quantity * it.miningMachinery.price}" var="s"/>
+                    <div class="row no-margin cart-item">
+                        <div class="col-xs-12 col-sm-2 no-margin">
+                            <a href="#" class="thumb-holder">
+                                <img class="lazy" alt="" src="http://placehold.it/73x73"/>
+                            </a>
+                        </div>
 
-                                <div class="col-xs-12 col-sm-5 ">
-                                    <div class="title">
-                                        <a href="<c:url value="/single-product/${it.miningMachinery.id}"/>">${it.miningMachinery.model.name}</a>
-                                    </div>
-                                    <div class="brand">${it.miningMachinery.manufacturer.name}</div>
-                                </div>
-
-                                <div class="col-xs-12 col-sm-3 no-margin">
-                                    <div class="quantity">
-                                        <div class="le-quantity">
-                                            <form>
-                                                <a class="minus" href="/shopping-cart/reduce/${timer.index}"></a>
-                                                <input name="quantity" readonly="readonly" type="text" value="${it.quantity}"/>
-                                                <a class="plus" href="/shopping-cart/add/${timer.index}"></a>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-xs-12 col-sm-2 no-margin">
-                                    <div class="price">
-                                            ${it.miningMachinery.price} x ${it.quantity} = ${it.quantity * it.miningMachinery.price}
-                                    </div>
-                                    <a class="close-btn" href="/shopping-cart/remove/${timer.index}"></a>
-                                </div>
+                        <div class="col-xs-12 col-sm-5 ">
+                            <div class="title">
+                                <a href="<c:url value="/single-product/${it.miningMachinery.id}"/>">${it.miningMachinery.model.name}</a>
                             </div>
-                            <!-- /.cart-item -->
-                        </c:forEach>
-                        <!-- ========================================= SIDEBAR ========================================= -->
+                            <div class="brand">${it.miningMachinery.manufacturer.name}</div>
+                        </div>
 
-                        <div class="col-xs-12 col-md-3 no-margin sidebar ">
-                            <div class="widget cart-summary">
-                                <h1 class="border">shopping cart</h1>
-                                <div class="body">
-                                    <ul class="tabled-data no-border inverse-bold">
-                                        <li>
-                                            <label>cart subtotal</label>
-                                            <div class="value pull-right">$${s}</div>
-                                        </li>
-                                        <li>
-                                            <label>shipping</label>
-                                            <div class="value pull-right">free shipping</div>
-                                        </li>
-                                    </ul>
-                                    <ul id="total-price" class="tabled-data inverse-bold no-border">
-                                        <li>
-                                            <label>order total</label>
-                                            <div class="value pull-right">$${s}</div>
-                                        </li>
-                                    </ul>
-                                    <div class="buttons-holder">
-                                        <a class="le-button big"
-                                           href="/order/checkout">checkout</a>
-                                        <a class="simple-link block"
-                                           href="http://localhost/~ibrahim/themeforest/HTML/mediacenter/upload/PHP/home">continue
-                                            shopping</a>
-                                    </div>
-                                </div>
-                            </div><!-- /.widget -->
-
-                            <div id="cupon-widget" class="widget">
-                                <h1 class="border">use coupon</h1>
-                                <div class="body">
+                        <div class="col-xs-12 col-sm-3 no-margin">
+                            <div class="quantity">
+                                <div class="le-quantity">
                                     <form>
-                                        <div class="inline-input">
-                                            <input data-placeholder="enter coupon code" type="text"/>
-                                            <button class="le-button" type="submit">Apply</button>
-                                        </div>
+                                        <a class="minus" href="/shopping-cart/reduce/${timer.index}"></a>
+                                        <input name="quantity" readonly="readonly" type="text"
+                                               value="${it.quantity}"/>
+                                        <a class="plus" href="/shopping-cart/add/${timer.index}"></a>
                                     </form>
                                 </div>
-                            </div><!-- /.widget -->
-                        </div><!-- /.sidebar -->
+                            </div>
+                        </div>
 
-                        <!-- ========================================= SIDEBAR : END ========================================= -->
-                    </c:when>
+                        <div class="col-xs-12 col-sm-2 no-margin">
+                            <div class="price">
+                                    ${it.miningMachinery.price} x ${it.quantity}
+                                = ${it.quantity * it.miningMachinery.price}
+                            </div>
+                            <a class="close-btn" href="/shopping-cart/remove/${timer.index}"></a>
+                        </div>
+                    </div>
+                    <!-- /.cart-item -->
+                </c:forEach>
+            </div>
+            <!-- ========================================= SIDEBAR ========================================= -->
+            <div class="col-xs-12 col-md-3 no-margin sidebar ">
+                <div class="widget cart-summary">
+                    <h1 class="border">shopping cart</h1>
+                    <div class="body">
+                        <ul class="tabled-data no-border inverse-bold">
+                            <li>
+                                <label>cart subtotal</label>
+                                <div class="value pull-right">$${s}</div>
+                            </li>
+                            <li>
+                                <label>shipping</label>
+                                <div class="value pull-right">free shipping</div>
+                            </li>
+                        </ul>
+                        <ul id="total-price" class="tabled-data inverse-bold no-border">
+                            <li>
+                                <label>order total</label>
+                                <div class="value pull-right">$${s}</div>
+                            </li>
+                        </ul>
+                        <div class="buttons-holder">
+                            <a class="le-button big"
+                               href="/order/checkout">checkout</a>
+                            <a class="simple-link block"
+                               href="http://localhost/~ibrahim/themeforest/HTML/mediacenter/upload/PHP/home">continue
+                                shopping</a>
+                        </div>
+                    </div>
+                </div><!-- /.widget -->
+
+                <div id="cupon-widget" class="widget">
+                    <h1 class="border">use coupon</h1>
+                    <div class="body">
+                        <form>
+                            <div class="inline-input">
+                                <input data-placeholder="enter coupon code" type="text"/>
+                                <button class="le-button" type="submit">Apply</button>
+                            </div>
+                        </form>
+                    </div>
+                </div><!-- /.widget -->
+            </div>
+            <!-- /.sidebar -->
+
+            <!-- ========================================= SIDEBAR : END ========================================= -->
+            </c:when>
 
 
-
-                    <c:otherwise>
-                        <p>Your shopping cart is empty</p>
-                    </c:otherwise>
-                </c:choose>
-
-             </div>
-            <!-- ========================================= CONTENT : END ========================================= -->
-
+            <c:otherwise>
+                <p>Your shopping cart is empty</p>
+            </c:otherwise>
+            </c:choose>
 
         </div>
-    </section>
-    <!-- ============================================================= FOOTER ============================================================= -->
-    <c:import url="fragments/footer.jsp"/>
-    <!-- ============================================================= FOOTER : END ============================================================= -->
+        <!-- ========================================= CONTENT : END ========================================= -->
+
+
+</div>
+</section>
+<!-- ============================================================= FOOTER ============================================================= -->
+<c:import url="fragments/footer.jsp"/>
+<!-- ============================================================= FOOTER : END ============================================================= -->
 </div><!-- /.wrapper -->
 <c:import url="fragments/scripts.jsp"/>
 </body>

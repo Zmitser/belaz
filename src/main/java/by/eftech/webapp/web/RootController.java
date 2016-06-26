@@ -13,5 +13,8 @@ public class RootController {
     public String getRoot(Principal principal) {
         return "index";
     }
-
+    @RequestMapping(value = "/admin", method = RequestMethod.GET)
+    public String getLoginAdmin(Principal principal) {
+        return "admin-login";
+    }
 }
