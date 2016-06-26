@@ -20,6 +20,7 @@
                     authentication-success-handler-ref="myAuthenticationSuccessHandler"/>
         <csrf disabled="true"/>
         <access-denied-handler error-page="/403"/>
+        <logout logout-success-url="/admin"/>
     </http>
 
     <beans:bean id="myAuthenticationSuccessHandler"

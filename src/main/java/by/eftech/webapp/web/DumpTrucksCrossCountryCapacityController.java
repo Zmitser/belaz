@@ -1,6 +1,6 @@
 package by.eftech.webapp.web;
 
-import by.eftech.webapp.model.WheelArrangement;
+import by.eftech.webapp.model.DumpTrucksCrossCountryCapacity;
 import by.eftech.webapp.service.*;
 import by.eftech.webapp.utils.FilterProduct;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -36,7 +37,7 @@ public class DumpTrucksCrossCountryCapacityController {
     private TransmissionService transmissionService;
 
     @RequestMapping(value = "/category", method = RequestMethod.GET)
-    public String getCategory(Model model) {
+    public String getCategory(Model model, Principal principal) {
         model.addAttribute("list", dumpTrucksCrossCountryCapacityService.getAll());
         model.addAttribute("engines", engineService.getAll());
         model.addAttribute("machineLocations", machineLocationService.getAll());
@@ -60,21 +61,18 @@ public class DumpTrucksCrossCountryCapacityController {
             @RequestParam(value = "wheelArrangement", required = false) List<Integer> wheelArrangement,
             @RequestParam(value = "transmission", required = false) List<Integer> transmission,
             @ModelAttribute FilterProduct filter,
-            Model model) {
+            Model model,
+            Principal principal) {
 
-//        model.addAttribute("list", truckMiningService.findTruckMiningFilteredList(
-//                manufacturer,
-//                manufacturerCountry,
-//                machineLocation,
-//                series,
-//                engine,
-//                suspension,
-//                transmission,
-//                brakeType,
-//                frontWheel,
-//                rearWheels,
-//                parkingBrake,
-//                auxiliary));
+        model.addAttribute("list", dumpTrucksCrossCountryCapacityService.getFilteredList(
+                manufacturer,
+                manufacturerCountry,
+                machineLocation,
+                series,
+                engine,
+                suspension,
+                transmission,
+                wheelArrangement));
         model.addAttribute("filter", "filter");
         model.addAttribute("engines", engineService.getAll());
         model.addAttribute("machineLocations", machineLocationService.getAll());
@@ -88,14 +86,14 @@ public class DumpTrucksCrossCountryCapacityController {
     }
 
     @RequestMapping(value = "/single-product/{id}", method = RequestMethod.GET)
-    public ModelAndView getProduct(@PathVariable("id") int id) {
+    public ModelAndView getProduct(@PathVariable("id") int id, Principal principal) {
         return new ModelAndView("single-product-dump-truck-capacity", "item", dumpTrucksCrossCountryCapacityService.get(id));
     }
 
 
     @RequestMapping(value = "/pdf/{id}", method = RequestMethod.GET)
-    public ModelAndView downloadPdf(@PathVariable("id") int id) {
-        WheelArrangement truckMining = wheelArrangementService.get(id);
-        return new ModelAndView("truckMiningPdfView", "truckMining", truckMining);
+    public ModelAndView downloadPdf(@PathVariable("id") int id, Principal principal) {
+        DumpTrucksCrossCountryCapacity dumpTrucksCrossCountryCapacity = dumpTrucksCrossCountryCapacityService.get(id);
+        return new ModelAndView("dumpTrucksCrossCountryCapacityPdfView", "dumpTrucksCrossCountryCapacity", dumpTrucksCrossCountryCapacity);
     }
 }

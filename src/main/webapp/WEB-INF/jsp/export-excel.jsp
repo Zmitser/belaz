@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -55,10 +56,12 @@
         </div>
         <!-- /#logo -->
         <!-- #user -->
-        <div id="user">
-            <h2>Forest Gump <span>(admin)</span></h2>
-            <a href="">7 messages</a> - <a href="">settings</a> - <a href="index.html">logout</a>
-        </div>
+        <sec:authorize access="hasRole('ROLE_ADMIN')">
+            <div id="user">
+                <h2><sec:authentication property="principal.username"/> <span><sec:authentication property="principal.authorities"/></span></h2>
+                <a href="">7 messages</a> - <a href="">settings</a> - <a href="/logout">logout</a>
+            </div>
+        </sec:authorize>
         <!-- /#user -->
     </div>
     <!-- /header -->
@@ -79,7 +82,6 @@
         <div class="box">
             <div class="headlines">
                 <h2><span>Table list</span></h2>
-                <a href="#" class="show-filter">show filter</a>
             </div>
             <!-- filter -->
             <div class="filter">
@@ -114,7 +116,7 @@
                         <td class="action">
                             <a href="/delete/${truck.id}" class="ico ico-delete">Delete</a>
                             <a href="/edit/${truck.id}" class="ico ico-edit">Edit</a>
-                            <a href="/pdf/${truck.id}" class="ico ico-pdf">Pdf</a>
+                            <a href="/truck-mining/pdf/${truck.id}" class="ico ico-pdf">Pdf</a>
                         </td>
                     </tr>
                 </c:forEach>
@@ -122,31 +124,7 @@
             </table>
             <!-- /table -->
 
-            <!-- box-action -->
-            <div class="tab-action">
-                <select class="select">
-                    <option>Choose an action</option>
-                </select>
-                <input type="submit" value="Apply action" class="submit" />
-            </div>
             <!-- /box-action -->
-
-            <!-- /pagination -->
-            <div class="pagination">
-                <ul>
-                    <li class="graphic first"><a href=""></a></li>
-                    <li class="graphic prev"><a href=""></a></li>
-                    <li><a href="">1</a></li>
-                    <li class="active"><a href="">2</a></li>
-                    <li><a href="">3</a></li>
-                    <li><a href="">4</a></li>
-                    <li><a href="">5</a></li>
-                    <li class="graphic next"><a href=""></a></li>
-                    <li class="graphic last"><a href=""></a></li>
-                </ul>
-                <p>Pages 1 of 5</p>
-            </div>
-            <!-- /pagination -->
         </div>
         <!-- /box -->
         <!-- /table -->
@@ -230,7 +208,6 @@
     <!-- /#content -->
     <!-- #sidebar -->
     <div id="sidebar">
-
         <!-- mainmenu -->
         <ul id="floatMenu" class="mainmenu">
             <li class="first"><a href="#">Dashboard</a></li>

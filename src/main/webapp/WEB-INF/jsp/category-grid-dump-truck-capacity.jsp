@@ -30,7 +30,7 @@
                         <i class="fa fa-phone"></i> (+800) 123 456 7890
                     </div>
                     <div class="contact inline">
-                        <i class="fa fa-envelope"></i> contact@<span class="le-color">oursupport.com</span>
+                        <i class="fa fa-envelope"></i> contact@<span class="le-color">office@belaz.minsk.by</span>
                     </div>
                 </div><!-- /.contact-row -->
                 <!-- ============================================================= SEARCH AREA ============================================================= -->
@@ -87,7 +87,7 @@
                 <div class="widget">
                     <h1>Product Filters</h1>
                     <div class="body bordered">
-                        <form:form role="form" commandName="filter" id="filter" action="/category/filter" method="get">
+                        <form:form role="form" commandName="filter" id="filter" action="/dump-trucks-capacity/category/filter" method="get">
                             <div class="category-filter">
                                 <h2><spring:message code="app.manufacturer"/></h2>
                                 <hr>
@@ -180,7 +180,7 @@
                                 <ul class="front-wheels">
                                     <c:forEach items="${wheelArrangements}" var="wheelArrangement">
                                         <li><form:checkbox class="le-checkbox"  name="wheelArrangement"
-                                                   value="${wheelArrangement.id}" path="auxiliary"/> <label>${wheelArrangement.name}</label> <span
+                                                   value="${wheelArrangement.id}" path="wheelArrangement"/> <label>${wheelArrangement.name}</label> <span
                                                 class="pull-right"></span></li>
                                     </c:forEach>
                                 </ul>
@@ -214,89 +214,97 @@
                         </div><!-- /.control-bar -->
 
                         <div class="tab-content">
-                            <div id="grid-view" class="products-grid fade tab-pane in active">
+                            <c:choose>
+                                <c:when test="${list.size() > 0}">
+                                    <div id="grid-view" class="products-grid fade tab-pane in active">
+                                        <div class="product-grid-holder">
+                                            <div class="row no-margin grid-no-margin">
+                                                <c:forEach items="${list}" var="item">
+                                                    <div class="col-xs-12 col-sm-4 no-margin product-item-holder hover">
+                                                        <div class="product-item">
+                                                            <div class="ribbon red"><span>sale</span></div>
+                                                            <div class="image">
+                                                                <a href="<c:url value="/dump-trucks-capacity/single-product/${item.id}"/>">
+                                                                    <img width="246" height="186" alt="${item.model.name}"
+                                                                         src="<c:url value="/resources/assets/images/${item.photos[0].name}"/>">
+                                                                </a>
+                                                            </div>
+                                                            <div class="body">
+                                                                <div class="title">
+                                                                    <a href="<c:url value="/dump-trucks-capacity/single-product/${item.id}"/>">${item.model.name}</a>
+                                                                </div>
+                                                                <div class="brand">${item.model.series.name}</div>
+                                                            </div>
+                                                            <div class="prices">
+                                                                <div class="price-current pull-right">$${item.price}</div>
+                                                            </div>
+                                                            <div class="hover-area">
+                                                                <div class="add-cart-button">
+                                                                    <a href="<c:url value="/shopping-cart/order-now/${item.id}"/>" class="le-button">add to
+                                                                        cart</a>
+                                                                </div>
+                                                                <div class="wish-compare">
+                                                                    <a class="btn-add-to-compare" href="<c:url value="/compare/compare-this/${item.id}"/>"><spring:message code="app.compare"/></a>
+                                                                </div>
+                                                            </div>
+                                                        </div><!-- /.product-item -->
+                                                    </div>
+                                                    <!-- /.product-item-holder -->
+                                                </c:forEach>
 
-                                <div class="product-grid-holder">
-                                    <div class="row no-margin grid-no-margin">
-                                        <c:forEach items="${list}" var="item">
-                                            <div class="col-xs-12 col-sm-4 no-margin product-item-holder hover">
-                                                <div class="product-item">
-                                                    <div class="ribbon red"><span>sale</span></div>
-                                                    <div class="image">
-                                                        <a href="<c:url value="/dump-trucks-capacity/single-product/${item.id}"/>">
-                                                            <img width="246" height="186" alt="${item.model.name}"
-                                                                 src="<c:url value="/resources/assets/images/${item.photos[0].name}"/>">
-                                                        </a>
-                                                    </div>
-                                                    <div class="body">
-                                                        <div class="title">
-                                                            <a href="<c:url value="/dump-trucks-capacity/single-product/${item.id}"/>">${item.model.name}</a>
-                                                        </div>
-                                                        <div class="brand">${item.model.series.name}</div>
-                                                    </div>
-                                                    <div class="prices">
-                                                        <div class="price-current pull-right">$${item.price}</div>
-                                                    </div>
-                                                    <div class="hover-area">
-                                                        <div class="add-cart-button">
-                                                            <a href="<c:url value="/shopping-cart/order-now/${item.id}"/>" class="le-button">add to
-                                                                cart</a>
-                                                        </div>
-                                                        <div class="wish-compare">
-                                                            <a class="btn-add-to-compare" href="<c:url value="/compare/compare-this/${item.id}"/>"><spring:message code="app.compare"/></a>
-                                                        </div>
-                                                    </div>
-                                                </div><!-- /.product-item -->
-                                            </div>
-                                            <!-- /.product-item-holder -->
-                                        </c:forEach>
-
-                                    </div><!-- /.row -->
-                                </div><!-- /.product-grid-holder -->
-                            </div><!-- /.products-grid #grid-view -->
-
-
-                            <div id="list-view" class="products-grid fade tab-pane ">
-                                <div class="products-list list-no-margin">
-
-                                    <c:forEach items="${list}" var="item">
-                                        <div class="product-item product-item-holder">
-                                            <div class="ribbon red"><span>sale</span></div>
-                                            <div class="row">
-                                                <div class="no-margin col-xs-12 col-sm-4 image-holder">
-                                                    <div class="image">
-                                                        <a href="<c:url value="/dump-trucks-capacity/single-product/${item.id}"/>">
-                                                            <img width="246" height="186" alt="${item.model.name}"
-                                                                 src="<c:url value="/resources/assets/images/${item.photos[0].name}"/>">
-                                                        </a>
-                                                    </div>
-                                                </div><!-- /.image-holder -->
-                                                <div class="no-margin col-xs-12 col-sm-5 body-holder">
-                                                    <div class="body">
-                                                        <div class="title">
-                                                            <a href="<c:url value="/dump-trucks-capacity/single-product/${item.id}"/>">${item.model.name}</a>
-                                                        </div>
-                                                        <div class="brand">${item.model.series.name}</div>
-                                                        <div class="excerpt">
-                                                            <p>${item.application}</p>
-                                                        </div>
-                                                        <div class="addto-compare">
-                                                            <a class="btn-add-to-compare" href="<c:url value="/compare/compare-this/${item.id}"/>"><spring:message code="app.add_compare"/></a>
-                                                        </div>
-                                                    </div>
-                                                </div><!-- /.body-holder -->
-                                                <div class="no-margin col-xs-12 col-sm-3 price-area">
-                                                    <div class="right-clmn">
-                                                        <div class="price-current">$${item.price}</div>
-                                                        <a href="<c:url value="/shopping-cart/order-now/${item.id}"/>" class="le-button"><spring:message code="app.add_cart"/></a>
-                                                    </div>
-                                                </div><!-- /.price-area -->
                                             </div><!-- /.row -->
-                                        </div>
-                                        <!-- /.product-item -->
-                                    </c:forEach>
-                                </div><!-- /.products-list -->
-                            </div><!-- /.products-grid #list-view -->
+                                        </div><!-- /.product-grid-holder -->
+                                    </div><!-- /.products-grid #grid-view -->
+
+
+                                    <div id="list-view" class="products-grid fade tab-pane ">
+                                        <div class="products-list list-no-margin">
+
+                                            <c:forEach items="${list}" var="item">
+                                                <div class="product-item product-item-holder">
+                                                    <div class="ribbon red"><span>sale</span></div>
+                                                    <div class="row">
+                                                        <div class="no-margin col-xs-12 col-sm-4 image-holder">
+                                                            <div class="image">
+                                                                <a href="<c:url value="/dump-trucks-capacity/single-product/${item.id}"/>">
+                                                                    <img width="246" height="186" alt="${item.model.name}"
+                                                                         src="<c:url value="/resources/assets/images/${item.photos[0].name}"/>">
+                                                                </a>
+                                                            </div>
+                                                        </div><!-- /.image-holder -->
+                                                        <div class="no-margin col-xs-12 col-sm-5 body-holder">
+                                                            <div class="body">
+                                                                <div class="title">
+                                                                    <a href="<c:url value="/dump-trucks-capacity/single-product/${item.id}"/>">${item.model.name}</a>
+                                                                </div>
+                                                                <div class="brand">${item.model.series.name}</div>
+                                                                <div class="excerpt">
+                                                                    <p>${item.application}</p>
+                                                                </div>
+                                                                <div class="addto-compare">
+                                                                    <a class="btn-add-to-compare" href="<c:url value="/compare/compare-this/${item.id}"/>"><spring:message code="app.add_compare"/></a>
+                                                                </div>
+                                                            </div>
+                                                        </div><!-- /.body-holder -->
+                                                        <div class="no-margin col-xs-12 col-sm-3 price-area">
+                                                            <div class="right-clmn">
+                                                                <div class="price-current">$${item.price}</div>
+                                                                <a href="<c:url value="/shopping-cart/order-now/${item.id}"/>" class="le-button"><spring:message code="app.add_cart"/></a>
+                                                            </div>
+                                                        </div><!-- /.price-area -->
+                                                    </div><!-- /.row -->
+                                                </div>
+                                                <!-- /.product-item -->
+                                            </c:forEach>
+                                        </div><!-- /.products-list -->
+                                    </div><!-- /.products-grid #list-view -->
+                                </c:when>
+                                <c:otherwise>
+                                    <p>                   <p>Information not found.
+                                    Please change parameters.</p></p>
+                                </c:otherwise>
+                            </c:choose>
+
 
                         </div><!-- /.tab-content -->
                     </div><!-- /.grid-list-products -->

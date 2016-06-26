@@ -14,27 +14,6 @@ public class WheelArrangementServiceImpl implements WheelArrangementService {
     @Autowired
     private WheelArrangementRepository repository;
 
-
-    @Override
-    public WheelArrangement save(WheelArrangement truckMining) {
-        return repository.save(truckMining);
-    }
-
-    @Override
-    public void delete(int id) {
-        repository.delete(id);
-    }
-
-    @Override
-    public WheelArrangement get(int id) {
-        return repository.get(id);
-    }
-
-    @Override
-    public void update(WheelArrangement truckMining) {
-        repository.save(truckMining);
-    }
-
     @Override
     public List<WheelArrangement> getAll() {
         return repository.getAll();

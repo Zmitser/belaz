@@ -13,25 +13,6 @@ public class TransmissionServiceImpl implements TransmissionService {
     @Autowired
     private TransmissionRepository repository;
 
-    @Override
-    public Transmission save(Transmission transmission) {
-        return repository.save(transmission);
-    }
-
-    @Override
-    public void delete(int id) {
-        repository.delete(id);
-    }
-
-    @Override
-    public Transmission get(int id) {
-        return repository.get(id);
-    }
-
-    @Override
-    public void update(Transmission transmission) {
-repository.save(transmission);
-    }
 
     @Override
     public List<Transmission> getAll() {

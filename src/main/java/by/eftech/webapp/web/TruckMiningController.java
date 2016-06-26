@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -43,7 +44,7 @@ public class TruckMiningController {
     private TransmissionService transmissionService;
 
     @RequestMapping(value = "/category", method = RequestMethod.GET)
-    public String getCategory(Model model) {
+    public String getCategory(Model model, Principal principal) {
         model.addAttribute("list", truckMiningService.getAll());
         model.addAttribute("engines", engineService.getAll());
         model.addAttribute("auxiliaries", auxiliaryService.getAll());
@@ -75,7 +76,8 @@ public class TruckMiningController {
             @RequestParam(value = "parkingBrake", required = false) List<Integer> parkingBrake,
             @RequestParam(value = "auxiliary", required = false) List<Integer> auxiliary,
             @ModelAttribute FilterProduct filter,
-            Model model) {
+            Model model,
+            Principal principal) {
 
         model.addAttribute("list", truckMiningService.findTruckMiningFilteredList(
                 manufacturer,
@@ -90,7 +92,6 @@ public class TruckMiningController {
                 rearWheels,
                 parkingBrake,
                 auxiliary));
-        model.addAttribute("filter", "filter");
         model.addAttribute("engines", engineService.getAll());
         model.addAttribute("auxiliaries", auxiliaryService.getAll());
         model.addAttribute("brakeTypes", brakeTypeService.getAll());
@@ -107,14 +108,14 @@ public class TruckMiningController {
     }
 
     @RequestMapping(value = "/single-product/{id}", method = RequestMethod.GET)
-    public ModelAndView getProduct(@PathVariable("id") int id) {
+    public ModelAndView getProduct(@PathVariable("id") int id, Principal principal) {
         ModelAndView modelAndView = new ModelAndView();
         return new ModelAndView("single-product-truck-mining", "item", truckMiningService.get(id));
     }
 
 
     @RequestMapping(value = "/pdf/{id}", method = RequestMethod.GET)
-    public ModelAndView downloadPdf(@PathVariable("id") int id) {
+    public ModelAndView downloadPdf(@PathVariable("id") int id, Principal principal) {
         TruckMining truckMining = truckMiningService.get(id);
         return new ModelAndView("truckMiningPdfView", "truckMining", truckMining);
     }

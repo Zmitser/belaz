@@ -29,16 +29,6 @@ public class JpaSellerOrderRepositoryImpl implements SellerOrderRepository{
         }
     }
 
-    @Override
-    @Transactional
-    public boolean delete(int id) {
-        return em.createNamedQuery(SellerOrder.DELETE).setParameter("id", id).executeUpdate() != 0;
-    }
-
-    @Override
-    public SellerOrder get(int id) {
-        return em.find(SellerOrder.class, id);
-    }
 
     @Override
     public List<SellerOrder> getAll() {

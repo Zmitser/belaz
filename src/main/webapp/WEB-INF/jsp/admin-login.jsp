@@ -29,7 +29,7 @@
                         <input type="password" name="password" class="input" id="password" />
                     </div>
                     <div class="form-col form-col-check">
-                        <label><input type="checkbox" name="remeber_me" class="checkbox" />Remember me on this computer</label>
+                        <a href="/" id="link-guest">Use this site as guest</a>
                     </div>
                     <div class="form-col form-col-right">
                         <input type="submit" name="" value="Login" class="submit" />

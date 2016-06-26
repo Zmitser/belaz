@@ -14,25 +14,6 @@ public class MachineLocationServiceImpl implements MachineLocationService {
     @Autowired
     private MachineLocationRepository repository;
 
-    @Override
-    public MachineLocation save(MachineLocation machineLocation) {
-        return repository.save(machineLocation);
-    }
-
-    @Override
-    public void delete(int id) {
-        repository.delete(id);
-    }
-
-    @Override
-    public MachineLocation get(int id) {
-        return repository.get(id);
-    }
-
-    @Override
-    public void update(MachineLocation machineLocation) {
-        repository.save(machineLocation);
-    }
 
     @Override
     public List<MachineLocation> getAll() {

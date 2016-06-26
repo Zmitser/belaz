@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="belaz" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: Dimka
@@ -40,7 +41,7 @@
                         <i class="fa fa-phone"></i> (+800) 123 456 7890
                     </div>
                     <div class="contact inline">
-                        <i class="fa fa-envelope"></i> contact@<span class="le-color">oursupport.com</span>
+                        <i class="fa fa-envelope"></i> contact@<span class="le-color">office@belaz.minsk.by</span>
                     </div>
                 </div><!-- /.contact-row -->
                 <!-- ============================================================= SEARCH AREA ============================================================= -->
@@ -61,33 +62,30 @@
         <div id="top-mega-nav">
             <div class="container">
                 <nav>
-                    <ul class="inline">
-                        <li class="dropdown le-dropdown">
+                    <ul>
+                        <li class="dropdown breadcrumb-item">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-list"></i> Shop by Department
+                                shop by department
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Computer Cases &amp; Accessories</a></li>
-                                <li><a href="#">CPUs, Processors</a></li>
-                                <li><a href="#">Fans, Heatsinks &amp; Cooling</a></li>
-                                <li><a href="#">Graphics, Video Cards</a></li>
-                                <li><a href="#">Interface, Add-On Cards</a></li>
-                                <li><a href="#">Laptop Replacement Parts</a></li>
-                                <li><a href="#">Memory (RAM)</a></li>
-                                <li><a href="#">Motherboards</a></li>
-                                <li><a href="#">Motherboard &amp; CPU Combos</a></li>
-                                <li><a href="#">Motherboard Components</a></li>
+                                <li>
+                                    <a href="/truck-mining/category"><spring:message code="app.dump_trucks"/></a>
+                                </li>
+                                <li>
+                                    <a href="/dump-trucks-capacity/category"><spring:message
+                                            code="app.trucks_with_enchanced_capacity"/> </a>
+                                </li>
                             </ul>
                         </li>
 
-                        <li class="breadcrumb-nav-holder">
-                            <ul>
-                                <li class="breadcrumb-item current gray">
-                                    <a href="#">Checkout Process</a>
-                                </li>
-                            </ul>
-                        </li><!-- /.breadcrumb-nav-holder -->
-                    </ul>
+                        <li class="breadcrumb-item">
+                            <a href="/category"><spring:message code="app.trucks_with_enchanced_capacity"/></a>
+                        </li><!-- /.breadcrumb-item -->
+
+                        <li class="breadcrumb-item current">
+                            <a href="#">${item.model.name}</a>
+                        </li><!-- /.breadcrumb-item -->
+                    </ul><!-- /.breadcrumb-nav-holder -->
                 </nav>
             </div><!-- /.container -->
         </div><!-- /#top-mega-nav -->

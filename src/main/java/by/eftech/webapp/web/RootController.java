@@ -4,26 +4,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.security.Principal;
+
 @Controller
 public class RootController {
 
-
-
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String getRoot() {
+    public String getRoot(Principal principal) {
         return "index";
     }
-    @RequestMapping(value = "/authentication", method = RequestMethod.GET)
-    public String getAuth() {
-        return "authentication";
-    }
-
-
-
-    @RequestMapping(value = "/error", method = RequestMethod.GET)
-    public String getNotFound() {
-        return "404";
-    }
-
 
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpSession;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +23,10 @@ public class ShoppingCartController {
     private MiningMachineryService service;
 
     @RequestMapping(value = "/order-now/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public String orderNow(@PathVariable(value = "id") int id, HttpSession session, Model model) {
+    public String orderNow(@PathVariable(value = "id") int id,
+                           HttpSession session,
+                           Model model,
+                           Principal principal) {
         if (session.getAttribute("cart") == null) {
             List<Item> cart = new ArrayList<>();
             cart.add(new Item(1, service.get(id)));
@@ -43,7 +47,7 @@ public class ShoppingCartController {
     }
 
     @RequestMapping(value = "/reduce/{id}", method = RequestMethod.GET)
-    public String reduce(@PathVariable(value = "id") int id, HttpSession session) {
+    public String reduce(@PathVariable(value = "id") int id, HttpSession session, Principal principal) {
 
         List<Item> cart = (List<Item>) session.getAttribute("cart");
 
@@ -59,7 +63,7 @@ public class ShoppingCartController {
 
 
     @RequestMapping(value = "/add/{id}", method = RequestMethod.GET)
-    public String add(@PathVariable(value = "id") int id, HttpSession session) {
+    public String add(@PathVariable(value = "id") int id, HttpSession session, Principal principal) {
 
         List<Item> cart = (List<Item>) session.getAttribute("cart");
         Integer quantity = cart.get(id).getQuantity();
@@ -70,7 +74,7 @@ public class ShoppingCartController {
 
 
     @RequestMapping(value = "/remove/{id}", method = RequestMethod.GET)
-    public String remove(@PathVariable(value = "id") int id, HttpSession session) {
+    public String remove(@PathVariable(value = "id") int id, HttpSession session, Principal principal) {
 
         List<Item> cart = (List<Item>) session.getAttribute("cart");
         cart.remove(id);
@@ -91,7 +95,7 @@ public class ShoppingCartController {
     }
 
     @RequestMapping(value = "/orders", method = RequestMethod.GET)
-    public String getNotFound(HttpSession session) {
+    public String getNotFound(HttpSession session, Principal principal) {
         return "cart";
     }
 }

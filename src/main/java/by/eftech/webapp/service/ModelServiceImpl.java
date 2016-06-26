@@ -14,25 +14,6 @@ public class ModelServiceImpl implements ModelService {
     @Autowired
     private ModelRepository repository;
 
-    @Override
-    public Model save(Model model) {
-        return repository.save(model);
-    }
-
-    @Override
-    public void delete(int id) {
-        repository.delete(id);
-    }
-
-    @Override
-    public Model get(int id) {
-        return repository.get(id);
-    }
-
-    @Override
-    public void update(Model model) {
-        repository.save(model);
-    }
 
     @Override
     public List<Model> getAll() {

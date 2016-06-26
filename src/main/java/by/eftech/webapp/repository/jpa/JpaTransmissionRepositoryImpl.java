@@ -20,27 +20,7 @@ public class JpaTransmissionRepositoryImpl implements TransmissionRepository{
     private EntityManager em;
 
 
-    @Override
-    @Transactional
-    public Transmission save(Transmission transmission) {
-        if (transmission.newOject()){
-            em.persist(transmission);
-            return transmission;
-        }else {
-            return em.merge(transmission);
-        }
-    }
 
-    @Override
-    @Transactional
-    public boolean delete(int id) {
-        return em.createNamedQuery(Transmission.DELETE).setParameter("id", id).executeUpdate() != 0;
-    }
-
-    @Override
-    public Transmission get(int id) {
-        return em.find(Transmission.class, id);
-    }
 
     @Override
     public List<Transmission> getAll() {
