@@ -21,4 +21,10 @@ public class RootController {
 
     }
 
+    @RequestMapping(value = "robots.txt", method = RequestMethod.GET)
+    public String getRobotsTxt(Principal principal) {
+        return "redirect:/static/robots.txt";
+
+    }
+
 }
