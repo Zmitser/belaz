@@ -257,7 +257,7 @@
 
 
                     <div class="tab-pane" id="advantages">
-                      <p>${item.advantages}</p>
+                        <p>${item.advantages}</p>
                     </div><!-- /.tab-pane #reviews -->
 
                     <div class="tab-pane" id="complete-set">

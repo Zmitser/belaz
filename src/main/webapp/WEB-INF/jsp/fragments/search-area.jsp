@@ -7,3 +7,4 @@
         </div>
     </form>
 </div><!-- /.search-area -->
+

@@ -5,3 +5,4 @@
         <img alt="logo" src="<c:url value="/resources/assets/images/Belaz_logo.png"/>" width="233" height="54"/>
     </a>
 </div><!-- /.logo -->
+

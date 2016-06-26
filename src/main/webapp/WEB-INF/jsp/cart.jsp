@@ -177,7 +177,7 @@
                     </c:otherwise>
                 </c:choose>
 
-             </div>
+            </div>
             <!-- ========================================= CONTENT : END ========================================= -->
 
 
@@ -190,3 +190,4 @@
 <c:import url="fragments/scripts.jsp"/>
 </body>
 </html>
+
