@@ -6,10 +6,10 @@
     <nav class="yamm megamenu-horizontal" role="navigation">
         <ul class="nav">
             <li>
-                <a href="/category"><spring:message code="app.dump_trucks"/></a>
+                <a href="/truck-mining/category"><spring:message code="app.dump_trucks"/></a>
             </li>
             <li>
-                <a href="/"><spring:message
+                <a href="/dump-trucks-capacity/category"><spring:message
                         code="app.trucks_with_enchanced_capacity"/> </a>
             </li>
         </ul><!-- /.nav -->
