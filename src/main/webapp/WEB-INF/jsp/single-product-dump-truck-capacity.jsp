@@ -67,45 +67,17 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="/category"><spring:message code="app.dump_trucks"/></a>
+                                        <a href="/truck-mining/category"><spring:message code="app.dump_trucks"/></a>
                                     </li>
                                     <li>
-                                        <a href="http://themeforest.net/item/media-center-electronic-ecommerce-html-template/8178892?ref=shaikrilwan"><spring:message
+                                        <a href="/dump-trucks-capacity/category"><spring:message
                                                 code="app.trucks_with_enchanced_capacity"/> </a>
-                                    </li>
-                                    <li>
-                                        <a href="http://themeforest.net/item/media-center-electronic-ecommerce-html-template/8178892?ref=shaikrilwan"><spring:message
-                                                code="app.construction_and_road_building"/></a>
-                                    </li>
-                                    <li>
-                                        <a href="http://themeforest.net/item/media-center-electronic-ecommerce-html-template/8178892?ref=shaikrilwan"><spring:message
-                                                code="app.vehicles_for_mine_servicing_works"/></a>
-                                    </li>
-                                    <li>
-                                        <a href="http://themeforest.net/item/media-center-electronic-ecommerce-html-template/8178892?ref=shaikrilwan"><spring:message
-                                                code="app.underground_vehicles"/></a>
-                                    </li>
-                                    <li>
-                                        <a href="http://themeforest.net/item/media-center-electronic-ecommerce-html-template/8178892?ref=shaikrilwan"><spring:message
-                                                code="app.vehicles_for_metallurgical_works"/></a>
-                                    </li>
-                                    <li>
-                                        <a href="http://themeforest.net/item/media-center-electronic-ecommerce-html-template/8178892?ref=shaikrilwan"><spring:message
-                                                code="app.special_purpose_vehicles"/></a>
-                                    </li>
-                                    <li>
-                                        <a href="http://themeforest.net/item/media-center-electronic-ecommerce-html-template/8178892?ref=shaikrilwan"><spring:message
-                                                code="app.railway_freight_cars"/></a>
-                                    </li>
-                                    <li>
-                                        <a href="http://themeforest.net/item/media-center-electronic-ecommerce-html-template/8178892?ref=shaikrilwan"><spring:message
-                                                code="app.garage_equipment_catalog"/></a>
                                     </li>
                                 </ul>
                             </li>
 
                             <li class="breadcrumb-item">
-                                <a href="/category"><spring:message code="app.dump_trucks"/></a>
+                                <a href="/category"><spring:message code="app.trucks_with_enchanced_capacity"/></a>
                             </li><!-- /.breadcrumb-item -->
 
                             <li class="breadcrumb-item current">
@@ -226,14 +198,6 @@
                             </li>
 
                             <li>
-                                <label>Расход топлива</label>
-                                <div class="value">${item.fuelRate} г/кВт*ч</div>
-                            </li>
-                            <li>
-                                <label>Момент</label>
-                                <div class="value">${item.torque} Н*м</div>
-                            </li>
-                            <li>
                                 <label>Радиус поворота</label>
                                 <div class="value">${item.turningRadius} м</div>
                             </li>
@@ -287,33 +251,6 @@
                                 <div class="value">${item.suspension.name}</div>
                             </li>
 
-                            <li>
-                                <label>Тормоза</label>
-                                <div class="value">${item.brakeType.name}</div>
-                            </li>
-
-                            <li>
-                                <label>передних колес</label>
-                                <div class="value">${item.frontWheels.name}</div>
-                            </li>
-
-
-                            <li>
-                                <label>задних колес</label>
-                                <div class="value">${item.rearWheels.name}</div>
-                            </li>
-
-
-                            <li>
-                                <label>стояночный</label>
-                                <div class="value">${item.parkingBrake.name}</div>
-                            </li>
-
-
-                            <li>
-                                <label>вспомогательный</label>
-                                <div class="value">${item.auxiliary.name}</div>
-                            </li>
 
                         </ul><!-- /.tabled-data -->
                     </div><!-- /.tab-pane #additional-info -->

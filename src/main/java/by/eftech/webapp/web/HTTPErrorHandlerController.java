@@ -18,6 +18,11 @@ public class HTTPErrorHandlerController {
         return "/404";
     }
 
+    @RequestMapping(value="/403")
+    public String error403(){
+        System.out.println("custom error handler");
+        return "/403";
+    }
     @RequestMapping(value="/500")
     public String error500(){
         System.out.println("custom error handler");

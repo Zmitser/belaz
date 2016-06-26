@@ -55,39 +55,11 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="/category"><spring:message code="app.dump_trucks"/></a>
+                                        <a href="/truck-mining/category"><spring:message code="app.dump_trucks"/></a>
                                     </li>
                                     <li>
-                                        <a href="http://themeforest.net/item/media-center-electronic-ecommerce-html-template/8178892?ref=shaikrilwan"><spring:message
+                                        <a href="/dump-trucks-capacity/category"><spring:message
                                                 code="app.trucks_with_enchanced_capacity"/> </a>
-                                    </li>
-                                    <li>
-                                        <a href="http://themeforest.net/item/media-center-electronic-ecommerce-html-template/8178892?ref=shaikrilwan"><spring:message
-                                                code="app.construction_and_road_building"/></a>
-                                    </li>
-                                    <li>
-                                        <a href="http://themeforest.net/item/media-center-electronic-ecommerce-html-template/8178892?ref=shaikrilwan"><spring:message
-                                                code="app.vehicles_for_mine_servicing_works"/></a>
-                                    </li>
-                                    <li>
-                                        <a href="http://themeforest.net/item/media-center-electronic-ecommerce-html-template/8178892?ref=shaikrilwan"><spring:message
-                                                code="app.underground_vehicles"/></a>
-                                    </li>
-                                    <li>
-                                        <a href="http://themeforest.net/item/media-center-electronic-ecommerce-html-template/8178892?ref=shaikrilwan"><spring:message
-                                                code="app.vehicles_for_metallurgical_works"/></a>
-                                    </li>
-                                    <li>
-                                        <a href="http://themeforest.net/item/media-center-electronic-ecommerce-html-template/8178892?ref=shaikrilwan"><spring:message
-                                                code="app.special_purpose_vehicles"/></a>
-                                    </li>
-                                    <li>
-                                        <a href="http://themeforest.net/item/media-center-electronic-ecommerce-html-template/8178892?ref=shaikrilwan"><spring:message
-                                                code="app.railway_freight_cars"/></a>
-                                    </li>
-                                    <li>
-                                        <a href="http://themeforest.net/item/media-center-electronic-ecommerce-html-template/8178892?ref=shaikrilwan"><spring:message
-                                                code="app.garage_equipment_catalog"/></a>
                                     </li>
                                 </ul>
                             </li>
@@ -97,7 +69,7 @@
                             </li><!-- /.breadcrumb-item -->
 
                             <li class="breadcrumb-item current">
-                                <a href="/category"><spring:message code="app.dump_trucks"/></a>
+                                <a href="/category"><spring:message code="app.trucks_with_enchanced_capacity"/></a>
                             </li><!-- /.breadcrumb-item -->
                         </ul><!-- /.breadcrumb-nav-holder -->
                     </div>
@@ -251,14 +223,14 @@
                                                 <div class="product-item">
                                                     <div class="ribbon red"><span>sale</span></div>
                                                     <div class="image">
-                                                        <a href="<c:url value="/single-product/${item.id}"/>">
+                                                        <a href="<c:url value="/dump-trucks-capacity/single-product/${item.id}"/>">
                                                             <img width="246" height="186" alt="${item.model.name}"
                                                                  src="<c:url value="/resources/assets/images/${item.photos[0].name}"/>">
                                                         </a>
                                                     </div>
                                                     <div class="body">
                                                         <div class="title">
-                                                            <a href="<c:url value="/single-product/${item.id}"/>">${item.model.name}</a>
+                                                            <a href="<c:url value="/dump-trucks-capacity/single-product/${item.id}"/>">${item.model.name}</a>
                                                         </div>
                                                         <div class="brand">${item.model.series.name}</div>
                                                     </div>
@@ -293,7 +265,7 @@
                                             <div class="row">
                                                 <div class="no-margin col-xs-12 col-sm-4 image-holder">
                                                     <div class="image">
-                                                        <a href="<c:url value="/single-product/${item.id}"/>">
+                                                        <a href="<c:url value="/dump-trucks-capacity/single-product/${item.id}"/>">
                                                             <img width="246" height="186" alt="${item.model.name}"
                                                                  src="<c:url value="/resources/assets/images/${item.photos[0].name}"/>">
                                                         </a>
@@ -302,7 +274,7 @@
                                                 <div class="no-margin col-xs-12 col-sm-5 body-holder">
                                                     <div class="body">
                                                         <div class="title">
-                                                            <a href="<c:url value="/single-product/${item.id}"/>">${item.model.name}</a>
+                                                            <a href="<c:url value="/dump-trucks-capacity/single-product/${item.id}"/>">${item.model.name}</a>
                                                         </div>
                                                         <div class="brand">${item.model.series.name}</div>
                                                         <div class="excerpt">

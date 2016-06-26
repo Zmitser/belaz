@@ -30,7 +30,7 @@ public abstract class MiningMachinery {
     public static final String DELETE = "MiningMachinery.delete";
     public static final String ALL_SORTED = "MiningMachinery.getAllSorted";
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Integer getId() {
         return id;
     }

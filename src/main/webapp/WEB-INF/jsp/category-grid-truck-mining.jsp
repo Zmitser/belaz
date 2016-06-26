@@ -55,39 +55,11 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="/category"><spring:message code="app.dump_trucks"/></a>
+                                        <a href="/truck-mining/category"><spring:message code="app.dump_trucks"/></a>
                                     </li>
                                     <li>
-                                        <a href="http://themeforest.net/item/media-center-electronic-ecommerce-html-template/8178892?ref=shaikrilwan"><spring:message
+                                        <a href="/dump-trucks-capacity/category"><spring:message
                                                 code="app.trucks_with_enchanced_capacity"/> </a>
-                                    </li>
-                                    <li>
-                                        <a href="http://themeforest.net/item/media-center-electronic-ecommerce-html-template/8178892?ref=shaikrilwan"><spring:message
-                                                code="app.construction_and_road_building"/></a>
-                                    </li>
-                                    <li>
-                                        <a href="http://themeforest.net/item/media-center-electronic-ecommerce-html-template/8178892?ref=shaikrilwan"><spring:message
-                                                code="app.vehicles_for_mine_servicing_works"/></a>
-                                    </li>
-                                    <li>
-                                        <a href="http://themeforest.net/item/media-center-electronic-ecommerce-html-template/8178892?ref=shaikrilwan"><spring:message
-                                                code="app.underground_vehicles"/></a>
-                                    </li>
-                                    <li>
-                                        <a href="http://themeforest.net/item/media-center-electronic-ecommerce-html-template/8178892?ref=shaikrilwan"><spring:message
-                                                code="app.vehicles_for_metallurgical_works"/></a>
-                                    </li>
-                                    <li>
-                                        <a href="http://themeforest.net/item/media-center-electronic-ecommerce-html-template/8178892?ref=shaikrilwan"><spring:message
-                                                code="app.special_purpose_vehicles"/></a>
-                                    </li>
-                                    <li>
-                                        <a href="http://themeforest.net/item/media-center-electronic-ecommerce-html-template/8178892?ref=shaikrilwan"><spring:message
-                                                code="app.railway_freight_cars"/></a>
-                                    </li>
-                                    <li>
-                                        <a href="http://themeforest.net/item/media-center-electronic-ecommerce-html-template/8178892?ref=shaikrilwan"><spring:message
-                                                code="app.garage_equipment_catalog"/></a>
                                     </li>
                                 </ul>
                             </li>
@@ -121,20 +93,23 @@
                                 <hr>
                                 <ul>
                                     <c:forEach items="${manufacturers}" var="manufacturer">
-                                        <li><form:checkbox class="le-checkbox"  name="manufacturer"
-                                                   value="${manufacturer.id}" path="manufacturer"/> <label>${manufacturer.name}</label>
+                                        <li><form:checkbox class="le-checkbox" name="manufacturer"
+                                                           value="${manufacturer.id}" path="manufacturer"/>
+                                            <label>${manufacturer.name}</label>
                                             <span class="pull-right"></span></li>
                                     </c:forEach>
                                 </ul>
-                            </div><!-- /.category-filter -->
+                            </div>
+                            <!-- /.category-filter -->
 
                             <div class="category-filter">
                                 <h2><spring:message code="app.manufacturer_country"/></h2>
                                 <hr>
                                 <ul>
                                     <c:forEach items="${manufacturerCountries}" var="manufacturerCountry">
-                                        <li><form:checkbox class="le-checkbox"  name="manufacturerCountry"
-                                                   value="${manufacturerCountry.id}" path="manufacturerCountry"/>
+                                        <li><form:checkbox class="le-checkbox" name="manufacturerCountry"
+                                                           value="${manufacturerCountry.id}"
+                                                           path="manufacturerCountry"/>
                                             <label>${manufacturerCountry.name}</label> <span class="pull-right"></span>
                                         </li>
                                     </c:forEach>
@@ -146,119 +121,137 @@
                                 <hr>
                                 <ul>
                                     <c:forEach items="${machineLocations}" var="machineLocation">
-                                        <li><form:checkbox class="le-checkbox"  name="machineLocation"
-                                                   value="${machineLocation.id}" path="machineLocation"/>
+                                        <li><form:checkbox class="le-checkbox" name="machineLocation"
+                                                           value="${machineLocation.id}" path="machineLocation"/>
                                             <label>${machineLocation.name}</label> <span class="pull-right"></span></li>
                                     </c:forEach>
                                 </ul>
-                            </div><!-- /.category-filter -->
+                            </div>
+                            <!-- /.category-filter -->
                             <div class="category-filter">
                                 <h2><spring:message code="app.series"/></h2>
                                 <hr>
                                 <ul>
                                     <c:forEach items="${serie}" var="serie">
-                                        <li><form:checkbox class="le-checkbox"  name="serie"
-                                                   value="${serie.id}" path="serie"/> <label>${serie.name}</label> <span
-                                                class="pull-right"></span></li>
+                                        <li><form:checkbox class="le-checkbox" name="serie"
+                                                           value="${serie.id}" path="serie"/>
+                                            <label>${serie.name}</label> <span
+                                                    class="pull-right"></span></li>
                                     </c:forEach>
                                 </ul>
-                            </div><!-- /.category-filter -->
+                            </div>
+                            <!-- /.category-filter -->
 
                             <div class="category-filter">
                                 <h2><spring:message code="app.engine"/></h2>
                                 <hr>
                                 <ul class="front-wheels">
                                     <c:forEach items="${engines}" var="engine">
-                                        <li><form:checkbox class="le-checkbox"  name="engine"
-                                                   value="${engine.id}" path="engine"/> <label>${engine.name}</label> <span
-                                                class="pull-right"></span></li>
+                                        <li><form:checkbox class="le-checkbox" name="engine"
+                                                           value="${engine.id}" path="engine"/>
+                                            <label>${engine.name}</label> <span
+                                                    class="pull-right"></span></li>
                                     </c:forEach>
                                 </ul>
-                            </div><!-- /.category-filter -->
+                            </div>
+                            <!-- /.category-filter -->
 
                             <div class="category-filter">
                                 <h2><spring:message code="app.suspension"/></h2>
                                 <hr>
                                 <ul class="front-wheels">
                                     <c:forEach items="${suspensions}" var="suspension">
-                                        <li><form:checkbox class="le-checkbox"  name="suspension"
-                                                   value="${suspension.id}" path="suspension"/> <label>${suspension.name}</label>
+                                        <li><form:checkbox class="le-checkbox" name="suspension"
+                                                           value="${suspension.id}" path="suspension"/>
+                                            <label>${suspension.name}</label>
                                             <span class="pull-right"></span></li>
                                     </c:forEach>
                                 </ul>
-                            </div><!-- /.category-filter -->
+                            </div>
+                            <!-- /.category-filter -->
 
                             <div class="category-filter">
                                 <h2><spring:message code="app.transmission"/></h2>
                                 <hr>
                                 <ul class="front-wheels">
                                     <c:forEach items="${transmissions}" var="transmission">
-                                        <li><form:checkbox class="le-checkbox"  name="transmission"
-                                                   value="${transmission.id}" path="transmission"/> <label>${transmission.name}</label>
+                                        <li><form:checkbox class="le-checkbox" name="transmission"
+                                                           value="${transmission.id}" path="transmission"/>
+                                            <label>${transmission.name}</label>
                                             <span class="pull-right"></span></li>
                                     </c:forEach>
                                 </ul>
-                            </div><!-- /.category-filter -->
+                            </div>
+                            <!-- /.category-filter -->
 
                             <div class="category-filter">
                                 <h2><spring:message code="app.brakes_type"/></h2>
                                 <hr>
                                 <ul class="front-wheels">
                                     <c:forEach items="${brakeTypes}" var="brakeType">
-                                        <li><form:checkbox path="brakeType" class="le-checkbox"  name="brakeType"
-                                                   value="${brakeType.id}"/> <label>${brakeType.name}</label>
+                                        <li><form:checkbox path="brakeType" class="le-checkbox" name="brakeType"
+                                                           value="${brakeType.id}"/> <label>${brakeType.name}</label>
                                             <span class="pull-right"></span></li>
                                     </c:forEach>
                                 </ul>
-                            </div><!-- /.category-filter -->
+                            </div>
+                            <!-- /.category-filter -->
                             <div class="category-filter">
                                 <h2><spring:message code="app.front_wheels"/></h2>
                                 <hr>
                                 <ul class="front-wheels">
                                     <c:forEach items="${frontWheels}" var="frontWheel">
-                                        <li><form:checkbox class="le-checkbox"  name="frontWheel"
-                                                   value="${frontWheel.id}" path="frontWheel"/> <label>${frontWheel.name}</label>
+                                        <li><form:checkbox class="le-checkbox" name="frontWheel"
+                                                           value="${frontWheel.id}" path="frontWheel"/>
+                                            <label>${frontWheel.name}</label>
                                             <span class="pull-right"></span></li>
                                     </c:forEach>
                                 </ul>
-                            </div><!-- /.category-filter -->
+                            </div>
+                            <!-- /.category-filter -->
 
                             <div class="category-filter">
                                 <h2><spring:message code="app.rear_wheels"/></h2>
                                 <hr>
                                 <ul class="front-wheels">
                                     <c:forEach items="${rearWheels}" var="rearWheel">
-                                        <li><form:checkbox class="le-checkbox"  name="rearWheel"
-                                                   value="${rearWheel.id}" path="rearWheel"/> <label>${rearWheel.name}</label>
+                                        <li><form:checkbox class="le-checkbox" name="rearWheel"
+                                                           value="${rearWheel.id}" path="rearWheel"/>
+                                            <label>${rearWheel.name}</label>
                                             <span class="pull-right"></span></li>
                                     </c:forEach>
                                 </ul>
-                            </div><!-- /.category-filter -->
+                            </div>
+                            <!-- /.category-filter -->
 
                             <div class="category-filter">
                                 <h2><spring:message code="app.parking_brake"/></h2>
                                 <hr>
                                 <ul class="front-wheels">
                                     <c:forEach items="${parkingBrakes}" var="parkingBrake">
-                                        <li><form:checkbox class="le-checkbox"  name="parkingBrake"
-                                                   value="${parkingBrake.id}" path="parkingBrake"/> <label>${parkingBrake.name}</label>
+                                        <li><form:checkbox class="le-checkbox" name="parkingBrake"
+                                                           value="${parkingBrake.id}" path="parkingBrake"/>
+                                            <label>${parkingBrake.name}</label>
                                             <span class="pull-right"></span></li>
                                     </c:forEach>
                                 </ul>
-                            </div><!-- /.category-filter -->
+                            </div>
+                            <!-- /.category-filter -->
 
                             <div class="category-filter">
                                 <h2><spring:message code="app.auxiliaries"/></h2>
                                 <hr>
-                                <%--<ul class="front-wheels">--%>
+                                    <%--<ul class="front-wheels">--%>
                                 <ul class="front-wheels">
                                     <c:forEach items="${auxiliaries}" var="auxiliary">
-                                        <li><form:checkbox class="le-checkbox"  name="auxiliary"
-                                                   value="${auxiliary.id}" path="auxiliary"/> <label>${auxiliary.name}</label> <span
-                                                class="pull-right"></span></li>
+                                        <li><form:checkbox class="le-checkbox" name="auxiliary"
+                                                           value="${auxiliary.id}" path="auxiliary"/>
+                                            <label>${auxiliary.name}</label> <span
+                                                    class="pull-right"></span></li>
                                     </c:forEach>
                                 </ul>
-                            </div><!-- /.category-filter -->
+                            </div>
+                            <!-- /.category-filter -->
                             <button class="filter-button" type="submit">Filter</button>
                         </form:form>
 
@@ -297,14 +290,14 @@
                                                 <div class="product-item">
                                                     <div class="ribbon red"><span>sale</span></div>
                                                     <div class="image">
-                                                        <a href="<c:url value="/single-product/${item.id}"/>">
+                                                        <a href="<c:url value="/truck-mining/single-product/${item.id}"/>">
                                                             <img width="246" height="186" alt="${item.model.name}"
                                                                  src="<c:url value="/resources/assets/images/${item.photos[0].name}"/>">
                                                         </a>
                                                     </div>
                                                     <div class="body">
                                                         <div class="title">
-                                                            <a href="<c:url value="/single-product/${item.id}"/>">${item.model.name}</a>
+                                                            <a href="<c:url value="/truck-mining/single-product/${item.id}"/>">${item.model.name}</a>
                                                         </div>
                                                         <div class="brand">${item.model.series.name}</div>
                                                     </div>
@@ -313,11 +306,14 @@
                                                     </div>
                                                     <div class="hover-area">
                                                         <div class="add-cart-button">
-                                                            <a href="<c:url value="/shopping-cart/order-now/${item.id}"/>" class="le-button">add to
+                                                            <a href="<c:url value="/shopping-cart/order-now/${item.id}"/>"
+                                                               class="le-button">add to
                                                                 cart</a>
                                                         </div>
                                                         <div class="wish-compare">
-                                                            <a class="btn-add-to-compare" href="<c:url value="/compare/compare-this/${item.id}"/>"><spring:message code="app.compare"/></a>
+                                                            <a class="btn-add-to-compare"
+                                                               href="<c:url value="/compare/compare-this/${item.id}"/>"><spring:message
+                                                                    code="app.compare"/></a>
                                                         </div>
                                                     </div>
                                                 </div><!-- /.product-item -->
@@ -339,7 +335,7 @@
                                             <div class="row">
                                                 <div class="no-margin col-xs-12 col-sm-4 image-holder">
                                                     <div class="image">
-                                                        <a href="<c:url value="/single-product/${item.id}"/>">
+                                                        <a href="<c:url value="/truck-mining/single-product/${item.id}"/>">
                                                             <img width="246" height="186" alt="${item.model.name}"
                                                                  src="<c:url value="/resources/assets/images/${item.photos[0].name}"/>">
                                                         </a>
@@ -348,21 +344,24 @@
                                                 <div class="no-margin col-xs-12 col-sm-5 body-holder">
                                                     <div class="body">
                                                         <div class="title">
-                                                            <a href="<c:url value="/single-product/${item.id}"/>">${item.model.name}</a>
+                                                            <a href="<c:url value="/truck-mining/single-product/${item.id}"/>">${item.model.name}</a>
                                                         </div>
                                                         <div class="brand">${item.model.series.name}</div>
                                                         <div class="excerpt">
                                                             <p>${item.application}</p>
                                                         </div>
                                                         <div class="addto-compare">
-                                                            <a class="btn-add-to-compare" href="<c:url value="/compare/compare-this/${item.id}"/>"><spring:message code="app.add_compare"/></a>
+                                                            <a class="btn-add-to-compare"
+                                                               href="<c:url value="/compare/compare-this/${item.id}"/>"><spring:message
+                                                                    code="app.add_compare"/></a>
                                                         </div>
                                                     </div>
                                                 </div><!-- /.body-holder -->
                                                 <div class="no-margin col-xs-12 col-sm-3 price-area">
                                                     <div class="right-clmn">
                                                         <div class="price-current">$${item.price}</div>
-                                                        <a href="<c:url value="/shopping-cart/order-now/${item.id}"/>" class="le-button"><spring:message code="app.add_cart"/></a>
+                                                        <a href="<c:url value="/shopping-cart/order-now/${item.id}"/>"
+                                                           class="le-button"><spring:message code="app.add_cart"/></a>
                                                     </div>
                                                 </div><!-- /.price-area -->
                                             </div><!-- /.row -->

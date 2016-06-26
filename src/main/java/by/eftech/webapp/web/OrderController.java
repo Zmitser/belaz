@@ -27,17 +27,17 @@ public class OrderController {
     private OrderService service;
 
     @RequestMapping(value = "/checkout", method = RequestMethod.GET)
-    public String getCheckout(HttpSession session) {
+    public String getCheckout(HttpSession session, ModelMap modelMap) {
+        modelMap.put("order", new SellerOrder());
         return "checkout";
     }
-
 
 
     @RequestMapping(value = "/continue-order", method = RequestMethod.POST)
     public String continueOrder(@ModelAttribute("order") @Valid SellerOrder order, BindingResult result, HttpSession session, SessionStatus status, ModelMap model) throws IOException {
         if (result.hasErrors()) {
             return "/checkout";
-        }else {
+        } else {
             status.setComplete();
             List<Item> items = (List<Item>) session.getAttribute("cart");
             order.setItems(items);
@@ -58,10 +58,9 @@ public class OrderController {
                 i--;
             }
             sender.sendEmail(order.getEmailAddress(), builder.toString());
-            return "index";
         }
 
-
+        return "redirect:/";
     }
 
 
@@ -74,4 +73,5 @@ public class OrderController {
 
 
 }
+
 
