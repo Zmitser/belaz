@@ -44,7 +44,7 @@
                                         cart</a>
                                 </div>
                                 <div class="col-xs-12 col-sm-6">
-                                    <a href="checkout.html" class="le-button">Checkout</a>
+                                    <a href="" class="le-button">Checkout</a>
                                 </div>
                             </div>
                         </div>
