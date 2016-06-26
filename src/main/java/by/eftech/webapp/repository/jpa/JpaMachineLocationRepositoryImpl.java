@@ -18,26 +18,6 @@ public class JpaMachineLocationRepositoryImpl implements MachineLocationReposito
 
 
     @Override
-    public MachineLocation save(MachineLocation machineLocation) {
-        if (machineLocation.newOject()){
-            em.persist(machineLocation);
-            return machineLocation;
-        }else {
-            return em.merge(machineLocation);
-        }
-    }
-
-    @Override
-    public boolean delete(int id) {
-        return em.createNamedQuery(MachineLocation.DELETE).setParameter("id", id).executeUpdate() != 0;
-    }
-
-    @Override
-    public MachineLocation get(int id) {
-         return em.find(MachineLocation.class, id);
-    }
-
-    @Override
     public List<MachineLocation> getAll() {
         return em.createNamedQuery(MachineLocation.ALL_SORTED, MachineLocation.class).getResultList();
     }

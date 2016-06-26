@@ -48,10 +48,10 @@
                     <div class="widget">
                         <h3>Information</h3>
                         <ul>
-                            <li><a href="<c:url value="/"/>"><spring:message code="app.home"/></a></li>
-                            <li><a href="<c:url value="/truck-mining/category"/>"><spring:message code="app.dump_trucks"/></a></li>
-                            <li><a href="<c:url value="/dump-trucks-capacity/category"/>"><spring:message code="app.trucks_with_enchanced_capacity"/></a></li>
-                            <li><a href="<c:url value="/sitemap"/>"><spring:message code="app.sitemap"/></a></li>
+                            <li><a href="/"><spring:message code="app.home"/></a></li>
+                            <li><a href="/truck-mining/category"><spring:message code="app.dump_trucks"/></a></li>
+                            <li><a href="/dump-trucks-capacity/category"><spring:message code="app.trucks_with_enchanced_capacity"/></a></li>
+                            <li><a href="/sitemap"><spring:message code="app.sitemap"/></a></li>
                         </ul>
                     </div><!-- /.widget -->
                 </div><!-- /.link-widget -->

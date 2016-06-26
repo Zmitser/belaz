@@ -13,27 +13,6 @@ public class AuxiliaryServiceImpl implements AuxiliaryService {
     @Autowired
     private AuxiliaryRepository repository;
 
-
-    @Override
-    public Auxiliary save(Auxiliary auxiliary) {
-        return repository.save(auxiliary);
-    }
-
-    @Override
-    public void delete(int id) {
-        repository.delete(id);
-    }
-
-    @Override
-    public Auxiliary get(int id) {
-        return repository.get(id);
-    }
-
-    @Override
-    public void update(Auxiliary auxiliary) {
-        repository.save(auxiliary);
-    }
-
     @Override
     public List<Auxiliary> getAll() {
         return repository.getAll();

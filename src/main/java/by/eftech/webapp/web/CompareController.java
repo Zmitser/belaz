@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpSession;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +25,11 @@ public class CompareController {
     private TruckMiningService service;
 
     @RequestMapping(value = "/compare-this/{id}", method = RequestMethod.GET)
-    public String putProductForCompare(@ModelAttribute FilterProduct filter, @PathVariable("id")int id, HttpSession session, Model model) {
+    public String putProductForCompare(@ModelAttribute FilterProduct filter,
+                                       @PathVariable("id")int id,
+                                       HttpSession session,
+                                       Model model,
+                                       Principal principal) {
         if (session.getAttribute("compare") == null) {
             List<TruckMining> compare = new ArrayList<>();
             compare.add(service.get(id));
@@ -38,20 +43,20 @@ public class CompareController {
     }
 
     @RequestMapping(value = "/orders", method = RequestMethod.GET)
-    public String getNotFound(HttpSession session) {
+    public String getNotFound(HttpSession session, Principal principal) {
         return "cart";
     }
 
 
     @RequestMapping(value = "/compare-list", method = RequestMethod.GET)
-    public String getCompare(HttpSession session) {
+    public String getCompare(HttpSession session, Principal principal) {
         return "compare";
     }
 
 
 
     @RequestMapping(value = "/compare-list/remove/{index}", method = RequestMethod.GET)
-    public String getCompare(@PathVariable(value = "index") int index, HttpSession session) {
+    public String getCompare(@PathVariable(value = "index") int index, HttpSession session, Principal principal) {
         List<TruckMining> compare = (List<TruckMining>) session.getAttribute("compare");
         compare.remove(index);
         return "redirect:/compare/compare-list";

@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.security.Principal;
 
 import static by.eftech.webapp.utils.TruckMiningUtil.createObjectFromExcel;
 import static by.eftech.webapp.utils.TruckMiningUtil.saveImage;
@@ -30,7 +31,9 @@ public class TruckMiningAdminAjaxController {
     @RequestMapping("/upload-photo")
     public ResponseEntity<String> photoUploaded(
             @RequestParam(value = "file", required = false) MultipartFile uploadedFile,
-            SessionStatus status, HttpServletRequest request) throws IOException {
+            SessionStatus status,
+            HttpServletRequest request,
+            Principal principal) throws IOException {
         status.setComplete();
         String name = uploadedFile.getOriginalFilename();
         saveImage(uploadedFile.getBytes(), name, request);
@@ -39,7 +42,9 @@ public class TruckMiningAdminAjaxController {
 
     @RequestMapping("/export")
     public ResponseEntity<String> fileUploaded(
-            @RequestParam(value = "file", required = false) MultipartFile uploadedFile, SessionStatus status) throws IOException {
+            @RequestParam(value = "file", required = false) MultipartFile uploadedFile,
+            SessionStatus status,
+            Principal principal) throws IOException {
         status.setComplete();
         TruckMining truckMining = createObjectFromExcel(uploadedFile);
         service.save(truckMining);

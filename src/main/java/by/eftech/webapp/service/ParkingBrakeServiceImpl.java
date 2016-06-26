@@ -13,25 +13,6 @@ public class ParkingBrakeServiceImpl implements ParkingBrakeService {
     @Autowired
     private ParkingBrakeRepository repository;
 
-    @Override
-    public ParkingBrake save(ParkingBrake parkingBrake) {
-        return repository.save(parkingBrake);
-    }
-
-    @Override
-    public void delete(int id) {
-        repository.delete(id);
-    }
-
-    @Override
-    public ParkingBrake get(int id) {
-        return repository.get(id);
-    }
-
-    @Override
-    public void update(ParkingBrake parkingBrake) {
-        repository.save(parkingBrake);
-    }
 
     @Override
     public List<ParkingBrake> getAll() {

@@ -20,20 +20,6 @@ public class OrderServiceImpl implements OrderService {
         return repository.save(order);
     }
 
-    @Override
-    public void delete(int id) {
-        repository.delete(id);
-    }
-
-    @Override
-    public SellerOrder get(int id) {
-        return repository.get(id);
-    }
-
-    @Override
-    public void update(SellerOrder order) {
-        repository.save(order);
-    }
 
     @Override
     public List<SellerOrder> getAll() {

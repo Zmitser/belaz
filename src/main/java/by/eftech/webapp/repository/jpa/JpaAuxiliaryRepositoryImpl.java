@@ -18,28 +18,6 @@ public class JpaAuxiliaryRepositoryImpl implements AuxiliaryRepository {
     private EntityManager em;
 
 
-    @Override
-    @Transactional
-    public Auxiliary save(Auxiliary auxiliary) {
-        if (auxiliary.newOject()) {
-            em.persist(auxiliary);
-            return auxiliary;
-        } else {
-            return em.merge(auxiliary);
-        }
-
-    }
-
-    @Override
-    @Transactional
-    public boolean delete(int id) {
-        return em.createNamedQuery(Auxiliary.DELETE).setParameter("id", id).executeUpdate() != 0;
-    }
-
-    @Override
-    public Auxiliary get(int id) {
-        return em.find(Auxiliary.class, id);
-    }
 
     @Override
     public List<Auxiliary> getAll() {

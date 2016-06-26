@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.io.IOException;
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -27,14 +28,21 @@ public class OrderController {
     private OrderService service;
 
     @RequestMapping(value = "/checkout", method = RequestMethod.GET)
-    public String getCheckout(HttpSession session, ModelMap modelMap) {
+    public String getCheckout(HttpSession session,
+                              ModelMap modelMap,
+                              Principal principal) {
         modelMap.put("order", new SellerOrder());
         return "checkout";
     }
 
 
     @RequestMapping(value = "/continue-order", method = RequestMethod.POST)
-    public String continueOrder(@ModelAttribute("order") @Valid SellerOrder order, BindingResult result, HttpSession session, SessionStatus status, ModelMap model) throws IOException {
+    public String continueOrder(@ModelAttribute("order") @Valid SellerOrder order,
+                                BindingResult result,
+                                HttpSession session,
+                                SessionStatus status,
+                                ModelMap model,
+                                Principal principal) throws IOException {
         if (result.hasErrors()) {
             return "/checkout";
         } else {
@@ -65,7 +73,7 @@ public class OrderController {
 
 
     @RequestMapping(value = "/send-e", method = RequestMethod.POST)
-    public void doSendEmail(HttpServletRequest request) {
+    public void doSendEmail(HttpServletRequest request, Principal principal) {
         String subject = request.getParameter("subject");
         String message = request.getParameter("message");
 

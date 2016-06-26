@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.security.Principal;
+
 @Controller
 @RequestMapping(value = "/admin")
 public class TruckMiningAdminController {
@@ -16,12 +18,12 @@ public class TruckMiningAdminController {
     private TruckMiningService service;
     @Secured("ROLE_ADMIN")
     @RequestMapping(value = "/export-excel", method = RequestMethod.GET)
-    public ModelAndView getUploadFile() {
+    public ModelAndView getUploadFile(Principal principal) {
         return new ModelAndView("export-excel", "trucks", service.getAll());
 
     }
     @RequestMapping(method = RequestMethod.GET)
-    public String getLoginAdmin() {
+    public String getLoginAdmin(Principal principal) {
         return "admin-login";
     }
 

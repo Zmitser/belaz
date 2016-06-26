@@ -52,14 +52,14 @@
 
 
                         <div class="field-row">
-                            <a href="<c:url value="/"/>">Home</a><br>
+                            <a href="/">Home</a><br>
                             <br> <label> <a href="/truck-mining/category?lang=en"><spring:message code="app.dump_trucks"/></a></label>
                             <c:forEach items="${truckMinings}" var="truckMining">
-                                <a href="<c:url value="/truck-mining/single-product/${truckMining.id}?lang=en"/>">${truckMining.model.name}</a> <br>
+                                <a href="truck-mining/single-product/${truckMining.id}?lang=en">${truckMining.model.name}</a> <br>
                             </c:forEach>
                             <br> <label> <a href="/dump-trucks-capacity/category?lang=en"><spring:message code="app.trucks_with_enchanced_capacity"/></a> </label>
                             <c:forEach items="${dumpTrucks}" var="dumpTruck">
-                                <a href="<c:url value="/truck-mining/single-product/${dumpTruck.id}?lang=en"/>">${dumpTruck.model.name}</a> <br>
+                                <a href="/truck-mining/single-product/${dumpTruck.id}?lang=en">${dumpTruck.model.name}</a> <br>
                             </c:forEach>
                             <div class="field-row">
 

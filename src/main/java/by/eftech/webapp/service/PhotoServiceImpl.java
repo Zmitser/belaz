@@ -13,25 +13,6 @@ public class PhotoServiceImpl implements PhotoService {
     @Autowired
     private PhotoRepository repository;
 
-    @Override
-    public Photo save(Photo photo) {
-        return repository.save(photo);
-    }
-
-    @Override
-    public void delete(int id) {
-
-    }
-
-    @Override
-    public Photo get(int id) {
-        return repository.get(id);
-    }
-
-    @Override
-    public void update(Photo photo) {
-        repository.save(photo);
-    }
 
     @Override
     public List<Photo> getAll() {

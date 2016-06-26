@@ -19,28 +19,6 @@ public class JpaModelRepositoryImpl implements ModelRepository{
 
 
     @Override
-    @Transactional
-    public Model save(Model model) {
-        if (model.newOject()){
-            em.persist(model);
-            return model;
-        }else {
-            return em.merge(model);
-        }
-    }
-
-    @Override
-    @Transactional
-    public boolean delete(int id) {
-        return em.createNamedQuery(Model.DELETE).setParameter("id", id).executeUpdate() != 0;
-    }
-
-    @Override
-    public Model get(int id) {
-        return em.find(Model.class, id);
-    }
-
-    @Override
     public List<Model> getAll() {
         return em.createNamedQuery(Model.ALL_SORTED, Model.class).getResultList();
     }

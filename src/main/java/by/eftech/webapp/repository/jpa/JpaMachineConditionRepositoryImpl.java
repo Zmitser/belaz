@@ -1,7 +1,6 @@
 package by.eftech.webapp.repository.jpa;
 
 
-import by.eftech.webapp.model.FrontWheels;
 import by.eftech.webapp.model.MachineCondition;
 import by.eftech.webapp.repository.MachineConditionRepository;
 import org.springframework.stereotype.Repository;
@@ -18,28 +17,6 @@ public class JpaMachineConditionRepositoryImpl implements MachineConditionReposi
     @PersistenceContext
     private EntityManager em;
 
-
-    @Override
-    @Transactional
-    public MachineCondition save(MachineCondition condition) {
-        if (condition.newOject()){
-            em.persist(condition);
-            return condition;
-        }else {
-            return em.merge(condition);
-        }
-    }
-
-    @Override
-    @Transactional
-    public boolean delete(int id) {
-        return em.createNamedQuery(FrontWheels.DELETE).setParameter("id", id).executeUpdate() != 0;
-    }
-
-    @Override
-    public MachineCondition get(int id) {
-        return em.find(MachineCondition.class, id);
-    }
 
     @Override
     public List<MachineCondition> getAll() {

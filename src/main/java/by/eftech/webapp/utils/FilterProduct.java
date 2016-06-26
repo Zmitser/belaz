@@ -17,6 +17,7 @@ public class FilterProduct {
     private List<Integer> rearWheel;
     private List<Integer> parkingBrake;
     private List<Integer> auxiliary;
+    private List<Integer> wheelArrangement;
 
     public List<Integer> getManufacturer() {
         return manufacturer;
@@ -112,5 +113,14 @@ public class FilterProduct {
 
     public void setAuxiliary(List<Integer> auxiliary) {
         this.auxiliary = auxiliary;
+    }
+
+
+    public List<Integer> getWheelArrangement() {
+        return wheelArrangement;
+    }
+
+    public void setWheelArrangement(List<Integer> wheelArrangement) {
+        this.wheelArrangement = wheelArrangement;
     }
 }

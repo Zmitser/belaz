@@ -14,26 +14,6 @@ public class ManufacturerCountryServiceImpl implements ManufacturerCountryServic
     @Autowired
     private ManufacturerCountryRepository repository;
 
-    @Override
-    public ManufacturerCountry save(ManufacturerCountry manufacturerCountry) {
-        return repository.save(manufacturerCountry);
-    }
-
-    @Override
-    public void delete(int id) {
-
-        repository.delete(id);
-    }
-
-    @Override
-    public ManufacturerCountry get(int id) {
-        return repository.get(id);
-    }
-
-    @Override
-    public void update(ManufacturerCountry manufacturerCountry) {
-        repository.save(manufacturerCountry);
-    }
 
     @Override
     public List<ManufacturerCountry> getAll() {

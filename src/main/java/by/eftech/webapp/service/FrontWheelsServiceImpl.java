@@ -15,26 +15,6 @@ public class FrontWheelsServiceImpl implements FrontWheelsService {
     private FrontWheelsRepository repository;
 
     @Override
-    public FrontWheels save(FrontWheels frontWheels) {
-        return repository.save(frontWheels);
-    }
-
-    @Override
-    public void delete(int id) {
-        repository.delete(id);
-    }
-
-    @Override
-    public FrontWheels get(int id) {
-        return repository.get(id);
-    }
-
-    @Override
-    public void update(FrontWheels frontWheels) {
-        repository.save(frontWheels);
-    }
-
-    @Override
     public List<FrontWheels> getAll() {
         return repository.getAll();
     }

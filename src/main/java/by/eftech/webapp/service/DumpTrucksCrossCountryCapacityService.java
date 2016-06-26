@@ -15,4 +15,13 @@ public interface DumpTrucksCrossCountryCapacityService {
     void update(DumpTrucksCrossCountryCapacity truckMining);
 
     List<DumpTrucksCrossCountryCapacity> getAll();
+
+    Iterable<DumpTrucksCrossCountryCapacity> getFilteredList(List<Integer> manufacturer,
+                                          List<Integer> manufacturerCountry,
+                                          List<Integer> machineLocation,
+                                          List<Integer> series,
+                                          List<Integer> engine,
+                                          List<Integer> suspension,
+                                          List<Integer> transmission,
+                                          List<Integer> wheelArrangement);
 }
