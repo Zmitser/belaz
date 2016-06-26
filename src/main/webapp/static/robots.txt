@@ -1,4 +1,5 @@
 User-agent: *
 Disallow: /admin
-Disallow: /admin/**Host: belaz.herokuapp.com
+Disallow: /admin/**
+Host: belaz.herokuapp.com
 Sitemap: http://belaz.herokuapp.com/sitemap.xml
