@@ -9,6 +9,7 @@ import java.util.List;
 @NamedQueries({
         @NamedQuery(name = TruckMining.DELETE, query = "DELETE from TruckMining t WHERE t.id=:id"),
         @NamedQuery(name = TruckMining.ALL_SORTED, query = "SELECT t FROM TruckMining t ORDER BY t.model.name"),
+        @NamedQuery(name = TruckMining.ALL_SORTED_BY_DATE, query = "SELECT t FROM TruckMining t ORDER BY t.date DESC "),
 })
 @AssociationOverrides({
         @AssociationOverride(name = "model", joinColumns = {@JoinColumn(name = "model_id", referencedColumnName = "id", nullable = false)}),
@@ -20,7 +21,6 @@ import java.util.List;
 public class TruckMining extends MiningMachinery {
     private String fuelRate;
     private String torque;
-    ;
     private Auxiliary auxiliary;
     private BrakeType brakeType;
     private FrontWheels frontWheels;
@@ -42,6 +42,7 @@ public class TruckMining extends MiningMachinery {
 
     public static final String DELETE = "TruckMining.delete";
     public static final String ALL_SORTED = "TruckMining.getAllSorted";
+    public static final String ALL_SORTED_BY_DATE = "TruckMining.getAllSortedByDate";
 
     @Basic
     @Column(name = "fuel_rate")

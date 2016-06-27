@@ -1,6 +1,10 @@
 package by.eftech.webapp.web;
 
+
+import by.eftech.webapp.service.TruckMiningService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -9,8 +13,12 @@ import java.security.Principal;
 @Controller
 public class RootController {
 
+    @Autowired
+    private TruckMiningService service;
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String getRoot(Principal principal) {
+    public String getRoot(Principal principal, Model model) {
+        model.addAttribute("trucks", service.getAllByDate());
         return "index";
     }
 

@@ -49,6 +49,11 @@ public class JpaDumpTrucksCrossCountryCapacityImpl implements DumpTrucksCrossCou
     }
 
     @Override
+    public List<DumpTrucksCrossCountryCapacity> getAllByDate() {
+        return em.createNamedQuery(DumpTrucksCrossCountryCapacity.ALL_SORTED_BY_DATE, DumpTrucksCrossCountryCapacity.class).getResultList();
+    }
+
+    @Override
     public Iterable<DumpTrucksCrossCountryCapacity> getFilteredList(List<Integer> manufacturer, List<Integer> manufacturerCountry, List<Integer> machineLocation, List<Integer> series, List<Integer> engine, List<Integer> suspension, List<Integer> transmission, List<Integer> wheelArrangement) {
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<DumpTrucksCrossCountryCapacity> query = cb.createQuery(DumpTrucksCrossCountryCapacity.class);

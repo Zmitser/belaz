@@ -52,6 +52,11 @@ public class JpaTruckMiningRepositoryImpl implements TruckMiningRepository {
     }
 
     @Override
+    public List<TruckMining> getAllByDate() {
+        return em.createNamedQuery(TruckMining.ALL_SORTED_BY_DATE, TruckMining.class).getResultList();
+    }
+
+    @Override
     public Iterable<TruckMining> getFilteredList(List<Integer> manufacturer,
                                                  List<Integer> manufacturerCountry,
                                                  List<Integer> machineLocation,

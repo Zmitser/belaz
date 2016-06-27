@@ -42,6 +42,11 @@ public class DumpTrucksCrossCountryCapacityServiceImpl implements DumpTrucksCros
     }
 
     @Override
+    public List<DumpTrucksCrossCountryCapacity> getAllByDate() {
+        return repository.getAllByDate();
+    }
+
+    @Override
     public Iterable<DumpTrucksCrossCountryCapacity> getFilteredList(List<Integer> manufacturer, List<Integer> manufacturerCountry, List<Integer> machineLocation, List<Integer> series, List<Integer> engine, List<Integer> suspension, List<Integer> transmission, List<Integer> wheelArrangement) {
         return repository.getFilteredList(manufacturer, manufacturerCountry, machineLocation, series, engine, suspension, transmission, wheelArrangement);
     }
