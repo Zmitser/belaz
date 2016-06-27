@@ -15,7 +15,7 @@ public interface TruckMiningService {
     TruckMining get(int id);
 
     void update(TruckMining truckMining);
-
+    List<TruckMining> getAllByDate();
     public Iterable<TruckMining> findTruckMiningFilteredList(List<Integer> manufacturer,
                                                              List<Integer> manufacturerCountry,
                                                              List<Integer> machineLocation,

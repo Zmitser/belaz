@@ -15,6 +15,7 @@ public interface TruckMiningRepository {
     TruckMining get(int id);
 
     List<TruckMining> getAll();
+    List<TruckMining> getAllByDate();
 
     Iterable<TruckMining> getFilteredList(List<Integer> manufacturer,
                                           List<Integer> manufacturerCountry,

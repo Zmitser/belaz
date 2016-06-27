@@ -34,6 +34,11 @@ public class TruckMiningServiceImpl implements TruckMiningService {
     }
 
     @Override
+    public List<TruckMining> getAllByDate() {
+        return repository.getAllByDate();
+    }
+
+    @Override
     public List<TruckMining> getAll() {
         return repository.getAll();
     }

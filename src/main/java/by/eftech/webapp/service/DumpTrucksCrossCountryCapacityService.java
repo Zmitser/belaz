@@ -15,7 +15,7 @@ public interface DumpTrucksCrossCountryCapacityService {
     void update(DumpTrucksCrossCountryCapacity truckMining);
 
     List<DumpTrucksCrossCountryCapacity> getAll();
-
+    List<DumpTrucksCrossCountryCapacity> getAllByDate();
     Iterable<DumpTrucksCrossCountryCapacity> getFilteredList(List<Integer> manufacturer,
                                           List<Integer> manufacturerCountry,
                                           List<Integer> machineLocation,

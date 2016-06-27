@@ -9,6 +9,7 @@ import java.util.List;
 @NamedQueries({
         @NamedQuery(name = DumpTrucksCrossCountryCapacity.DELETE, query = "DELETE from DumpTrucksCrossCountryCapacity t WHERE t.id=:id"),
         @NamedQuery(name = DumpTrucksCrossCountryCapacity.ALL_SORTED, query = "SELECT t FROM DumpTrucksCrossCountryCapacity t ORDER BY t.model.name"),
+        @NamedQuery(name = DumpTrucksCrossCountryCapacity.ALL_SORTED_BY_DATE, query = "SELECT t FROM DumpTrucksCrossCountryCapacity t ORDER BY t.date DESC "),
 })
 @AssociationOverrides({
         @AssociationOverride(name = "model", joinColumns = {@JoinColumn(name = "model_id", referencedColumnName = "id", nullable = false)}),
@@ -40,7 +41,7 @@ public class DumpTrucksCrossCountryCapacity extends MiningMachinery {
 
     public static final String DELETE = "DumpTrucksCrossCountryCapacity.delete";
     public static final String ALL_SORTED = "DumpTrucksCrossCountryCapacity.getAllSorted";
-
+    public static final String ALL_SORTED_BY_DATE = "DumpTrucksCrossCountryCapacity.getAllSortedByDate";
     @Basic
     @Column(name = "truck")
     public Integer getTruck() {

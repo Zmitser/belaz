@@ -1,6 +1,7 @@
 package by.eftech.webapp.model;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 
 @Entity
@@ -19,6 +20,7 @@ public abstract class MiningMachinery {
     private Integer price;
     private String application;
     private String advantages;
+    private LocalDateTime date;
     private Boolean sold;
     private Engine engine;
     private Transmission transmission;
@@ -87,8 +89,14 @@ public abstract class MiningMachinery {
         this.height = height;
     }
 
+    @Basic
+    public LocalDateTime getDate() {
+        return date;
+    }
 
-
+    public void setDate(LocalDateTime date) {
+        this.date = date;
+    }
 
     @Basic
     public Integer getPrice() {

@@ -7,6 +7,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="random" class="java.util.Random" scope="application"/>
+<c:set value="${trucks}" var="trucks"/>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -68,50 +70,31 @@
 
                 <div id="hero">
                     <div id="owl-main" class="owl-carousel owl-inner-nav owl-ui-sm">
+                        <c:forEach begin="0" end="2" varStatus="loop">
+                            <div class="item" style="background-image: url(<c:url
+                                    value="/resources/assets/images/${trucks[loop.index].photos[0].name}"/>);">
+                                <div class="container-fluid">
+                                    <div class="caption vertical-center text-left">
+                                        <div class="big-text fadeInDown-1">
+                                            Save up to a<span class="big"><span class="sign">$</span>400</span>
+                                        </div>
 
-                        <div class="item" style="background-image: url(<c:url
-                                value="/resources/assets/images/sliders/slider01.jpg"/>);">
-                            <div class="container-fluid">
-                                <div class="caption vertical-center text-left">
-                                    <div class="big-text fadeInDown-1">
-                                        Save up to a<span class="big"><span class="sign">$</span>400</span>
-                                    </div>
-
-                                    <div class="excerpt fadeInDown-2">
-                                        on selected laptops<br>
-                                        & desktop pcs or<br>
-                                        smartphones
-                                    </div>
-                                    <div class="small fadeInDown-2">
-                                        terms and conditions apply
-                                    </div>
-                                    <div class="button-holder fadeInDown-3">
-                                        <a href="#" class="big le-button ">shop now</a>
-                                    </div>
-                                </div><!-- /.caption -->
-                            </div><!-- /.container-fluid -->
-                        </div><!-- /.item -->
-
-                        <div class="item" style="background-image: url(assets/images/sliders/slider03.jpg);">
-                            <div class="container-fluid">
-                                <div class="caption vertical-center text-left">
-                                    <div class="big-text fadeInDown-1">
-                                        Want a<span class="big"><span class="sign">$</span>200</span>Discount?
-                                    </div>
-
-                                    <div class="excerpt fadeInDown-2">
-                                        on selected <br>desktop pcs<br>
-                                    </div>
-                                    <div class="small fadeInDown-2">
-                                        terms and conditions apply
-                                    </div>
-                                    <div class="button-holder fadeInDown-3">
-                                        <a href="#" class="big le-button ">shop now</a>
-                                    </div>
-                                </div><!-- /.caption -->
-                            </div><!-- /.container-fluid -->
-                        </div><!-- /.item -->
-
+                                        <div class="excerpt fadeInDown-2">
+                                            on selected laptops<br>
+                                            & desktop pcs or<br>
+                                            smartphones
+                                        </div>
+                                        <div class="small fadeInDown-2">
+                                            terms and conditions apply
+                                        </div>
+                                        <div class="button-holder fadeInDown-3">
+                                            <a href="#" class="big le-button ">shop now</a>
+                                        </div>
+                                    </div><!-- /.caption -->
+                                </div><!-- /.container-fluid -->
+                            </div>
+                            <!-- /.item -->
+                        </c:forEach>
                     </div><!-- /.owl-carousel -->
                 </div>
 
@@ -126,392 +109,84 @@
             <div class="tab-holder">
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="#featured" data-toggle="tab">featured</a></li>
-                    <li><a href="#new-arrivals" data-toggle="tab">new arrivals</a></li>
-                    <li><a href="#top-sales" data-toggle="tab">top sales</a></li>
+                    <li class="active"><a href="#featured" data-toggle="tab">new arrivals</a></li>
+                    <li><a href="#top-sales" data-toggle="tab">random</a></li>
                 </ul>
 
                 <!-- Tab panes -->
                 <div class="tab-content">
                     <div class="tab-pane active" id="featured">
                         <div class="product-grid-holder">
-                            <div class="col-sm-4 col-md-3  no-margin product-item-holder hover">
-                                <div class="product-item">
-                                    <div class="ribbon red"><span>sale</span></div>
-                                    <div class="image">
-                                        <img alt="" src="<c:url value="/resources/assets/images/blank.gif"/>"
-                                             data-echo="<c:url value="/resources/assets/images/products/product-01.jpg"/>"/>
-                                    </div>
-                                    <div class="body">
-                                        <div class="label-discount green">-50% sale</div>
-                                        <div class="title">
-                                            <a href="#">VAIO Fit Laptop - Windows 8 SVF14322CXW</a>
-                                        </div>
-                                        <div class="brand">sony</div>
-                                    </div>
-                                    <div class="prices">
-                                        <div class="price-prev">$1399.00</div>
-                                        <div class="price-current pull-right">$1199.00</div>
-                                    </div>
 
-                                    <div class="hover-area">
-                                        <div class="add-cart-button">
-                                            <a href="#" class="le-button">Добавить в корзину</a>
+                            <c:forEach begin="0" end="3" varStatus="loop">
+                                <div class="col-sm-4 col-md-3  no-margin product-item-holder hover">
+                                    <div class="product-item">
+                                        <div class="ribbon red"><span>sale</span></div>
+                                        <div class="image">
+                                            <img alt=""
+                                                 src="<c:url value="/resources/assets/images/${trucks[loop.index].photos[0].name}"/>"/>
                                         </div>
-                                        <div class="wish-compare">
-                                            <a class="btn-add-to-wishlist" href="#">add to wishlist</a>
-                                            <a class="btn-add-to-compare" href="#">compare</a>
+                                        <div class="body">
+                                            <div class="title">
+                                                <a href="<c:url value="/truck-mining/single-product/${trucks[loop.index].id}"/>">${trucks[loop.index].model.name}</a>
+                                            </div>
+                                            <div class="brand">${trucks[loop.index].manufacturer.name}</div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-4 col-md-3 no-margin product-item-holder hover">
-                                <div class="product-item">
-                                    <div class="ribbon blue"><span>new!</span></div>
-                                    <div class="image">
-                                        <img alt="" src="<c:url value="/resources/assets/images/blank.gif"/>"
-                                             data-echo="<c:url value="/resources/assets/images/products/product-02.jpg"/>"/>
-                                    </div>
-                                    <div class="body">
-                                        <div class="label-discount clear"></div>
-                                        <div class="title">
-                                            <a href="#">White lumia 9001</a>
+                                        <div class="prices">
+                                            <div class="price-current pull-right">$${trucks[loop.index].price}</div>
                                         </div>
-                                        <div class="brand">nokia</div>
-                                    </div>
-                                    <div class="prices">
-                                        <div class="price-prev">$1399.00</div>
-                                        <div class="price-current pull-right">$1199.00</div>
-                                    </div>
-                                    <div class="hover-area">
-                                        <div class="add-cart-button">
-                                            <a href="#" class="le-button">add to cart</a>
-                                        </div>
-                                        <div class="wish-compare">
-                                            <a class="btn-add-to-wishlist" href="#">add to wishlist</a>
-                                            <a class="btn-add-to-compare" href="#">compare</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-4 col-md-3 no-margin product-item-holder hover">
-                                <div class="product-item">
 
-                                    <div class="image">
-                                        <img alt="" src="<c:url value="/resources/assets/images/blank.gif"/>"
-                                             data-echo="<c:url value="/resources/assets/images/products/product-03.jpg"/>"/>
-                                    </div>
-                                    <div class="body">
-                                        <div class="label-discount clear"></div>
-                                        <div class="title">
-                                            <a href="#">POV Action Cam</a>
-                                        </div>
-                                        <div class="brand">sony</div>
-                                    </div>
-                                    <div class="prices">
-                                        <div class="price-prev">$1399.00</div>
-                                        <div class="price-current pull-right">$1199.00</div>
-                                    </div>
-                                    <div class="hover-area">
-                                        <div class="add-cart-button">
-                                            <a href="#" class="le-button">add to cart</a>
-                                        </div>
-                                        <div class="wish-compare">
-                                            <a class="btn-add-to-wishlist" href="#">add to wishlist</a>
-                                            <a class="btn-add-to-compare" href="#">compare</a>
+                                        <div class="hover-area">
+                                            <div class="add-cart-button">
+                                                <a href="<c:url value="/shopping-cart/order-now/${trucks[loop.index].id}"/>"
+                                                   class="le-button">Добавить в корзину</a>
+                                            </div>
+                                            <div class="wish-compare">
+                                                <a class="btn-add-to-compare"
+                                                   href="<c:url value="/compare/compare-this/${trucks[loop.index].id}"/>">compare</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-sm-4 col-md-3 no-margin product-item-holder hover">
-                                <div class="product-item">
-                                    <div class="ribbon red"><span>sale</span></div>
-                                    <div class="ribbon green"><span>bestseller</span></div>
-                                    <div class="image">
-                                        <img alt="" src="<c:url value="/resources/assets/images/blank.gif"/>"
-                                             data-echo="assets/images/products/product-04.jpg"/>
-                                    </div>
-                                    <div class="body">
-                                        <div class="label-discount clear"></div>
-                                        <div class="title">
-                                            <a href="#">Netbook Acer TravelMate
-                                                B113-E-10072</a>
-                                        </div>
-                                        <div class="brand">acer</div>
-                                    </div>
-                                    <div class="prices">
-                                        <div class="price-prev">$1399.00</div>
-                                        <div class="price-current pull-right">$1199.00</div>
-                                    </div>
-                                    <div class="hover-area">
-                                        <div class="add-cart-button">
-                                            <a href="#" class="le-button">add to cart</a>
-                                        </div>
-                                        <div class="wish-compare">
-                                            <a class="btn-add-to-wishlist" href="#">add to wishlist</a>
-                                            <a class="btn-add-to-compare" href="#">compare</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            </c:forEach>
                         </div>
 
-                    </div>
-                    <div class="tab-pane" id="new-arrivals">
-                        <div class="product-grid-holder">
-
-                            <div class="col-sm-4 col-md-3 no-margin product-item-holder hover">
-                                <div class="product-item">
-                                    <div class="ribbon blue"><span>new!</span></div>
-                                    <div class="image">
-                                        <img alt="" src="<c:url value="/resources/assets/images/blank.gif"/>"
-                                             data-echo="assets/images/products/product-02.jpg"/>
-                                    </div>
-                                    <div class="body">
-                                        <div class="label-discount clear"></div>
-                                        <div class="title">
-                                            <a href="#">White lumia 9001</a>
-                                        </div>
-                                        <div class="brand">nokia</div>
-                                    </div>
-                                    <div class="prices">
-                                        <div class="price-prev">$1399.00</div>
-                                        <div class="price-current pull-right">$1199.00</div>
-                                    </div>
-                                    <div class="hover-area">
-                                        <div class="add-cart-button">
-                                            <a href="#" class="le-button">add to cart</a>
-                                        </div>
-                                        <div class="wish-compare">
-                                            <a class="btn-add-to-wishlist" href="#">add to wishlist</a>
-                                            <a class="btn-add-to-compare" href="#">compare</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-4 col-md-3 no-margin product-item-holder hover">
-                                <div class="product-item">
-                                    <div class="ribbon red"><span>sale</span></div>
-                                    <div class="image">
-                                        <img alt="" src="<c:url value="/resources/assets/images/blank.gif"/>"
-                                             data-echo="assets/images/products/product-01.jpg"/>
-                                    </div>
-                                    <div class="body">
-                                        <div class="label-discount green">-50% sale</div>
-                                        <div class="title">
-                                            <a href="#">VAIO Fit Laptop - Windows 8 SVF14322CXW</a>
-                                        </div>
-                                        <div class="brand">sony</div>
-                                    </div>
-                                    <div class="prices">
-                                        <div class="price-prev">$1399.00</div>
-                                        <div class="price-current pull-right">$1199.00</div>
-                                    </div>
-
-                                    <div class="hover-area">
-                                        <div class="add-cart-button">
-                                            <a href="#" class="le-button">add to cart</a>
-                                        </div>
-                                        <div class="wish-compare">
-                                            <a class="btn-add-to-wishlist" href="#">add to wishlist</a>
-                                            <a class="btn-add-to-compare" href="#">compare</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-4 col-md-3 no-margin product-item-holder hover">
-                                <div class="product-item">
-                                    <div class="ribbon red"><span>sale</span></div>
-                                    <div class="ribbon green"><span>bestseller</span></div>
-                                    <div class="image">
-                                        <img alt="" src="<c:url value="/resources/assets/images/blank.gif"/>"
-                                             data-echo="assets/images/products/product-04.jpg"/>
-                                    </div>
-                                    <div class="body">
-                                        <div class="label-discount clear"></div>
-                                        <div class="title">
-                                            <a href="#">Netbook Acer TravelMate
-                                                B113-E-10072</a>
-                                        </div>
-                                        <div class="brand">acer</div>
-                                    </div>
-                                    <div class="prices">
-                                        <div class="price-prev">$1399.00</div>
-                                        <div class="price-current pull-right">$1199.00</div>
-                                    </div>
-                                    <div class="hover-area">
-                                        <div class="add-cart-button">
-                                            <a href="#" class="le-button">add to cart</a>
-                                        </div>
-                                        <div class="wish-compare">
-                                            <a class="btn-add-to-wishlist" href="#">add to wishlist</a>
-                                            <a class="btn-add-to-compare" href="#">compare</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-4 col-md-3 no-margin product-item-holder hover">
-                                <div class="product-item">
-
-                                    <div class="image">
-                                        <img alt="" src="<c:url value ="resources/assets/images/blank.gif "/>"
-                                             data-echo="assets/images/products/product-03.jpg"/>
-                                    </div>
-                                    <div class="body">
-                                        <div class="label-discount clear"></div>
-                                        <div class="title">
-                                            <a href="#">POV Action Cam</a>
-                                        </div>
-                                        <div class="brand">sony</div>
-                                    </div>
-                                    <div class="prices">
-                                        <div class="price-prev">$1399.00</div>
-                                        <div class="price-current pull-right">$1199.00</div>
-                                    </div>
-                                    <div class="hover-area">
-                                        <div class="add-cart-button">
-                                            <a href="#" class="le-button">add to cart</a>
-                                        </div>
-                                        <div class="wish-compare">
-                                            <a class="btn-add-to-wishlist" href="#">add to wishlist</a>
-                                            <a class="btn-add-to-compare" href="#">compare</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
                     <div class="tab-pane" id="top-sales">
                         <div class="product-grid-holder">
+                            <c:forEach begin="0" end="3" varStatus="loop">
+                                <div class="col-sm-4 col-md-3  no-margin product-item-holder hover">
+                                    <div class="product-item">
+                                        <div class="ribbon red"><span>sale</span></div>
+                                        <div class="image">
+                                            <img alt=""
+                                                 src="<c:url value="/resources/assets/images/${trucks[random.nextInt(trucks.size())].photos[0].name}"/>"/>
+                                        </div>
+                                        <div class="body">
+                                            <div class="title">
+                                                <a href="<c:url value="/truck-mining/single-product/${trucks[random.nextInt(trucks.size())].id}"/>">${trucks[random.nextInt(trucks.size())].model.name}</a>
+                                            </div>
+                                            <div class="brand">${trucks[random.nextInt(trucks.size())].manufacturer.name}</div>
+                                        </div>
+                                        <div class="prices">
+                                            <div class="price-current pull-right">
+                                                $${trucks[random.nextInt(trucks.size())].price}</div>
+                                        </div>
 
-                            <div class="col-sm-4 col-md-3 no-margin product-item-holder hover">
-                                <div class="product-item">
-                                    <div class="ribbon red"><span>sale</span></div>
-                                    <div class="ribbon green"><span>bestseller</span></div>
-                                    <div class="image">
-                                        <img alt="" src="<c:url value = "/resources/assets/images/blank.gif"/>"
-                                             data-echo="assets/images/products/product-04.jpg"/>
-                                    </div>
-                                    <div class="body">
-                                        <div class="label-discount clear"></div>
-                                        <div class="title">
-                                            <a href="#">Netbook Acer TravelMate
-                                                B113-E-10072</a>
-                                        </div>
-                                        <div class="brand">acer</div>
-                                    </div>
-                                    <div class="prices">
-                                        <div class="price-prev">$1399.00</div>
-                                        <div class="price-current pull-right">$1199.00</div>
-                                    </div>
-                                    <div class="hover-area">
-                                        <div class="add-cart-button">
-                                            <a href="#" class="le-button">add to cart</a>
-                                        </div>
-                                        <div class="wish-compare">
-                                            <a class="btn-add-to-wishlist" href="#">add to wishlist</a>
-                                            <a class="btn-add-to-compare" href="#">compare</a>
+                                        <div class="hover-area">
+                                            <div class="add-cart-button">
+                                                <a href="<c:url value="/shopping-cart/order-now/${trucks[random.nextInt(trucks.size())].id}"/>"
+                                                   class="le-button">Добавить в корзину</a>
+                                            </div>
+                                            <div class="wish-compare">
+                                                <a class="btn-add-to-compare"
+                                                   href="<c:url value="/compare/compare-this/${trucks[random.nextInt(trucks.size())].id}"/>">compare</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-
-
-                            <div class="col-sm-4 col-md-3 no-margin product-item-holder hover">
-                                <div class="product-item">
-
-                                    <div class="image">
-                                        <img alt="" src="<c:url value = "/resources/assets/images/blank.gif"/>"
-                                             data-echo="assets/images/products/product-03.jpg"/>
-                                    </div>
-                                    <div class="body">
-                                        <div class="label-discount clear"></div>
-                                        <div class="title">
-                                            <a href="#">POV Action Cam</a>
-                                        </div>
-                                        <div class="brand">sony</div>
-                                    </div>
-                                    <div class="prices">
-                                        <div class="price-prev">$1399.00</div>
-                                        <div class="price-current pull-right">$1199.00</div>
-                                    </div>
-                                    <div class="hover-area">
-                                        <div class="add-cart-button">
-                                            <a href="#" class="le-button">add to cart</a>
-                                        </div>
-                                        <div class="wish-compare">
-                                            <a class="btn-add-to-wishlist" href="#">add to wishlist</a>
-                                            <a class="btn-add-to-compare" href="#">compare</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-4 col-md-3 no-margin product-item-holder hover">
-                                <div class="product-item">
-                                    <div class="ribbon blue"><span>new!</span></div>
-                                    <div class="image">
-                                        <img alt="" src="<c:url value = "/resources/assets/images/blank.gif"/>"
-                                             data-echo="assets/images/products/product-02.jpg"/>
-                                    </div>
-                                    <div class="body">
-                                        <div class="label-discount clear"></div>
-                                        <div class="title">
-                                            <a href="#">White lumia 9001</a>
-                                        </div>
-                                        <div class="brand">nokia</div>
-                                    </div>
-                                    <div class="prices">
-                                        <div class="price-prev">$1399.00</div>
-                                        <div class="price-current pull-right">$1199.00</div>
-                                    </div>
-                                    <div class="hover-area">
-                                        <div class="add-cart-button">
-                                            <a href="#" class="le-button">add to cart</a>
-                                        </div>
-                                        <div class="wish-compare">
-                                            <a class="btn-add-to-wishlist" href="#">add to wishlist</a>
-                                            <a class="btn-add-to-compare" href="#">compare</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-4 col-md-3 no-margin product-item-holder hover">
-                                <div class="product-item">
-                                    <div class="ribbon red"><span>sale</span></div>
-                                    <div class="image">
-                                        <img alt="" src="<c:url value = "/resources/assets/images/blank.gif"/>"
-                                             data-echo="assets/images/products/product-01.jpg"/>
-                                    </div>
-                                    <div class="body">
-                                        <div class="label-discount green">-50% sale</div>
-                                        <div class="title">
-                                            <a href="#">VAIO Fit Laptop - Windows 8 SVF14322CXW</a>
-                                        </div>
-                                        <div class="brand">sony</div>
-                                    </div>
-                                    <div class="prices">
-                                        <div class="price-prev">$1399.00</div>
-                                        <div class="price-current pull-right">$1199.00</div>
-                                    </div>
-
-                                    <div class="hover-area">
-                                        <div class="add-cart-button">
-                                            <a href="#" class="le-button">add to cart</a>
-                                        </div>
-                                        <div class="wish-compare">
-                                            <a class="btn-add-to-wishlist" href="#">add to wishlist</a>
-                                            <a class="btn-add-to-compare" href="#">compare</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
+                            </c:forEach>
                         </div>
                     </div>
                 </div>
