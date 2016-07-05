@@ -8,7 +8,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title><spring:message code="app.dump_trucks"/></title>
+    <title>Management Company of Holding «BELAZ-HOLDING» - <spring:message code="app.dump_trucks"/></title>
+    <meta name="description" content="Наша компания специализируется на производстве карьерной техники. На предприятии выпускаются карьерные самосвалы, производственная техника для работы в карьерах, машины для подземных работ, бульдозеры, погрузчики, аэродромные тягачи.">
+    <meta name="keywords" content="БЕЛАЗ, самосвал, карьерная техника, погрузчик, тягач, грузоподъемность">
     <c:import url="fragments/head.jsp"/>
 </head>
 <body>

@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title><spring:message code="app.dump_trucks"/></title>
+    <title>Management Company of Holding «BELAZ-HOLDING» - <spring:message code="app.dump_trucks"/></title>
     <c:import url="fragments/head.jsp"/>
 </head>
 <body>

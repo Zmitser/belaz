@@ -12,7 +12,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>${item.model.name}</title>
+    <title>Management Company of Holding «BELAZ-HOLDING» - ${item.model.name}</title>
     <c:import url="fragments/head.jsp"/>
 </head>
 

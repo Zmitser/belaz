@@ -12,7 +12,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Home</title>
+    <title>Management Company of Holding «BELAZ-HOLDING» - Home</title>
+    <meta name="description" content="Наша компания специализируется на производстве карьерной техники. На предприятии выпускаются карьерные самосвалы, производственная техника для работы в карьерах, машины для подземных работ, бульдозеры, погрузчики, аэродромные тягачи.">
+    <meta name="keywords" content="БЕЛАЗ, самосвал, карьерная техника, погрузчик, тягач, грузоподъемность">
     <c:import url="fragments/head.jsp"/>
 </head>
 <body>

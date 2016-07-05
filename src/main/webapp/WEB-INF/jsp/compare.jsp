@@ -4,7 +4,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title><spring:message code="app.dump_trucks"/>: <spring:message code="app.compare"/></title>
+    <title><title>Management Company of Holding «BELAZ-HOLDING» - <spring:message code="app.dump_trucks"/></title>
+        <spring:message code="app.dump_trucks"/>: <spring:message code="app.compare"/></title>
     <c:import url="fragments/head.jsp"/>
 </head>
 <c:set value="${sessionScope.compare}" var="compareList"/>

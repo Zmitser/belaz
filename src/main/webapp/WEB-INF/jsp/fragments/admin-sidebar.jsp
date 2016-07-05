@@ -13,6 +13,7 @@
         <li><a href="/admin/admin-truck-minings">Mining Dump Trucks</a></li>
         <li><a href="/admin/admin-dump-trucks-capacity">Dump Trucks with Enhanced Cross-Country Capacity</a></li>
         <li><a href="/admin/users">Users</a></li>
+        <li><a href="/admin/orders">Orders</a></li>
     </ul>
 </div>
 <!-- /#sidebar -->
