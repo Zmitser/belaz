@@ -17,9 +17,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TruckMiningUtil {
-
-
+public class DumpTrucksCrossCountryCapacityUtil {
     public static void saveImage(byte[] data, String filename, HttpServletRequest request) throws ImageUploadException, IOException {
         String savePath = request.getServletContext().getRealPath("");
         System.out.println();
@@ -56,7 +54,7 @@ public class TruckMiningUtil {
         return returnString;
     }
 
-    public static TruckMining createObjectFromExcel(MultipartFile uploadedFile) throws IOException {
+    public static DumpTrucksCrossCountryCapacity createObjectFromExcel(MultipartFile uploadedFile) throws IOException {
         InputStream inputStream;
         inputStream = uploadedFile.getInputStream();
         HSSFWorkbook workbook = new HSSFWorkbook(inputStream);
@@ -72,15 +70,14 @@ public class TruckMiningUtil {
         int payloadCapacity = getIntCellValueFromExcel(sheet.getRow(8).getCell(1));
         Engine engine = new Engine(getStringCellValueFromExcel(sheet.getRow(9).getCell(1)));
         String power = getStringCellValueFromExcel(sheet.getRow(10).getCell(1));
-        String fuelRate = getStringCellValueFromExcel(sheet.getRow(11).getCell(1));
+        int truck = getIntCellValueFromExcel(sheet.getRow(11).getCell(1));
         Transmission transmission = new Transmission(getStringCellValueFromExcel(sheet.getRow(12).getCell(1)));
-        String torque = getStringCellValueFromExcel(sheet.getRow(13).getCell(1));
+        int loadingHeight = getIntCellValueFromExcel(sheet.getRow(13).getCell(1));
         Suspension suspension = new Suspension(getStringCellValueFromExcel(sheet.getRow(14).getCell(1)));
-        BrakeType brakeType = new BrakeType(getStringCellValueFromExcel(sheet.getRow(15).getCell(1)));
-        FrontWheels frontWheels = new FrontWheels(getStringCellValueFromExcel(sheet.getRow(16).getCell(1)));
-        RearWheels rearWheels = new RearWheels(getStringCellValueFromExcel(sheet.getRow(17).getCell(1)));
-        ParkingBrake parkingBrake = new ParkingBrake(getStringCellValueFromExcel(sheet.getRow(18).getCell(1)));
-        Auxiliary auxiliary = new Auxiliary(getStringCellValueFromExcel(sheet.getRow(19).getCell(1)));
+        String frame = getStringCellValueFromExcel(sheet.getRow(15).getCell(1));
+        String fordingDepth = getStringCellValueFromExcel(sheet.getRow(16).getCell(1));
+        String climableSlopes = getStringCellValueFromExcel(sheet.getRow(17).getCell(1));
+        WheelArrangement wheelArrangement = new WheelArrangement(getStringCellValueFromExcel(sheet.getRow(18).getCell(1)));
         String turningRadius = getStringCellValueFromExcel(sheet.getRow(20).getCell(1));
         int length = getIntCellValueFromExcel(sheet.getRow(21).getCell(1));
         int width = getIntCellValueFromExcel(sheet.getRow(22).getCell(1));
@@ -121,42 +118,42 @@ public class TruckMiningUtil {
         videos.add(video1);
         videos.add(video2);
         videos.add(video3);
-        return new TruckMining(productId,
+        return new DumpTrucksCrossCountryCapacity(
                 year,
-                payloadCapacity,
                 power,
-                fuelRate,
-                torque,
-                turningRadius,
                 length,
                 width,
                 height,
-                operationalWeight,
-                grossWeight,
-                maxSpeed,
                 price,
                 application,
                 advantages,
-                completeSet,
                 sold,
-                auxiliary,
-                brakeType,
                 engine,
-                frontWheels,
+                transmission,
+                suspension,
+                manufacturer,
+                model,
+                truck,
+                loadingHeight,
+                frame,
+                fordingDepth,
+                climableSlopes,
+                wheelArrangement,
+                productId,
+                videos,
+                photos,
+                payloadCapacity,
+                turningRadius,
+                operationalWeight,
+                grossWeight,
+                maxSpeed,
+                completeSet,
                 machineCondition,
                 machineLocation,
-                manufacturer,
-                manufacturerCountry,
-                model,
-                parkingBrake,
-                photos,
-                rearWheels,
-                suspension,
-                transmission,
-                videos
-                );
+                manufacturerCountry
+
+        );
 
     }
-
 
 }

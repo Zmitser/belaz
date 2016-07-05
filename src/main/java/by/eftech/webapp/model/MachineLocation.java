@@ -1,5 +1,8 @@
 package by.eftech.webapp.model;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
 
@@ -9,89 +12,32 @@ import javax.persistence.*;
         @NamedQuery(name = MachineLocation.DELETE, query = "DELETE from MachineLocation l WHERE l.id=:id"),
         @NamedQuery(name = MachineLocation.ALL_SORTED, query = "SELECT l FROM MachineLocation l ORDER BY l.name"),
 })
+@Data
+@NoArgsConstructor
 public class MachineLocation {
-    private Integer id;
-    private String name;
-    private DumpTrucksCrossCountryCapacity dumpTrucksCrossCountryCapacity;
-    private TruckMining truckMinings;
-
-    public static final String DELETE = "MachineLocation.delete";
-    public static final String ALL_SORTED = "MachineLocation.getAllSorted";
-
     @Id
     @Column(name = "id")
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
+    @GeneratedValue
+    private Integer id;
     @Basic
     @Column(name = "name")
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        MachineLocation that = (MachineLocation) o;
-
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        return result;
-    }
-
+    private String name;
     @OneToOne
     @JoinColumn(name = "id", referencedColumnName = "machine_location_id", nullable = false)
-    public DumpTrucksCrossCountryCapacity getDumpTrucksCrossCountryCapacity() {
-        return dumpTrucksCrossCountryCapacity;
-    }
-
-    public void setDumpTrucksCrossCountryCapacity(DumpTrucksCrossCountryCapacity dumpTrucksCrossCountryCapacity) {
-        this.dumpTrucksCrossCountryCapacity = dumpTrucksCrossCountryCapacity;
-    }
-
+    private DumpTrucksCrossCountryCapacity dumpTrucksCrossCountryCapacity;
     @OneToOne
     @JoinColumn(name = "id", referencedColumnName = "machine_location_id", nullable = false)
-    public TruckMining getTruckMinings() {
-        return truckMinings;
-    }
-
-    public void setTruckMinings(TruckMining truckMinings) {
-        this.truckMinings = truckMinings;
-    }
-
+    private TruckMining truckMinings;
+    public static final String DELETE = "MachineLocation.delete";
+    public static final String ALL_SORTED = "MachineLocation.getAllSorted";
     public boolean newOject() {
         return (this.id == null);
     }
-
     public MachineLocation(String name) {
         this.name = name;
     }
 
-    public MachineLocation() {
-    }
 
-    public MachineLocation(Integer id, String name) {
-        this.id = id;
-        this.name = name;
-    }
+
 }
 

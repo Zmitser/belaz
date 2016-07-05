@@ -219,7 +219,7 @@
 <script>
 
     $('#dropzone-photo').dmUploader({
-        url: "/admin/rest/upload-photo",
+        url: "/truck-mining/admin/rest/upload-photo",
         dataType: 'json',
         allowedTypes: 'image/*',
         onUploadSuccess: function (id, response) {
@@ -227,7 +227,7 @@
         }
     });
     $('#dropzone-excel').dmUploader({
-        url: "/admin/rest/export",
+        url: "/truck-mining/admin/rest/export",
         dataType: 'json',
         onUploadSuccess: function (id, response) {
             $(".output-excel").html("excel " + response + " uploaded!");

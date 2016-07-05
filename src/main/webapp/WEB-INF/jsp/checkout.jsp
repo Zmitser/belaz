@@ -59,9 +59,9 @@
     <!-- ============================================================= HEADER : END ============================================================= -->
     <div class="animate-dropdown">
         <!-- ========================================= BREADCRUMB ========================================= -->
-        <div id="top-mega-nav">
+        <div id="breadcrumb-alt">
             <div class="container">
-                <nav>
+                <div class="breadcrumb-nav-holder minimal">
                     <ul>
                         <li class="dropdown breadcrumb-item">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -78,17 +78,13 @@
                             </ul>
                         </li>
 
-                        <li class="breadcrumb-item">
-                            <a href="/category"><spring:message code="app.trucks_with_enchanced_capacity"/></a>
-                        </li><!-- /.breadcrumb-item -->
-
                         <li class="breadcrumb-item current">
-                            <a href="#">${item.model.name}</a>
+                            <a href="/category"><spring:message code="app.checkout"/></a>
                         </li><!-- /.breadcrumb-item -->
                     </ul><!-- /.breadcrumb-nav-holder -->
-                </nav>
+                </div><!-- .breadcrumb-nav-holder -->
             </div><!-- /.container -->
-        </div><!-- /#top-mega-nav -->
+        </div><!-- /#breadcrumb-alt -->
         <!-- ========================================= BREADCRUMB : END ========================================= -->
     </div>     <!-- ========================================= CONTENT ========================================= -->
 

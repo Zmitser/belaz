@@ -123,7 +123,7 @@
                                     <div class="product-item">
                                         <div class="ribbon red"><span>sale</span></div>
                                         <div class="image">
-                                            <img alt=""
+                                            <img width="246" height="186" alt=""
                                                  src="<c:url value="/resources/assets/images/${trucks[loop.index].photos[0].name}"/>"/>
                                         </div>
                                         <div class="body">
@@ -156,32 +156,33 @@
                     <div class="tab-pane" id="top-sales">
                         <div class="product-grid-holder">
                             <c:forEach begin="0" end="3" varStatus="loop">
+                                <c:set var="nextInt" value="${random.nextInt(trucks.size())}"/>
                                 <div class="col-sm-4 col-md-3  no-margin product-item-holder hover">
                                     <div class="product-item">
                                         <div class="ribbon red"><span>sale</span></div>
                                         <div class="image">
-                                            <img alt=""
-                                                 src="<c:url value="/resources/assets/images/${trucks[random.nextInt(trucks.size())].photos[0].name}"/>"/>
+                                            <img  width="246" height="186" alt=""
+                                                 src="<c:url value="/resources/assets/images/${trucks[nextInt].photos[0].name}"/>"/>
                                         </div>
                                         <div class="body">
                                             <div class="title">
-                                                <a href="<c:url value="/truck-mining/single-product/${trucks[random.nextInt(trucks.size())].id}"/>">${trucks[random.nextInt(trucks.size())].model.name}</a>
+                                                <a href="<c:url value="/truck-mining/single-product/${trucks[nextInt].id}"/>">${trucks[nextInt].model.name}</a>
                                             </div>
-                                            <div class="brand">${trucks[random.nextInt(trucks.size())].manufacturer.name}</div>
+                                            <div class="brand">${trucks[nextInt].manufacturer.name}</div>
                                         </div>
                                         <div class="prices">
                                             <div class="price-current pull-right">
-                                                $${trucks[random.nextInt(trucks.size())].price}</div>
+                                                $${trucks[nextInt].price}</div>
                                         </div>
 
                                         <div class="hover-area">
                                             <div class="add-cart-button">
-                                                <a href="<c:url value="/shopping-cart/order-now/${trucks[random.nextInt(trucks.size())].id}"/>"
+                                                <a href="<c:url value="/shopping-cart/order-now/${trucks[nextInt].id}"/>"
                                                    class="le-button">Добавить в корзину</a>
                                             </div>
                                             <div class="wish-compare">
                                                 <a class="btn-add-to-compare"
-                                                   href="<c:url value="/compare/compare-this/${trucks[random.nextInt(trucks.size())].id}"/>">compare</a>
+                                                   href="<c:url value="/compare/compare-this/${trucks[nextInt].id}"/>">compare</a>
                                             </div>
                                         </div>
                                     </div>
