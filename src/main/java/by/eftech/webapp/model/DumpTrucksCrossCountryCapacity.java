@@ -1,5 +1,9 @@
 package by.eftech.webapp.model;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -18,207 +22,99 @@ import java.util.List;
         @AssociationOverride(name = "transmission", joinColumns = {@JoinColumn(name = "transmission_id", referencedColumnName = "id", nullable = false)}),
         @AssociationOverride(name = "suspension", joinColumns = {@JoinColumn(name = "suspension_id", referencedColumnName = "id", nullable = false)}),
 })
+@Data
+@EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
 public class DumpTrucksCrossCountryCapacity extends MiningMachinery {
-    private Integer truck;
-    private Integer loadingHeight;
-    private String frame;
-    private String fordingDepth;
-    private String climableSlopes;
-    private WheelArrangement wheelArrangement;
-    private String productId;
-    private List<Video> videos;
-    private List<Photo> photos;
-    private Integer payloadCapacity;
-    private String turningRadius;
-    private Integer operationalWeight;
-    private Integer grossWeight;
-    private Integer maxSpeed;
-    private String completeSet;
-    private MachineCondition machineCondition;
-    private MachineLocation machineLocation;
-    private ManufacturerCountry manufacturerCountry;
 
-
-    public static final String DELETE = "DumpTrucksCrossCountryCapacity.delete";
-    public static final String ALL_SORTED = "DumpTrucksCrossCountryCapacity.getAllSorted";
-    public static final String ALL_SORTED_BY_DATE = "DumpTrucksCrossCountryCapacity.getAllSortedByDate";
     @Basic
     @Column(name = "truck")
-    public Integer getTruck() {
-        return truck;
-    }
-
-    public void setTruck(Integer truck) {
-        this.truck = truck;
-    }
-
+    private Integer truck;
     @Basic
     @Column(name = "loading_height")
-    public Integer getLoadingHeight() {
-        return loadingHeight;
-    }
-
-    public void setLoadingHeight(Integer loadingHeight) {
-        this.loadingHeight = loadingHeight;
-    }
-
+    private Integer loadingHeight;
     @Basic
     @Column(name = "frame")
-    public String getFrame() {
-        return frame;
-    }
-
-    public void setFrame(String frame) {
-        this.frame = frame;
-    }
-
+    private String frame;
     @Basic
     @Column(name = "fording_depth")
-    public String getFordingDepth() {
-        return fordingDepth;
-    }
-
-    public void setFordingDepth(String fordingDepth) {
-        this.fordingDepth = fordingDepth;
-    }
-
+    private String fordingDepth;
     @Basic
     @Column(name = "climable_slopes")
-    public String getClimableSlopes() {
-        return climableSlopes;
-    }
-
-    public void setClimableSlopes(String climableSlopes) {
-        this.climableSlopes = climableSlopes;
-    }
-
-
+    private String climableSlopes;
     @ManyToOne
     @JoinColumn(name = "wheel_arrangement_id", referencedColumnName = "id", nullable = false)
-    public WheelArrangement getWheelArrangement() {
-        return wheelArrangement;
-    }
-
-    public void setWheelArrangement(WheelArrangement wheelArrangement) {
-        this.wheelArrangement = wheelArrangement;
-    }
-
-    @ManyToMany(mappedBy = "dumpTrucksCrossCountryCapacity")
-    public List<Video> getVideos() {
-        return videos;
-    }
-
-    public void setVideos(List<Video> videos) {
-        this.videos = videos;
-    }
-
-    @ManyToMany(mappedBy = "dumpTrucksCrossCountryCapacity", fetch = FetchType.EAGER)
-    public List<Photo> getPhotos() {
-        return photos;
-    }
-
-    public void setPhotos(List<Photo> photos) {
-        this.photos = photos;
-    }
-
-
+    private WheelArrangement wheelArrangement;
     @Basic
     @Column(name = "product_id")
-    public String getProductId() {
-        return productId;
-    }
-
-    public void setProductId(String productId) {
-        this.productId = productId;
-    }
-
+    private String productId;
+    @ManyToMany(mappedBy = "dumpTrucksCrossCountryCapacity")
+    private List<Video> videos;
+    @ManyToMany(mappedBy = "dumpTrucksCrossCountryCapacity", fetch = FetchType.EAGER)
+    private List<Photo> photos;
     @Basic
     @Column(name = "payload_capacity")
-    public Integer getPayloadCapacity() {
-        return payloadCapacity;
-    }
-
-    public void setPayloadCapacity(Integer payloadCapacity) {
-        this.payloadCapacity = payloadCapacity;
-    }
-
+    private Integer payloadCapacity;
     @Basic
     @Column(name = "turning_radius")
-    public String getTurningRadius() {
-        return turningRadius;
-    }
-
-    public void setTurningRadius(String turningRadius) {
-        this.turningRadius = turningRadius;
-    }
-
+    private String turningRadius;
     @Basic
     @Column(name = "operational_weight")
-    public Integer getOperationalWeight() {
-        return operationalWeight;
-    }
-
-    public void setOperationalWeight(Integer operationalWeight) {
-        this.operationalWeight = operationalWeight;
-    }
-
+    private Integer operationalWeight;
     @Basic
     @Column(name = "gross_weight")
-    public Integer getGrossWeight() {
-        return grossWeight;
-    }
-
-    public void setGrossWeight(Integer grossWeight) {
-        this.grossWeight = grossWeight;
-    }
-
+    private Integer grossWeight;
     @Basic
     @Column(name = "max_speed")
-    public Integer getMaxSpeed() {
-        return maxSpeed;
-    }
-
-    public void setMaxSpeed(Integer maxSpeed) {
-        this.maxSpeed = maxSpeed;
-    }
-
+    private Integer maxSpeed;
     @Basic
     @Column(name = "complete_set")
-    public String getCompleteSet() {
-        return completeSet;
-    }
-
-    public void setCompleteSet(String completeSet) {
-        this.completeSet = completeSet;
-    }
-
+    private String completeSet;
+    @ManyToOne
+    @JoinColumn(name = "machine_condition_id", referencedColumnName = "id", nullable = false)
+    private MachineCondition machineCondition;
+    @ManyToOne
+    @JoinColumn(name = "machine_location_id", referencedColumnName = "id", nullable = false)
+    private MachineLocation machineLocation;
     @ManyToOne
     @JoinColumn(name = "manufacturer_country_id", referencedColumnName = "id", nullable = false)
-    public ManufacturerCountry getManufacturerCountry() {
-        return manufacturerCountry;
-    }
+    private ManufacturerCountry manufacturerCountry;
 
-    public void setManufacturerCountry(ManufacturerCountry manufacturerCountry) {
+    public DumpTrucksCrossCountryCapacity(String year, String power, Integer length,
+                                          Integer width, Integer height, Integer price, String application,
+                                          String advantages, Boolean sold, Engine engine, Transmission transmission,
+                                          Suspension suspension, Manufacturer manufacturer,
+                                          Model model, Integer truck, Integer loadingHeight, String frame,
+                                          String fordingDepth, String climableSlopes,
+                                          WheelArrangement wheelArrangement, String productId,
+                                          List<Video> videos, List<Photo> photos, Integer payloadCapacity,
+                                          String turningRadius, Integer operationalWeight, Integer grossWeight,
+                                          Integer maxSpeed, String completeSet, MachineCondition machineCondition,
+                                          MachineLocation machineLocation, ManufacturerCountry manufacturerCountry) {
+        super(year, power, length, width, height, price, application, advantages, sold, engine,
+                transmission, suspension, manufacturer, model);
+        this.truck = truck;
+        this.loadingHeight = loadingHeight;
+        this.frame = frame;
+        this.fordingDepth = fordingDepth;
+        this.climableSlopes = climableSlopes;
+        this.wheelArrangement = wheelArrangement;
+        this.productId = productId;
+        this.videos = videos;
+        this.photos = photos;
+        this.payloadCapacity = payloadCapacity;
+        this.turningRadius = turningRadius;
+        this.operationalWeight = operationalWeight;
+        this.grossWeight = grossWeight;
+        this.maxSpeed = maxSpeed;
+        this.completeSet = completeSet;
+        this.machineCondition = machineCondition;
+        this.machineLocation = machineLocation;
         this.manufacturerCountry = manufacturerCountry;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "machine_condition_id", referencedColumnName = "id", nullable = false)
-    public MachineCondition getMachineCondition() {
-        return machineCondition;
-    }
+    public static final String DELETE = "DumpTrucksCrossCountryCapacityUtil.delete";
+    public static final String ALL_SORTED = "DumpTrucksCrossCountryCapacityUtil.getAllSorted";
+    public static final String ALL_SORTED_BY_DATE = "DumpTrucksCrossCountryCapacityUtil.getAllSortedByDate";
 
-    public void setMachineCondition(MachineCondition machineCondition) {
-        this.machineCondition = machineCondition;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "machine_location_id", referencedColumnName = "id", nullable = false)
-    public MachineLocation getMachineLocation() {
-        return machineLocation;
-    }
-
-    public void setMachineLocation(MachineLocation machineLocation) {
-        this.machineLocation = machineLocation;
-    }
 }

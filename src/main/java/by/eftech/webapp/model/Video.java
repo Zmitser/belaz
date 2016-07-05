@@ -1,5 +1,8 @@
 package by.eftech.webapp.model;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -9,89 +12,33 @@ import java.util.List;
         @NamedQuery(name = Video.DELETE, query = "DELETE from Video v WHERE v.id=:id"),
         @NamedQuery(name = Video.ALL_SORTED, query = "SELECT v FROM Video v ORDER BY v.name"),
 })
+@Data
+@NoArgsConstructor
 public class Video {
-    private Integer id;
-    private String name;
-    private List<DumpTrucksCrossCountryCapacity> dumpTrucksCrossCountryCapacity;
-    private List<TruckMining> truckMinings;
-
-    public static final String DELETE = "Video.delete";
-    public static final String ALL_SORTED = "Video.getAllSorted";
-
     @Id
     @Column(name = "id")
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
+    @GeneratedValue
+    private Integer id;
     @Basic
     @Column(name = "name")
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Video video = (Video) o;
-
-        if (id != null ? !id.equals(video.id) : video.id != null) return false;
-        if (name != null ? !name.equals(video.name) : video.name != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        return result;
-    }
-
+    private String name;
     @ManyToMany
-    @JoinTable(name = "dump_trucks_cross_country_capacity_has_video", schema = "belaz", joinColumns = @JoinColumn(name = "video_id", referencedColumnName = "id", nullable = false), inverseJoinColumns = @JoinColumn(name = "dump_trucks_cross_country_capacity_id", referencedColumnName = "id", nullable = false))
-    public List<DumpTrucksCrossCountryCapacity> getDumpTrucksCrossCountryCapacity() {
-        return dumpTrucksCrossCountryCapacity;
-    }
-
-    public void setDumpTrucksCrossCountryCapacity(List<DumpTrucksCrossCountryCapacity> dumpTrucksCrossCountryCapacity) {
-        this.dumpTrucksCrossCountryCapacity = dumpTrucksCrossCountryCapacity;
-    }
-
-
+    @JoinTable(name = "dump_trucks_cross_country_capacity_has_video", schema = "belaz",
+            joinColumns = @JoinColumn(name = "video_id", referencedColumnName = "id", nullable = false),
+            inverseJoinColumns = @JoinColumn(name = "dump_trucks_cross_country_capacity_id", referencedColumnName = "id", nullable = false))
+    private List<DumpTrucksCrossCountryCapacity> dumpTrucksCrossCountryCapacity;
     @ManyToMany
-    @JoinTable(name = "truck_mining_has_video", schema = "belaz", joinColumns = @JoinColumn(name = "video_id", referencedColumnName = "id", nullable = false), inverseJoinColumns = @JoinColumn(name = "truck_mining_id", referencedColumnName = "id", nullable = false))
-    public List<TruckMining> getTruckMinings() {
-        return truckMinings;
-    }
-
-    public void setTruckMinings(List<TruckMining> truckMinings) {
-        this.truckMinings = truckMinings;
-    }
+    @JoinTable(name = "truck_mining_has_video", schema = "belaz",
+            joinColumns = @JoinColumn(name = "video_id", referencedColumnName = "id", nullable = false),
+            inverseJoinColumns = @JoinColumn(name = "truck_mining_id", referencedColumnName = "id", nullable = false))
+    private List<TruckMining> truckMinings;
+    public static final String DELETE = "Video.delete";
+    public static final String ALL_SORTED = "Video.getAllSorted";
     public boolean newOject() {
         return (this.id == null);
     }
-
-    public Video(Integer id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
     public Video(String name) {
         this.name = name;
-    }
-
-    public Video() {
     }
 
 }

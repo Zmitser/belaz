@@ -1,7 +1,7 @@
 package by.eftech.webapp.web;
 
-import by.eftech.webapp.model.TruckMining;
-import by.eftech.webapp.service.TruckMiningService;
+import by.eftech.webapp.model.DumpTrucksCrossCountryCapacity;
+import by.eftech.webapp.service.DumpTrucksCrossCountryCapacityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,17 +16,16 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.security.Principal;
 
-import static by.eftech.webapp.utils.TruckMiningUtil.createObjectFromExcel;
-import static by.eftech.webapp.utils.TruckMiningUtil.saveImage;
-
+import static by.eftech.webapp.utils.DumpTrucksCrossCountryCapacityUtil.createObjectFromExcel;
+import static by.eftech.webapp.utils.DumpTrucksCrossCountryCapacityUtil.saveImage;
 
 @RestController
 @Secured("ROLE_ADMIN")
-@RequestMapping("/truck-mining/admin/rest")
-public class TruckMiningAdminAjaxController {
+@RequestMapping("/dump-trucks/admin/rest")
+public class DumpTrucksCrossCountryCapacityAdminAjaxController {
 
     @Autowired
-    private TruckMiningService service;
+    private DumpTrucksCrossCountryCapacityService service;
 
     @RequestMapping("/upload-photo")
     public ResponseEntity<String> photoUploaded(
@@ -46,9 +45,8 @@ public class TruckMiningAdminAjaxController {
             SessionStatus status,
             Principal principal) throws IOException {
         status.setComplete();
-        TruckMining truckMining = createObjectFromExcel(uploadedFile);
+        DumpTrucksCrossCountryCapacity truckMining = createObjectFromExcel(uploadedFile);
         service.save(truckMining);
         return new ResponseEntity<>(uploadedFile.getName(), HttpStatus.OK);
     }
-
 }

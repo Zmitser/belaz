@@ -1,5 +1,8 @@
 package by.eftech.webapp.model;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -9,77 +12,23 @@ import java.util.List;
         @NamedQuery(name = Transmission.DELETE, query = "DELETE from Transmission t WHERE t.id=:id"),
         @NamedQuery(name = Transmission.ALL_SORTED, query = "SELECT t FROM Transmission t ORDER BY t.name"),
 })
+@Data
+@NoArgsConstructor
 public class Transmission {
-    private Integer id;
-    private String name;
-    private List<MiningMachinery> miningMachineries;
-
-    public static final String DELETE = "Transmission.delete";
-    public static final String ALL_SORTED = "Transmission.getAllSorted";
-
     @Id
     @Column(name = "id")
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
+    @GeneratedValue
+    private Integer id;
     @Basic
     @Column(name = "name")
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Transmission that = (Transmission) o;
-
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        return result;
-    }
-
-
-
+    private String name;
     @OneToMany(mappedBy = "transmission")
-    public List<MiningMachinery> getMiningMachineries() {
-        return miningMachineries;
-    }
-
-    public void setMiningMachineries(List<MiningMachinery> miningMachineries) {
-        this.miningMachineries = miningMachineries;
-    }
-
+    private List<MiningMachinery> miningMachineries;
+    public static final String DELETE = "Transmission.delete";
+    public static final String ALL_SORTED = "Transmission.getAllSorted";
     public boolean newOject() {
         return (this.id == null);
     }
-
-    public Transmission(Integer id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    public Transmission() {
-    }
-
     public Transmission(String name) {
         this.name = name;
     }

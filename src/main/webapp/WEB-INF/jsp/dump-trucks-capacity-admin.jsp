@@ -116,7 +116,7 @@
                         <td class="action">
                             <a href="/delete/${truck.id}" class="ico ico-delete">Delete</a>
                             <a href="/edit/${truck.id}" class="ico ico-edit">Edit</a>
-                            <a href="/truck-mining/pdf/${truck.id}" class="ico ico-pdf">Pdf</a>
+                            <a href="/dump-trucks-capacity/pdf/${truck.id}" class="ico ico-pdf">Pdf</a>
                         </td>
                     </tr>
                 </c:forEach>
@@ -218,9 +218,8 @@
 <!-- /#main -->
 <script src="<c:url value="/resources/assets/js/dmuploader.min.js"/>"></script>
 <script>
-
     $('#dropzone-photo').dmUploader({
-        url: "/admin/rest/upload-photo",
+        url: "/dump-trucks/admin/rest/upload-photo",
         dataType: 'json',
         allowedTypes: 'image/*',
         onUploadSuccess: function (id, response) {
@@ -228,7 +227,7 @@
         }
     });
     $('#dropzone-excel').dmUploader({
-        url: "/admin/rest/export",
+        url: "/dump-trucks/admin/rest/export",
         dataType: 'json',
         onUploadSuccess: function (id, response) {
             $(".output-excel").html("excel " + response + " uploaded!");
