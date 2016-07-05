@@ -7,6 +7,8 @@
 <html lang="en">
 <head>
     <title><spring:message code="app.dump_trucks"/></title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
     <c:import url="fragments/head.jsp"/>
 </head>
 <body>

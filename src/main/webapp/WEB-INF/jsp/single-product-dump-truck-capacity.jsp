@@ -13,6 +13,8 @@
 <html lang="en">
 <head>
     <title>${item.model.name}</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
     <c:import url="fragments/head.jsp"/>
 </head>
 

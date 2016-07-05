@@ -13,6 +13,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
     <c:import url="fragments/head.jsp"/>
 </head>
 <body>

@@ -4,6 +4,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
     <title><spring:message code="app.dump_trucks"/>: <spring:message code="app.compare"/></title>
     <c:import url="fragments/head.jsp"/>
 </head>

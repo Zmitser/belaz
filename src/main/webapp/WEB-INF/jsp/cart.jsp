@@ -5,6 +5,8 @@
 <html lang="en">
 <head>
     <c:import url="fragments/head.jsp"/>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
 </head>
 <body>
 
