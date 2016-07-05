@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Management Company of Holding «BELAZ-HOLDING» - <spring:message code="app.add_cart"/></title>
     <c:import url="fragments/head.jsp"/>
     <meta name="description" content="">
     <meta name="keywords" content="">

@@ -6,9 +6,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title><spring:message code="app.dump_trucks"/></title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <title>Management Company of Holding «BELAZ-HOLDING» - <spring:message code="app.dump_trucks"/></title>
     <c:import url="fragments/head.jsp"/>
 </head>
 <body>
@@ -96,7 +94,7 @@
                                 <ul>
                                     <c:forEach items="${manufacturers}" var="manufacturer">
                                         <li><form:checkbox class="le-checkbox"  name="manufacturer"
-                                                           value="${manufacturer.id}" path="manufacturer"/> <label>${manufacturer.name}</label>
+                                                   value="${manufacturer.id}" path="manufacturer"/> <label>${manufacturer.name}</label>
                                             <span class="pull-right"></span></li>
                                     </c:forEach>
                                 </ul>
@@ -108,7 +106,7 @@
                                 <ul>
                                     <c:forEach items="${manufacturerCountries}" var="manufacturerCountry">
                                         <li><form:checkbox class="le-checkbox"  name="manufacturerCountry"
-                                                           value="${manufacturerCountry.id}" path="manufacturerCountry"/>
+                                                   value="${manufacturerCountry.id}" path="manufacturerCountry"/>
                                             <label>${manufacturerCountry.name}</label> <span class="pull-right"></span>
                                         </li>
                                     </c:forEach>
@@ -121,7 +119,7 @@
                                 <ul>
                                     <c:forEach items="${machineLocations}" var="machineLocation">
                                         <li><form:checkbox class="le-checkbox"  name="machineLocation"
-                                                           value="${machineLocation.id}" path="machineLocation"/>
+                                                   value="${machineLocation.id}" path="machineLocation"/>
                                             <label>${machineLocation.name}</label> <span class="pull-right"></span></li>
                                     </c:forEach>
                                 </ul>
@@ -132,7 +130,7 @@
                                 <ul>
                                     <c:forEach items="${serie}" var="serie">
                                         <li><form:checkbox class="le-checkbox"  name="serie"
-                                                           value="${serie.id}" path="serie"/> <label>${serie.name}</label> <span
+                                                   value="${serie.id}" path="serie"/> <label>${serie.name}</label> <span
                                                 class="pull-right"></span></li>
                                     </c:forEach>
                                 </ul>
@@ -144,7 +142,7 @@
                                 <ul class="front-wheels">
                                     <c:forEach items="${engines}" var="engine">
                                         <li><form:checkbox class="le-checkbox"  name="engine"
-                                                           value="${engine.id}" path="engine"/> <label>${engine.name}</label> <span
+                                                   value="${engine.id}" path="engine"/> <label>${engine.name}</label> <span
                                                 class="pull-right"></span></li>
                                     </c:forEach>
                                 </ul>
@@ -156,7 +154,7 @@
                                 <ul class="front-wheels">
                                     <c:forEach items="${suspensions}" var="suspension">
                                         <li><form:checkbox class="le-checkbox"  name="suspension"
-                                                           value="${suspension.id}" path="suspension"/> <label>${suspension.name}</label>
+                                                   value="${suspension.id}" path="suspension"/> <label>${suspension.name}</label>
                                             <span class="pull-right"></span></li>
                                     </c:forEach>
                                 </ul>
@@ -168,7 +166,7 @@
                                 <ul class="front-wheels">
                                     <c:forEach items="${transmissions}" var="transmission">
                                         <li><form:checkbox class="le-checkbox"  name="transmission"
-                                                           value="${transmission.id}" path="transmission"/> <label>${transmission.name}</label>
+                                                   value="${transmission.id}" path="transmission"/> <label>${transmission.name}</label>
                                             <span class="pull-right"></span></li>
                                     </c:forEach>
                                 </ul>
@@ -178,11 +176,11 @@
                             <div class="category-filter">
                                 <h2>Wheel Arrangement</h2>
                                 <hr>
-                                    <%--<ul class="front-wheels">--%>
+                                <%--<ul class="front-wheels">--%>
                                 <ul class="front-wheels">
                                     <c:forEach items="${wheelArrangements}" var="wheelArrangement">
                                         <li><form:checkbox class="le-checkbox"  name="wheelArrangement"
-                                                           value="${wheelArrangement.id}" path="wheelArrangement"/> <label>${wheelArrangement.name}</label> <span
+                                                   value="${wheelArrangement.id}" path="wheelArrangement"/> <label>${wheelArrangement.name}</label> <span
                                                 class="pull-right"></span></li>
                                     </c:forEach>
                                 </ul>

@@ -12,9 +12,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>${item.model.name}</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <title>Management Company of Holding «BELAZ-HOLDING» - ${item.model.name}</title>
     <c:import url="fragments/head.jsp"/>
 </head>
 
@@ -259,7 +257,7 @@
 
 
                     <div class="tab-pane" id="advantages">
-                        <p>${item.advantages}</p>
+                      <p>${item.advantages}</p>
                     </div><!-- /.tab-pane #reviews -->
 
                     <div class="tab-pane" id="complete-set">
