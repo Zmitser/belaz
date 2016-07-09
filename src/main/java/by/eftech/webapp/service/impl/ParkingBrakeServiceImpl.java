@@ -1,8 +1,9 @@
-package by.eftech.webapp.service;
+package by.eftech.webapp.service.impl;
 
 
 import by.eftech.webapp.model.ParkingBrake;
 import by.eftech.webapp.repository.ParkingBrakeRepository;
+import by.eftech.webapp.service.ParkingBrakeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

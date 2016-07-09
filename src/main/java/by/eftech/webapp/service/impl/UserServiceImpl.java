@@ -1,9 +1,10 @@
-package by.eftech.webapp.service;
+package by.eftech.webapp.service.impl;
 
 
 import by.eftech.webapp.LoggedUser;
 import by.eftech.webapp.model.User;
 import by.eftech.webapp.repository.UserRepository;
+import by.eftech.webapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

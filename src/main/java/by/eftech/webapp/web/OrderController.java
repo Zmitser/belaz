@@ -1,9 +1,8 @@
 package by.eftech.webapp.web;
 
-import by.eftech.webapp.model.Item;
 import by.eftech.webapp.model.SellerOrder;
+import by.eftech.webapp.service.EmailService;
 import by.eftech.webapp.service.OrderService;
-import by.eftech.webapp.utils.EmailSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -18,7 +17,6 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.security.Principal;
-import java.util.List;
 
 @Controller
 @RequestMapping("/order")
@@ -26,6 +24,10 @@ public class OrderController {
 
     @Autowired
     private OrderService service;
+
+
+    @Autowired
+    private EmailService emailService;
 
     @RequestMapping(value = "/checkout", method = RequestMethod.GET)
     public String getCheckout(HttpSession session,
@@ -47,25 +49,8 @@ public class OrderController {
             return "/checkout";
         } else {
             status.setComplete();
-            List<Item> items = (List<Item>) session.getAttribute("cart");
-            order.setItems(items);
             service.save(order);
-            EmailSender sender = EmailSender.getInstance();
-            StringBuilder builder = new StringBuilder();
-            builder.append("From: ").append(order.getFullname()).append(" ").append(order.getLastname());
-            builder.append("\n");
-            builder.append("Company: ").append(order.getCompanyName());
-            builder.append("\n");
-            builder.append("Country: ").append(order.getCountry());
-            builder.append("\n");
-            builder.append("Orders: ");
-            builder.append("\n");
-            for (int i = 0; i < order.getItems().size(); i++) {
-                builder.append(i + 1).append(". ").append(order.getItems().get(i).getMiningMachinery().getModel().getName()).append("\n");
-                items.remove(i);
-                i--;
-            }
-            sender.sendEmail(order.getEmailAddress(), builder.toString());
+            emailService.sendEmail(order, session);
         }
 
         return "redirect:/";

@@ -1,8 +1,9 @@
-package by.eftech.webapp.service;
+package by.eftech.webapp.service.impl;
 
 
 import by.eftech.webapp.model.DumpTrucksCrossCountryCapacity;
 import by.eftech.webapp.repository.DumpTrucksCrossCountryCapacityRepository;
+import by.eftech.webapp.service.DumpTrucksCrossCountryCapacityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
