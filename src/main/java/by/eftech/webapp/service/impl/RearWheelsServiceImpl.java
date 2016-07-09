@@ -1,7 +1,8 @@
-package by.eftech.webapp.service;
+package by.eftech.webapp.service.impl;
 
 import by.eftech.webapp.model.RearWheels;
 import by.eftech.webapp.repository.RearWheelsRepository;
+import by.eftech.webapp.service.RearWheelsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,8 +1,9 @@
-package by.eftech.webapp.service;
+package by.eftech.webapp.service.impl;
 
 
 import by.eftech.webapp.model.Model;
 import by.eftech.webapp.repository.ModelRepository;
+import by.eftech.webapp.service.ModelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

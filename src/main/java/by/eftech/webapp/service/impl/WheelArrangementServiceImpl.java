@@ -1,8 +1,8 @@
-package by.eftech.webapp.service;
+package by.eftech.webapp.service.impl;
 
 import by.eftech.webapp.model.WheelArrangement;
-import by.eftech.webapp.repository.VideoRepository;
 import by.eftech.webapp.repository.WheelArrangementRepository;
+import by.eftech.webapp.service.WheelArrangementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
